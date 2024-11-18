@@ -2,7 +2,7 @@
 layout: post
 title:  "Dumping Okta Sessions in Chrome"
 date:   2024-11-17 03:00:00 -0600
-categories: post-exploitation
+categories: 
 ---
 
 # LocalStorage
