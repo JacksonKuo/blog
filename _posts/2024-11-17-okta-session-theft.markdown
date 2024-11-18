@@ -7,7 +7,7 @@ categories:
 
 # Local Storage
 
-Google Chrome (macOS) localStorage is saved on the filesystem in the leveldb file: `/Users/<user>/Library/Application Support/Google/Chrome/Default/Local Storage/leveldb`[^1].
+Google Chrome (macOS) localStorage is saved on the filesystem in the leveldb file: `/Users/<user>/Library/Application Support/Google/Chrome/Default/Local Storage/leveldb`.[^1]
 
 To dump localStorage:
 * `git clone https://github.com/rdreher/chromeStorageDump.git`
@@ -18,7 +18,7 @@ To dump localStorage:
 
 # Cookies
 
-Google Chrome (macOS) cookies are stored in an encrypted SQLite database with the key saved in the keychain [^2] [^3]. Unencrypted cookies can still be fetched by attaching a remote chrome debugger [^4] [^5]. This technique requires existing Chrome browsers to be restarted with the `--remote-debugging-port` flag. 
+Google Chrome (macOS) cookies are stored in an encrypted SQLite database with the key saved in the keychain.[^2] [^3] Unencrypted cookies can still be fetched by attaching a remote chrome debugger.[^4] [^5] This technique requires existing Chrome browsers to be restarted with the `--remote-debugging-port` flag. 
 
 * `killall Google\ Chrome`
 * `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-allow-origins="*" --remote-debugging-port=9222 --user-data-dir="/Users/<user>/Library/Application Support/Google/Chrome" --restore-last-session --profile-directory=Default`
@@ -46,7 +46,7 @@ print(ws.recv())
 
 # Okta
 
-If an admin session is stolen from `{tenant}.okta.com`, the session cookie can be used on `{tenant}-admin.okta.com`[^6].
+If an admin session is stolen from `{tenant}.okta.com`, the session cookie can be used on `{tenant}-admin.okta.com`.[^6]
 
 | Account | Name | Type | Note |
 |---|---|---|---|
