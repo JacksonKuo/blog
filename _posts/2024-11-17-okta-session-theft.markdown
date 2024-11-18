@@ -10,7 +10,8 @@ categories:
 Google Chrome (macOS) localStorage is saved on the filesystem in the leveldb file: `/Users/<user>/Library/Application Support/Google/Chrome/Default/Local Storage/leveldb`.
 
 To dump localStorage:
-* `git clone https://github.com/rdreher/chromeStorageDump`
+* `git clone https://github.com/rdreher/chromeStorageDump.git`
+* `npm install levelup leveldown`
 * Avoid a file lock, by first copying leveldb to /tmp
 * `cp -R "/Users/<user>/Library/Application Support/Google/Chrome/Default/Local Storage/leveldb" "/tmp/leveldb"`
 * `node chromeStorageDump.js -k okta-cache-storage "/tmp/leveldb"`
