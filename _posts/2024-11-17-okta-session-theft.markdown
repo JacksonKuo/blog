@@ -52,7 +52,7 @@ If an admin session is stolen from `{tenant}.okta.com`, the session cookie can b
 |---|---|---|---|
 | Okta Admin | sid | cookie |  |
 | Okta User | okta-token-storage | localStorage | JWT Auth Bearer |
-| Okta User | idx | cookie | Reveal more than bearer token |
+| Okta User | idx | cookie | Reveals more data than bearer token |
 
 ### References:
 [^1]: https://github.com/rdreher/chromeStorageDump
