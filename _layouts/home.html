@@ -9,6 +9,29 @@ layout: default
 
   {{ content }}
 
+
+  <div class='posts'>
+    <div class='post-listing'>
+      {% assign years = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+
+      {% for year in years %}
+        <div class="year">
+          <h3 id='year'>{{ year.name }}</h3>
+
+          <ul>
+            {% for post in year.items %}
+            <li>
+              <a class='title' id='title' href='{{ post.url }}'>{{ post.title }}</a>
+              <span id='published-on'>{{ post.date | date: "%d %b %y" }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  {% comment %}
   {%- if site.posts.size > 0 -%}
     <h2 class="post-list-heading">{{ page.list_title | default: "Posts" }}</h2>
     <ul class="post-list">
@@ -27,10 +50,11 @@ layout: default
       </li>
       {%- endfor -%}
     </ul>
-
+    
     <!--
     <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
     -->
   {%- endif -%}
+  {% endcomment %}
 
 </div>
