@@ -22,7 +22,7 @@ layout: default
             {% for post in year.items %}
             <li>
               <a class='title' id='title' href='{{ post.url }}'>{{ post.title }}</a>
-              <span id='published-on'>{{ post.date | date: "%d %b %y" }}</span>
+              &nbsp;<span id='published-on'>{{ post.date | date: "%d %b %y" }}</span>
             </li>
             {% endfor %}
           </ul>
