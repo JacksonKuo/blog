@@ -3,7 +3,7 @@ layout: post
 title: "Trufflehog Shallow Clone Insecurity - Part II"
 date: 2024-11-20
 tags: ["vulnerability"]
-#published: false
+published: false
 ---
 
 # Problem Statement
