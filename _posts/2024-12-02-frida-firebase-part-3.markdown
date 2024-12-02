@@ -92,6 +92,7 @@ Run `app-firebase` and attach JS interceptors:
 * `cd /Users/jacksonkuo/Library/Developer/Xcode/DerivedData/app-firebase-*/Build/Products/Debug/app-firebase.app/Contents/MacOS`
 * `frida app-firebase -l /Users/jacksonkuo/workspace/scripts-frida/intercept-firestore.js`[^8]
 * Looks like under the covers the Firestore module uses Obj-C to make the document fetch calls
+* Note that `frida-trace` really doesn't not like SwiftUI and will fail to run the JS interceptors. However attaching via `frida` and using the REPL still works fine 
 
 
 ```javascript
