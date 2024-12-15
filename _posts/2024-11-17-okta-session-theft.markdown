@@ -58,7 +58,7 @@ If an admin session is stolen from `{tenant}.okta.com`, the session cookie can b
 | Okta User | okta-token-storage | localStorage | jwt auth token |
 | Okta User | idx | cookie | higher perms than bearer token |
 
-### References:
+# References
 [^1]: [https://github.com/rdreher/chromeStorageDump](https://github.com/rdreher/chromeStorageDump)
 [^2]: [https://www.cyberark.com/resources/threat-research-blog/the-current-state-of-browser-cookies](https://www.cyberark.com/resources/threat-research-blog/the-current-state-of-browser-cookies)
 [^3]: [https://gist.github.com/creachadair/937179894a24571ce9860e2475a2d2ec](https://gist.github.com/creachadair/937179894a24571ce9860e2475a2d2ec)

@@ -5,6 +5,10 @@ date: 2024-12-02
 tags: ["instrumentation"]
 ---
 
+**Contents**
+* TOC
+{:toc}
+
 # Problem Statement
 
 How do you use Frida to hook into a client app that uses the Firebase SDK?[^1] This problem can be further broken down into:
@@ -127,9 +131,7 @@ Interceptor.attach(collectionWithPath.implementation, {
 [FIRCollectionReference documentWithPath:@"doc1"]
 ```
 
-
-
-### References:
+# References
 [^1]: [https://kibty.town/blog/arc/](https://kibty.town/blog/arc/)
 [^2]: [https://firebase.google.com/docs/firestore](https://firebase.google.com/docs/firestore)
 [^3]: [https://firebase.google.com/docs/database](https://firebase.google.com/docs/database)

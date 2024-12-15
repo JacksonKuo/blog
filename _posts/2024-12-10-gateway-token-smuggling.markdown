@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "Gateway Token Smuggling - A Primer"
-date: 2024-12-07
+date: 2024-12-10
 tags: ["vulnerability"]
 ---
 
 # Problem Statement
 
-Describe the Gateway Token Smuggling technique[^1]
+Describe the Gateway Token Smuggling technique.[^1]
 
 # Introduction
 
@@ -65,7 +65,7 @@ I would disagree with this validity assumption. While revalidating tokens at bot
 
 An argument could be made of why even use a API gateway if the endpoint still has to revalidate the token, which is fair a point. But a better way to think of the initial validation is that you need a valid token to be able to initiate communication to a backend service. If we imagine an office building, the first authentication check gets you through the door, but each floor requires a second authentication check as well as an authorization check.
 
-### References:
+# References
 [^1]: Note there exists a similiarly named "token smuggling" term in the LLM space, which is why i prefix my technique with the title "gateway" to differentiate. Though anything that forwards traffic like proxies, middleware, authorizers, or service meshes has potential to run afoul of token smuggling.
 [^2]: [https://docs.konghq.com/gateway/changelog/#3210](https://docs.konghq.com/gateway/changelog/#3210)
 [^3]: [https://docs.konghq.com/hub/kong-inc/jwt/#send-a-request-with-the-jwt](https://docs.konghq.com/hub/kong-inc/jwt/#send-a-request-with-the-jwt)

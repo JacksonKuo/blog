@@ -5,6 +5,10 @@ date: 2024-12-01
 tags: ["instrumentation"]
 ---
 
+**Contents**
+* TOC
+{:toc}
+
 # Problem Statement
 
 How do you use Frida to hook into a client app that uses the Firebase SDK?[^1] This problem can be further broken down into:
@@ -121,7 +125,7 @@ if __name__ == "__main__":
    main("app-obj-c")
 ```
 
-### References:
+# References
 
 [^1]: [https://kibty.town/blog/arc/](https://kibty.town/blog/arc/)
 [^2]: [https://frida.re/docs/frida-cli/](https://frida.re/docs/frida-cli/)

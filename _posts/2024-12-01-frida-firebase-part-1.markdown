@@ -61,5 +61,5 @@ let message = hello.sayHello(input) ?? "Default Message"
 print("sayHello return:  \(message)")
 ```
 
-### References:
+# References
 [^1]: [https://kibty.town/blog/arc/](https://kibty.town/blog/arc/)
