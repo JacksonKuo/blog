@@ -229,7 +229,89 @@ sqlite> select * from log where count > 1;
 sqlite> [ctrl-d]
 ```
 
-#### Redis[^3]
+#### Redis[^3] [^4]
+
+```bash
+brew install redis
+redis-server
+python3 log-redis.py
+#writes to dump.rdb
+```
+
+```python
+#log-redis.py
+import re
+import redis
+
+def main():
+	r = redis.Redis()
+
+	with open("log.txt", "r") as f:
+		lines = f.readlines()
+		pattern = r'^(?P<ip>\d+\.\d+\.\d+\.\d+)\s-\s-\s\[' \
+          r'(?P<date>\d+\/\w+\/\d+:\d+:\d+:\d+\s\+\d+)\]\s[-|\w|\.]+\s\"' \
+          r'(?P<verb>\w+)'
+
+		for l in lines:
+			match = re.search(pattern, l)			
+			if r.exists("ip:"+match["ip"]):
+				r.incrby("ip:"+match["ip"], 1)
+			else:
+				r.set("ip:"+match["ip"], 1)
+
+if __name__ == "__main__":
+	main()
+```
+
+```bash
+pip3 install redis
+redis-cli
+127.0.0.1:6379> PING
+127.0.0.1:6379> GET ip:184.105.139.67
+"2"
+```
+
+#### Redis Sorted Set[^5]
+
+```python
+#log-redis-sorted-set.py
+import re
+import redis
+
+def main():
+	r = redis.Redis()
+
+	with open("log.txt", "r") as f:
+		lines = f.readlines()
+		pattern = r'^(?P<ip>\d+\.\d+\.\d+\.\d+)\s-\s-\s\[' \
+          r'(?P<date>\d+\/\w+\/\d+:\d+:\d+:\d+\s\+\d+)\]\s[-|\w|\.]+\s\"' \
+          r'(?P<verb>\w+)'
+
+		for l in lines:
+			match = re.search(pattern, l)
+			ip = match["ip"]			
+			if match:
+				if r.zscore("ip", ip) is not None:
+					r.zincrby("ip", 1, ip)
+				else:
+					r.zadd("ip", {ip: 1})
+
+if __name__ == "__main__":
+	main()
+```
+
+```bash
+pip3 install redis
+redis-cli
+127.0.0.1:6379> PING
+127.0.0.1:6379> zrange ip 0 1
+1) "46.19.138.234"
+2) "92.255.57.58"
+127.0.0.1:6379> zrange ip 0 2
+1) "46.19.138.234"
+2) "92.255.57.58"
+3) "184.105.139.67"
+```
 
 # References
 
@@ -240,3 +322,6 @@ sqlite> [ctrl-d]
 [^3]: Redis stands for Remote Dictionary Service, very similar to a python dictionary
 
 [^4]: [https://realpython.com/python-redis/](https://realpython.com/python-redis/)
+
+[^5]: [https://redis.io/docs/latest/develop/data-types/sorted-sets/](https://redis.io/docs/latest/develop/data-types/sorted-sets/)
+
