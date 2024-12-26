@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "AI Landscape - Part I"
+title: "Google Analytics Integration"
 date: 2024-12-26
-tags: ["ai"]
+tags: ["captcha"]
 published: false
 ---
 

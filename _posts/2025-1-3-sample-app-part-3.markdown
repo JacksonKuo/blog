@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "AI Landscape - Part I"
+title: "Sample Apps: Part III - Django REST"
 date: 2024-12-26
-tags: ["ai"]
+tags: ["app"]
 published: false
 ---
 
@@ -19,6 +19,8 @@ published: false
     - LLM
     - ML
     - DL
+
+openai capabilities
 
 
 
