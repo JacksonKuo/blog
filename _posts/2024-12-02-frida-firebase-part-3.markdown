@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Frida Hooking the Firebase SDK - Part III"
+title: "Frida Hooking the Firebase SDK: Part III - Firebase & Instrumenting"
 date: 2024-12-02
 tags: ["instrumentation"]
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Log Parsing Cheatsheet"
-date: 2024-12-23
+date: 2024-12-25
 tags: ["coding"]
 published: false
 ---
@@ -317,7 +317,7 @@ redis-cli
 
 [^1]: [https://safjan.com/python-regex-named-groups/](https://safjan.com/python-regex-named-groups/)
 
-[^2]: A python dictionary, hashtable, and hashmap are synonymous
+[^2]: A python dictionary, hashtable, and hashmap are synonymous. A quick reminder of how hashmaps work since it's been a hot moment. A key is transformed into a index a.k.a. hashcode using a hashing algorithm. This method enables quick look up without having to search through a list. Hash collisons have to be accounted for, but ideally should be infrequent, see: [https://en.wikipedia.org/wiki/Hash_table#Collision_resolution](https://en.wikipedia.org/wiki/Hash_table#Collision_resolution)
 
 [^3]: Redis stands for Remote Dictionary Service, very similar to a python dictionary
 
