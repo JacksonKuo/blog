@@ -27,8 +27,9 @@ Artificial Intelligence
             │   └── Ex: Clarifai                                                     
         └── Generative Models
             ├── GANs (Generative Adversarial Networks)
-            │   └── Ex: DeepFaceLab  
+            │   └── Ex: Artbreeder                
             ├── VAEs (Variational Autoencoders)
+            │   └── Ex: DeepFaceLab              
             ├── Diffusion Models
             │   ├── Ex: Stable Diffusion
             │   ├── Ex: MidJourney
