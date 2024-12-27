@@ -20,7 +20,11 @@ Create a hierarchical breakdown of the AI landscape
 Artificial Intelligence
 └── Machine Learning
     └── Deep Learning-Based Models (a.k.a. neural networks)
-        └── Discriminative Models       
+        └── Discriminative Models
+            ├── CNNs (Convolutional Neural Networks)  
+            │   └── Ex: AWS Rekognition    
+            │   └── Ex: Google Vision AI  
+            │   └── Ex: Clarifai                                                     
         └── Generative Models
             ├── GANs (Generative Adversarial Networks)
             │   └── Ex: DeepFaceLab  
