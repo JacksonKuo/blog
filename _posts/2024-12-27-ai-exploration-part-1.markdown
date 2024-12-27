@@ -21,10 +21,10 @@ Artificial Intelligence
 └── Machine Learning
     └── Deep Learning-Based Models (a.k.a. neural networks)
         ├── Discriminative Models
-        │   ├── CNNs (Convolutional Neural Networks)  
-        │   ├── Ex: AWS Rekognition    
-        │   ├── Ex: Google Vision AI  
-        │   └── Ex: Clarifai
+        │   └── CNNs (Convolutional Neural Networks)  
+        │       ├── Ex: AWS Rekognition    
+        │       ├── Ex: Google Vision AI  
+        │       └── Ex: Clarifai
         └── Generative Models
             ├── GANs (Generative Adversarial Networks)
             │   └── Ex: Artbreeder                
@@ -36,7 +36,7 @@ Artificial Intelligence
             │   └── Ex: DALL-E
             └── LLMs (Large Language Models)
                 └── GPT (Generative Pre-trained Transformer) Model
-                    └── Ex: ChatGPT             
+                    └── Ex: ChatGPT            
 ```                           
 
 This AI hierarchy is likely incorrect. Unfortunately I don't know enough about the field to be able to sus out the distinctions, but this will work as a template. I got hard stuck with including the following terms in the hierarchy: 
