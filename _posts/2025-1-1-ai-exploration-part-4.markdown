@@ -12,15 +12,7 @@ published: false
 
 # Problem Statement
 
-* Chatbot with custom model
-* Image recognition
-* Understanding the landscape
-    - AI model
-    - LLM
-    - ML
-    - DL
-
-openai capabilities
+AWS Rekognition
 
 
 
