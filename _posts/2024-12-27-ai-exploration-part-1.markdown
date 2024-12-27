@@ -12,7 +12,7 @@ published: true
 
 # Problem Statement
 
-Create a hierarchical breakdown of the AI landscape
+Create a hierarchical structure of the AI landscape based on tools I've seen or heard of
 
 # Landscape
 
