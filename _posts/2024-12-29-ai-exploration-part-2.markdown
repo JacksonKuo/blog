@@ -15,7 +15,7 @@ published: true
 Walkthrough OpenAI's current capabilities and take notes
 
 # Documentation Walkthrough
-Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with any definitions or interesting points that standout.
+Much of this will be a rote walkthrough of OpenAI's documentation: [https://platform.openai.com/docs/](https://platform.openai.com/docs/) along with any definitions or interesting points that standout.
 
 #### Overview
 * Models    
@@ -87,9 +87,9 @@ Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with
     * *Another scenario where fine-tuning is effective is reducing cost and/or latency by replacing a more expensive model like gpt-4o with a fine-tuned gpt-4o-mini model.*
     * *To fine-tune a model, you are required to provide at least 10 examples.*
     * *Note that we don't charge for tokens used for training validation.*
-    * An epoch refers to one complete pass of the entire training dataset through the learning algorithm.[^2]
+    * An epoch refers to one complete pass of the entire training dataset through the learning algorithm.[^1]
     * *In addition to creating a final fine-tuned model at the end of each fine-tuning job, OpenAI will create one full model checkpoint for you at the end of each training epoch.*
-    * overfitting - machine learning model gives accurate predictions for training data but not for new data.[^3]
+    * overfitting - machine learning model gives accurate predictions for training data but not for new data.[^2]
     * *(loss should decrease, token accuracy should increase)*
     * *Fine-tuning is also possible with images in your JSONL files.* 
     * JSONL = JSON Lines
@@ -127,7 +127,7 @@ Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with
     * *Code Interpreter is charged at $0.03 per session*
     * *Each session is active by default for one hour*
 
-#### ChatGPT[^4]
+#### ChatGPT[^3]
 * GPT Actions
     * *GPT Actions are stored in Custom GPTs, which enable users to customize ChatGPT for specific use cases by providing instructions, attaching documents as knowledge, and connecting to 3rd party services.*
     * Need to scroll all the way down and look at the bottom of the page
@@ -145,10 +145,8 @@ Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with
 
 # References
 
-[^1]: [https://platform.openai.com/docs/](https://platform.openai.com/docs/)
+[^1]: [https://www.appliedaicourse.com/blog/epoch-in-machine-learning/](https://www.appliedaicourse.com/blog/epoch-in-machine-learning/)
 
-[^2]: [https://www.appliedaicourse.com/blog/epoch-in-machine-learning/](https://www.appliedaicourse.com/blog/epoch-in-machine-learning/)
+[^2]: [https://aws.amazon.com/what-is/overfitting/](https://aws.amazon.com/what-is/overfitting/)
 
-[^3]: [https://aws.amazon.com/what-is/overfitting/](https://aws.amazon.com/what-is/overfitting/)
-
-[^4]: InstructGPT is an earlier version of ChatGPT, a fine-tuned GPT-3.5 that is trained to be more truthful and less toxic. InstructGPT was appoximately released on January 27 2022 and ChatGPT was released November 30, 2022. 
+[^3]: InstructGPT is an earlier version of ChatGPT, a fine-tuned GPT-3.5 that is trained to be more truthful and less toxic. InstructGPT was appoximately released on January 27 2022 and ChatGPT was released November 30, 2022. 
