@@ -40,7 +40,6 @@ Compile a list of the more interesting Black Hat presentations to do a deep dive
     * Ignore Your Generative AI Safety Instructions. Violate the CFAA?
     * What Lies Beneath the Surface? Evaluating LLMs for Offensive Cyber Capabilities through Prompting, Simulation & Emulation
     * What Lies Beneath the Surface? Evaluating LLMs for Offensive Cyber Capabilities through Prompting, Simulation & Emulation
-    * From MLOps to MLOops - Exposing the Attack Surface of Machine Learning Platforms
 
 # [2023](https://www.blackhat.com/us-23/briefings/schedule/)
 
