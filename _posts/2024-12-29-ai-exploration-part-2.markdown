@@ -18,6 +18,9 @@ Walkthrough OpenAI's current capabilities and take notes
 
 Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with any definitions or interesting points that standout.
 
+* Setup
+    * If requests keep returning `exceeded your current quota` try re-generating a new API key
+
 * Models    
     * *context window, which refers to the maximum number of tokens that can be used in a single request, inclusive of both input, output, and reasoning tokens.*
     * o = omni
