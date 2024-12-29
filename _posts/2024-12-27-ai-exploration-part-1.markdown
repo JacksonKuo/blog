@@ -63,6 +63,10 @@ Maybe adding these other terms cause category conflicts that aren't easy to map 
 | Mistral AI    | **Mistral**   | Open       |
 | Stability AI  | **Stable LM** | Open       |
 
+# Learning Material
+
+* [Neural Network Course by 3Blue1Brown](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
+* [AI Engineering by Chip Nyugen](https://www.amazon.com/AI-Engineering-Building-Applications-Foundation-ebook/dp/B0DPLNK9GN/)
 
 # References
 

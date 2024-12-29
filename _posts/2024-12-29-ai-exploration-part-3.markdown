@@ -12,7 +12,8 @@ published: false
 
 # Problem Statement
 
-
+* Setup
+    * If requests keep returning `exceeded your current quota` try re-generating a new API key
 
 
 # References

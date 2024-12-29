@@ -15,12 +15,9 @@ published: true
 Walkthrough OpenAI's current capabilities and take notes
 
 # Documentation Walkthrough
-
 Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with any definitions or interesting points that standout.
 
-* Setup
-    * If requests keep returning `exceeded your current quota` try re-generating a new API key
-
+#### Overview
 * Models    
     * *context window, which refers to the maximum number of tokens that can be used in a single request, inclusive of both input, output, and reasoning tokens.*
     * o = omni
@@ -28,6 +25,8 @@ Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with
     * *The o1 series of models are trained with reinforcement learning to perform complex reasoning. o1 models think before they answer, producing a long internal chain of thought before responding to the user.*
     * *Embeddings are a numerical representation of text that can be used to measure the relatedness between two pieces of text. Embeddings are useful for search, clustering, recommendations, anomaly detection, and classification tasks.*
     * *Moderation models are designed to check whether content complies with OpenAI's usage policies. The models provide classification capabilities that look for content in categories like hate, self-harm, sexual content, violence, and others.*
+
+#### Capabilities
 * Text generation
     * gpt-4o-mini - 15 cents per million input tokens (.000015)
     * gpt-4o - 2.50 dollars per million input tokens, (.00025)
@@ -40,9 +39,14 @@ Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with
     * *While each text generation request is independent and stateless (unless you are using assistants), you can still implement multi-turn conversations by providing additional messages as parameters to your text generation request. By using alternating user and assistant messages, you can capture the previous state of a conversation in one request to the model.*
 * Vision
     * *For safety reasons, we have implemented a system to block the submission of CAPTCHAs.*
+* Image generation
+* Audio generation
+* Text to speech
+* Speech to text
 * Embeddings
     * *An embedding is a vector (list) of floating point numbers. The distance between two vectors measures their relatedness*
     * Follows the same to the mathmatical definition of a vector but in n-dimensional space.
+* Moderation
 * Reasoning
     * *The o1 models introduce reasoning tokens. The models use these reasoning tokens to "think"*
     * *While reasoning tokens are not visible via the API, they still occupy space in the model's context window and are billed as output tokens.*
@@ -65,6 +69,8 @@ Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with
     * *Next we need to provide our function definitions within an array of available “tools” when calling the Chat Completions API.*
         `arguments = json.loads(tool_call['function']['arguments'])`
     * *Under the hood, functions are injected into the system message in a syntax the model has been trained on. This means functions count against the model's context limit and are billed as input tokens.*
+
+#### Realtime
 * Realtime
     * *The OpenAI Realtime API enables you to build low-latency, multi-modal conversational experiences with expressive voice-enabled models.*
     * *The developer's server uses a standard API key to request an ephemeral key from the OpenAI REST API, and returns that new key to the browser. Note that ephemeral keys currently expire one minute after being issued.*
@@ -107,6 +113,8 @@ Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with
     * *However, the official meta-schemas provided by the JSON Schema Specification rely on features not currently supported in strict mode.*
     * *This means we can't currently use strict mode to generate schemas.*
     * *we define a pseudo-meta-schema — a meta-schema that uses features not supported in strict mode to describe only the features that are supported in strict mode.*
+
+#### Assistants
 * Assistants
     * *An Assistant has instructions and can leverage models, tools, and files to respond to user queries. The Assistants API currently supports three types of tools: Code Interpreter, File Search, and Function calling.*
     * *The Assistants API is in beta*
@@ -118,6 +126,8 @@ Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with
     * *Code Interpreter allows Assistants to write and run Python code in a sandboxed execution environment.*
     * *Code Interpreter is charged at $0.03 per session*
     * *Each session is active by default for one hour*
+
+#### ChatGPT[^4]
 * GPT Actions
     * *GPT Actions are stored in Custom GPTs, which enable users to customize ChatGPT for specific use cases by providing instructions, attaching documents as knowledge, and connecting to 3rd party services.*
     * Need to scroll all the way down and look at the bottom of the page
@@ -125,6 +135,8 @@ Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with
     * *If the x-openai-isConsequential field is true, ChatGPT treats the operation as "must always prompt the user for confirmation before running" and don't show an "always allow" button*
     * *If the field isn't present, ChatGPT defaults all GET operations to false and all other operations to true*
     * *A GPT Action requires an Open API schema to describe the parameters of the API call*
+
+#### Best Practices
 * Prompt Caching
     * *Prompt caches are not shared between organizations. Only members of the same organization can access caches of identical prompts.*
     * *This is because only the prompt itself is cached, while the actual response is computed anew each time based on the cached prompt.*
@@ -138,3 +150,5 @@ Much of this will be a rote walkthrough of OpenAI's documentation[^1] along with
 [^2]: [https://www.appliedaicourse.com/blog/epoch-in-machine-learning/](https://www.appliedaicourse.com/blog/epoch-in-machine-learning/)
 
 [^3]: [https://aws.amazon.com/what-is/overfitting/](https://aws.amazon.com/what-is/overfitting/)
+
+[^4]: InstructGPT is an earlier version of ChatGPT, a fine-tuned GPT-3.5 that is trained to be more truthful and less toxic. InstructGPT was appoximately released on January 27 2022 and ChatGPT was released November 30, 2022. 
