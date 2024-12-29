@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "AI Exploration: Part IV - Image Recognition"
-date: 2024-12-26
+title: "AI Exploration: Part III - Build a ChatBot"
+date: 2024-12-29
 tags: ["ai"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -12,7 +12,6 @@ published: false
 
 # Problem Statement
 
-AWS Rekognition
 
 
 

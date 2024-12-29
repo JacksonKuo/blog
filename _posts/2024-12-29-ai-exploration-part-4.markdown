@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "AI Exploration: Part III - Build a ChatBot"
-date: 2024-12-26
+title: "AI Exploration: Part IV - Security"
+date: 2024-12-29
 tags: ["ai"]
 published: false
 ---
