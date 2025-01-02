@@ -12,7 +12,7 @@ published: true
 
 # Problem Statement
 
-Breakdown the security learnings for OpenAI ChatGPT
+Breakdown the security learnings for OpenAI LLMs
 
 # Reading Material
 
@@ -23,9 +23,9 @@ Much of these learnings comes from the following sources:
 
 # Breakdown
 
-The most important learning is that the `system` / `developer` role is not a security boundary. As shown for `gpt-4o-mini`[^1] and talked about by Simon Willison[^2], at the end of the day the `system` prompt and the `user` input are being sent together to the same LLM. Instructions and user input are the same. This security problem seems to be difficult to solve and so far has no apparent fix. 
+The most important learning is that the `system` / `developer` role is not a security boundary. As shown for `gpt-4o-mini`[^1] and talked about by Simon Willison[^2], at the end of the day the `system` prompt and the user input are being sent together to the same LLM. In the LLM world instructions and user input are the same. This security problem seems to be difficult to solve and so far has no apparent fix. 
 
-Best Practices
+Some general best practices are:
 * If the model can call an external database, authorization MUST be wrap the call so that no matter what instruction is sent, the database call can only access information relating to a validated user. 
 * Don't store sensitive data or secrets within the system prompt
 * Don't allow markdown, links, or images if not required
@@ -56,7 +56,9 @@ You are ChatGPT, a large language model trained by OpenAI. Knowledge cutoff: 202
     * `x-openai-isConsequential=true`, *"ChatGPT treats the operation as "must always prompt the user for confirmation before running"*
     * `x-openai-isConsequential=false`, *"ChatGPT shows the "always allow button". If the field isn't present, ChatGPT defaults all GET operations to false and all other operations to true*
 
-# Microsoft Adaptive Prompt Injection Challenge Protective Tools[^5]
+# Protective Tools[^5]
+
+From Microsoft Adaptive Prompt Injection Challenge
 
 ```
 Spotlighting [1]: A preventative defense that “marks” data (as opposed to instructions) that is provided to an LLM using methods like adding special delimiters, encoding data (e.g., in base64), or marking each token in the data with a special preceding token. 
