@@ -25,10 +25,9 @@ Much of these learnings comes from the following sources:
 
 The most important learning is that the `system` / `developer` role is not a security boundary. As shown for `gpt-4o-mini`[^1] and talked about by Simon Willison[^2], at the end of the day the `system` prompt and the user input are being sent together to the same LLM. In the LLM world instructions and user input are the same. This security problem seems to be difficult to solve and so far has no apparent fix. 
 
-Some general best practices are:
-* If the model can call an external database, authorization MUST be wrap the call so that no matter what instruction is sent, the database call can only access information relating to a validated user. 
-* Don't store sensitive data or secrets within the system prompt
-* Don't allow markdown, links, or images if not required
+The second most important learning is if the model can call an external database, authorization MUST be wrapper around the call so that no matter what instruction is sent, the database call can only access information relating to a validated user. 
+
+Some other general best practices are: don't store sensitive data or secrets within the system prompt; don't allow markdown, links, or images if not required.
 
 # Definitions[^3] [^4]
 
