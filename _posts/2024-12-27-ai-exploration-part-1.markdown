@@ -59,14 +59,18 @@ Maybe adding these other terms cause category conflicts that aren't easy to map 
 | Meta          | **Llama**     | Open       |
 | Anthropic     | **Claude**    | Closed     |
 | Cohere        | **Command**   | Closed     |
-| Microsoft     | **Phi-3**     | Open       |
+| Microsoft     | **Phi-4**     | Open       |
 | Mistral AI    | **Mistral**   | Open       |
 | Stability AI  | **Stable LM** | Open       |
+| Amazon        | **Nova**      | Closed     |
 
 # Learning Material
 
 * [Neural Network Course by 3Blue1Brown](https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi)
 * [AI Engineering by Chip Nyugen](https://www.amazon.com/AI-Engineering-Building-Applications-Foundation-ebook/dp/B0DPLNK9GN/)
+* [Simon Willison's Blog](https://simonwillison.net/tags/ai/)
+* [LLMs in 2024](https://simonwillison.net/2024/Dec/31/llms-in-2024/#prompt-driven-app-generation-is-a-commodity-already)
+* [2024 AI Timeline](https://huggingface.co/spaces/reach-vb/2024-ai-timeline)
 
 # References
 
