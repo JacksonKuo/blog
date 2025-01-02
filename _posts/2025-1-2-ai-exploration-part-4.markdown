@@ -57,7 +57,7 @@ LLM-as-a-judge: This defense uses an LLM to detect attacks by evaluating prompts
 TaskTracker [3]: Based on analyzing the model’s internal states to detect task drift, this defense extracts activations when the user first prompts the LLM and again when the LLM processes external data. It then contrasts these activation sets to detect drift via a linear probe on the activation deltas. 
 ```
 
-# Custom GPT underlying prompt extraction[^7]
+# Extract underlying Custom GPT prompt[^7]
 
 Includes the following capabilities:
 * Web Search
