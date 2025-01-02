@@ -57,7 +57,7 @@ LLM-as-a-judge: This defense uses an LLM to detect attacks by evaluating prompts
 TaskTracker [3]: Based on analyzing the model’s internal states to detect task drift, this defense extracts activations when the user first prompts the LLM and again when the LLM processes external data. It then contrasts these activation sets to detect drift via a linear probe on the activation deltas. 
 ```
 
-# Dump of Custom GPT prompt w/ all capabilities
+# Custom GPT underlying prompt extraction[^7]
 
 Includes the following capabilities:
 * Web Search
@@ -82,3 +82,5 @@ You are ChatGPT, a large language model trained by OpenAI. Knowledge cutoff: 202
 [^5]: There seems to be some ambiguity about the difference between prompt injection and jailbreaking
 
 [^6]: [https://msrc.microsoft.com/blog/2024/12/announcing-the-adaptive-prompt-injection-challenge-llmail-inject/](https://msrc.microsoft.com/blog/2024/12/announcing-the-adaptive-prompt-injection-challenge-llmail-inject/)
+
+[^7]: [https://embracethered.com/blog/posts/2024/chatgpt-gpt-4o-mini-instruction-hierarchie-bypasses/](https://embracethered.com/blog/posts/2024/chatgpt-gpt-4o-mini-instruction-hierarchie-bypasses/)

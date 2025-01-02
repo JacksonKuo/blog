@@ -4,4 +4,4 @@ title: About
 permalink: /about/
 ---
 
-security musings
+security musings, notes, and miscellaneous
