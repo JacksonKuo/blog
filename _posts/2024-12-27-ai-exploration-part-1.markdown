@@ -74,6 +74,6 @@ Maybe adding these other terms cause category conflicts that aren't easy to map 
 
 # References
 
-[^1]: `The terms deep learning and neural networks are used interchangeably because all deep learning systems are made of neural networks.` [https://aws.amazon.com/compare/the-difference-between-deep-learning-and-neural-networks/#:~:text=The%20terms%20deep%20learning%20and,are%20made%20of%20neural%20networks.](https://aws.amazon.com/compare/the-difference-between-deep-learning-and-neural-networks/#:~:text=The%20terms%20deep%20learning%20and,are%20made%20of%20neural%20networks.)
+[^1]: *"The terms deep learning and neural networks are used interchangeably because all deep learning systems are made of neural networks."* [https://aws.amazon.com/compare/the-difference-between-deep-learning-and-neural-networks/#:~:text=The%20terms%20deep%20learning%20and,are%20made%20of%20neural%20networks.](https://aws.amazon.com/compare/the-difference-between-deep-learning-and-neural-networks/#:~:text=The%20terms%20deep%20learning%20and,are%20made%20of%20neural%20networks.)
 
 [^2]: [https://zapier.com/blog/best-llm/](https://zapier.com/blog/best-llm/)
