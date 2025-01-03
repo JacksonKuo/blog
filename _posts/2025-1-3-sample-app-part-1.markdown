@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sample Apps: Part I - Requirements"
-date: 2024-12-26
+date: 2025-1-2
 tags: ["app"]
 published: false
 ---

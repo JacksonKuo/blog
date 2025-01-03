@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Security Infrastructure Week: Part I - Trufflehog CI/CD"
-date: 2024-12-26
+date: 2025-12-12
 tags: ["devsecops"]
 published: false
 ---

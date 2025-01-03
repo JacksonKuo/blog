@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sample Apps: Part IV - Ruby on Rails"
-date: 2024-12-26
+date: 2025-12-12
 tags: ["app"]
 published: false
 ---
