@@ -52,7 +52,7 @@ def encode_image(image_path):
 logo_path = "logo-2.png"
 base64_logo = encode_image(logo_path)
 
-screenshot_path = "amazon.png"
+screenshot_path = "site-2.png"
 base64_screenshot = encode_image(screenshot_path)
 
 response = client.chat.completions.create(
@@ -99,7 +99,7 @@ The comparsion is successful on this next image which has no Amazon textwords.
 
 The cost calculation is still a bit of a mystery to me. I'm not sure if the image base64 counts as part of the input tokens or if "low res" mode only charages a flat 85 token plus output tokens. I'll continue to test and update this section, but i'm seeing input tokens in the tens of thosands per image right now
 
-* Don't forget to specify "low res" mode in the `image_url`
+* Don't forget to specify "low res" mode in the image url:
     * `image_url": {"url": f"data:image/png;base64,{base64_screenshot}", "detail": "low"},`
 * Add a max token cap
     * `max_tokens=300`
