@@ -95,6 +95,8 @@ The comparsion is successful on this next image which has no Amazon textwords.
 \[Amazon Homepage Screenshot with no Amazon text\]
 {: refdef}
 
+If a logo is mostly text, Vision may mistakenly associate regular text words to that logo. 
+
 # Costs
 
 The cost calculation is still a bit of a mystery to me. I'm not sure if the image base64 counts as part of the input tokens or if "low res" mode only charages a flat 85 token plus output tokens. I'll continue to test and update this section, but i'm seeing input tokens in the tens of thosands per image right now
