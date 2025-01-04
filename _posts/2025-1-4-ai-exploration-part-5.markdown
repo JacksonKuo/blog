@@ -34,8 +34,8 @@ I used a stock Amazon logo and a screenshot of the amazon.com homepage.
 
 A couple of important things to note:
 * Vision can't parse PDFs, only images with the following extensions: `.png`, `.jpeg`, `.webp` , and non-animated `.gif`
-* Vision can't directly compare two images.
-* The Amazon homepage screenshot does not have an logo. The usual top section was not included within the image sni
+* Vision can't directly compare two images
+* The Amazon homepage screenshot does not have an logo. The usual top section was not included within the image snip
 
 My approach was to first ask OpenAI to describe any logos in the images and then secondly ask if one image could be found in the other. 
 
@@ -88,16 +88,18 @@ Vision appears to not have a great concept of logos. The output states, `the Ama
 
 The comparsion is successful on this next image which has no Amazon textwords. 
 
+{:refdef: style="text-align: center;"}
 ![Image]({{ site.baseurl }}/assets/images/site-3.png){: width="500"}
+{: refdef}
 {:refdef: style="text-align: center;"}
 \[Amazon Homepage Screenshot with no Amazon text\]
 {: refdef}
 
 # Costs
 
-The cost calculation is still a bit of a mystery to me. I'm not sure if the image base64 counts as part of the input tokens or if "low res" mode only charages a flat 85 token plus output tokens. I'll continue to test and update this section, but i'm seeing input tokens in the tens of thosands right per image right now
+The cost calculation is still a bit of a mystery to me. I'm not sure if the image base64 counts as part of the input tokens or if "low res" mode only charages a flat 85 token plus output tokens. I'll continue to test and update this section, but i'm seeing input tokens in the tens of thosands per image right now
 
-* Don't forget to specify "low res" mode which should be 85 tokens per image plus however many output tokens
+* Don't forget to specify "low res" mode in the `image_url`
     * `image_url": {"url": f"data:image/png;base64,{base64_screenshot}", "detail": "low"},`
 * Add a max token cap
     * `max_tokens=300`
