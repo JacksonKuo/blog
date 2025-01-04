@@ -120,7 +120,7 @@ The o1 "reasoning" model currently doesn't have a system/developer role.
 
 # References
 
-[^1]: If requests keep returning `exceeded your current quota` try re-generating a new API key
+[^1]: If requests keep returning `exceeded your current quota` try re-generating a new API key. Add key via `export OPENAI_API_KEY=""`
 
 [^2]: [https://platform.openai.com/docs/guides/fine-tuning](https://platform.openai.com/docs/guides/fine-tuning)
 
