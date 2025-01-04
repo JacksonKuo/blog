@@ -12,26 +12,30 @@ published: true
 
 # Problem Statement
 
-Verify OpenAI Vision's ability to do image recognition. The test will to be see if Vision can compare two images. The first image a company logo and the second image a homepage screenshot. Can Vision confirm the screenshot has an instance of the logo. 
+Verify OpenAI Vision's image recognition capabilities.[^1] The test will check if Vision can compare two images. The first image being a company logo and the second image a homepage screenshot. Can Vision confirm the screenshot has an instance of the logo? 
 
 # Approach
 
 I used a stock Amazon logo and a screenshot of the amazon.com homepage. 
 
+{:refdef: style="text-align: center;"}
 ![Image]({{ site.baseurl }}/assets/images/logo-2.png){: width="250"}
+{: refdef}
 {:refdef: style="text-align: center;"}
 \[Stock Amazon Logo\]
 {: refdef}
 
+{:refdef: style="text-align: center;"}
 ![Image]({{ site.baseurl }}/assets/images/site-2.png){: width="500"}
+{: refdef}
 {:refdef: style="text-align: center;"}
 \[Amazon Homepage Screenshot\]
 {: refdef}
 
 A couple of important things to note:
-* Vision can't parse PDFs, only images with the following extensions: `.png`, `.jpeg`, `.webp` , and non-animated `.gif`.
-* Vision can't directly compare two images. 
-* The Amazon homepage screenshot does not have an logo. The usual top section was not included within the image snip
+* Vision can't parse PDFs, only images with the following extensions: `.png`, `.jpeg`, `.webp` , and non-animated `.gif`
+* Vision can't directly compare two images.
+* The Amazon homepage screenshot does not have an logo. The usual top section was not included within the image sni
 
 My approach was to first ask OpenAI to describe any logos in the images and then secondly ask if one image could be found in the other. 
 
@@ -80,7 +84,7 @@ response = client.chat.completions.create(
 
 # Results
 
-Vision appears to not have a great concept of logos. The output states, `the Amazon logo appears again in the top left corner`, however that is clearly not true. Perhaps Vision is getting confused with the text `Amazon Basics` at the top. And maybe that Amazon text is being considered a logo. 
+Vision appears to not have a great concept of logos. The output states, `the Amazon logo appears again in the top left corner`, however that is clearly not true. Perhaps Vision is getting confused with the text `Amazon Basics` in the top bar. And maybe the "Amazon" in `Amazon Basics` text is being considered a logo. 
 
 The comparsion is successful on this next image which has no Amazon textwords. 
 
@@ -91,12 +95,14 @@ The comparsion is successful on this next image which has no Amazon textwords.
 
 # Costs
 
-The cost calculation is still a bit of a mystery to me. I'm not sure if the image base64 counts as part of the input tokens or if i'm in "low res" mode is it really a flat 85 token plus output tokens. I'll continue to test 
+The cost calculation is still a bit of a mystery to me. I'm not sure if the image base64 counts as part of the input tokens or if "low res" mode only charages a flat 85 token plus output tokens. I'll continue to test and update this section, but i'm seeing input tokens in the tens of thosands right per image right now
 
 * Don't forget to specify "low res" mode which should be 85 tokens per image plus however many output tokens
     * `image_url": {"url": f"data:image/png;base64,{base64_screenshot}", "detail": "low"},`
 * Add a max token cap
     * `max_tokens=300`
+
+The following is a pricing table according to the Vision pricing calculator[^2]
 
 | Resolution | Resize | Cost | Tokens |
 |---|---|---|---|
