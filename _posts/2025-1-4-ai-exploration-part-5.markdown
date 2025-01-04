@@ -26,7 +26,7 @@ I used a stock Amazon logo and a screenshot of the amazon.com homepage.
 {: refdef}
 
 {:refdef: style="text-align: center;"}
-![Image]({{ site.baseurl }}/assets/images/site-2.png){: width="500"}
+![Image]({{ site.baseurl }}/assets/images/site-2.png){: width="800"}
 {: refdef}
 {:refdef: style="text-align: center;"}
 \[Amazon Homepage Screenshot\]
@@ -89,7 +89,7 @@ Vision appears to not have a great concept of logos. The output states, `the Ama
 The comparsion is successful on this next image which has no Amazon textwords. 
 
 {:refdef: style="text-align: center;"}
-![Image]({{ site.baseurl }}/assets/images/site-3.png){: width="500"}
+![Image]({{ site.baseurl }}/assets/images/site-3.png){: width="800"}
 {: refdef}
 {:refdef: style="text-align: center;"}
 \[Amazon Homepage Screenshot with no Amazon text\]
@@ -113,6 +113,8 @@ The following is a pricing table according to the Vision pricing calculator[^2]
 | High res | 2048 x 2048 | $0.003825 | 25501 |
 | Low res | 512 x 512 | $0.000425 | 2833 |
 | Sample | 2428 × 1468 | $0.005525 | 36835 |
+
+I'll need to research how this compares with something like AWS Rekognition. 
 
 # References
 
