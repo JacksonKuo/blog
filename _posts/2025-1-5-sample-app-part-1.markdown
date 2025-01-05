@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sample Apps: Part I - Spring Boot"
-date: 2025-1-5
+date: 2025-11-5
 tags: ["app"]
 published: false
 ---
