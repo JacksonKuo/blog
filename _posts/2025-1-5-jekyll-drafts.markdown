@@ -26,7 +26,7 @@ A better method is to save the draft in the `_posts` folder, but to do the follo
 
 1. Set the `--unpublished`switch:
     * `bundle exec jekyll serve --unpublished`
-2. To create a local post, but not display
+2. To create a local post, but not display the post
     * `published: false`
     * set the `date: 2025-xx-xx` to a day far in the future. Jekyll will not display posts with a future date. This way you can create as many local drafts as you want, without making a mess of the local blog
 3. To toggle displaying the draft locally, change the date to the current day.
