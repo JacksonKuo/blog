@@ -3,7 +3,7 @@ layout: post
 title: "Better Jekyll Drafts"
 date: 2025-1-5
 tags: ["jekyll"]
-published: false
+published: true
 ---
 
 **Contents**
