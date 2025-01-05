@@ -113,6 +113,7 @@ The following is a pricing table according to the Vision pricing calculator[^2]
 | High res | 2048 x 2048 | $0.003825 | 25501 |
 | Low res | 512 x 512 | $0.000425 | 2833 |
 | Sample | 2428 × 1468 | $0.005525 | 36835 |
+| Sample Max | 2428 × 1468 | $0.005525 | 5701 (input) / 109 (output) |
 
 I'll need to research how this compares with something like AWS Rekognition. 
 
