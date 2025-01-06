@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Sample Apps: Part I - Spring Boot"
-date: 2025-11-5
+title: "Sample App: Part I - Spring Boot Refresher"
+date: 2025-1-5
 tags: ["app"]
 published: false
 ---
