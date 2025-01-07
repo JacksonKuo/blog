@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Sample App: Part I - Spring Boot"
+title: "Application Defense: Part I - Spring Boot"
 date: 2025-1-5
 tags: ["app"]
 published: false

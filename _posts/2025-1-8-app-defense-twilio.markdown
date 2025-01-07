@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Infrastructure Week: Part I - Droplet"
-date: 2025-12-12
-tags: ["devops"]
+title: "Application Defense: Part IV - Twilio"
+date: 2025-1-5
+tags: ["app"]
 published: false
 ---
 
@@ -12,8 +12,7 @@ published: false
 
 # Problem Statement
 
-Authentication
-Authorization
+
 
 
 

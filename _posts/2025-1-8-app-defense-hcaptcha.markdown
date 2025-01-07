@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "hCaptcha Integration"
-date: 2025-12-12
+title: "Application Defense: Part II - hCaptcha"
+date: 2025-1-5
 tags: ["app"]
 published: false
 ---
@@ -12,8 +12,7 @@ published: false
 
 # Problem Statement
 
-Authentication
-Authorization
+
 
 
 
