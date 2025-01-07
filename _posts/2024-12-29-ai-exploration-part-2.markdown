@@ -23,6 +23,10 @@ Much of this will be a rote walkthrough of OpenAI's documentation: [https://plat
     * o = omni
     * GPT-5 - expected to debut in early 2025
     * *The o1 series of models are trained with reinforcement learning to perform complex reasoning. o1 models think before they answer, producing a long internal chain of thought before responding to the user.*
+        * o1 - advanced reasoning
+        * o1-preview - new version for advanced reasoning (50 message per week)
+        * o1-mini - faster reasoning (50 messages per day)
+        * [https://openai.com/index/introducing-openai-o1-preview/](https://openai.com/index/introducing-openai-o1-preview/)
     * *Embeddings are a numerical representation of text that can be used to measure the relatedness between two pieces of text. Embeddings are useful for search, clustering, recommendations, anomaly detection, and classification tasks.*
     * *Moderation models are designed to check whether content complies with OpenAI's usage policies. The models provide classification capabilities that look for content in categories like hate, self-harm, sexual content, violence, and others.*
 
