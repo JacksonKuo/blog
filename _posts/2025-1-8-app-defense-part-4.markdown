@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Application Defense: Part II - hCaptcha"
-date: 2025-1-5
+title: "Application Defense: Part IV - Redis Rate Limit"
+date: 2025-1-30
 tags: ["app"]
 published: false
 ---

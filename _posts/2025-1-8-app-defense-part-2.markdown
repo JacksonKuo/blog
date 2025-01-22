@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Application Defense: Part I - Spring Boot"
-date: 2025-1-5
+title: "Application Defense: Part II - App Deployment"
+date: 2025-1-30
 tags: ["app"]
 published: false
 ---
@@ -13,6 +13,10 @@ published: false
 # Problem Statement
 
 Build a sample app with Spring Boot
+
+requirement, spin up and down, + gitops, same domain, containers, potential for diff with diff conigs, tls
+
+in past droplet, nginx, let's encrypt
 
 # Concepts
 
