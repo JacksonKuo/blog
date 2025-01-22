@@ -21,7 +21,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 * Step 5: Add Twilio 2FA
 * Step 6: Add WebAuthn
 
-# App Deployment Pipeline
+# Deployment Pipeline
 
 My deployment pipeline will use Github Actions. The goal is to make a quick simple deployment pipeline so that CI/CD is available for my Spring Boot app, in order to start building and testing some application defenses.
 
