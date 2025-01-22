@@ -19,7 +19,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 * Step 3: Add hCaptcha
 * Step 4: Add custom rate limit
 * Step 5: Add Twilio 2FA
-* Step 6: Add WebAuthn
+* Step 6: Add WebAuthn (optional)
 
 # Deployment Pipeline
 

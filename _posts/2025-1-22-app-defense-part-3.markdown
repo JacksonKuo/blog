@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Application Defense: Part III - hCaptcha"
-date: 2025-1-21
+date: 2025-1-22
 tags: ["app"]
 published: true
 ---
@@ -19,11 +19,11 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 * Step 3: **Add hCaptcha**
 * Step 4: Add custom rate limit
 * Step 5: Add Twilio 2FA
-* Step 6: Add WebAuthn
+* Step 6: Add WebAuthn (optional)
 
 # hCaptcha
 
-Integation hCaptcha on a Spring Boot web endpoint. 
+Integation hCaptcha on a Spring Boot web endpoint:
 
 * hCaptcha documentation: 
     * [https://docs.hcaptcha.com/](https://docs.hcaptcha.com/)
@@ -34,7 +34,7 @@ Integation hCaptcha on a Spring Boot web endpoint.
 
 The free mode of hCaptcha only allows "Always Challenge" mode. 
 
-The client-side JS requires a sitekey. The server-side backend communicates with siteverify and requires the sitekey secret and client response. 
+The client-side JS requires a sitekey. The server-side backend communicates with `/siteverify` and requires the sitekey secret and client response. 
 
 ```bash
 curl https://api.hcaptcha.com/siteverify \
@@ -44,20 +44,20 @@ curl https://api.hcaptcha.com/siteverify \
 
 # Secret Management
 
-The Spring Boot app requires the hCaptcha sitekey secret. This secret is safely passed via environment variables to the `application.properties` config file to the `hcaptchaSecret` via the @Value annotation[^1]:
+The Spring Boot app requires the hCaptcha sitekey secret. This secret is safely passed via environment variables to the `application.properties` config file and then to the `hcaptchaSecret` field via the @Value annotation[^1]:
 
 ```java
     @Value("${hcaptcha.secret}")
     private String hcaptchaSecret;
 ```
 
-* In prod, the env var is initially source from Github repo secrets. Note that `systemd-run` creates a new thread for the webapp, so in order to load into the app, the secret must be passed to `systemd-run` via the `setenv` argument
-* In local Dockerfile build, the secret is passed via `docker run -e`. 
-    * In MacOS, edit the following file:[^2]
-    * ```properties
-#/private/etc/hosts
-127.0.0.1       local.bakacore.com
-```
+* In production, the environment variable is initially source from Github repo secrets. Note that `systemd-run` creates a new process for the webapp, so in order to load the secret into the app, the secret must be passed to `systemd-run` via the `setenv` argument
+* In the local Dockerfile build, the secret is passed via `docker run -e`. 
+    * In MacOS, to load the hCaptcha from localhost edit the following file:[^2]
+    ```properties
+    #/private/etc/hosts
+    127.0.0.1       local.bakacore.com
+    ```
 
 * In order to pass build tests the `application.properties` file has a default value set `hcaptcha.secret=${HCAPTCHA_SECRET:fill-me}`
 
