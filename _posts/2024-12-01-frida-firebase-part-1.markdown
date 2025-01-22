@@ -9,7 +9,7 @@ tags: ["instrumentation"]
 
 How do you use Frida to hook into a client app that uses the Firebase SDK?[^1] This problem can be further broken down into:
 
-* Step 1: Write a Swift/Obj-C app
+* Step 1: **Write a Swift/Obj-C app**
 * Step 2: Learn to use Frida
 * Step 3: Build a Swift app with Firebase SDK
 

@@ -15,7 +15,7 @@ How do you use Frida to hook into a client app that uses the Firebase SDK?[^1] T
 
 * Step 1: Write a Swift/Obj-C app
 * Step 2: Learn to use Frida
-* Step 3: Build a Swift app with Firebase SDK
+* Step 3: **Build a Swift app with Firebase SDK**
 
 # Step 3: Build a Swift app with Firebase SDK
 
