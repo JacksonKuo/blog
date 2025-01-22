@@ -93,7 +93,7 @@ I have a Dockerfile that can be used to build the app locally. The gradle build 
 apt-get install git
 apt-get install docker.io
 docker build -t springboot .
-docker run -p 8080:8080 springboot
+docker run -p 8087:8087 springboot
 ```
 
 # Future Improvements
