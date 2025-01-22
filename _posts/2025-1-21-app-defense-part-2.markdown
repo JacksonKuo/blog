@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Application Defense: Part II - App Deployment Pipeline"
+title: "Application Defense: Part II - Deployment Pipeline"
 date: 2025-1-21
 tags: ["app"]
 published: true
@@ -15,7 +15,7 @@ published: true
 Build a bunch of application defensive mechanisms. This problem can be further broken down into:
 
 * Step 1: Build a sample app with Spring Boot
-* Step 2: Build an application deployment pipeline
+* Step 2: Build a deployment pipeline
 * Step 3: Add hCaptcha
 * Step 4: Add custom rate limit
 * Step 5: Add Twilio 2FA
@@ -23,7 +23,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 
 # App Deployment Pipeline
 
-My app deployment pipeline will use Github Actions. The goal is to make a quick simple deployment pipeline so that CI/CD is available for my Spring Boot app, in order to start building and testing some application defenses.
+My deployment pipeline will use Github Actions. The goal is to make a quick simple deployment pipeline so that CI/CD is available for my Spring Boot app, in order to start building and testing some application defenses.
 
 * [https://github.com/JacksonKuo/app-springboot/blob/main/.github/workflows/gradle.yml](https://github.com/JacksonKuo/app-springboot/blob/main/.github/workflows/gradle.yml)
 
