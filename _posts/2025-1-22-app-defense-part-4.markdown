@@ -3,7 +3,7 @@ layout: post
 title: "Application Defense: Part IV - Custom Rate Limit"
 date: 2025-1-22
 tags: ["app"]
-published: true
+published: false
 ---
 
 **Contents**
