@@ -31,7 +31,6 @@ Simple Spring Boot app built using Gradle Kotlin DSL. A simple controller and so
 
 * [https://github.com/JacksonKuo/app-springboot](https://github.com/JacksonKuo/app-springboot)
 
-
 # Book Reading Notes[^1]
 
 A majority of these notes will be pulled straight from the book. My notes are kinda a mess, but just a hogpodge of things that stood out. Haven't read the entire book yet, will continously update as I get further. 
