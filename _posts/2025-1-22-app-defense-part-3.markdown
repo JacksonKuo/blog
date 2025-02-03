@@ -17,9 +17,6 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 * Step 1: Build a sample app with Spring Boot
 * Step 2: Build a deployment pipeline
 * Step 3: **Add hCaptcha**
-* Step 4: Add custom rate limit
-* Step 5: Add Twilio 2FA
-* Step 6: Add WebAuthn (optional)
 
 # hCaptcha
 
@@ -51,7 +48,7 @@ The Spring Boot app requires the hCaptcha sitekey secret. This secret is safely 
     private String hcaptchaSecret;
 ```
 
-* In production, the environment variable is initially source from Github repo secrets. Note that `systemd-run` creates a new process for the webapp, so in order to load the secret into the app, the secret must be passed to `systemd-run` via the `setenv` argument
+* In production, the environment variable is initially sourced from Github repo secrets. Note that `systemd-run` creates a new process for the webapp, so in order to load the secret into the app, the secret must be passed to `systemd-run` via the `setenv` argument
 * In the local Dockerfile build, the secret is passed via `docker run -e`. 
     * In MacOS, to load the hCaptcha from localhost edit the following file:[^2]
     ```properties
@@ -69,6 +66,7 @@ docker run -e HCAPTCHA_SECRET=$HCAPTCHA_SECRET -p 8087:8087 springboot
 # Future Improvements
 
 * Add tests for the captcha using test keys: [https://docs.hcaptcha.com/#integration-testing-test-keys](https://docs.hcaptcha.com/#integration-testing-test-keys)
+* Test bypasses with: [https://github.com/xrip/playwright-hcaptcha-solver](https://github.com/xrip/playwright-hcaptcha-solver)
 
 # References
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Application Defense: Part II - Deployment Pipeline"
+title: "Application Defense: Part II - Deployment Pipeline 1.0"
 date: 2025-1-21
 tags: ["app"]
 published: true
@@ -16,16 +16,75 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 
 * Step 1: Build a sample app with Spring Boot
 * Step 2: **Build a deployment pipeline**
-* Step 3: Add hCaptcha
-* Step 4: Add custom rate limit
-* Step 5: Add Twilio 2FA
-* Step 6: Add WebAuthn (optional)
 
 # Deployment Pipeline
 
 My deployment pipeline will use Github Actions. The goal is to make a quick simple deployment pipeline so that CI/CD is available for my Spring Boot app, in order to start building and testing some application defenses.
 
 * [https://github.com/JacksonKuo/app-springboot/blob/main/.github/workflows/gradle.yml](https://github.com/JacksonKuo/app-springboot/blob/main/.github/workflows/gradle.yml)
+
+```yaml
+#.github/workflows/gradle.yml
+name: Build
+
+on: [ push ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout src
+      uses: actions/checkout@v4
+
+    - name: Set up JDK 
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Build with Gradle
+      run: |
+        chmod +x ./gradlew
+        ./gradlew build
+
+    - name: Publish to Latest Release
+      run: |
+        if gh release view latest; then
+          echo "Release exists. Deleting old release..."
+          gh release delete latest --yes
+        fi
+
+        gh release create latest build/libs/sample-0.0.1-SNAPSHOT.jar \
+          --title "Latest Release" \
+          --notes "This is the latest build of the application." \
+          --prerelease
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: SSH
+      run: |
+        echo 'Setup SSH...'; 
+        install -m 600 -D /dev/null ~/.ssh/id_ed25519
+        echo "$DROPLET_SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+        ssh -o StrictHostKeyChecking=no root@$DROPLET_IP "
+        
+        echo 'Install JDK...'; 
+        apt -qq update && apt-get -qq install -y openjdk-17-jdk-headless;
+        echo 'Downloading the latest JAR...'; 
+        
+        echo 'Downloading the latest JAR...';
+        curl -L -o /root/sample-0.0.1-SNAPSHOT.jar \
+        https://github.com/JacksonKuo/app-springboot/releases/download/latest/sample-0.0.1-SNAPSHOT.jar &&
+        
+        echo 'Restarting the web application...'; 
+        systemctl stop webapp || true;
+        systemctl reset-failed webapp || true;
+        systemd-run --unit=webapp --description='Transient Web App Service' --setenv=HCAPTCHA_SECRET=$HCAPTCHA_SECRET --property=Restart=always java -jar /root/sample-0.0.1-SNAPSHOT.jar --spring.profiles.active=prod"
+      env:
+        DROPLET_IP: ${{ secrets.DROPLET_IP }}
+        DROPLET_SSH_PRIVATE_KEY: ${{ secrets.DROPLET_SSH_PRIVATE_KEY }}
+        HCAPTCHA_SECRET: ${{ secrets.HCAPTCHA_SECRET }}
+```
 
 #### Artifacts
 
@@ -48,7 +107,7 @@ Github Action will SSH into the droplet in order to download and run the JAR.
 * The SSH keypair was created specifically for the droplet, so no risk serious risk if the private key is compromised.
     * `ssh-keygen -t ed25519 -C "droplet"`
 * I'm using `systemd-run`, so I don't have to manually create a systemd unit file
-* The web service is stopped, the failed state is cleared, new JAR downloaded, and service restarted using the prod properities `--spring.profiles.active=prod`
+* The web service is stopped, the failed state is cleared, new JAR downloaded, and service restarted using the prod properties `--spring.profiles.active=prod`
 
 #### TLS Encryption
 
@@ -56,8 +115,8 @@ I also setup Let's Encrypt using certbot.
 
 ```
 apt update
-apt-get install certbot
-certbot certonly --standalone -d bakacore.com --agree-tos --register-unsafely-without-email`
+apt-get -y install certbot
+certbot certonly --standalone -d bakacore.com --agree-tos --register-unsafely-without-email
 sudo openssl pkcs12 -export \
     -in /etc/letsencrypt/live/bakacore.com/fullchain.pem \
     -inkey /etc/letsencrypt/live/bakacore.com/privkey.pem \
@@ -89,7 +148,18 @@ Secrets are stored in Github repository secrets. The `DROPLET_*` values are manu
 
 I have a Dockerfile that can be used to build the app locally. The gradle build cache isn't setup to work with Docker so all builds take around 30 seconds. 
 
+```Dockerfile
+FROM openjdk:17-jdk-slim
+
+WORKDIR /app
+COPY . /app
+RUN chmod +x gradlew
+RUN ./gradlew build --info --console=plain -Dorg.gradle.jvmargs="-Xmx512m -XX:MaxMetaspaceSize=512m" 
+EXPOSE 8087
+CMD ["java", "-jar", "build/libs/sample-0.0.1-SNAPSHOT.jar", "--spring.profiles.active=local"]
 ```
+
+```bash
 apt-get install git
 apt-get install docker.io
 docker build -t springboot .
