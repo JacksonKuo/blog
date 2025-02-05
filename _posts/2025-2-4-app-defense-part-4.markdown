@@ -73,7 +73,7 @@ Also, Github container packages aren't deleted automatically, so will just pile 
 
 #### Cache
 
-Github caching was added for gradle dependencies.[^6]
+Github caching was added for gradle dependencies: [https://github.com/JacksonKuo/app-springboot/actions/caches](https://github.com/JacksonKuo/app-springboot/actions/caches)[^6]
 
 #### TLS
 
@@ -88,9 +88,9 @@ Certbot is manually run on droplet and then TLS PKCS#12 is volume mounted to the
 * Pipeline 2.0 - Prod 
   * Manual certbot + volumeMount
 
-#### Verisoning
+#### Versioning
 
-Right now I don't really want to deal with verisoning. I'm just tagging everything as `latest`. As a consequence, the deployment spec sees that image tag hasn't changed and won't update the pod. Even though `imagePullPolicy` is set to `Always`, setting only applies on pod creation. In order to update the pod, the deployment needs to be restarted: `kubectl rollout restart deployment spring-app`. 
+Right now I don't really want to deal with versioning. I'm just tagging everything as `latest`. As a consequence, the deployment spec sees that image tag hasn't changed and won't update the pod. Even though `imagePullPolicy` is set to `Always`, setting only applies on pod creation. In order to update the pod, the deployment needs to be restarted: `kubectl rollout restart deployment spring-app`. 
 
 #### Memory Optimization
 
@@ -133,4 +133,4 @@ free --mega
 
 [^5]: [https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get](https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get)
 
-[^6]: > GitHub will remove any cache entries that have not been accessed in over 7 days. There is no limit on the number of caches you can store, but the total size of all caches in a repository is limited to 10 GB. [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy)
+[^6]: *GitHub will remove any cache entries that have not been accessed in over 7 days. There is no limit on the number of caches you can store, but the total size of all caches in a repository is limited to 10 GB:* [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy)
