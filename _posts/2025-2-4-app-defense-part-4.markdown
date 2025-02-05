@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Application Defense: Part IV - Deployment Pipeline 2.0"
-date: 2025-1-22
+date: 2025-2-4
 tags: ["app"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -60,9 +60,11 @@ k3d cluster delete local-cluster
 
 # Droplet Environment Setup: K3s
 
-I upgraded to a droplet with 1GB of RAM for $6 per month. And I've moved from systemd to K8s, Helm, and Docker. Helm package is saved as a Github Release attachment. Docker image is saved to Github Container Registry. Public container images on `ghcr.io` don't require authentication.[^4] Secret management is handle the same way as pipeline 1.0.
+I upgraded to a droplet with 1 GB of RAM for $6 per month. And I've moved from systemd to K8s, Helm, and Docker. The Helm package is saved as a Github Release attachment. Docker image is saved to the Github Container Registry. Public container images on `ghcr.io` don't require authentication.[^4] Secret management is handle the same way as pipeline 1.0. 
 
 #### TLS
+
+Certbot is manually run on droplet and then TLS PKCS#12 is volume mounted to the containers. 
 
 * Pipeline 1.0 - Local
   * No TLS
@@ -88,7 +90,7 @@ mkswap /swapfile
 swapon /swapfile
 echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
 ```
-* Image size
+* Base image size
   * `openjdk:17-jdk-slim` -> `openjdk:17-jdk-alpine`
 
 I currently have around 213 MB and 1 GB of swap space, we'll see how many services i can run before K3s crashes. 
