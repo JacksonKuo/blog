@@ -27,7 +27,8 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 
 # Upgrade Deployment Pipeline
 
-
+* [https://github.com/JacksonKuo/app-springboot/releases/tag/v2.0.0](https://github.com/JacksonKuo/app-springboot/releases/tag/v2.0.0)
+* [https://github.com/JacksonKuo/app-springboot/blob/main/.github/workflows/ci-pipeline.yml](https://github.com/JacksonKuo/app-springboot/blob/main/.github/workflows/ci-pipeline.yml)
 
 The next app defense upgrade will require running multiple services. The current pipeline with running services using shell scripts and systemd is fine for a simple app, but I'd like to gravitate toward docker and k8s. The problem with docker and especially k8s is the additional memory requirement. 
 

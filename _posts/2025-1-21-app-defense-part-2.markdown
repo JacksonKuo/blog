@@ -21,6 +21,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 
 My deployment pipeline will use Github Actions. The goal is to make a quick simple deployment pipeline so that CI/CD is available for my Spring Boot app, in order to start building and testing some application defenses.
 
+* [https://github.com/JacksonKuo/app-springboot/tree/v1.0.0](https://github.com/JacksonKuo/app-springboot/tree/v1.0.0)
 * [https://github.com/JacksonKuo/app-springboot/blob/main/.github/workflows/gradle.yml](https://github.com/JacksonKuo/app-springboot/blob/main/.github/workflows/gradle.yml)
 
 ```yaml
