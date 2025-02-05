@@ -61,7 +61,19 @@ k3d cluster delete local-cluster
 
 # Droplet Environment Setup: K3s
 
-I upgraded to a droplet with 1 GB of RAM for $6 per month. And I've moved from systemd to K8s, Helm, and Docker. The Helm package is saved as a Github Release attachment. Docker image is saved to the Github Container Registry. Public container images on `ghcr.io` don't require authentication.[^4] Secret management is handle the same way as pipeline 1.0. 
+I upgraded to a droplet with 1 GB of RAM for $6 per month. And I've moved from systemd to K8s, Helm, and Docker. The Helm package is saved as a Github Release attachment. Secret management is handle the same way as pipeline 1.0. 
+
+This line is needed else kubectl and k3s fails: `export KUBECONFIG=/etc/rancher/k3s/k3s.yaml`[^4]
+
+#### Container Registry
+
+Docker image is saved to the Github Container Registry. Public container images on `ghcr.io` don't require authentication.[^5]
+
+Also, Github container packages aren't deleted automatically, so will just pile up. Once a container image is over written, the original image becomes untagged from `latest`. The step `Delete untagged images` will then delete any untagged images. 
+
+#### Cache
+
+Github caching was added for gradle dependencies.[^6]
 
 #### TLS
 
@@ -75,6 +87,10 @@ Certbot is manually run on droplet and then TLS PKCS#12 is volume mounted to the
   * No TLS
 * Pipeline 2.0 - Prod 
   * Manual certbot + volumeMount
+
+#### Verisoning
+
+Right now I don't really want to deal with verisoning. I'm just tagging everything as `latest`. As a consequence, the deployment spec sees that image tag hasn't changed and won't update the pod. Even though `imagePullPolicy` is set to `Always`, setting only applies on pod creation. In order to update the pod, the deployment needs to be restarted: `kubectl rollout restart deployment spring-app`. 
 
 #### Memory Optimization
 
@@ -114,3 +130,7 @@ free --mega
 [^3]: Alternative to using loadbalancer is port-forwarding: `kubectl port-forward svc/springboot-service 8087:8087`
 
 [^4]: [https://github.com/JacksonKuo/app-springboot/pkgs/container/springboot](https://github.com/JacksonKuo/app-springboot/pkgs/container/springboot)
+
+[^5]: [https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get](https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get)
+
+[^6]: > GitHub will remove any cache entries that have not been accessed in over 7 days. There is no limit on the number of caches you can store, but the total size of all caches in a repository is limited to 10 GB. [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy)
