@@ -46,6 +46,7 @@ To address the RAM limitations, I'm be using K3s:
 
 # Local Environment Setup: k3d[^1] [^2] [^3] [^4]
 
+#### K8 manifest
 ```bash
 brew install k3d
 k3d version
@@ -62,7 +63,16 @@ kubectl apply -f deployment_local.yaml
 
 kubectl delete -f deployment_local.yaml
 k3d cluster delete local-cluster
+```
 
+#### Helm Chart
+```bash
+helm install springboot ./springboot-chart -f ./springboot-chart/values-local.yaml
+helm uninstall springboot
+```
+
+#### Helpful Commands
+```bash
 kubectl create secret generic hcaptcha-secret --from-literal=HCAPTCHA_SECRET="$HCAPTCHA_SECRET"
 kubectl get secrets
 kubectl describe secret hcaptcha-secret
@@ -77,6 +87,12 @@ kubectl rollout restart deployment springboot-app
 I upgraded to a droplet with 1 GB of RAM for $6 per month. And I've moved from systemd to K8s, Helm, and Docker. The Helm package is saved as a Github Release attachment. Secret management is handle the same way as pipeline 1.0. 
 
 This line is needed else kubectl and k3s fails: `export KUBECONFIG=/etc/rancher/k3s/k3s.yaml`[^5]
+
+```bash
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+helm upgrade --install springboot springboot-chart-0.0.1.tgz -
+helm uninstall springboot
+```
 
 #### Container Registry
 
