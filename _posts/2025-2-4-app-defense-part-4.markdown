@@ -44,6 +44,14 @@ To address the RAM limitations, I'm be using K3s:
 
 ![Image]({{ site.baseurl }}/assets/images/pipeline-2.0-prod.png)
 
+#### Environments
+
+I have three environments that i try to maintain: local JAR, local k3d, prod K3s. The defaults will all be for set to prod, i.e. Helm chart `values.yaml. 
+
+# Local Environment Setup: JAR
+
+`java -jar sample-0.0.1-SNAPSHOT.jar --spring.profiles.active=local`
+
 # Local Environment Setup: k3d[^1] [^2] [^3] [^4]
 
 #### K8 manifest
@@ -162,9 +170,9 @@ free --mega
 
 [^4]: Note that k3d will add a `REDIS_PORT` environment var which will overwrite the `application.properties` file if `redis.port` field exists. Use `spring.redis.port` instead. Spring Boot will auto map `_` to `.`. 
 
-[^5]: [https://github.com/JacksonKuo/app-springboot/pkgs/container/springboot](https://github.com/JacksonKuo/app-springboot/pkgs/container/springboot)
+[^5]: [https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get](https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get)
 
-[^6]: [https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get](https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get)
+[^6]: [https://github.com/JacksonKuo/app-springboot/pkgs/container/springboot](https://github.com/JacksonKuo/app-springboot/pkgs/container/springboot)
 
 [^7]: *GitHub will remove any cache entries that have not been accessed in over 7 days. There is no limit on the number of caches you can store, but the total size of all caches in a repository is limited to 10 GB:* [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy)
 
