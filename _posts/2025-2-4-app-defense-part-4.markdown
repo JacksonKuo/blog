@@ -90,7 +90,7 @@ This line is needed else kubectl and k3s fails: `export KUBECONFIG=/etc/rancher/
 
 ```bash
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-helm upgrade --install springboot springboot-chart-0.0.1.tgz -
+helm upgrade --install springboot springboot-chart-0.0.1.tgz
 helm uninstall springboot
 ```
 
@@ -138,6 +138,8 @@ echo '/swapfile none swap sw 0 0' | tee -a /etc/fstab
 ```
 * Base image size
   * `openjdk:17-jdk-slim` -> `openjdk:17-jdk-alpine`
+* Redis
+  * `redis-server --maxmemory 50mb`
 
 I currently have around 213 MB and 1 GB of swap space, we'll see how many services i can run before K3s crashes. 
 
