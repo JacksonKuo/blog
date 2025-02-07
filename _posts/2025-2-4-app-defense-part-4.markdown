@@ -44,36 +44,49 @@ To address the RAM limitations, I'm be using K3s:
 
 ![Image]({{ site.baseurl }}/assets/images/pipeline-2.0-prod.png)
 
-# Local Environment Setup: k3d[^1] [^2] [^3]
+# Local Environment Setup: k3d[^1] [^2] [^3] [^4]
 
 ```bash
 brew install k3d
 k3d version
-k3d cluster create local-cluster --port 8087:8097@loadbalancer
+alias k="kubectl"
+
+./gradlew test --info -Dspring.profiles.active=local
+./gradlew build -Dspring.profiles.active=local
+docker build -t springboot --build-arg BASE_IMAGE="openjdk:17-jdk-slim" .
+k3d cluster create local-cluster --port 8087:8087@loadbalancer
+kubectl create secret generic hcaptcha-secret --from-literal=HCAPTCHA_SECRET="$HCAPTCHA_SECRET"
 k3d image import springboot --cluster local-cluster
 docker exec k3d-local-cluster-server-0 crictl images
-alias k="kubectl"
 kubectl apply -f deployment_local.yaml
 
 kubectl delete -f deployment_local.yaml
 k3d cluster delete local-cluster
+
+kubectl create secret generic hcaptcha-secret --from-literal=HCAPTCHA_SECRET="$HCAPTCHA_SECRET"
+kubectl get secrets
+kubectl describe secret hcaptcha-secret
+
+kubectl describe pod -l app=springboot
+kubectl logs -l app=springboot --tail=100
+kubectl rollout restart deployment springboot-app
 ```
 
 # Droplet Environment Setup: K3s
 
 I upgraded to a droplet with 1 GB of RAM for $6 per month. And I've moved from systemd to K8s, Helm, and Docker. The Helm package is saved as a Github Release attachment. Secret management is handle the same way as pipeline 1.0. 
 
-This line is needed else kubectl and k3s fails: `export KUBECONFIG=/etc/rancher/k3s/k3s.yaml`[^4]
+This line is needed else kubectl and k3s fails: `export KUBECONFIG=/etc/rancher/k3s/k3s.yaml`[^5]
 
 #### Container Registry
 
-Docker image is saved to the Github Container Registry. Public container images on `ghcr.io` don't require authentication.[^5]
+Docker image is saved to the Github Container Registry. Public container images on `ghcr.io` don't require authentication.[^6]
 
 Also, Github container packages aren't deleted automatically, so will just pile up. Once a container image is over written, the original image becomes untagged from `latest`. The step `Delete untagged images` will then delete any untagged images. 
 
 #### Cache
 
-Github caching was added for gradle dependencies: [https://github.com/JacksonKuo/app-springboot/actions/caches](https://github.com/JacksonKuo/app-springboot/actions/caches)[^6]
+Github caching was added for gradle dependencies: [https://github.com/JacksonKuo/app-springboot/actions/caches](https://github.com/JacksonKuo/app-springboot/actions/caches)[^7]
 
 #### TLS
 
@@ -129,8 +142,11 @@ free --mega
 
 [^3]: Alternative to using loadbalancer is port-forwarding: `kubectl port-forward svc/springboot-service 8087:8087`
 
-[^4]: [https://github.com/JacksonKuo/app-springboot/pkgs/container/springboot](https://github.com/JacksonKuo/app-springboot/pkgs/container/springboot)
+[^4]: Note that k3d will add a `REDIS_PORT` environment var which will overwrite the `application.properties` file if `redis.port` field exists. Use `spring.redis.port` instead. Spring Boot will auto map `_` to `.`. 
 
-[^5]: [https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get](https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get)
+[^5]: [https://github.com/JacksonKuo/app-springboot/pkgs/container/springboot](https://github.com/JacksonKuo/app-springboot/pkgs/container/springboot)
 
-[^6]: *GitHub will remove any cache entries that have not been accessed in over 7 days. There is no limit on the number of caches you can store, but the total size of all caches in a repository is limited to 10 GB:* [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy)
+[^6]: [https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get](https://stackoverflow.com/questions/76841889/kubectl-error-memcache-go265-couldn-t-get-current-server-api-group-list-get)
+
+[^7]: *GitHub will remove any cache entries that have not been accessed in over 7 days. There is no limit on the number of caches you can store, but the total size of all caches in a repository is limited to 10 GB:* [https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/caching-dependencies-to-speed-up-workflows#usage-limits-and-eviction-policy)
+

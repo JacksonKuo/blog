@@ -94,7 +94,7 @@ public class ProjectConfig
 ```
 
 * by default, Spring doesn't search for class annotation with stereotype annotations, a.k.a. @Component
-* If you're using Spring Boot, it automatically scans for components in the package where the main application class (the one with @SpringBootApplication
+* If you're using Spring Boot, it automatically scans for components in the package where the main application class (the one with @SpringBootApplication)
 * Using @Component, means you don't need write a cat method 
 ```
     @Bean("BlueCat")
