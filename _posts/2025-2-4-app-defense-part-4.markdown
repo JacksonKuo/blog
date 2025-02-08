@@ -50,6 +50,7 @@ I have three environments that i try to maintain: local JAR, local k3d, prod K3s
 
 # Local Environment Setup: JAR
 
+`redis-server`
 `java -jar sample-0.0.1-SNAPSHOT.jar --spring.profiles.active=local`
 
 # Local Environment Setup: k3d[^1] [^2] [^3] [^4]
