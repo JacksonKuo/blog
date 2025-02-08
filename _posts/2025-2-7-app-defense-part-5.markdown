@@ -38,7 +38,7 @@ For simplicity, let's see how capable RateLimiter is: [https://redisson.org/docs
 
 # Redis + Redisson + RateLimiter
 
-I created a RateLimiter service that accepts 3 requests per 1 minute for each IP address. The `RateType` is set to `OVERALL` instead of `PER_CLIENT` however really the `RateType` doesn't actually matter, instead you use one global key or multiple client key is the important logic. The service calls a `RedissonClient` bean in the `RedisConfig`. 
+I created a RateLimiter service that accepts 3 requests per 1 minute for each IP address. The `RateType` is set to `OVERALL` instead of `PER_CLIENT` however really the `RateType` doesn't actually matter, instead using one global key or multiple client keys is what's actually important. The service calls a `RedissonClient` bean in the `RedisConfig`. 
 
 ```java
     public RRateLimiter getRateLimiter(String clientIp) {
@@ -57,7 +57,7 @@ Due to memory constraints, I'm not running Traefik as my load balancer. K3s appa
 
 # Thoughts
 
-The official documentation and examples for RateLimiter seems to be a little lacking. The ratelimiter doc doesn't even have an example for `PER_CLIENT`.[^5] And having to set the key expiration and not being able to set the TTL during key creation is a bit annoying. 
+The official documentation and examples for RateLimiter seems to be a little lacking. The ratelimiter doc doesn't even have an example for `PER_CLIENT`, and as stated before, the `RateType` doesn't actually matter, instead using one global key or multiple client keys is what's actually important. [^5] And having to set the key expiration and not being able to set the TTL during key creation is a bit annoying. 
 
 If I needed more control over the rate limit, I think I would just use `RAtomicLong` and the Java versions of `INCR` and `TTL`. 
 

@@ -34,9 +34,9 @@ The next app defense upgrade will require running multiple services. The current
 
 Currently I have 512 MB of RAM for $4 a month. Me being a penny pincher, I might upgrade to $6 for 1 GB of RAM, but I'm reluctant to spent much more. With only 1 GB of RAM, k8s will likely fail while trying to run other services. 
 
-As for running on other platforms, services like AWS have more provenance, but have a much more complex cost structure and I don't want to run lots of infra in AWS for a long time due to fear of ballooning costs. Other platforms like fly.io just don't have enough learning upside, and is seldom seen in the industry. Using docker-compose.yml has a smaller footprint than k8s, but is also infrequently used in the industry versus just running kubernetes.
+As for running on other platforms, services like AWS have more provenance, but have a much more complex cost structure and I don't want to run lots of infra in AWS for a long time due to fear of ballooning costs. Other platforms like fly.io just don't have enough learning upside and is seldom seen in the industry. Using docker-compose.yml has a smaller footprint than k8s, but is also infrequently used in the industry versus just running kubernetes.
 
-To address the RAM limitations, I'm be using K3s:
+To address the RAM limitations, I'm using K3s:
 * Local environment (macOS): k3d
 * Droplet environment: K3s
 
@@ -46,7 +46,7 @@ To address the RAM limitations, I'm be using K3s:
 
 #### Environments
 
-I have three environments that i try to maintain: local JAR, local k3d, prod K3s. The defaults will all be for set to prod, i.e. Helm chart `values.yaml. 
+I have three environments that i try to maintain: local JAR, local k3d, prod K3s. The defaults will all be for set to prod, i.e. Helm chart `values.yaml`. 
 
 # Local Environment Setup: JAR
 
@@ -60,8 +60,8 @@ brew install k3d
 k3d version
 alias k="kubectl"
 
-./gradlew test --info -Dspring.profiles.active=local
-./gradlew build -Dspring.profiles.active=local
+./gradlew test --info -Dspring.profiles.active=localk8
+./gradlew build -Dspring.profiles.active=localk8
 docker build -t springboot --build-arg BASE_IMAGE="openjdk:17-jdk-slim" .
 k3d cluster create local-cluster --port 8087:8087@loadbalancer
 kubectl create secret generic hcaptcha-secret --from-literal=HCAPTCHA_SECRET="$HCAPTCHA_SECRET"
@@ -127,7 +127,7 @@ Certbot is manually run on droplet and then TLS PKCS#12 is volume mounted to the
 
 #### Versioning
 
-Right now I don't really want to deal with versioning. I'm just tagging everything as `latest`. As a consequence, the deployment spec sees that image tag hasn't changed and won't update the pod. Even though `imagePullPolicy` is set to `Always`, setting only applies on pod creation. In order to update the pod, the deployment needs to be restarted: `kubectl rollout restart deployment spring-app`. 
+Right now I don't really want to deal with versioning. I'm just tagging everything as `latest`. As a consequence, the deployment spec sees that image tag hasn't changed and won't update the pod. Even though `imagePullPolicy` is set to `Always`, the setting only applies on pod creation. In order to update the pod, the deployment needs to be restarted: `kubectl rollout restart deployment spring-app`. 
 
 #### Memory Optimization
 
