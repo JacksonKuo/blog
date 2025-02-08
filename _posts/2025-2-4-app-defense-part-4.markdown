@@ -64,7 +64,19 @@ alias k="kubectl"
 ./gradlew build -Dspring.profiles.active=localk8
 docker build -t springboot --build-arg BASE_IMAGE="openjdk:17-jdk-slim" .
 k3d cluster create local-cluster --port 8087:8087@loadbalancer
+
+export HCAPTCHA_SECRET=
+export VERIFY_SERVICE_SID=
+export TWILIO_ACCOUNT_SID=
+export TWILIO_AUTH_TOKEN=
+kubectl delete secret hcaptcha-secret --ignore-not-found
 kubectl create secret generic hcaptcha-secret --from-literal=HCAPTCHA_SECRET="$HCAPTCHA_SECRET"
+kubectl delete secret verify-service-sid --ignore-not-found
+kubectl create secret generic verify-service-sid --from-literal=VERIFY_SERVICE_SID="$VERIFY_SERVICE_SID"
+kubectl delete secret twilio-account-sid --ignore-not-found
+kubectl create secret generic twilio-account-sid --from-literal=TWILIO_ACCOUNT_SID="$TWILIO_ACCOUNT_SID"
+kubectl delete secret twilio-auth-token --ignore-not-found
+kubectl create secret generic twilio-auth-token --from-literal=TWILIO_AUTH_TOKEN="$TWILIO_AUTH_TOKEN"
 k3d image import springboot --cluster local-cluster
 docker exec k3d-local-cluster-server-0 crictl images
 kubectl apply -f deployment_local.yaml
@@ -83,7 +95,9 @@ helm uninstall springboot
 ```bash
 kubectl create secret generic hcaptcha-secret --from-literal=HCAPTCHA_SECRET="$HCAPTCHA_SECRET"
 kubectl get secrets
+kubectl get secret hcaptcha-secret -o yaml
 kubectl describe secret hcaptcha-secret
+echo zz | base64 --decode
 
 kubectl describe pod -l app=springboot
 kubectl logs -l app=springboot --tail=100
@@ -92,7 +106,7 @@ kubectl rollout restart deployment springboot-app
 
 # Droplet Environment Setup: K3s
 
-I upgraded to a droplet with 1 GB of RAM for $6 per month. And I've moved from systemd to K8s, Helm, and Docker. The Helm package is saved as a Github Release attachment. Secret management is handle the same way as pipeline 1.0. 
+I upgraded to a droplet with 1 GB of RAM for $6 per month. And I've moved from systemd to K8s, Helm, and Docker. The Helm package is saved as a Github Release attachment. 
 
 This line is needed else kubectl and k3s fails: `export KUBECONFIG=/etc/rancher/k3s/k3s.yaml`[^5]
 
@@ -103,17 +117,14 @@ helm uninstall springboot
 ```
 
 #### Container Registry
-
 Docker image is saved to the Github Container Registry. Public container images on `ghcr.io` don't require authentication.[^6]
 
 Also, Github container packages aren't deleted automatically, so will just pile up. Once a container image is over written, the original image becomes untagged from `latest`. The step `Delete untagged images` will then delete any untagged images. 
 
 #### Cache
-
 Github caching was added for gradle dependencies: [https://github.com/JacksonKuo/app-springboot/actions/caches](https://github.com/JacksonKuo/app-springboot/actions/caches)[^7]
 
 #### TLS
-
 Certbot is manually run on droplet and then TLS PKCS#12 is volume mounted to the containers. 
 
 * Pipeline 1.0 - Local
@@ -125,12 +136,13 @@ Certbot is manually run on droplet and then TLS PKCS#12 is volume mounted to the
 * Pipeline 2.0 - Prod 
   * Manual certbot + volumeMount
 
-#### Versioning
+#### Secrets
+Secret management is handled via secrets stored in Github Secret, variable expansion in Github  Action and then running `kubectl create secret generic` when SSH'd in the droplet. 
 
+#### Versioning
 Right now I don't really want to deal with versioning. I'm just tagging everything as `latest`. As a consequence, the deployment spec sees that image tag hasn't changed and won't update the pod. Even though `imagePullPolicy` is set to `Always`, the setting only applies on pod creation. In order to update the pod, the deployment needs to be restarted: `kubectl rollout restart deployment spring-app`. 
 
 #### Memory Optimization
-
 * Minimal K3s
   * `k3s server --disable traefik --disable servicelb --disable metrics-server`
 * Java Heap
