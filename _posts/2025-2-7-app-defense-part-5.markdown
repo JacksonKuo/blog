@@ -44,11 +44,8 @@ I created a RateLimiter service that accepts 3 requests per 1 minute for each IP
     public RRateLimiter getRateLimiter(String clientIp) {
         String key = "rate-limiter:" + clientIp; 
         RRateLimiter rateLimiter = redissonClient.getRateLimiter(key);
-
-        if (!rateLimiter.isExists()) {
-            rateLimiter.trySetRate(RateType.OVERALL, 3, 1, RateIntervalUnit.MINUTES);
-            redissonClient.getBucket(key).expire(1, TimeUnit.MINUTES); 
-        }
+        rateLimiter.trySetRate(RateType.OVERALL, 3, 1, RateIntervalUnit.MINUTES);
+        redissonClient.getBucket(key).expire(2, TimeUnit.MINUTES); 
         return rateLimiter;
     }
 ```
@@ -57,7 +54,7 @@ Due to memory constraints, I'm not running Traefik as my load balancer. K3s appa
 
 # Thoughts
 
-The official documentation and examples for RateLimiter seems to be a little lacking. The ratelimiter doc doesn't even have an example for `PER_CLIENT`, and as stated before, the `RateType` doesn't actually matter, instead using one global key or multiple client keys is what's actually important. [^5] And having to set the key expiration and not being able to set the TTL during key creation is a bit annoying. 
+The official documentation and examples for RateLimiter seems to be a little lacking. The ratelimiter doc doesn't even have an example for `PER_CLIENT`, and as stated before, the `RateType` doesn't actually matter, instead using one global key or multiple client keys is what's actually important. [^5] And having to set the key expiration and not being able to set the TTL during key creation is a bit annoying. Actually it creates a race condition that I'll need to fix if the expiration is at 1 minute. 
 
 If I needed more control over the rate limit, I think I would just use `RAtomicLong` and the Java versions of `INCR` and `TTL`. 
 

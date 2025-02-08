@@ -54,54 +54,64 @@ I have three environments that i try to maintain: local JAR, local k3d, prod K3s
 
 # Local Environment Setup: k3d[^1] [^2] [^3] [^4]
 
-#### K8 manifest
+#### Build
 ```bash
 brew install k3d
 k3d version
 alias k="kubectl"
-
-./gradlew test --info -Dspring.profiles.active=localk8
-./gradlew build -Dspring.profiles.active=localk8
-docker build -t springboot --build-arg BASE_IMAGE="openjdk:17-jdk-slim" .
-k3d cluster create local-cluster --port 8087:8087@loadbalancer
-
-export HCAPTCHA_SECRET=
-export VERIFY_SERVICE_SID=
-export TWILIO_ACCOUNT_SID=
-export TWILIO_AUTH_TOKEN=
-kubectl delete secret hcaptcha-secret --ignore-not-found
-kubectl create secret generic hcaptcha-secret --from-literal=HCAPTCHA_SECRET="$HCAPTCHA_SECRET"
-kubectl delete secret verify-service-sid --ignore-not-found
-kubectl create secret generic verify-service-sid --from-literal=VERIFY_SERVICE_SID="$VERIFY_SERVICE_SID"
-kubectl delete secret twilio-account-sid --ignore-not-found
-kubectl create secret generic twilio-account-sid --from-literal=TWILIO_ACCOUNT_SID="$TWILIO_ACCOUNT_SID"
-kubectl delete secret twilio-auth-token --ignore-not-found
-kubectl create secret generic twilio-auth-token --from-literal=TWILIO_AUTH_TOKEN="$TWILIO_AUTH_TOKEN"
-k3d image import springboot --cluster local-cluster
-docker exec k3d-local-cluster-server-0 crictl images
-kubectl apply -f deployment_local.yaml
-
-kubectl delete -f deployment_local.yaml
-k3d cluster delete local-cluster
 ```
 
-#### Helm Chart
 ```bash
-helm install springboot ./springboot-chart -f ./springboot-chart/values-local.yaml
-helm uninstall springboot
-```
+# Description: Makefile for the springboot application
 
-#### Helpful Commands
-```bash
-kubectl create secret generic hcaptcha-secret --from-literal=HCAPTCHA_SECRET="$HCAPTCHA_SECRET"
-kubectl get secrets
-kubectl get secret hcaptcha-secret -o yaml
-kubectl describe secret hcaptcha-secret
-echo zz | base64 --decode
+# Don't forget to export the environment variables secrets
+# Don't forget to run redis
 
-kubectl describe pod -l app=springboot
-kubectl logs -l app=springboot --tail=100
-kubectl rollout restart deployment springboot-app
+.PHONY: test build docker cluster secrets deploy
+
+test:
+	./gradlew test --info -Dspring.profiles.active=local
+
+build:
+	./gradlew build -Dspring.profiles.active=localk8
+
+docker:
+	docker build -t springboot --build-arg BASE_IMAGE="openjdk:17-jdk-slim" .
+
+cluster:
+	k3d cluster create local-cluster --port 8087:8087@loadbalancer
+
+secrets:
+	kubectl delete secret hcaptcha-secret --ignore-not-found
+	kubectl create secret generic hcaptcha-secret --from-literal=HCAPTCHA_SECRET="$(HCAPTCHA_SECRET)"
+	kubectl delete secret verify-service-sid --ignore-not-found
+	kubectl create secret generic verify-service-sid --from-literal=VERIFY_SERVICE_SID="$(VERIFY_SERVICE_SID)"
+	kubectl delete secret twilio-account-sid --ignore-not-found
+	kubectl create secret generic twilio-account-sid --from-literal=TWILIO_ACCOUNT_SID="$(TWILIO_ACCOUNT_SID)"
+	kubectl delete secret twilio-auth-token --ignore-not-found
+	kubectl create secret generic twilio-auth-token --from-literal=TWILIO_AUTH_TOKEN="$(TWILIO_AUTH_TOKEN)"
+
+secrets-check:
+	kubectl get secrets
+	kubectl get secret hcaptcha-secret -o yaml
+	kubectl describe secret hcaptcha-secret
+	#echo zz | base64 --decode
+
+deploy:
+	k3d image import springboot --cluster local-cluster
+	helm install springboot ./springboot-chart -f ./springboot-chart/values-local.yaml
+
+restart:
+	kubectl rollout restart deployment springboot-app
+
+log:
+	kubectl describe pod -l app=springboot
+	kubectl logs -l app=springboot --tail=100
+
+uninstall:
+	k3d cluster delete local-cluster
+
+all: test build docker cluster secrets deploy
 ```
 
 # Droplet Environment Setup: K3s
@@ -137,7 +147,13 @@ Certbot is manually run on droplet and then TLS PKCS#12 is volume mounted to the
   * Manual certbot + volumeMount
 
 #### Secrets
-Secret management is handled via secrets stored in Github Secret, variable expansion in Github  Action and then running `kubectl create secret generic` when SSH'd in the droplet. 
+Secret management is handled via the following flow:
+* Secrets stored in Github Secret
+* Variable expansion in Github Action
+* SSH'd into the droplet
+* Create k8 secret via `kubectl create secret generic`
+* Helm chart pulls k8 secret via `secretKeyRef` and create env var in container
+* `application.properties`
 
 #### Versioning
 Right now I don't really want to deal with versioning. I'm just tagging everything as `latest`. As a consequence, the deployment spec sees that image tag hasn't changed and won't update the pod. Even though `imagePullPolicy` is set to `Always`, the setting only applies on pod creation. In order to update the pod, the deployment needs to be restarted: `kubectl rollout restart deployment spring-app`. 
