@@ -59,9 +59,10 @@ The second `--data-url` should be `--data-urlencode`
 
 The Twilio login is a bit odd. I signed up for the trial account via Google, but there doesn't seem to be a way to resign-in using Google. The Twilio login only presents username and password. You have to go through the "Sign up via Google" again to login via SSO. 
 
-# Future Improvements
+#### Future Improvements
 * Required a successful username and password first, to prevent unauthenticated SMS pumping. 
 * Automatically pass phone number through to `/mfa/verify`. Could use Spring Boot flash attributes, which generated a temporary unauthenticated `JSESSIONID` to hold the values. Would need to move from `@RestController` to `@Controller` and `return "redirect:/mfa/verify";`
+* Add to a proper login flow
 
 # References
 [^1]: [https://github.com/twilio/twilio-java](https://github.com/twilio/twilio-java)
