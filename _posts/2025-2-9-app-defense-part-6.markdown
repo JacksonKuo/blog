@@ -31,7 +31,7 @@ The next application defense to build is multi-factor authentication (MFA) using
 * MfaController: 
     * [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/controller/MfaController.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/controller/MfaController.java)
 
-The implementation is very basic. I'm using a trial account, and Verify SMS can only be sent to max of 5 verified phone numbers. I have a RestController with a `/mfa` endpoint that redirects to a `/mfa/verify` endpoint and I'm using the Twilio Java SDK.[^1] The Twilio verification requires three secrets, which can be found at:
+The implementation is very basic. I'm using a trial account, and Verify SMS can only be sent to a max of 5 verified phone numbers. I have a RestController with a `/mfa` endpoint that redirects to a `/mfa/verify` endpoint and I'm using the Twilio Java SDK.[^1] The Twilio verification requires three secrets, which can be found at:
 * Account dashboard - [https://console.twilio.com/](https://console.twilio.com/)
     * `TWILIO_ACCOUNT_SID`
     * `TWILIO_AUTH_TOKEN`

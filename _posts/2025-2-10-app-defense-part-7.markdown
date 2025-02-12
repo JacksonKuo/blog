@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Application Defense: Part VII - Smokescreen"
-date: 2025-2-9
+date: 2025-2-10
 tags: ["app"]
 published: false
 ---

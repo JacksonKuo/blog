@@ -99,7 +99,7 @@ If a logo is mostly text, Vision may mistakenly associate regular text words to 
 
 # Costs
 
-The cost calculation is still a bit of a mystery to me. I'm not sure if the image base64 counts as part of the input tokens or if "low res" mode only charages a flat 85 token plus output tokens. I'll continue to test and update this section, but i'm seeing input tokens in the tens of thosands per image right now
+The cost calculation is still a bit of a mystery to me. I'm not sure if the image base64 counts as part of the input tokens or if "low res" mode only charges a flat 85 token plus output tokens. I'll continue to test and update this section, but i'm seeing input tokens in the tens of thosands per image right now
 
 * Don't forget to specify "low res" mode in the image url:
     * `image_url": {"url": f"data:image/png;base64,{base64_screenshot}", "detail": "low"},`
