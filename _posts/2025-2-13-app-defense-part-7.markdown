@@ -30,16 +30,18 @@ There a number of ways to deploy smokescreen in a k8s cluster.
 * DaemonSet[^1]
 * Sidecar
 
-The ideal setup is for smokescreen to be a callable service by other services.  DaemonSet would create an instance on each node, but I don't necessary need smokescreen on every node. I also don't need smokescreen as a sidecar, since other services can't call the sidecar. So deployment + service makes sense to me.
+The ideal setup is for smokescreen to be a callable service by other services.  
 
-In a perfect world, I woudl create K8 NetworkPolicies to restrict all internet access, and the proxy everything through smokescreen.
+DaemonSet would create an instance on each node, but I don't necessary need smokescreen on every node. I also don't need smokescreen as a sidecar, since other services can't call the sidecar. So deployment + service makes sense to me.
 
-However, in practice that seems like a bad idea. I really don't want to manage ACLs for every single service and web request in a company. Instead, the applications that make outbound calls with user-provided URLs should proxy their http client to smokescreen.
+In a perfect world, I woudl create K8 NetworkPolicies to restrict all internet access, and then proxy everything through smokescreen. However, in practice that seems like a bad idea. I really don't want to manage ACLs for every single service and web request in a company. 
 
-As for authentication, the default mTLS authentication seems a bit too unwieldy. Fly.io uses a proxy password and if you're deny-listing all traffic then that makes sense.[^2] But if you're allow-listing all traffic then authentication doesn't really matter. 
+Instead, the applications that make outbound calls with user-provided URLs should proxy their http client to smokescreen. The idea being, these types of requests are likely pretty rare in the grand schemes of all requests, and focus all requests to go through smokescreen necessarily is a waste of effort. Also getting cluster NetworkPolicies bulletproof can be nontrivial, and I've been on assessment where an attacker is still about to egress via DNS or pivoting to certain cluster locations that have different firewall settings. 
+
+As for authentication, the default mTLS authentication seems a bit too unwieldy and assumes a service mesh exists to provide mTLS. Fly.io uses a simpler proxy password. If you're deny-listing all traffic then a proxy password makes sense.[^2] But if you're allow-listing all traffic then authentication doesn't really matter. 
 
 # Smokescreen
-Smokescreen is built into a image and saved into ghcr.io. Helm charts then pull the image. Smokescreen 
+Smokescreen is built into a image and saved into ghcr.io. Helm charts then pull the image into the cluster.
 
 * Endpoint: [https://bakacore.com:8087/smokescreen](https://bakacore.com:8087/smokescreen)
 * Repository: [https://github.com/JacksonKuo/app-smokescreen](https://github.com/JacksonKuo/app-smokescreen)
@@ -47,7 +49,7 @@ Smokescreen is built into a image and saved into ghcr.io. Helm charts then pull 
 * Controller: [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/service/SmokescreenService.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/service/SmokescreenService.java)
 
 #### Application
-I'm using Spring Webflux + Netty to make my webclient. This is a bit different than the typical Spring MVC + Tomcat setup, and uses things like `Mono<String>` to enable non-blocking web requests.
+I'm using Spring Webflux + Netty to run my webclient. This is a bit different than the typical Spring MVC + Tomcat setup, and uses things like `Mono<String>` to enable non-blocking web requests.
 
 #### Config
 Running the default smokescreen `./smokescreen` will only prevent access to internal networks. Also by default, smokescreen also tries to use mTLS for client authentication. In order to skip mTLS client validation, `allow_missing_role: true` is set in `config.yaml`. With this set, smokescreen will then use the default ACL.[^3].
@@ -55,7 +57,7 @@ Running the default smokescreen `./smokescreen` will only prevent access to inte
 Smokescreen uses a HTTP CONNECT proxy that accepts HTTP and HTTPS. 
 
 #### Oddities
-I don't see a way to set an IP address in the `acl.yaml` file. So if I need allow an internal IP address, the following works. 
+I don't see a way to set an IP address in the `acl.yaml` file. So if I need to allow an internal IP address, the following works. 
 
 `./smokescreen --allow-address 127.0.0.1`
 
