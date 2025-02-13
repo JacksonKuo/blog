@@ -34,9 +34,9 @@ The ideal setup is for smokescreen to be a callable service by other services.
 
 DaemonSet would create an instance on each node, but I don't necessary need smokescreen on every node. I also don't need smokescreen as a sidecar, since other services can't call the sidecar. So deployment + service makes sense to me.
 
-In a perfect world, I woudl create K8 NetworkPolicies to restrict all internet access, and then proxy everything through smokescreen. However, in practice that seems like a bad idea. I really don't want to manage ACLs for every single service and web request in a company. 
+In a perfect world, I would create K8 NetworkPolicies to restrict all internet access, and then proxy everything through smokescreen. However, in practice that seems like a bad idea. I really don't want to manage ACLs for every single service and web request in a company. 
 
-Instead, the applications that make outbound calls with user-provided URLs should proxy their http client to smokescreen. The idea being, these types of requests are likely pretty rare in the grand schemes of all requests, and focus all requests to go through smokescreen necessarily is a waste of effort. Also getting cluster NetworkPolicies bulletproof can be nontrivial, and I've been on assessment where an attacker is still about to egress via DNS or pivoting to certain cluster locations that have different firewall settings. 
+Instead, the applications that make outbound calls with user-provided URLs should proxy their http client to smokescreen. The idea being, these types of requests are likely pretty rare in the grand schemes of all requests, and forcing all requests to go through smokescreen unnecessarily is a waste. Also securing cluster NetworkPolicies can be nontrivial in practice. I've been on assessment where an attacker is still able to egress via DNS or pivot to certain locations in the cluster that have different firewall settings. 
 
 As for authentication, the default mTLS authentication seems a bit too unwieldy and assumes a service mesh exists to provide mTLS. Fly.io uses a simpler proxy password. If you're deny-listing all traffic then a proxy password makes sense.[^3] But if you're allow-listing all traffic then authentication doesn't really matter. 
 
