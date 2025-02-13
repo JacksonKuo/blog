@@ -83,6 +83,6 @@ Still looking okay on RAM, throught the app is pretty slow:
 
 [^2]: *In order to keep things performant, we run Smokescreen in a DaemonSet so each node has its own instance. The applications running on that node contact the node’s IP on a known port in order to keep traffic local.* [https://material.security/resources/locking-down-internet-traffic-in-kubernetes](https://material.security/resources/locking-down-internet-traffic-in-kubernetes)
 
-[^3]: [https://fly.io/blog/practical-smokescreen-sanitizing-your-outbound-web-requests/](https://fly.io/blog/practical-smokescreen-sanitizing-your-outbound-web-requests/), [https://fly.io/docs/app-guides/smokescreen/](https://fly.io/docs/app-guides/smokescreen/)
+[^3]: [https://fly.io/blog/practical-smokescreen-sanitizing-your-outbound-web-requests/](https://fly.io/blog/practical-smokescreen-sanitizing-your-outbound-web-requests/), [https://fly.io/docs/app-guides/smokescreen/](https://fly.io/docs/app-guides/smokescreen/), [https://github.com/fly-apps/smokescreen/blob/master/main.go](https://github.com/fly-apps/smokescreen/blob/master/main.go)
 
 [^4]: [https://github.com/stripe/smokescreen/blob/master/Development.md](https://github.com/stripe/smokescreen/blob/master/Development.md)
