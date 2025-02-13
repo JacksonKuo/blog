@@ -67,6 +67,17 @@ When my Spring Boot app proxies HTTPS requests, I get an odd error back: `failur
 
 I'm not 100% sure how smokescreen affects DNS rebinding. 
 
+# Memory
+
+Still looking okay on RAM, throught the app is pretty slow:
+
+```
+|       | Total  | Used   | Free  | Shared | Buff/Cache | Available |
+|-------|--------|--------|-------|--------|------------|-----------|
+| Mem   | 960Mi  | 755Mi  | 64Mi  | 3.0Mi  | 292Mi      | 205Mi     |
+| Swap  | 1.0Gi  | 378Mi  | 645Mi |        |            |           |
+```
+
 # References
 [^1]: [https://blog.includesecurity.com/2023/03/mitigating-ssrf-in-2023/](https://blog.includesecurity.com/2023/03/mitigating-ssrf-in-2023/)
 
