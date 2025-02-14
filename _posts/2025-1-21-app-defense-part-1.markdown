@@ -187,6 +187,38 @@ public class ProjectConfig
 * Overriding in Java occurs when a subclass implements a method which is already defined in the superclass or Base Class.
 * Java annotation
 
+#### Chapter 11 - Consuming REST endpoints
+
+* OpenFeign
+    * spring cloud family
+    * only need to write an interface
+    * @EnableFeignClients annotation on a configuration class and tell OpenFeign where to search for client contracts
+* RestTemplate
+    * maintenance mode starting spring 5 and will be deprecated
+    * most common, but legacy
+    * not easy to call endpoints both asynch and synch
+    * HttpHeaders instance, HttpEntity instance, exchange()
+    * shouldn't use RestTemplate in new implementations
+* WebClient
+    * reactive programming
+    * RestTemplate documentation gives a recommendation
+    * advanced approach
+    * strongly coupled to make app reactive
+    * nonreactive app
+        * a thread executes a business flow
+        * request is blocked waiting for I/O operations to finish
+        * app creates a new thread for each request and thread executes a step one by one, like a timeline
+        * thread is idle while an I/O call blocks... stay and occupy app memory
+    * reactive app
+        * backlog of tasks and a team of threads solving them
+        * all tasks from all requests are on a backlog. any thread can work on tasks from any requests
+        * two components: producer and subscriber to implement dependencies
+        * a task returns a producer to allow other tasks to subscribe to it
+        * a task uses a subscriber to attach to a producer of another task
+        * WebClient requires WebFlux
+        * Mono, this class defines a producer
+* All three use proxy classes, versus what I currently have
+
 #### Chapter 15 - Testing your Spring app
 
 * unit tests and integration tests
