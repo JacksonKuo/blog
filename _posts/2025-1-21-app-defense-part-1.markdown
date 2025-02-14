@@ -187,6 +187,52 @@ public class ProjectConfig
 * Overriding in Java occurs when a subclass implements a method which is already defined in the superclass or Base Class.
 * Java annotation
 
+#### Chapter 15 - Testing your Spring app
+
+* unit tests and integration tests
+    * validation with minimum effort, understand use-case, documentation, early feedback of issues
+    * regression testing: constant retesting functionality to validate it still works
+    * JUnit in Action [https://www.amazon.com/JUnit-Action-Catalin-Tudose-ebook/dp/B09781KDZG/](https://www.amazon.com/JUnit-Action-Catalin-Tudose-ebook/dp/B09781KDZG/)
+    * a test class should focus only on a particular method
+    * reason to keep the methods in your application small
+    * unit tests: validate a methods logic
+    * integration tests: validate method logic and its integration with specific capabilities the framework provides. help when upgrading dependencies
+    * unit tests: eliminate all dependencies of the capability they test. covering a isolated piece of logic. valuable bc when one fails, you know exactly where
+    * first we write tests for the happy flows, no exceptions or errors
+* unit tests:
+    * assumptions, call/execution, validations
+    * arrange, act, assert
+    * given, when, then
+* assumptions
+    * identify inputs and dependencies
+    * dependencies: anything the method uses but doesn't create itself. method parameters, object instances
+* mocks via Mockito
+* junit 5 jupiter, junit 4 well-establish in legacy projects
+    * mock(AccountRepository.class)
+    * given(): control mock's behavior
+    * @DisplayName annotation: describe test
+    * verify(): verify a mock's object's method has been called
+    * in many cases, mock() declared inside method
+    * @ExtendWith(MockitoExtension.class) 
+    * @Mock: injects a mock object in the annotated attribute
+    * @InjectMocks: create a object to test, then inject all mocks in it's parameters
+    * assertThrows(): check that the method throws an exception
+    * Optional.empty()
+    * verify(foobar, never())
+    * assertEquals()
+* integration tests:
+    * between two (or more) objects
+    * object and framework capability
+    * app with persistence layer
+    * don't neccessrily have to mock dependencies. can still mock if test doesn't care about that specific service
+    * use a in-memory database such as H2, use real db can cause latencies
+    * in a spring app, generally use integration test sto verify app's behavior correctly interacts with the capabilities Spring provides
+    * spring integration test: enables spring to create beans and configure the context
+    * @MockBean (springboot annotation, not spring)
+    * can you @Autowired to inject the object
+    * if we upgrade spring version and DI no longer worked, test would fail
+    * use unit test to validate components and spring integration test to validate integration scenarios. don't use spring integration tests to validate component's behavior. waste of time and resources
+
 # References
 
 [^1]: [Spring Start Here: Learn what you need and learn it well](https://www.amazon.com/gp/product/B09HJLK2BN/)
