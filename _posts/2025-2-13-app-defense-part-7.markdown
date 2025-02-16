@@ -45,11 +45,15 @@ Smokescreen is built into a image and saved into ghcr.io. Helm charts then pull 
 
 * Endpoint: [https://bakacore.com:8087/smokescreen](https://bakacore.com:8087/smokescreen)
 * Repository: [https://github.com/JacksonKuo/app-smokescreen](https://github.com/JacksonKuo/app-smokescreen)
-* Service: [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/controller/SmokescreenController.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/controller/SmokescreenController.java)
+* Service: ~~[https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/controller/SmokescreenController.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/controller/SmokescreenController.java)~~
 * Controller: [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/service/SmokescreenService.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/service/SmokescreenService.java)
 
 #### Application
-I'm using Spring Webflux + Netty to run my webclient. This is a bit different than the typical Spring MVC + Tomcat setup, and uses things like `Mono<String>` to enable non-blocking web requests.
+I'm using Spring Webflux + Netty to run my webclient. This is a bit different than the typical Spring MVC + Tomcat setup, and uses things like `Mono<String>` to enable non-blocking web requests. I can optionally house the logic within a service for simplicity. But I've migrated from a simple service, to using a Proxy class and @Configuration. This design has better reusability, easier for writing tests, and is inline with best practices. The code also follows the example in the Spring Start Here book for writing tests.   
+
+* Proxy class: [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/component/WebProxy.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/component/WebProxy.java)
+* Configuration: [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/config/WebClientConfig.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/config/WebClientConfig.java)
+
 
 #### Config
 Running the default smokescreen `./smokescreen` will only prevent access to internal networks. Also by default, smokescreen also tries to use mTLS for client authentication. In order to skip mTLS client validation, `allow_missing_role: true` is set in `config.yaml`. With this set, smokescreen will then use the default ACL.[^4]
