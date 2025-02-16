@@ -107,7 +107,9 @@ public class ProjectConfig
 ```
 
 * by default, Spring doesn't search for class annotation with stereotype annotations, a.k.a. @Component
-* If you're using Spring Boot, it automatically scans for components in the package where the main application class (the one with @SpringBootApplication)
+* If you're using Spring Boot, it automatically scans for components in the package or subpackage where the main application class (the one with @SpringBootApplication)
+    * `@SpringBootApplication` - `package com.jkuo.sample;`
+    * `Cat.java` - `package com.jkuo.sample.component;`
 * ProjectConfig is empty, just used to point where @Components are located
 ```
 @Configuration 
