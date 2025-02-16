@@ -85,7 +85,7 @@ Cat cat() {
 * define a method that returns the object instance and annotate with @Bean to add to the context
 * The method with @Bean, shouldn't use a verb name, like traditionally in Java methods. By convention use a noun to represent the object instance
 
-`@Bean(name = "roxy")`
+`@Bean(name = "BlueCat")`
 
 `@Primary`
 * Multiple beans of the same kind, a primary bean is the one that spring will choose if there's multiple options
@@ -126,7 +126,7 @@ public class ProjectConfig {
 
 * @Bean annotations vs stereotype annotations
 * @Bean
-    * multiple instances
+    * can create multiple instances
     * 
         ```
         @Bean
@@ -138,9 +138,10 @@ public class ProjectConfig {
     * only used when you can't add the bean otherwise
 * stereotype annotations
     * can only add one instance of a class
-    * only for classes you own
+    * only for classes you own, can't be used for String, Integer
     * less boilerplate
     * preferred
+
 * @PostConstruct
     * call method after constructor finishes
 * registerBean: programmatically depending on specific conditions
@@ -151,9 +152,11 @@ public class ProjectConfig {
 
 #### Chapter 3 - Wiring Beans
 
-1. @Bean, link beans by calling methods that create them - wiring
-2. @Bean, enable Spring to provide us a value using a method parameter - auto-wiring
-3. @Component, dependency injection using @Autowired
+How to have Cat and Person wire together? Three methods:
+
+1. direct wiring - link beans by direct calling methods that create them
+2. method parameters - enable Spring to provide us a value using a method parameter
+3. @Autowired
 
 * implement relationships between beans. we want this so one object can delegate responibility of something to another object
 * direct wiring
@@ -171,9 +174,9 @@ public class ProjectConfig {
     }
 ```
 
-* the `@Bean cat()` and the `new Person("Alice", cat())`, don't create 2 cats, Spring smart enough to know you're referring to the existing cat bean in the context
+* the `@Bean cat()` and the `new Person("Alice", cat())` calls, don't create 2 cats, Spring smart enough to know you're referring to the existing cat bean in the context
 
-* wiring using method parameters
+* wiring using method parameters, instead of calling directly, we add the object needed as a method parameter. Previously `Person person()`, and now `Person person(Cat cat)`
 ```	
     @Bean("BlueCat")
     Cat cat() {
@@ -188,26 +191,62 @@ public class ProjectConfig {
 
 * dependency injection. the framework sets the value of an object of an app
 * @Autowired, mark an object property where we want Spring to inject a value from the context
-    * inject values through field of the class
-    * inject values through constructor parameters
-    * inject values through setters
+    * inject values through class field (avoid in prod)
+    * inject values through constructor parameters (most common)
+    * inject values through setters (rare)
 * field
+```
+    @Component
+    public class Person(){
+        @Autowired
+        private Cat cat;
+    }
+```
+* In real world, will mostly encounter @Autowired with stereotype annotation (@Components) versus @Bean. But can be used with @Bean like so
+```
+    @Configuration
+    public class Config {
+        @Autowired
+        Cat cat;
+
+        @Bean
+        Person person() {
+            return new Person("Alice", cat);
+        }
+    }
+```
 * constructors
 	* can use final
 	* no one can change value after Spring initializes
+    * most common
+    * starting spring 4.3, when you only have one constructor, can omit writing @Autowired
+
+```
+    @Component 
+    public class Person {    
+        private String name = "Ella";     
+        private final Parrot parrot;
+        
+        @Autowired
+        public Person(Parrot parrot) {     
+            this.parrot = parrot;   
+        }
+    }
+```
 * setters
     * pretty rare, not really used
+
 * @Qualifier
 ```
-    @Bean("Alice")
-    Person person() {
-        return new Person("Alice", cat());
-    }
+@Bean("Alice")
+Person person(@Qualifier("BlueCat") Cat cat) {
+    return new Person("Alice", cat());
+}
 ```
 * if there are multiple cats
 * if multiple beans of the same type are available, will choose the bean with the same name.
-* only needed when using @Bean, since @Component will only generate
-* @Autowired used often with stereotype annotation, a.k.a. @Compoennts
+* only needed when using @Bean, since @Component will only generate one instance
+
 
 #### Chapter 4 - Using abstractions
 
