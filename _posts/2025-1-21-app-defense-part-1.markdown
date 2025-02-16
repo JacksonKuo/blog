@@ -66,28 +66,41 @@ A majority of these notes will be pulled straight from the book. My notes are ki
 
 > Spring Bean is nothing special, any object in the Spring framework that we initialize through Spring container is called Spring Bean. Any normal Java POJO class can be a Spring Bean if it’s configured to be initialized via container by providing configuration metadata information.[^2]
 
-* `AnnotationConfigApplicationContext`
+* `AnnotationConfigApplicationContext`: most used in today's approach
+
+`var context = new AnnotationConfigApplicationContext(ProjectConfig.class)`
+
+* configuration class is a special class that instructs Spring to do certain actions, like create beans
 
 ```
 @Configuration
 public class ProjectConfig
+
+@Bean
+Cat cat() {
+    return cat
+}
 ```
 
-`var context = new AnnotationConfigApplicationContext(ProjectConfig.class)`
-
-* configuration class is a special class that instructs Spring to do certain actions
 * define a method that returns the object instance and annotate with @Bean to add to the context
 * The method with @Bean, shouldn't use a verb name, like traditionally in Java methods. By convention use a noun to represent the object instance
 
+`@Bean(name = "roxy")`
+
 `@Primary`
 * Multiple beans of the same kind, a primary bean is the one that spring will choose if there's multiple options
-* stereotype annotations
-* annotation class to add bean
+
+* stereotype annotations: write less code to add a bean to the context
+    * @Component: add the annotation above the class that you need an instance for
+    * still have a config class to tell spring where to look for classes annotated with stereotypes
+    * can use both @Bean and stereotypes together as well
+
+* @Component: annotates class to add bean
 ```
 @Component
 public class Cat
 ```
-* tell spring where to look for classes
+* @ComponentScan: tell spring where to look for classes
 ```
 @ComponentScan
 public class ProjectConfig
@@ -95,6 +108,14 @@ public class ProjectConfig
 
 * by default, Spring doesn't search for class annotation with stereotype annotations, a.k.a. @Component
 * If you're using Spring Boot, it automatically scans for components in the package where the main application class (the one with @SpringBootApplication)
+* ProjectConfig is empty, just used to point where @Components are located
+```
+@Configuration 
+@ComponentScan(basePackages = "main")
+public class ProjectConfig {
+//empty
+}
+```
 * Using @Component, means you don't need write a cat method 
 ```
     @Bean("BlueCat")
@@ -106,6 +127,14 @@ public class ProjectConfig
 * @Bean annotations vs stereotype annotations
 * @Bean
     * multiple instances
+    * 
+        ```
+        @Bean
+        Cat cat1(){return cat}
+
+        @Bean
+        Cat cat2(){return cat}
+        ```
     * only used when you can't add the bean otherwise
 * stereotype annotations
     * can only add one instance of a class
@@ -114,8 +143,7 @@ public class ProjectConfig
     * preferred
 * @PostConstruct
     * call method after constructor finishes
-* programmatic approach
-* registerBean
+* registerBean: programmatically depending on specific conditions
     * beanName
     * beanClass
     * supplier
@@ -186,6 +214,10 @@ public class ProjectConfig
 * @Override
 * Overriding in Java occurs when a subclass implements a method which is already defined in the superclass or Base Class.
 * Java annotation
+
+#### Chapter 7 - Understanding Spring Boot and Spring MVC
+
+* 
 
 #### Chapter 11 - Consuming REST endpoints
 
