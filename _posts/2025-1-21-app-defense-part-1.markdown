@@ -326,16 +326,16 @@ Person person(@Qualifier("BlueCat") Cat cat) {
     * verify(foobar, never())
     * assertEquals()
 * integration tests:
-    * between two (or more) objects
-    * object and framework capability
-    * app with persistence layer
+    * 1) between two (or more) objects
+    * 2) object and framework capability
+    * 3) app with persistence layer
     * don't neccessrily have to mock dependencies. can still mock if test doesn't care about that specific service
     * use a in-memory database such as H2, use real db can cause latencies
-    * in a spring app, generally use integration test sto verify app's behavior correctly interacts with the capabilities Spring provides
+    * in a spring app, generally use integration tests to verify app's behavior correctly interacts with the capabilities Spring provides
     * spring integration test: enables spring to create beans and configure the context
     * @MockBean (springboot annotation, not spring)
     * can you @Autowired to inject the object
-    * if we upgrade spring version and DI no longer worked, test would fail
+    * if we upgrade spring version and DI no longer worked, test would fail[^3]
     * use unit test to validate components and spring integration test to validate integration scenarios. don't use spring integration tests to validate component's behavior. waste of time and resources
 
 # References
@@ -343,3 +343,5 @@ Person person(@Qualifier("BlueCat") Cat cat) {
 [^1]: [Spring Start Here: Learn what you need and learn it well](https://www.amazon.com/gp/product/B09HJLK2BN/)
 
 [^2]: [https://www.digitalocean.com/community/tutorials/spring-ioc-bean-example-tutorial](https://www.digitalocean.com/community/tutorials/spring-ioc-bean-example-tutorial)
+
+[^3]: Using integration tests to verify framework still works between patches it not the intention for integration tests
