@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Application Defense: Part VIII - Tests"
+title: "Application Defense: Part VIII - Test Suite"
 date: 2025-2-14
 tags: ["app"]
 published: false
@@ -20,7 +20,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 * Step 5: Add custom rate limit
 * Step 6: Add Twilio MFA
 * Step 7: Add Smokescreen
-* Step 8: Write tests
+* Step 8: Add test suite
 
 
 
