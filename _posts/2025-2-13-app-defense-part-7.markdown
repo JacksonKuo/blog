@@ -49,14 +49,14 @@ Smokescreen is built into a image and saved into ghcr.io. Helm charts then pull 
 * Controller: [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/service/SmokescreenService.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/service/SmokescreenService.java)
 
 #### Application
-I'm using Spring Webflux + Netty to run my webclient. This is a bit different than the typical Spring MVC + Tomcat setup, and uses things like `Mono<String>` to enable non-blocking web requests. I can optionally house the logic within a service for simplicity. But I've migrated from a simple service, to using a Proxy class and @Configuration. This design has better reusability, easier for writing tests, and is inline with best practices. The code also follows the example in the Spring Start Here book for writing tests.   
+I'm using Spring Webflux + Netty to run my webclient. This is a bit different than the typical Spring MVC + Tomcat setup, and uses things like `Mono<String>` to enable non-blocking web requests. I can optionally house the logic within a service for simplicity. But I've migrated from a simple service, to using a Proxy class and @Configuration. This design has better reusability, easier for writing tests, and is inline with best practices.[^4] The code also follows the example in the Spring Start Here book for writing tests.   
 
 * Proxy class: [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/component/WebProxy.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/component/WebProxy.java)
 * Configuration: [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/config/WebClientConfig.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/config/WebClientConfig.java)
 
 
 #### Config
-Running the default smokescreen `./smokescreen` will only prevent access to internal networks. Also by default, smokescreen also tries to use mTLS for client authentication. In order to skip mTLS client validation, `allow_missing_role: true` is set in `config.yaml`. With this set, smokescreen will then use the default ACL.[^4]
+Running the default smokescreen `./smokescreen` will only prevent access to internal networks. Also by default, smokescreen also tries to use mTLS for client authentication. In order to skip mTLS client validation, `allow_missing_role: true` is set in `config.yaml`. With this set, smokescreen will then use the default ACL.[^5]
 
 Smokescreen uses a HTTP CONNECT proxy that accepts HTTP and HTTPS. 
 
@@ -89,4 +89,6 @@ Still looking okay on RAM, throught the app is pretty slow:
 
 [^3]: [https://fly.io/blog/practical-smokescreen-sanitizing-your-outbound-web-requests/](https://fly.io/blog/practical-smokescreen-sanitizing-your-outbound-web-requests/), [https://fly.io/docs/app-guides/smokescreen/](https://fly.io/docs/app-guides/smokescreen/), [https://github.com/fly-apps/smokescreen/blob/master/main.go](https://github.com/fly-apps/smokescreen/blob/master/main.go)
 
-[^4]: [https://github.com/stripe/smokescreen/blob/master/Development.md](https://github.com/stripe/smokescreen/blob/master/Development.md)
+[^4]: Apparently for something like smokescreen that handles outbound calls, a proxy class makes the most sense. And for inbound calls that multiple endpoints might need a service is a good idea.
+
+[^5]: [https://github.com/stripe/smokescreen/blob/master/Development.md](https://github.com/stripe/smokescreen/blob/master/Development.md)

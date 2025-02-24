@@ -44,14 +44,42 @@ The first test is the redis rate limit. There's an autowired `RateLimitService` 
 
 This service doesn't have a lot of complex business logic, imo. However depending on the app, the rate limit could be a core component.
 
-Only writing unit tests would be great, however since we have the redis dependency I'll either have to mock it or run integration tests. The main logic is centered around redis calls, with little to no complex domain logic that warrant a unit test. Additionally security tests often lean towards integration tests anyway. 
+Only writing unit tests would be great, however since we have the redis dependency I'll either have to mock it or run integration tests. The main logic is centered around the redis operators, with little to no complex domain logic that warrant a unit test. Additionally security tests often lean towards integration tests anyway. 
 
 The main functionality I want to test is:
 * Successful permit for request 1-3
 * Fail permit for request 4
 * Check if TTL is set
 
+I added `@BeforeAll` and `@AfterAll` to start and stop `redis-server` locally.[^2] And instead of call `@SpringBootTest` which will load the entire application context, I use `@ContextConfiguration` to manual load my beans. Unlike `@SpringBootApplication`, `@ContextConfiguration` doesn't automatically load properties files, which is why `@TestPropertySource` points to `application-local.properties`.
+
+```java
+@SpringJUnitConfig
+@ContextConfiguration(classes = { RedisConfig.class, RateLimitService.class })
+@ActiveProfiles("local")
+@TestPropertySource("classpath:application-local.properties")
+public class RateLimitServiceIT {
+    ...
+    // arrange
+    String clientIp = "1.1.1.1";
+    // act
+    boolean permitSuccess = rateLimitService.getRateLimiter(clientIp).tryAcquire(3);
+    boolean permitFail = rateLimitService.getRateLimiter(clientIp).tryAcquire(1);
+    // assert
+    assertTrue(permitSuccess);
+    assertFalse(permitFail);
+```
+
+A second test checks if a TTL exists. 
+
+In the future I'll use JUnit `@ParameterizedTest`, but for now I just want to go the old fashion way.
+
 #### Smokescreen
+Alright, next 
+
+@MockBean -> @MockitoBean
+
+https://reflectoring.io/spring-boot-web-controller-test/
 
 #### Twilio
 
@@ -59,3 +87,5 @@ The main functionality I want to test is:
 
 # References
 [^1]: *(As of Spring Boot 2.1, we no longer need to load the SpringExtension because it's included as a meta annotation in the Spring Boot test annotations like @DataJpaTest, @WebMvcTest, and @SpringBootTest.)*
+
+[^2]: I don't trust the third-party embedded redis servers. And redis doesn't have a official embedded redis server. Using Testcontainers is a future project.
