@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Application Defense: Part VIII - Test Suite"
-date: 2025-2-14
+date: 2025-2-27
 tags: ["app"]
 published: false
 ---
@@ -184,7 +184,7 @@ Instead use constructor injection, like so:
 
 # Future Todos
 
-I learned that Java exception are slow and in a web app they should be avoided for performance sensitive code. There's a couple of alternatives for error handling, like returning `nulls`, using `Optional<String>`, error codes, result class. This is something I should explore more and then refactor my code. 
+I learned that Java exception are slow and in a web app they should be avoided for performance sensitive code. There's a couple of alternatives for error handling, like returning `nulls`, using `Optional<String>`, error codes, Result class. This is something I should explore more and then refactor my code. 
 
 # References
 [^1]: *(As of Spring Boot 2.1, we no longer need to load the SpringExtension because it's included as a meta annotation in the Spring Boot test annotations like @DataJpaTest, @WebMvcTest, and @SpringBootTest.)*
