@@ -204,7 +204,7 @@ I mocked out the `MfaService` class, the `Verification` response, and the method
     * [https://medium.com/@ykods/difference-between-mock-and-mockbean-in-spring-testing-9576eb312cdb](https://medium.com/@ykods/difference-between-mock-and-mockbean-in-spring-testing-9576eb312cdb)
 * `verify` is used to check if a method was invoked
 
-There's a lot going on in the Spring, JUnit, and Mockito world, if need a full understanding, I'll pick up [JUnit in Action](https://www.amazon.com/JUnit-Action-Third-Catalin-Tudose/dp/1617297046/) by Catalin Tudose. 
+There's a lot going on in the Spring, JUnit, and Mockito world, if need a expert understanding, I'll pick up [JUnit in Action](https://www.amazon.com/JUnit-Action-Third-Catalin-Tudose/dp/1617297046/) by Catalin Tudose. 
 
 # hCaptcha
 
