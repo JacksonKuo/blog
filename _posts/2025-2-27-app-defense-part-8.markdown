@@ -3,7 +3,7 @@ layout: post
 title: "Application Defense: Part VIII - Test Suite"
 date: 2025-2-27
 tags: ["app"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -40,9 +40,6 @@ Oh lastly, for Spring Boot testing here are a bunch of references I used:
 * [https://reflectoring.io/spring-boot-test/](https://reflectoring.io/spring-boot-test/)[^1]
 * [https://reflectoring.io/spring-boot-web-controller-test/](https://reflectoring.io/spring-boot-web-controller-test/)
 * [https://spring.io/guides/gs/testing-web](https://spring.io/guides/gs/testing-web)
-
-Also I added a `.vscode/tasks.json` to help build and test within the IDE:
-* [https://github.com/JacksonKuo/app-springboot/blob/main/.vscode/tasks.json](https://github.com/JacksonKuo/app-springboot/blob/main/.vscode/tasks.json)
 
 # Rate limit
 The first test is the redis rate limit. There's an autowired `RateLimitService` that accepts a `RedissonClient` in the constructor, and has a `getRateLimiter()` method. A `RedisConfig` that creates a `RedissonClient` bean. And a `RateLimitController` then accepts `RateLimitService` in the constructor, and that has a `/ratelimit` endpoint. 
@@ -139,11 +136,11 @@ I also marked Tag the class with `@Tag("integration")`, in case I ever want to r
 
 # Twilio
 
-I don't really want to do E2E tests for this. For one reason, I'm using a Twilio trial account, and I only have $15.2346 left. Though Twilio does have test credentials that don't charge[^6]
+I don't really want to do E2E tests for this. For one reason, I'm using a Twilio trial account, and I only have $15.2346 left. Twilio does have test credentials that don't charge for SMS[^6] [^7]. However these creds don't appear to work for the Verify only for sending SMS and will result in a `Resource not accessible with Test Account Credentials` error. So mocks it is then. 
 
 #### Logging / Debugging
 
-I move the Twilio code from the controller to it's own service. I ran into a few issues while triaging so I put in some slf4j logging. 
+I move the Twilio code from the controller to it's own service. I ran into a few issues while triaging so I put in some `slf4j` logging. 
 
 `private static final Logger logger = LoggerFactory.getLogger(MfaService.class);`
 
@@ -156,13 +153,12 @@ Note to self, you shouldn't instantinate a service in the constructor. That will
 
 ```java
     public MfaService mfaService;
-
     public MfaController() {
         this.mfaService = new MfaService();
     }
 ```
 
-Also explictly using `Autowired` is now frowned upon:[^7]
+Also explictly using `Autowired` is now frowned upon:[^8]
 
 ```java
     @Autowired
@@ -173,13 +169,57 @@ Instead use constructor injection, like so:
 
 ```java
     public MfaService mfaService;
-
     public MfaController(MfaService mfaService) {
         this.mfaService = mfaService;
     }
 ```
+#### Env vars
 
-# hcaptcha
+Also loading env vars into vscode was a lesson in frustration. There's multiple sections in vscode that get env var from different files:
+
+* Testing Panel (Beaker) => `.vscode/settings` using `java.test.config`[^9]
+* Run and Debug => `.vscode/launch.json` 
+* Terminal => Run Tasks => `.vscode/tasks.json`
+
+Some helpful github commands:
+* `git add -f .vscode/templates/*`
+* `git rm --cached .vscode/tasks.json`
+
+I added templates of these JSON files: [https://github.com/JacksonKuo/app-springboot/tree/main/.vscode/templates](https://github.com/JacksonKuo/app-springboot/tree/main/.vscode/templates)
+
+#### Mocks
+
+I mocked out the `MfaService` class, the `Verification` response, and the method calls `sendVerificationCode` to check the correct controller response. Couple of things I learned:
+
+* Spotting JUnit4/JUnit5
+    * JUnit5
+        * @ExtendWith(MockitoExtension.class)
+    * JUnit4
+        * @RunWith(SpringRunner.class)
+        * @RunWith(MockitoJUnitRunner.class)
+* `given` comes `import static org.mockito.BDDMockito.given;`
+* @Mock and @InjectMocks
+    * *The @Mock annotation is used to create a mock object for a particular class, while the @InjectMocks annotation is used to inject the mock object into the class being tested.*[^10]
+* @Mock vs @MockBean
+    * [https://medium.com/@ykods/difference-between-mock-and-mockbean-in-spring-testing-9576eb312cdb](https://medium.com/@ykods/difference-between-mock-and-mockbean-in-spring-testing-9576eb312cdb)
+* `verify` is used to check if a method was invoked
+
+There's a lot going on in the Spring, JUnit, and Mockito world, if need a full understanding, I'll pick up [JUnit in Action](https://www.amazon.com/JUnit-Action-Third-Catalin-Tudose/dp/1617297046/) by Catalin Tudose. 
+
+# hCaptcha
+
+So no real E2E tests for hCaptcha, since I would need to run some LLM solvers. There are some test credentials available that always pass[^11], and I could write E2E with those keys, but I decided to focus on using `@WebMvcTest` for unit tests. 
+
+I moved hCaptcha controller code to it's own service, then used `MockMvc`[^12] which is one step beyond directly calling controller methods. `MockMvc` doesn't stand up a actual webserver, but replicates Spring MVC handling without a server. This setup allows for testing things like request mapping, filter validation, and simulating HTTP requests. `MockMvc` does not load the full application context, but only required controllers[^13]. To load services like `CaptchaService` the annotation `@MockitoBean` must be used[^14]. Note that `@WebMvcTest` automatically includes `@AutoConfigureMockMvc`. 
+
+Note to self, there's two version of JUnit 4 and 5, that have different package imports. Not mix them or you'll run into errors:
+
+* JUnit 4 -> `import org.junit.Test;`
+* JUnit 5 -> `import org.junit.jupiter.api.Test;`
+
+Some helpful reading material:
+
+* [https://www.baeldung.com/spring-mockmvc-vs-webmvctest](https://www.baeldung.com/spring-mockmvc-vs-webmvctest)
 
 
 # Future Todos
@@ -195,8 +235,22 @@ I learned that Java exception are slow and in a web app they should be avoided f
 
 [^4]: [https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/mock/mockito/MockBean.html](https://docs.spring.io/spring-boot/api/java/org/springframework/boot/test/mock/mockito/MockBean.html)
 
-[^5]: The issue stems from multiple env variables colliding, specifically `spring.smokescreen.port=4750`, which causes this error: `Error creating bean with name 'webProxy'... Error creating bean with name 'webClientConfig': ... field 'smokescreenPort': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "tcp://10.43.148.106:4750"`. This `@Value("${spring.smokescreen.port}")` tries to load this env variable `REDIS_PORT=tcp://10.43.97.178:6379` instead of from the `appliciation.properties` file. The order of operations states that `5) OS environment variables` comes after `3) properties files`, but for some reason that isn't working. [https://docs.spring.io/spring-boot/reference/features/external-config.html#features.external-config.typesafe-configuration-properties.vs-value-annotation.note](https://docs.spring.io/spring-boot/reference/features/external-config.html#features.external-config.typesafe-configuration-properties.vs-value-annotation.note)
+[^5]: The issue stems from multiple env variables colliding, specifically `spring.smokescreen.port=4750`, which causes this error: `Error creating bean with name 'webProxy'... Error creating bean with name 'webClientConfig': ... field 'smokescreenPort': Failed to convert value of type 'java.lang.String' to required type 'int'; For input string: "tcp://10.43.148.106:4750"`. This `@Value("${spring.smokescreen.port}")` tries to load this env variable `REDIS_PORT=tcp://10.43.97.178:6379` instead of from the `application.properties` file. The order of operations states that `5) OS environment variables` comes after `3) properties files`, but for some reason that isn't working. [https://docs.spring.io/spring-boot/reference/features/external-config.html#features.external-config.typesafe-configuration-properties.vs-value-annotation.note](https://docs.spring.io/spring-boot/reference/features/external-config.html#features.external-config.typesafe-configuration-properties.vs-value-annotation.note)
 
 [^6]: *However, when you authenticate with your test credentials, we will not charge your account, update the state of your account, or connect to real phone numbers.* [https://www.twilio.com/docs/iam/test-credentials](https://www.twilio.com/docs/iam/test-credentials)
 
-[^7]: [https://medium.com/@dulanjayasandaruwan1998/spring-doesnt-recommend-autowired-anymore-05fc05309dad](https://medium.com/@dulanjayasandaruwan1998/spring-doesnt-recommend-autowired-anymore-05fc05309dad)
+[^7]: [https://www.twilio.com/docs/iam/test-credentials#test-sms-messages-parameters(https://www.twilio.com/docs/iam/test-credentials#test-sms-messages-parameters)
+
+[^8]: [https://medium.com/@dulanjayasandaruwan1998/spring-doesnt-recommend-autowired-anymore-05fc05309dad](https://medium.com/@dulanjayasandaruwan1998/spring-doesnt-recommend-autowired-anymore-05fc05309dad)
+
+[^9]: [https://code.visualstudio.com/docs/java/java-testing#_customize-test-configurations](https://code.visualstudio.com/docs/java/java-testing#_customize-test-configurations)
+
+[^10]: [https://medium.com/@bubu.tripathy/common-mistakes-while-using-mockito-6b4cb7940085](https://medium.com/@bubu.tripathy/common-mistakes-while-using-mockito-6b4cb7940085)
+
+[^11]: [https://docs.hcaptcha.com/#integration-testing-test-keys](https://docs.hcaptcha.com/#integration-testing-test-keys)
+
+[^12]: [https://docs.spring.io/spring-framework/reference/testing/mockmvc/overview.html](https://docs.spring.io/spring-framework/reference/testing/mockmvc/overview.html)
+
+[^13]: *DispatcherServlet, HandlerMapping, HandlerAdapter, and ViewResolvers.* [https://www.baeldung.com/spring-mockmvc-vs-webmvctest](https://www.baeldung.com/spring-mockmvc-vs-webmvctest)
+
+[^14]: `import org.springframework.test.context.bean.override.mockito.MockitoBean;`
