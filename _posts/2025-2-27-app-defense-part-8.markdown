@@ -20,7 +20,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 * Step 5: Add custom rate limit
 * Step 6: Add Twilio MFA
 * Step 7: Add Smokescreen
-* Step 8: Add test suite
+* Step 8: **Add test suite**
 
 # Test Suite
 As typical of Spring Boot apps, I'l be using JUnit and Mockito. There are 4 services that could use tests:
