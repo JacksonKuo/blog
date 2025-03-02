@@ -35,18 +35,16 @@ Pretty simple.
 
 ```kotlin
 plugins {
-	...
-	jacoco
+    jacoco
 }
-...
 tasks.test {
-    finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+    finalizedBy(tasks.jacocoTestReport)
 }
 tasks.jacocoTestReport {
-    dependsOn(tasks.test) // tests are required to run before generating the report
+    dependsOn(tasks.test)
 	reports {
         xml.required = false
-        csv.required = false
+        csv.required = true
         html.outputLocation = layout.buildDirectory.dir("jacocoHtml")
     }
 }
@@ -54,9 +52,13 @@ tasks.jacocoTestReport {
 
 I did have to upgrade to the latest version of `testImplementation("org.junit.jupiter:junit-jupiter-api")` due to some errors that popped up. Test coverage shows up as 49% currently. 
 
-# Coverage Badge on Github
+
 
 # Test Automation via CircleCI
+For the `.gradlew clean test`, the tests required certain env var set, which is why the `application.properties` field have a default set `verify.service.sid=${VERIFY_SERVICE_SID:fill}`. 
+
+# Coverage Badge on Github
+    might be able to do this via circleci, instead of jacoco-badge-generator
 
 # References
 [^1]:
