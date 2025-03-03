@@ -30,7 +30,7 @@ There is a couple of upgrades I want to add to testing:
 * Test automation via CircleCI
 * Status badge
 
-# Code Coverage via Jacoco
+# Code coverage via Jacoco
 Pretty simple. 
 
 ```kotlin
@@ -52,12 +52,12 @@ tasks.jacocoTestReport {
 
 I did have to upgrade to the latest version of `testImplementation("org.junit.jupiter:junit-jupiter-api")` due to some errors that popped up. Test coverage shows up as 49% currently. 
 
-# Test Automation via CircleCI
+# Test automation via CircleCI
 [https://github.com/JacksonKuo/app-springboot/blob/main/.circleci/config.yml](https://github.com/JacksonKuo/app-springboot/blob/main/.circleci/config.yml)
 
 For the `.gradlew clean test`, the tests required certain env var set, which is why the `application.properties` field have a default set `verify.service.sid=${VERIFY_SERVICE_SID:test}`.
 
-#### Execution Environment
+#### Execution environment
 Learned a bunch about CircleCI. I'm using Testcontainers which requires a local working docker. And my code also calls docker services on localhost. CircleCI has a bunch of different execution environements defined by executors. 
 
 * docker executor - runs a specific docker image i.e. `cimg/base:stable` but doesn't have docker locally
@@ -84,9 +84,9 @@ CircleCI integrates with Github via a Github App. There's webhook that trigger a
 To do PR open and PR push you have to create two triggers, which is kinda annoying.  
 
 #### Performance
-CircleCI is pretty nice has provides 30,000 free credits per month. The default machine size is a large ubuntu vm (4CPU, 15 GB), which I've bumped down to `resource_class: medium`(2CPU, 7.5 GB).[^1] [^2]
+CircleCI is pretty nice has provides 30,000 free credits per month. The default machine size is a large ubuntu vm (4CPU, 15 GB), which I've bumped down to `resource_class: medium` (2CPU, 7.5 GB).[^1] [^2]
 
-#### Branch Protections
+#### Branch protections
 I added some github settings, including some branch protections on `main`:
 * `Require a pull request before merging`
 * `Require status checks to pass`
@@ -94,14 +94,14 @@ I added some github settings, including some branch protections on `main`:
     * `Do not require status checks on creation`
 * `Automatically delete head branches`
 
-#### Misc
+#### Miscellaneous
 CircleCI status checks automatically link back to the Job, which is nice. And there's a convenience artifact tab for my jacoco HTML report. 
 
-# Status Badge
+# Status badge
 CircleCI has a nice build status badge that can be embedded into the README.[^3]
 Using the `style=shield` which looks nicer: [https://github.com/JacksonKuo/app-springboot](https://github.com/JacksonKuo/app-springboot)
 
-# Future Todo Items
+# Future enhancements
 * Add coverage badge on Github using `jacoco-badge-generator`. I don't see a built-in way to handle coverage badges in CircleCI: [https://github.com/cicirello/jacoco-badge-generator](https://github.com/cicirello/jacoco-badge-generator)
 * A nice way to add `jacoco-badge-generator` without clogging up the git history using Github Pages: [https://hackernoon.com/adding-test-coverage-badge-on-github-without-using-third-party-services](https://hackernoon.com/adding-test-coverage-badge-on-github-without-using-third-party-services)
 * Play around with Orbs: [https://circleci.com/developer/orbs](https://circleci.com/developer/orbs)
