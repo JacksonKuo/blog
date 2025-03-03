@@ -53,7 +53,7 @@ tasks.jacocoTestReport {
 I did have to upgrade to the latest version of `testImplementation("org.junit.jupiter:junit-jupiter-api")` due to some errors that popped up. Test coverage shows up as 49% currently. 
 
 # Test automation via CircleCI
-[https://github.com/JacksonKuo/app-springboot/blob/main/.circleci/config.yml](https://github.com/JacksonKuo/app-springboot/blob/main/.circleci/config.yml)
+I'll be running my automated tests in CircleCI: [https://github.com/JacksonKuo/app-springboot/blob/main/.circleci/config.yml](https://github.com/JacksonKuo/app-springboot/blob/main/.circleci/config.yml)
 
 For the `.gradlew clean test`, the tests required certain env var set, which is why the `application.properties` field have a default set `verify.service.sid=${VERIFY_SERVICE_SID:test}`.
 
