@@ -58,7 +58,7 @@ I did have to upgrade to the latest version of `testImplementation("org.junit.ju
 For the `.gradlew clean test`, the tests required certain env var set, which is why the `application.properties` field have a default set `verify.service.sid=${VERIFY_SERVICE_SID:fill}`. 
 
 #### Execution Environment
-Learned a bunch about CircleCI. I'm using Testcontainers which requires a local working docker. And my code also calls docker services on localhost. CircleCI has a bunch of different execution environements defined by 'executors'. 
+Learned a bunch about CircleCI. I'm using Testcontainers which requires a local working docker. And my code also calls docker services on localhost. CircleCI has a bunch of different execution environements defined by executors. 
 
 * docker executor - runs a specific docker image i.e. `cimg/base:stable` but doesn't have docker locally
     * 
