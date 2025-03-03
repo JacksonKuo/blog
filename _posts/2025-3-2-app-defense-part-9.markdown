@@ -81,7 +81,7 @@ CircleCI integrates with Github via a Github App. There's webhook that trigger a
 * PR opened or pushed to, default branch pushes, tag pushes
 * Pushes to open non-draft PRs
 
-To do PR open and PR merged you have to create two triggers, which is kinda annoying.  
+To do PR open and PR push you have to create two triggers, which is kinda annoying.  
 
 #### Performance
 CircleCI is pretty nice has provides 30,000 free credits per month. The default machine size is a large ubuntu vm (4CPU, 15 GB), which I've bumped down to `resource_class: medium`(2CPU, 7.5 GB).[^1] [^2]
@@ -95,7 +95,7 @@ I added some github settings, including some branch protections:
 * Automatically delete head branches 
 
 #### Misc
-CircleCI status checks automatically link back to the Job, which is nice. 
+CircleCI status checks automatically link back to the Job, which is nice. And there's a convenience artifact tab for my jacoco HTML report. 
 
 # Status Badge
 CircleCI has a nice build status badge that can be embedded into the README.[^3]
