@@ -135,11 +135,9 @@ The integration tests don't have to deal with mocks and run relatively fast. If 
 I also marked Tag the class with `@Tag("integration")`, in case I ever want to run only integration tests. 
 
 # Twilio
-
 I don't really want to do E2E tests for this. For one reason, I'm using a Twilio trial account, and I only have $15.2346 left. Twilio does have test credentials that don't charge for SMS[^6] [^7]. However these creds don't appear to work for the Verify only for sending SMS and will result in a `Resource not accessible with Test Account Credentials` error. So mocks it is then. 
 
 #### Logging / Debugging
-
 I move the Twilio code from the controller to it's own service. I ran into a few issues while triaging so I put in some `slf4j` logging. 
 
 `private static final Logger logger = LoggerFactory.getLogger(MfaService.class);`
@@ -174,7 +172,6 @@ Instead use constructor injection, like so:
     }
 ```
 #### Env vars
-
 Also loading env vars into vscode was a lesson in frustration. There's multiple sections in vscode that get env var from different files:
 
 * Testing Panel (Beaker) => `.vscode/settings` using `java.test.config`[^9]
@@ -188,7 +185,6 @@ Some helpful github commands:
 I added templates of these JSON files: [https://github.com/JacksonKuo/app-springboot/tree/main/.vscode/templates](https://github.com/JacksonKuo/app-springboot/tree/main/.vscode/templates)
 
 #### Mocks
-
 I mocked out the `MfaService` class, the `Verification` response, and the method calls `sendVerificationCode` to check the correct controller response. Couple of things I learned:
 
 * Spotting JUnit4/JUnit5
@@ -204,15 +200,14 @@ I mocked out the `MfaService` class, the `Verification` response, and the method
     * [https://medium.com/@ykods/difference-between-mock-and-mockbean-in-spring-testing-9576eb312cdb](https://medium.com/@ykods/difference-between-mock-and-mockbean-in-spring-testing-9576eb312cdb)
 * `verify` is used to check if a method was invoked
 
-There's a lot going on in the Spring, JUnit, and Mockito world, if need a expert understanding, I'll pick up [JUnit in Action](https://www.amazon.com/JUnit-Action-Third-Catalin-Tudose/dp/1617297046/) by Catalin Tudose. 
+There's a lot going on in the Spring, JUnit, and Mockito world, if I need a expert level understanding, I'll pick up [JUnit in Action](https://www.amazon.com/JUnit-Action-Third-Catalin-Tudose/dp/1617297046/) by Catalin Tudose. 
 
 # hCaptcha
-
 So no real E2E tests for hCaptcha, since I would need to run some LLM solvers. There are some test credentials available that always pass[^11], and I could write E2E with those keys, but I decided to focus on using `@WebMvcTest` for unit tests. 
 
-I moved hCaptcha controller code to it's own service, then used `MockMvc`[^12] which is one step beyond directly calling controller methods. `MockMvc` doesn't stand up a actual webserver, but replicates Spring MVC handling without a server. This setup allows for testing things like request mapping, filter validation, and simulating HTTP requests. `MockMvc` does not load the full application context, but only required controllers[^13]. To load services like `CaptchaService` the annotation `@MockitoBean` must be used[^14]. Note that `@WebMvcTest` automatically includes `@AutoConfigureMockMvc`. 
+I moved the hCaptcha controller code to its own service, then used `MockMvc`[^12] which is one step beyond directly calling controller methods. `MockMvc` doesn't stand up an actual webserver, but replicates Spring MVC handling without a server. This setup allows for testing things like request mapping, filter validation, and simulating HTTP requests. `MockMvc` does not load the full application context, but only required controllers[^13]. To load services like `CaptchaService` the annotation `@MockitoBean` must be used[^14]. Note that `@WebMvcTest` automatically includes `@AutoConfigureMockMvc`. 
 
-Note to self, there's two version of JUnit 4 and 5, that have different package imports. Not mix them or you'll run into errors:
+Note to self, there's two version of JUnit 4 and 5, that have different package imports. Do not mix them or you'll run into errors:
 
 * JUnit 4 -> `import org.junit.Test;`
 * JUnit 5 -> `import org.junit.jupiter.api.Test;`
@@ -223,8 +218,7 @@ Some helpful reading material:
 
 
 # Future Todos
-
-I learned that Java exception are slow and in a web app they should be avoided for performance sensitive code. There's a couple of alternatives for error handling, like returning `nulls`, using `Optional<String>`, error codes, Result class. This is something I should explore more and then refactor my code. 
+I learned that Java exceptions are slow and in a web app they should be avoided for performance sensitive code. There's a couple of alternatives for error handling, like returning `nulls`, using `Optional<String>`, error codes, Result class. This is something I should explore more and then refactor my code later. 
 
 # References
 [^1]: *(As of Spring Boot 2.1, we no longer need to load the SpringExtension because it's included as a meta annotation in the Spring Boot test annotations like @DataJpaTest, @WebMvcTest, and @SpringBootTest.)*
