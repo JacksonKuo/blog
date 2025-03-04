@@ -99,10 +99,10 @@ CircleCI status checks automatically link back to the Job, which is nice. And th
 
 # Status badge
 CircleCI has a nice build-in status badge that can be embedded into the README.[^3]
-I'm using the `style=shield` version which looks nicer: [https://github.com/JacksonKuo/app-springboot](https://github.com/JacksonKuo/app-springboot)
+I'm using the `style=shield` version which looks a bit nicer: [https://github.com/JacksonKuo/app-springboot](https://github.com/JacksonKuo/app-springboot)
 
 # Future enhancements
-* Add a coverage badge on Github using `jacoco-badge-generator`. I don't see a built-in way to handle coveragein CircleCI: [https://github.com/cicirello/jacoco-badge-generator](https://github.com/cicirello/jacoco-badge-generator)
+* Add a coverage badge on Github using `jacoco-badge-generator`. I don't see a built-in way to handle coverage in CircleCI: [https://github.com/cicirello/jacoco-badge-generator](https://github.com/cicirello/jacoco-badge-generator)
 * A nice way to add `jacoco-badge-generator` without clogging up the git history is by using Github Pages: [https://hackernoon.com/adding-test-coverage-badge-on-github-without-using-third-party-services](https://hackernoon.com/adding-test-coverage-badge-on-github-without-using-third-party-services)
 * Play around with Orbs: [https://circleci.com/developer/orbs](https://circleci.com/developer/orbs)
 * Terraform for branch protection
