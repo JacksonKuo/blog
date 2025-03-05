@@ -36,7 +36,7 @@ DaemonSet would create an instance on each node, but I don't necessary need smok
 
 In a perfect world, I would create K8 NetworkPolicies to restrict all internet access, and then proxy everything through smokescreen. However, in practice that seems like a bad idea. I really don't want to manage ACLs for every single service and web request in a company. 
 
-Instead, the applications that make outbound calls with user-provided URLs should proxy their http client to smokescreen. The idea being, these types of requests are likely pretty rare in the grand schemes of all requests, and forcing all requests to go through smokescreen unnecessarily is a waste. Also securing cluster NetworkPolicies can be nontrivial in practice. I've been on assessment where an attacker is still able to egress via DNS or pivot to certain locations in the cluster that have different firewall settings. 
+Instead, the applications that make outbound calls with user-provided URLs should proxy their http client to smokescreen. The idea being, these types of requests are likely pretty rare in the grand schemes of all requests, and forcing all requests to go through smokescreen unnecessarily is a waste. Also securing cluster NetworkPolicies can be nontrivial in practice. I've been on assessments where an attacker is still able to egress via DNS or pivot to certain locations in the cluster that have different firewall settings. 
 
 As for authentication, the default mTLS authentication seems a bit too unwieldy and assumes a service mesh exists to provide mTLS. Fly.io uses a simpler proxy password. If you're deny-listing all traffic then a proxy password makes sense.[^3] But if you're allow-listing all traffic then authentication doesn't really matter. 
 
@@ -73,7 +73,7 @@ I'm not 100% sure how smokescreen affects DNS rebinding.
 
 # Memory
 
-Still looking okay on RAM, throught the app is pretty slow:
+Still looking okay on RAM, through the app is pretty slow:
 
 ```
 |       | Total  | Used   | Free  | Shared | Buff/Cache | Available |
