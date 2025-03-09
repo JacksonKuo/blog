@@ -26,4 +26,22 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 
 # Dependabot
 
-zzz
+Let's add dependabot. Dependabot has 3 main components:
+
+* Dependabot alerts
+* Dependabot security updates
+* Dependabot version updates
+
+#### Documentation
+
+* [https://docs.github.com/en/code-security/dependabot](https://docs.github.com/en/code-security/dependabot)
+* [https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide)
+* [https://github.blog/developer-skills/github/video-how-to-run-dependency-audits-with-github-copilot/](https://github.blog/developer-skills/github/video-how-to-run-dependency-audits-with-github-copilot/)
+
+
+#### Version Pinning
+
+#### Problems
+
+# References
+[^1]: []()
