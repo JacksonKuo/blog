@@ -86,18 +86,11 @@ Compatibility
 
 Auto rebase
 
-#### Documentation
-* [https://github.com/JacksonKuo/app-springboot/network/updates](https://github.com/JacksonKuo/app-springboot/network/updates)
-
-* [https://docs.github.com/en/code-security/dependabot](https://docs.github.com/en/code-security/dependabot)
-
-* [https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference)
-* [https://github.blog/developer-skills/github/video-how-to-run-dependency-audits-with-github-copilot/](https://github.blog/developer-skills/github/video-how-to-run-dependency-audits-with-github-copilot/)
-
-
-
-
 #### Problems
+
+Dependabot opens a lot of PRs
+
+Transitive dependencies could break from lockfiles
 
 # References
 [^1]: [https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide)
@@ -111,3 +104,12 @@ Auto rebase
 [^5]: []()
 
 [^6]: []()
+
+
+#### Documentation
+* [https://github.com/JacksonKuo/app-springboot/network/updates](https://github.com/JacksonKuo/app-springboot/network/updates)
+
+* [https://docs.github.com/en/code-security/dependabot](https://docs.github.com/en/code-security/dependabot)
+
+* [https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference](https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference)
+* [https://github.blog/developer-skills/github/video-how-to-run-dependency-audits-with-github-copilot/](https://github.blog/developer-skills/github/video-how-to-run-dependency-audits-with-github-copilot/)
