@@ -75,7 +75,7 @@ So I have dependabot running for github-actions, docker and gradle. The github-a
         ```
 
 #### Version Pinning
-Version pinning is great for when updates have breaking changes, security bugs, or is compromised. 
+Version pinning is great for when updates have breaking changes, security bugs, or when the supply chain is compromised. 
 
 #### Pull request
 
