@@ -25,7 +25,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 * Step 9: **Add Dependabot**
 
 # Dependabot
-Let's add dependabot. Wow Dependabot has a lot of documentation. There are 3 main components[^1]:
+Let's add dependabot. Wow, Dependabot has a lot of documentation. There are 3 main components[^1]:
 * Dependabot alerts[^2] [^3]
 * Dependabot security updates: auto PR for security updates
 * Dependabot version updates: auto PR for version updates
@@ -80,17 +80,17 @@ dependencyLocking {
 }
 ```
 
-However, Dependabot PR will have a failing gradle CircleCI status check due to the lockfile not being updated. my Test Pipeline will need to update the PR, or I could leverage Renovate.  
+However, Dependabot PR will have a failing gradle CircleCI status check due to the lockfile not being updated. My test automation pipeline will need to update the PR, or I could leverage Renovate instead.  
 
 #### Version Pinning
-In production, dependency should be version pinned. Pinning mitigates breaking changes, security bugs, or when the supply chain is compromised. 
+In production, dependencies should be version pinned. Pinning mitigates breaking changes, security bugs, or when the supply chain is compromised. 
 
-There are some dependencies that are more reliable than others, for example Spring minor/patches version have a great reputation for being stable and as long as all tests pass should be safe to upgrade. 
+There are some dependencies that are more reliable than others, for example Spring's minor/patches version have a great reputation for being stable and as long as all tests pass should be safe to upgrade. 
 
 However, other dependencies can be much more flaky and even if tests pass, updates could end up breaking functionality. This is because developer tests are targeted at business logic, and not at the underlying framework. Thus tests aren't necessarily a reliable metric on if a dependency upgrade will cause issues.
 
 #### Dependabot/Lockfile Problems
-* Dependabot opens a lot of PRs (solved by Renovate)
+* Dependabot opens a lot of PRs, though there is an option for grouped security updates
 * Dependabot only checks transitive dependencies if there's a lockfile[^7], and gradle support was only recently added in 2023[^8]
 * Dependabot PR doesn't modify the lockfile
 * Transitive dependencies could break from lockfiles
@@ -105,6 +105,7 @@ I'm pretty disappointed this isn't out-of-the-box for Dependabot. Renovate does 
 #### Security Alerts
 Testing alerts using this Spring vulnerability:
 * [https://github.com/advisories/GHSA-c4q5-6c82-3qpw](https://github.com/advisories/GHSA-c4q5-6c82-3qpw)
+* [https://github.com/JacksonKuo/app-springboot/security/dependabot](https://github.com/JacksonKuo/app-springboot/security/dependabot)
 * `implementation("org.springframework.security:spring-security-web:6.3.3")`
 
 Looks like dependabot doesn't proc on PRs. If you want to scan on PRs there is a Github Action: [https://github.com/actions/dependency-review-action](https://github.com/actions/dependency-review-action). Dependabot will proc only after the merge and then according to the scan cadence set up. 
@@ -131,7 +132,3 @@ Looks like dependabot doesn't proc on PRs. If you want to scan on PRs there is a
 [^10]: *When you upload Gradle dependencies to the dependency graph using the dependency submission API, all project dependencies are uploaded, even transitive dependencies that aren't explicitly mentioned in any dependency file. When an alert is detected in a transitive dependency, Dependabot isn't able to find the vulnerable dependency in the repository, and therefore won't create a security update for that alert.* [https://docs.github.com/en/code-security/dependabot/ecosystems-supported-by-dependabot/supported-ecosystems-and-repositories](https://docs.github.com/en/code-security/dependabot/ecosystems-supported-by-dependabot/supported-ecosystems-and-repositories)
 
 [^11]: [https://github.com/dependabot/dependabot-core/issues/9351](https://github.com/dependabot/dependabot-core/issues/9351)
-
-[^12]: []()
-[^13]: []()
-[^14]: []()
