@@ -17,7 +17,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 * Step 1: Build a sample app with Spring Boot
 * Step 2: Build a deployment pipeline
 * Step 3: Add hCaptcha
-* Step 4: **Upgrade deployment pipeline**
+* Step 4: **Upgrade deployment pipeline with K8s**
 
 # Previous Deployment Pipeline
 
