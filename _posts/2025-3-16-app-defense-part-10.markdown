@@ -104,9 +104,10 @@ I'm pretty disappointed this isn't out-of-the-box for Dependabot. Renovate does 
 
 #### Security Alerts
 Testing alerts using this Spring Webflux vulnerability:
+* `implementation("org.springframework.security:spring-security-web:6.3.3")`
 * [https://github.com/advisories/GHSA-c4q5-6c82-3qpw](https://github.com/advisories/GHSA-c4q5-6c82-3qpw)
 * [https://github.com/JacksonKuo/app-springboot/security/dependabot](https://github.com/JacksonKuo/app-springboot/security/dependabot)
-* `implementation("org.springframework.security:spring-security-web:6.3.3")`
+* [https://github.com/JacksonKuo/app-springboot/pull/18](https://github.com/JacksonKuo/app-springboot/pull/18)
 
 Looks like dependabot doesn't proc on PRs, only on the default branch. If you want to scan on PRs there is a Github Action: [https://github.com/actions/dependency-review-action](https://github.com/actions/dependency-review-action). Dependabot will proc only after the merge to main and then only according to the scan cadence set up. 
 
