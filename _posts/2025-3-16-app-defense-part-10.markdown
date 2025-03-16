@@ -80,7 +80,7 @@ dependencyLocking {
 }
 ```
 
-However, Dependabot PR will have a failing gradle CircleCI status check due to the lockfile not being updated. My test automation pipeline will need to update the PR, or I could leverage Renovate instead.  
+However, Dependabot PR will have a failing gradle status check in CircleCI due to the lockfile not being updated. My test automation pipeline will need to update the PR, or I could leverage Renovate instead.  
 
 #### Version Pinning
 In production, dependencies should be version pinned. Pinning mitigates breaking changes, security bugs, or when the supply chain is compromised. 
@@ -94,21 +94,21 @@ However, other dependencies can be much more flaky and even if tests pass, updat
 * Dependabot only checks transitive dependencies if there's a lockfile[^7], and gradle support was only recently added in 2023[^8]
 * Dependabot PR doesn't modify the lockfile
 * Transitive dependencies could break from lockfiles
-* Dependabot for certain languages like Golang are not recommended[^9]
+* Dependabot for certain languages like Golang is not recommended[^9]
 * Security PRs will only be created for direct dependencies, not transitive dependencies.[^10] Transitive dependencies for dependency submission API uploads will alert, but not create a PR[^11]
 
 #### Updating Lockfiles
-What i need is logic so that if the user is `dependabot`, run `./gradlew dependencies --update-locks <dep-name>` then update the PR. If a dev updates a version they'll need to run `--update-locks` manually. 
+What I need is logic so that if the user is `dependabot`, run `./gradlew dependencies --update-locks <dep-name>` then update the PR. If a dev updates a version they'll need to run `--update-locks` manually. 
 
 I'm pretty disappointed this isn't out-of-the-box for Dependabot. Renovate does this automatically. But for now while I play around with Dependabot functionality, I'll turn off lockfile checks. 
 
 #### Security Alerts
-Testing alerts using this Spring vulnerability:
+Testing alerts using this Spring Webflux vulnerability:
 * [https://github.com/advisories/GHSA-c4q5-6c82-3qpw](https://github.com/advisories/GHSA-c4q5-6c82-3qpw)
 * [https://github.com/JacksonKuo/app-springboot/security/dependabot](https://github.com/JacksonKuo/app-springboot/security/dependabot)
 * `implementation("org.springframework.security:spring-security-web:6.3.3")`
 
-Looks like dependabot doesn't proc on PRs. If you want to scan on PRs there is a Github Action: [https://github.com/actions/dependency-review-action](https://github.com/actions/dependency-review-action). Dependabot will proc only after the merge and then according to the scan cadence set up. 
+Looks like dependabot doesn't proc on PRs, only on the default branch. If you want to scan on PRs there is a Github Action: [https://github.com/actions/dependency-review-action](https://github.com/actions/dependency-review-action). Dependabot will proc only after the merge to main and then only according to the scan cadence set up. 
 
 # References
 [^1]: [https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide)
