@@ -79,7 +79,7 @@ Even though Testcontainer should alleviate any issues now, it's nice to have che
 
 #### Performance
 
-Instead of call `@SpringBootTest` which will load the entire application context, I use `@ContextConfiguration` to manually load my beans. Unlike `@SpringBootApplication`, `@ContextConfiguration` doesn't automatically load properties files, which is why `@TestPropertySource` points to `application-local.properties`.
+Instead of calling `@SpringBootTest` which will load the entire application context, I use `@ContextConfiguration` to manually load my beans. Unlike `@SpringBootApplication`, `@ContextConfiguration` doesn't automatically load properties files, which is why `@TestPropertySource` points to `application-local.properties`.
 
 ```java
 @SpringJUnitConfig
@@ -138,7 +138,7 @@ I also marked Tag the class with `@Tag("integration")`, in case I ever want to r
 I don't really want to do E2E tests for this. For one reason, I'm using a Twilio trial account, and I only have $15.2346 left. Twilio does have test credentials that don't charge for SMS[^6] [^7]. However these creds don't appear to work for the Verify only for sending SMS and will result in a `Resource not accessible with Test Account Credentials` error. So mocks it is then. 
 
 #### Logging / Debugging
-I move the Twilio code from the controller to it's own service. I ran into a few issues while triaging so I put in some `slf4j` logging. 
+I move the Twilio code from the controller to its own service. I ran into a few issues while triaging so I put in some `slf4j` logging. 
 
 `private static final Logger logger = LoggerFactory.getLogger(MfaService.class);`
 
@@ -171,7 +171,7 @@ Instead use constructor injection, like so:
         this.mfaService = mfaService;
     }
 ```
-#### Env vars
+#### VsCode Env Variables
 Also loading env vars into vscode was a lesson in frustration. There's multiple sections in vscode that get env var from different files:
 
 * Testing Panel (Beaker) => `.vscode/settings` using `java.test.config`[^9]
@@ -205,7 +205,7 @@ There's a lot going on in the Spring, JUnit, and Mockito world, if I need a expe
 # hCaptcha
 So no real E2E tests for hCaptcha, since I would need to run some LLM solvers. There are some test credentials available that always pass[^11], and I could write E2E with those keys, but I decided to focus on using `@WebMvcTest` for unit tests. 
 
-I moved the hCaptcha controller code to its own service, then used `MockMvc`[^12] which is one step beyond directly calling controller methods. `MockMvc` doesn't stand up an actual webserver, but replicates Spring MVC handling without a server. This setup allows for testing things like request mapping, filter validation, and simulating HTTP requests. `MockMvc` does not load the full application context, but only required controllers[^13]. To load services like `CaptchaService` the annotation `@MockitoBean` must be used[^14]. Note that `@WebMvcTest` automatically includes `@AutoConfigureMockMvc`. 
+I moved the hCaptcha controller code to its own service, then used `MockMvc`[^12] which is one step beyond directly calling controller methods. `MockMvc` doesn't stand up an actual webserver, but replicates Spring MVC handling without a server. This setup allows for testing things like request mapping, filter validation, and simulating HTTP requests. `MockMvc` does not load the full application context, but only required controllers.[^13] To load services like `CaptchaService` the annotation `@MockitoBean` must be used.[^14] Note that `@WebMvcTest` automatically includes `@AutoConfigureMockMvc`. 
 
 Note to self, there's two version of JUnit 4 and 5, that have different package imports. Do not mix them or you'll run into errors:
 
