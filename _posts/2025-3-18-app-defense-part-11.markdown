@@ -28,3 +28,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 # Cloud deployment pipeline
 Let's add a Terraform module to do the initial Digital Oceans infrastructure setup with the option to be able to swap between different cloud ecosystems.
 
+# Terraform
+
+
+# Terraform Module
