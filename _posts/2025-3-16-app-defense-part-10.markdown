@@ -118,7 +118,7 @@ Ah, I see the issue. Turns out Security Alerts require two things:[^12]
 1. Dependabot alerts enabled
 2. Dependency Graph
 
-The dependency graph is the magic sauce. If this page [https://github.com/JacksonKuo/app-springboot/network/dependencies](https://github.com/JacksonKuo/app-springboot/network/dependencies) is empty or only contains github actions and no Java dependencies you know things aren't working properly. Turns out the dependency graph doesn't support Gradle files. Which is kinda crazy not to support by default. The dependency graph only supports `pom.xml` files.[^13] Granted there is a message box that states this:
+The dependency graph is the magic sauce. If this page [https://github.com/JacksonKuo/app-springboot/network/dependencies](https://github.com/JacksonKuo/app-springboot/network/dependencies) is empty or only contains Github Actions and no Java dependencies you know things aren't working properly. Turns out the dependency graph doesn't support Gradle files. Which is kinda crazy not to support by default. The dependency graph only supports `pom.xml` files.[^13] Granted there is a message box that states this:
 
 {:refdef: style="text-align: center;"}
 ![Image]({{ site.baseurl }}/assets/images/dependency-graph.png){: width="600" style="outline: 1px solid rgb(0, 0, 255);"}
