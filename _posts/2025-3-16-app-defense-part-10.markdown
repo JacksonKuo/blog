@@ -127,7 +127,7 @@ The dependency graph is the magic sauce. If this page [https://github.com/Jackso
 \[Dependency Graph Gradle message\]
 {: refdef}
 
-In order to add Gradle dependencies, Gradle has a Github Action that will submit to the Dependency Submission API.[^14] [^15] [^16]
+In order to add Gradle dependencies, Gradle has a Github Action that will submit to the Dependency Submission API.[^14] [^15] [^16]. Finding this action is a little confusing since the Github Action marketplace has multiple dependency submission related actions, but this Action is the one we want: [https://github.com/marketplace/actions/build-with-gradlehttps://github.com/marketplace/actions/build-with-gradle](https://github.com/marketplace/actions/build-with-gradlehttps://github.com/marketplace/actions/build-with-gradle)
 
 ```
     - name: Generate and submit dependency graph
