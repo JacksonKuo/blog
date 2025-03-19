@@ -145,6 +145,10 @@ This might result in duplicate caching since `gradle/actions/dependency-submissi
 
 Also for `--write-locks` to work, `dependencyLocking` needs to be set. Otherwise the lockfile will be empty. 
 
+#### Future Improvements
+* Doublecheck we're not double caching with `gradle/actions/setup-gradle` and `actions/cache@v4`
+* Add Dependabot security alerts to PRs authors
+
 # References
 [^1]: [https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide)
 
