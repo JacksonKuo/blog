@@ -121,7 +121,7 @@ Ah, I see the issue. Turns out Security Alerts require two things:[^12]
 The dependency graph is the magic sauce. If this page [https://github.com/JacksonKuo/app-springboot/network/dependencies](https://github.com/JacksonKuo/app-springboot/network/dependencies) is empty or only contains github actions and no Java dependencies you know things aren't working properly. Turns out the dependency graph doesn't support Gradle files. Which is kinda crazy not to support by default. The dependency graph only supports `pom.xml` files.[^13] Granted there is a message box that states this:
 
 {:refdef: style="text-align: center;"}
-![Image]({{ site.baseurl }}/assets/images/dependency-graph.png){: width="500"}
+![Image]({{ site.baseurl }}/assets/images/dependency-graph.png){: width="600" style="outline: 1px solid rgb(0, 0, 255);"}
 {: refdef}
 {:refdef: style="text-align: center;"}
 \[Dependency Graph Gradle message\]
@@ -137,7 +137,7 @@ In order to add Gradle dependencies, Gradle has an github action that will submi
 This might result in duplicate caching since `gradle/actions/dependency-submission` runs `gradle/actions/setup-gradle`, and I already have a custom action for caching. But I'll investigate that later. But for now Dependabot is working and I got my email, woohoo!
 
 {:refdef: style="text-align: center;"}
-![Image]({{ site.baseurl }}/assets/images/dependabot-security-alert.png){: width="500"}
+![Image]({{ site.baseurl }}/assets/images/dependabot-security-alert.png){: width="400" style="outline: 1px solid rgb(0, 0, 255);"}
 {: refdef}
 {:refdef: style="text-align: center;"}
 \[Dependabot Security Alert\]
