@@ -109,18 +109,16 @@ Testing alerts using this Spring Webflux vulnerability:
 * [https://github.com/JacksonKuo/app-springboot/security/dependabot](https://github.com/JacksonKuo/app-springboot/security/dependabot)
 * [https://github.com/JacksonKuo/app-springboot/pull/18](https://github.com/JacksonKuo/app-springboot/pull/18)
 
-Looks like dependabot doesn't proc on PRs, only on the default branch. If you want to scan on PRs there is a Github Action: [https://github.com/actions/dependency-review-action](https://github.com/actions/dependency-review-action). Dependabot will proc only after the merge to main and then only according to the scan cadence set up. 
+Looks like Dependabot doesn't proc on PRs, only on the default branch. If you want to scan on PRs there is a Github Action: [https://github.com/actions/dependency-review-action](https://github.com/actions/dependency-review-action). Dependabot will proc only after the merge to main and then only according to the scan cadence set up. 
 
 #### Troubleshooting Security Alerts
-
-Hmm Dependabot is kinda finnicky... troubleshooting. It's not creating a security alert for my Spring vuln. For some reason, the bot is not parsing my `build.gradle.kts` properly and finding the direct dependency. 
+Hmm Dependabot is kinda finnicky... troubleshooting. It's not creating a security alert for my Spring vulnerability. For some reason, the bot is not parsing my `build.gradle.kts` properly and finding the direct dependency. 
 
 Ah, I see the issue. Turns out Security Alerts require two things:[^12]
-
 1. Dependabot alerts enabled
 2. Dependency Graph
 
-The dependency graph is the magic sauce. If this page [https://github.com/JacksonKuo/app-springboot/network/dependencies](https://github.com/JacksonKuo/app-springboot/network/dependencies) is empty or only contains github actions and no Java dependencies you know things aren't working properly. Turns out the dependency graph doesn't support gradle files. Which is kinda crazy. The dependency graph only supports `pom.xml` files.[^13] Granted there is a message box that states this:
+The dependency graph is the magic sauce. If this page [https://github.com/JacksonKuo/app-springboot/network/dependencies](https://github.com/JacksonKuo/app-springboot/network/dependencies) is empty or only contains github actions and no Java dependencies you know things aren't working properly. Turns out the dependency graph doesn't support Gradle files. Which is kinda crazy not to support by default. The dependency graph only supports `pom.xml` files.[^13] Granted there is a message box that states this:
 
 {:refdef: style="text-align: center;"}
 ![Image]({{ site.baseurl }}/assets/images/dependency-graph.png){: width="500"}
@@ -129,14 +127,14 @@ The dependency graph is the magic sauce. If this page [https://github.com/Jackso
 \[Dependency Graph Gradle message\]
 {: refdef}
 
-In order to add gradle dependencies, gradle has a action that will submit to the Dependency Submission API.[^14] [^15] [^16]
+In order to add Gradle dependencies, Gradle has an github action that will submit to the Dependency Submission API.[^14] [^15] [^16]
 
 ```
     - name: Generate and submit dependency graph
       uses: gradle/actions/dependency-submission@v4
 ```
 
-This might result in duplicate caching since `gradle/actions/dependency-submission` runs `gradle/actions/setup-gradle`, and I already have a custom action for caching. But I'll investigate that later. But now Dependabot is working and I got my email, woohoo!
+This might result in duplicate caching since `gradle/actions/dependency-submission` runs `gradle/actions/setup-gradle`, and I already have a custom action for caching. But I'll investigate that later. But for now Dependabot is working and I got my email, woohoo!
 
 {:refdef: style="text-align: center;"}
 ![Image]({{ site.baseurl }}/assets/images/dependabot-security-alert.png){: width="500"}
