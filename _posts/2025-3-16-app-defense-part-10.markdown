@@ -102,7 +102,7 @@ What I need is logic so that if the user is `dependabot`, run `./gradlew depende
 
 I'm pretty disappointed this isn't out-of-the-box for Dependabot. Renovate does this automatically. But for now while I play around with Dependabot functionality, I'll turn off lockfile checks. 
 
-#### Security Alerts
+#### Testing Security Alerts
 Testing alerts using this Spring Webflux vulnerability:
 * `implementation("org.springframework.security:spring-security-web:6.3.3")`
 * [https://github.com/advisories/GHSA-c4q5-6c82-3qpw](https://github.com/advisories/GHSA-c4q5-6c82-3qpw)
@@ -110,6 +110,42 @@ Testing alerts using this Spring Webflux vulnerability:
 * [https://github.com/JacksonKuo/app-springboot/pull/18](https://github.com/JacksonKuo/app-springboot/pull/18)
 
 Looks like dependabot doesn't proc on PRs, only on the default branch. If you want to scan on PRs there is a Github Action: [https://github.com/actions/dependency-review-action](https://github.com/actions/dependency-review-action). Dependabot will proc only after the merge to main and then only according to the scan cadence set up. 
+
+#### Troubleshooting Security Alerts
+
+Hmm Dependabot is kinda finnicky... troubleshooting. It's not creating a security alert for my Spring vuln. For some reason, the bot is not parsing my `build.gradle.kts` properly and finding the direct dependency. 
+
+Ah, I see the issue. Turns out Security Alerts require two things:[^12]
+
+1. Dependabot alerts enabled
+2. Dependency Graph
+
+The dependency graph is the magic sauce. If this page [https://github.com/JacksonKuo/app-springboot/network/dependencies](https://github.com/JacksonKuo/app-springboot/network/dependencies) is empty or only contains github actions and no Java dependencies you know things aren't working properly. Turns out the dependency graph doesn't support gradle files. Which is kinda crazy. The dependency graph only supports `pom.xml` files.[^13] Granted there is a message box that states this:
+
+{:refdef: style="text-align: center;"}
+![Image]({{ site.baseurl }}/assets/images/dependency-graph.png){: width="500"}
+{: refdef}
+{:refdef: style="text-align: center;"}
+\[Dependency Graph Gradle message\]
+{: refdef}
+
+In order to add gradle dependencies, gradle has a action that will submit to the Dependency Submission API.[^14] [^15] [^16]
+
+```
+    - name: Generate and submit dependency graph
+      uses: gradle/actions/dependency-submission@v4
+```
+
+This might result in duplicate caching since `gradle/actions/dependency-submission` runs `gradle/actions/setup-gradle`, and I already have a custom action for caching. But I'll investigate that later. But now Dependabot is working and I got my email, woohoo!
+
+{:refdef: style="text-align: center;"}
+![Image]({{ site.baseurl }}/assets/images/dependabot-security-alert.png){: width="500"}
+{: refdef}
+{:refdef: style="text-align: center;"}
+\[Dependabot Security Alert\]
+{: refdef}
+
+Also for `--write-locks` to work, `dependencyLocking` needs to be set. Otherwise the lockfile will be empty. 
 
 # References
 [^1]: [https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide](https://docs.github.com/en/code-security/getting-started/dependabot-quickstart-guide)
@@ -133,3 +169,13 @@ Looks like dependabot doesn't proc on PRs, only on the default branch. If you wa
 [^10]: *When you upload Gradle dependencies to the dependency graph using the dependency submission API, all project dependencies are uploaded, even transitive dependencies that aren't explicitly mentioned in any dependency file. When an alert is detected in a transitive dependency, Dependabot isn't able to find the vulnerable dependency in the repository, and therefore won't create a security update for that alert.* [https://docs.github.com/en/code-security/dependabot/ecosystems-supported-by-dependabot/supported-ecosystems-and-repositories](https://docs.github.com/en/code-security/dependabot/ecosystems-supported-by-dependabot/supported-ecosystems-and-repositories)
 
 [^11]: [https://github.com/dependabot/dependabot-core/issues/9351](https://github.com/dependabot/dependabot-core/issues/9351)
+
+[^12]: *The Dependabot security updates feature is available for repositories where you have enabled the dependency graph and Dependabot alerts.* [https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates](https://docs.github.com/en/code-security/dependabot/dependabot-security-updates/about-dependabot-security-updates)
+
+[^13]: [https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/dependency-graph-supported-package-ecosystems#package-ecosystems-supported-via-dependency-submission-actions](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/dependency-graph-supported-package-ecosystems#package-ecosystems-supported-via-dependency-submission-actions)
+
+[^14]: [https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/dependency-graph-supported-package-ecosystems#package-ecosystems-supported-via-dependency-submission-actions](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/dependency-graph-supported-package-ecosystems#package-ecosystems-supported-via-dependency-submission-actions)
+
+[^15]: [https://github.com/gradle/actions?tab=readme-ov-file#the-dependency-submission-action](https://github.com/gradle/actions?tab=readme-ov-file#the-dependency-submission-action)
+
+[^16]: [https://medium.com/@ash.french.tamil/getting-kotlin-gradle-and-github-actions-and-workflows-working-2fa951dcc603](https://medium.com/@ash.french.tamil/getting-kotlin-gradle-and-github-actions-and-workflows-working-2fa951dcc603)
