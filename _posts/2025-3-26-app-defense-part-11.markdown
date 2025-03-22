@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Application Defense: Part XI - Deployment Pipeline 3.0"
-date: 2025-3-16
+date: 2025-3-26
 tags: ["app"]
 published: false
 ---
@@ -29,6 +29,13 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 Let's add a Terraform module to do the initial Digital Oceans infrastructure setup with the option to be able to swap between different cloud ecosystems.
 
 # Terraform
-
+1. Create droplet 1GB
+2. Get SSH key
+3. Get IP address
+4. Upload to Github secrets
 
 # Terraform Module
+
+
+# References
+[^1]: []()
