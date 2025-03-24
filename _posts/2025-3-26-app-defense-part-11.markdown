@@ -28,13 +28,20 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 # Cloud deployment pipeline
 Let's add a Terraform module to do the initial Digital Oceans infrastructure setup with the option to be able to swap between different cloud ecosystems.
 
-# Terraform
+# Terraform - Digital Oceans
 1. Create droplet 1GB
 2. Get SSH key
 3. Get IP address
 4. Upload to Github secrets
 
 # Terraform Module
+
+* AWS
+    * EC2
+        * VPC
+        * Security groups
+* GCP
+* Azure
 
 
 # References
