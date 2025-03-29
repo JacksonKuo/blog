@@ -189,7 +189,7 @@ CodeAcademy has a nice sandbox to refresh on the syntax. Python 3 is behind the 
 | strings = ascii | string = unicode | 
 | `except Exception, e:` | `except Exception as e` | 
 | `raw_input()` | `input()` | 
-| `long`/`int` type | `int` type | 
+| `long`/`int` type | `int` type = unlimited precision | 
 | `xrange` | `range()` |
 | `print x` | `print(x)` |
 
