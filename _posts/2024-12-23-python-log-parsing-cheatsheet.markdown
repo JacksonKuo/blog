@@ -2,7 +2,7 @@
 layout: post
 title: "Python: Log Parsing Cheatsheet"
 date: 2024-12-23
-tags: ["scripting"]
+tags: ["python"]
 published: true
 ---
 

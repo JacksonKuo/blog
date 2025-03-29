@@ -2,7 +2,7 @@
 layout: post
 title: "Python: Leetcode Practice"
 date: 2025-3-28
-tags: ["scripting"]
+tags: ["python"]
 published: true
 ---
 
