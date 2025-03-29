@@ -2,7 +2,7 @@
 layout: post
 title: "Python: Log Parsing"
 date: 2024-12-23
-tags: ["coding"]
+tags: ["scripting"]
 published: true
 ---
 
