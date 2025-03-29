@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Application Defense: Part XI - Deployment Pipeline 3.0"
-date: 2025-3-26
+date: 2025-3-29
 tags: ["app"]
 published: false
 ---
