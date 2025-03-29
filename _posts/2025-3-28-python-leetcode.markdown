@@ -214,7 +214,7 @@ CodeAcademy has a nice sandbox to refresh on the syntax. Python 3 is behind the 
         ```
 * lists
     * array
-    * empty_list = []
+    * `empty_list = []`
     * 
         ```
         letters = ['a', 'b', 'c']
@@ -244,7 +244,7 @@ CodeAcademy has a nice sandbox to refresh on the syntax. Python 3 is behind the 
 * `"`  and `'` are functionally the same in python
 * dictionaries
     * hashmap
-    * empty_dict = {}
+    * `empty_dict = {}`
     * loop a dict returns the key
     *
         ```
@@ -283,11 +283,11 @@ CodeAcademy has a nice sandbox to refresh on the syntax. Python 3 is behind the 
         ...
     else:
     ```
-* print uses commas not +
+* print uses `,` not `+`
     * `print("a" + "b")`
     * `print("a","b")`
-    * a commas after print(), will keeps printing on the same line
-* zip()
+    * a comma after `print()`, will keep printing on the same line
+* `zip()`
     * iterate over two lists at once
     * `for a, b in zip(list_a, list_b):`
 
