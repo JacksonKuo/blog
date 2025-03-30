@@ -145,6 +145,14 @@ for i in range(len(input)):
 #### Simplify Path
 > Todo
 
+```python
+# ../../../../../
+# /bar
+# foo
+# a/./b
+# a/../b/../c
+```
+
 # Logging
 ```python
 import logging
