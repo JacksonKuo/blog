@@ -142,15 +142,49 @@ for i in range(len(input)):
 
 > Solve using O(n^2)
 
-#### Simplify Path
-> Todo
-
+#### Simplify Path + CD
 ```python
-# ../../../../../
-# /bar
-# foo
-# a/./b
-# a/../b/../c
+def simplifyPath(pwd, cd):
+	print("pwd:", pwd, "cd:", cd)
+
+	full_path = pwd.split("/")
+
+	cd_list = cd.split("/")
+	for i, l in enumerate(cd_list):
+		
+		if cd.startswith("/"):
+			return(cd)
+		if l.isalpha():
+			print("push: ",l)
+			full_path.append(l)
+		if l == ".." and len(full_path) > 1:
+			print("pop: ",l)
+			full_path.pop()
+		if l == ".":
+			continue
+
+	return stringify(full_path)
+
+def stringify(path):
+	full = ""
+	for p in path:
+		full += p
+		full += "/"
+	return full
+
+print("result: ",simplifyPath("/bar", "/bar/"))
+print("")
+print("result: ",simplifyPath("/bar", "/foo"))
+print("")
+print("result: ",simplifyPath("/bar", "zzz"))
+print("")
+print("result: ",simplifyPath("/bar", "../a"))
+print("")
+print("result: ",simplifyPath("/bar", "a/./b"))
+print("")
+print("result: ",simplifyPath("/bar", "a/../b/../c"))
+print("")
+print("result: ",simplifyPath("/bar", "../../../../../"))
 ```
 
 # Logging
