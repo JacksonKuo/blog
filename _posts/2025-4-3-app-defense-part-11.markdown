@@ -11,7 +11,7 @@ published: true
 {:toc}
 
 # Problem Statement
-Let's add Terraform to do the initial Digital Oceans infrastructure setup. This will allow me to tear down and up the droplet without manual action. Terraform is run locally. No workflows, S3/Dynamo, Atlantis, or Spacelift. Note all PAT tokens are kept locally. 
+Let's add Terraform to do the initial Digital Oceans infrastructure setup. This will allow me to tear down and up the droplet without manual action.[^1] Terraform is run locally. No workflows, S3/Dynamo, Atlantis, or Spacelift. Note all PAT tokens are kept locally. 
 
 [https://github.com/JacksonKuo/terraform](https://github.com/JacksonKuo/terraform)
 
