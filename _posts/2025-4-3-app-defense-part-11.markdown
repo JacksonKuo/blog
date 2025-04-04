@@ -69,7 +69,7 @@ A www.bakacore.com 3600
 * `DROPLET_IP`
 * `DROPLET_SSH_PRIVATE_KEY`
 
-Droplet specific private key is loaded locally
+Droplet specific private key is loaded locally. Note there's two options for uploading using `github_actions_secret`: `plaintext_value` and `encrypted_value`. Both options transfer the secret over TLS encrypted, but `encrypted_value` should be used if you want a  layer of protection against the terraform statefiles being compromised. I'll do a little digging here and see what's the best practice. 
 ```bash
 resource "github_actions_secret" "droplet_ip" {
   repository       = "app-springboot"
