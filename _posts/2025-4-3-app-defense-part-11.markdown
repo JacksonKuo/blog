@@ -15,7 +15,7 @@ Let's add Terraform to do the initial Digital Oceans infrastructure setup. This 
 
 [https://github.com/JacksonKuo/terraform](https://github.com/JacksonKuo/terraform)
 
-#### Create DigitalOcean PAT token 
+#### Create DigitalOcean and Github PAT token 
 `terraform-do-droplet-pat` token scope:
 ```
 * actions: read
@@ -26,7 +26,6 @@ Let's add Terraform to do the initial Digital Oceans infrastructure setup. This 
 * ssh_key: read
 ```
 
-#### Create Github PAT token 
 `terraform-gh-springboot-pat` fine-grained token scope:
 ```
 * meta: read
@@ -34,6 +33,7 @@ Let's add Terraform to do the initial Digital Oceans infrastructure setup. This 
 ```
 
 # Terraform
+Helpful commands:
 ```bash
 export TF_VAR_do_token=
 export TF_VAR_gh_token=
@@ -57,7 +57,7 @@ resource "digitalocean_droplet" "droplet" {
   ]
 }
 ```
-Pull public `ssh_key` uploaded to DO.
+Pull public droplet `ssh_key` from DigitalOcean.
 
 #### Update A records
 ```
