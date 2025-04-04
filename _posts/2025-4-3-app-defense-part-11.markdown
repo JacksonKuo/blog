@@ -11,12 +11,9 @@ published: true
 {:toc}
 
 # Problem Statement
-Build a bunch of infrastructure as code (IaC) using Terraform. 
-
-* Step 1: **Terraform Droplet**
-
-# Cloud Deployment Pipeline[^1]
 Let's add Terraform to do the initial Digital Oceans infrastructure setup. This will allow me to tear down and up the droplet without manual action. Terraform is run locally. No workflows, S3/Dynamo, Atlantis, or Spacelift. Note all PAT tokens are kept locally. 
+
+[https://github.com/JacksonKuo/terraform](https://github.com/JacksonKuo/terraform)
 
 #### Create DigitalOcean PAT token 
 `terraform-do-droplet-pat` token scope:
@@ -37,8 +34,6 @@ Let's add Terraform to do the initial Digital Oceans infrastructure setup. This 
 ```
 
 # Terraform
-[https://github.com/JacksonKuo/terraform](https://github.com/JacksonKuo/terraform)
-
 ```bash
 export TF_VAR_do_token=
 export TF_VAR_gh_token=
