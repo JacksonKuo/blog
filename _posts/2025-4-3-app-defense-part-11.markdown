@@ -65,16 +65,26 @@ A bakacore.com 3600
 A www.bakacore.com 3600
 ```
 
-#### Upload IP and SSH key to Github secrets
-`github_actions_secret` to upload to Github Action secrets. 
-
+#### Upload Droplet IP and SSH key to Github secrets
 * `DROPLET_IP`
 * `DROPLET_SSH_PRIVATE_KEY`
 
 Droplet specific private key is loaded locally
 ```bash
+resource "github_actions_secret" "droplet_ip" {
+  repository       = "app-springboot"
+  secret_name      = "DROPLET_IP"
+  plaintext_value  = digitalocean_droplet.droplet.ipv4_address
+}
+
 locals {
   droplet_ssh_private_key = file("/Users/jacksonkuo/.ssh/id_ed25519_droplet")
+}
+
+resource "github_actions_secret" "droplet_ssh_private_key" {
+  repository       = "app-springboot"
+  secret_name      = "DROPLET_SSH_PRIVATE_KEY"
+  plaintext_value  = local.droplet_ssh_private_key
 }
 ```
 
