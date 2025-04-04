@@ -146,6 +146,18 @@ Certbot is manually run on droplet and then TLS PKCS#12 is volume mounted to the
   * No TLS
 * Pipeline 2.0 - Prod 
   * Manual certbot + volumeMount
+	* 
+	```
+		apt update
+		apt-get -y install certbot
+		certbot certonly --standalone -d bakacore.com --agree-tos --register-unsafely-without-email
+		sudo openssl pkcs12 -export \
+			-in /etc/letsencrypt/live/bakacore.com/fullchain.pem \
+			-inkey /etc/letsencrypt/live/bakacore.com/privkey.pem \
+			-out /etc/letsencrypt/live/bakacore.com/keystore.p12 \
+			-name springboot \
+			-password pass:<placeholder>
+	```
 
 #### Secrets
 Secret management is handled via the following flow:
