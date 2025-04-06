@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Terraform: DigitalOcean Droplet"
+title: "Terraform - DigitalOcean Droplet"
 date: 2025-4-3
 tags: ["IaC"]
 published: true
