@@ -167,7 +167,7 @@ Secret management is handled via the following flow:
 * Create k8 secret via `kubectl create secret generic`
 * Helm chart pulls k8 secret via `secretKeyRef` and create env var in container
 * `application.properties`
-* I'll improve this process in the future and use something lik external secret operator
+* I'll improve this process in the future and use something like external secret operator
 
 #### Versioning
 Right now I don't really want to deal with versioning. I'm just tagging everything as `latest`. As a consequence, the deployment spec sees that image tag hasn't changed and won't update the pod. Even though `imagePullPolicy` is set to `Always`, the setting only applies on pod creation. In order to update the pod, the deployment needs to be restarted: `kubectl rollout restart deployment spring-app`. 
