@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Terraform: Module"
-date: 2025-4-17
+date: 2025-4-20
 tags: ["IaC"]
 published: false
 ---
@@ -13,6 +13,8 @@ published: false
 # Problem Statement
 
 Create a terraform module for `app-springboot` deployment that allows me to swap environments.
+
+# Interface
 
 # Book
 
@@ -30,6 +32,10 @@ https://github.com/hashicorp/terraform/releases
 * https://www.gruntwork.io/blog/terraform-up-running-3rd-edition-early-release-is-now-available
 
 # Design
+
+
+# Migration
+
 
 # Why not Pulimi?
 
