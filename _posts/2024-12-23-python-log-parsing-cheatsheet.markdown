@@ -156,7 +156,7 @@ def main():
 		print(sorted_tuple)
 		print()	
 
-		# dicitionaries are not directly sortable. sorted() takes in iterables, including dict, but will only return the keys in a a sorted list. function hash_map.items() turns a dict into a list of tuples, which sent through sorted() will sort the tuple by the value. 
+		# dicitionaries are not directly sortable. sorted() takes in iterables, including dict, but will only return the keys in a sorted list. function hash_map.items() turns a dict into a list of tuples, which sent through sorted() and leveraging lambdas will sort the list by the tuple value. 
 
 if __name__ == "__main__":
 	main()
