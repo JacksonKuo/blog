@@ -151,10 +151,12 @@ def main():
 		print(result)
 		print()
 
-		sorted_hash_map = sorted(hash_map.items(), key=lambda x:x[1], reverse=True)
-		print("#sorted hash map")
-		print(sorted_hash_map)
-		print()		
+		sorted_tuple = sorted(hash_map.items(), key=lambda x:x[1], reverse=True)
+		print("#sorted tuple")
+		print(sorted_tuple)
+		print()	
+
+		# dicitionaries are not directly sortable. sorted() takes in iterables, including dict, but will only return the keys in a a sorted list. function hash_map.items() turns a dict into a list of tuples, which sent through sorted() will sort the tuple by the value. 
 
 if __name__ == "__main__":
 	main()
@@ -171,7 +173,7 @@ python3 log-hashmap.py
 #oneliner
 {'184.105.139.67': 2}
 
-#sorted hash map
+#sorted tuple
 [('184.105.139.67', 2), ('46.19.138.234', 1), ('92.255.57.58', 1)]
 ```
 

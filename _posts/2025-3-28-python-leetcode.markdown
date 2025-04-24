@@ -333,6 +333,17 @@ CodeAcademy has a nice sandbox to refresh on the syntax. Python 3 is behind the 
     * iterate over two lists at once
     * `for a, b in zip(list_a, list_b):`
 
+* built-in data structures[^6]
+
+| built-in data structures | Dict | Set | List | Tuple |
+|---|---|---|---|---|---|
+| syntax | {} | {} | [] | () | 
+| duplication | N | N | Y | Y | 
+| empty | d = {} | a = set() | l = [] | t = () | 
+| sort | ordered (3.6+) | unordered | ordered | ordered |
+| change | mutable | mutable | mutable | immutable |
+
+
 # References
 
 [^1]: [https://docs.python-guide.org/writing/tests/](https://docs.python-guide.org/writing/tests/)
@@ -345,4 +356,4 @@ CodeAcademy has a nice sandbox to refresh on the syntax. Python 3 is behind the 
 
 [^5]: [https://www.codecademy.com/learn/learn-python](https://www.codecademy.com/learn/learn-python)
 
-
+[^6]: [https://www.geeksforgeeks.org/differences-and-applications-of-list-tuple-set-and-dictionary-in-python/](https://www.geeksforgeeks.org/differences-and-applications-of-list-tuple-set-and-dictionary-in-python/)
