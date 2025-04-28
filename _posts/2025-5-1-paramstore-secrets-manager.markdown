@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Browser Extension: URL Blocker"
-date: 2025-4-27
-tags: ["browser"]
+title: "AWS: Paramstore vs Secrets Manager"
+date: 2025-5-1
+tags: ["aws"]
 published: false
 ---
 

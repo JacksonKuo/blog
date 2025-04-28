@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Browser Extension: URL Blocker"
-date: 2025-4-27
-tags: ["browser"]
+title: "Terraform - Updates"
+date: 2025-4-30
+tags: ["IaC"]
 published: false
 ---
 

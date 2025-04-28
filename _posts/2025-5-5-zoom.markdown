@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Browser Extension: URL Blocker"
-date: 2025-4-27
-tags: ["browser"]
+title: "Zoom: RCE"
+date: 2025-5-5
+tags: ["detection"]
 published: false
 ---
 

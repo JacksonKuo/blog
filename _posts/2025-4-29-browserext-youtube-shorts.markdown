@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Browser Extension: URL Blocker"
-date: 2025-4-27
+date: 2025-4-29
 tags: ["browser"]
 published: false
 ---
@@ -11,11 +11,9 @@ published: false
 {:toc}
 
 # Problem Statement
-
 Create a chrome V3 Manifest extension that will block certain URLs. Let's use YT shorts as a good test case, which will have the added benefit of preventing me getting sucked into the mindless scrolling vortex.
 
 # Manifest Differences
-
 Years ago I wrote a V2 Manifest chrome extension that checks for a `x-java-serialized-object` header[^1]. But with V2 Manifest phase out in 10-10-2024[^2], what are the main differences between V2 and V3?[^3]
 
 | Component | V2 | V3 |
@@ -27,7 +25,6 @@ Years ago I wrote a V2 Manifest chrome extension that checks for a `x-java-seria
 | web request permissions | webRequestBlocking | declarativeNetRequest | 
 
 # URL Blocker
-
 I could have used UBlock Origin Lite or Tampermonkey or any of the multitudes of blockers on there, but I'm highly distrustful of chrome extensions and avoid running extensions unless I've personally written the code. 
 
 V3 Manifest uses Rules to block traffic. There sample code located here: [https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/api-samples/declarativeNetRequest/url-blocker](https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/api-samples/declarativeNetRequest/url-blocker). 
