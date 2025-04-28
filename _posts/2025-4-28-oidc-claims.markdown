@@ -42,7 +42,7 @@ A few years ago a colleague created a fantastic OIDC Claims security writeup. I 
 # Security
 There's a lot of potential security issues with OIDC, but I'm going to focus on claims. The biggest issue seems to be incorrectly using the `email` claim to identify a user. There are many reasons for not relying on emails for identity:
 
-1. Provider compromise: if any provider that a website allows login for is compromised, the result is account takeover. For example, say bakacore.com allows Google, Slack, and Facebook for login. And say, I have only ever logged in using Google. If these providers use the `email` claim for identity, then a compromise of Slack results in a compromise of my bakacore.com account. 
+1. Provider compromise: if any provider that a website allows login for is compromised, the result is account takeover. For example, say `bakacore.com` allows Google, Slack, and Facebook for login. And say, I have only ever logged in using Google. If these providers use the `email` claim for identity, then a compromise of Slack results in a compromise of my `bakacore.com` account. 
 2. Email recycle: if the email is ever recycled, e.g. an employee leaves the company and a new employee receives the old email, the new employee could potentially access any other accounts that the previous employee created with the original email
 3. Domain recycle: if the domain is ever recycled, the same thing can happen in the email recycle scenario
 4. IdP lacking email verification: some identity providers don't initially verify email, hence the `email_verified` claim. 
@@ -59,19 +59,19 @@ Google
 Microsoft
 > Never use claims like email, preferred_username or unique_name to store or determine whether the user in an access token should have access to data. These claims aren't unique and can be controllable by tenant administrators or sometimes users, which make them unsuitable for authorization decisions.
 
-It sounds like the `sub` claims is the ideal unique identifier for determining identity. There are some issues through with using the `sub` claim. Individual providers may guarantee that their `sub` identifier is unique, however they make no such claims that the `sub` identifier is unique between different providers. Provider A and Provider B many inadvertately use the many `sub` value. To account for this, applications should use a combination of `sub` + IdP to identify a user. 
+It sounds like the `sub` claims is the ideal unique identifier for determining identity. There are some issues though with using the `sub` claim. Individual providers may guarantee that their `sub` identifier is unique, however they make no such claims that the `sub` identifier is unique between different providers. Provider A and Provider B many inadvertately use the same `sub` value. To account for this, applications should use a combination of `sub` + IdP to identify a user. 
 
 Additionally, Trufflehog put out a blog post which went in-depth into the domain recycle scenario: [https://trufflesecurity.com/blog/millions-at-risk-due-to-google-s-oauth-flaw](https://trufflesecurity.com/blog/millions-at-risk-due-to-google-s-oauth-flaw). But interestingly they argue that the `sub` identifier does not solve this, because despite the Google documentation stating that `sub` never changes[^7]:
 
 > According to a staff engineer at a major tech company: “The sub claim changes in about 0.04% of logins from Log in with Google. For us, that's hundreds of users last week”.
 
-There's no further explanation for why this occurs. The crux on the issue seems to be what is causing these `sub` changes. If the `sub` changes when the account is destroyed, for example an employee leaves and a new employee takes over the old email, having the `sub` change in these situations seems 100% correct. The researcher further states that:
+There's no further explanation for why this occurs. The crux of this issue seems to be what is causing these `sub` changes. If the `sub` changes when the account is destroyed, for example an employee leaves and a new employee takes over the old email, having the `sub` change in these situations seems 100% correct. The researcher further states that:
 
 > Because the sub claim is inconsistent, it cannot be used to uniquely identify users - leaving services reliant on the email and hd claims.
 
 Using `sub` as a unique identifer as far as I'm aware is the prevailing wisdom. I'm hesitant to leave this guidance until I have a better understanding on when and why `sub` is changing. 
 
-Google did said `said they were working on a fix`, but there are no further details. Perhaps Google is working on making `sub` more consistent. Side note there's a lively and healthy discussion about this issue on Hacker News[^8], where someone also pointed out the `hd` field can't be trusted either.
+Google `said they were working on a fix`, but there are no further details. Perhaps Google is working on making `sub` more consistent. Side note there's a lively and healthy discussion about this issue on Hacker News[^8], where someone also pointed out the `hd` field can't be trusted either.
 
 # References
 [^1]: [https://developers.google.com/identity/openid-connect/openid-connect#an-id-tokens-payload](https://developers.google.com/identity/openid-connect/openid-connect#an-id-tokens-payload)
