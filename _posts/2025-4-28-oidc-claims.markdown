@@ -71,7 +71,11 @@ There's no further explanation for why this occurs. The crux of this issue seems
 
 Using `sub` as a unique identifer as far as I'm aware is the prevailing wisdom. I'm hesitant to leave this guidance until I have a better understanding on when and why `sub` is changing. 
 
-Google `said they were working on a fix`, but there are no further details. Perhaps Google is working on making `sub` more consistent. Side note there's a lively and healthy discussion about this issue on Hacker News[^8], where someone also pointed out the `hd` field can't be trusted either.
+Google `said they were working on a fix`, but there are no further details. Perhaps Google is working on making `sub` more consistent. Side note there's a lively and healthy discussion about this issue on Hacker News[^8], where someone also pointed out the `hd` field can't be trusted either, which is something I'll have to investigate later..
+
+> **delfinom**:
+> Yea "hd" doesn't work here.
+> Users can make google accounts with corporate domains but without gsuite hosting attached. The same concern applies to just @gmail.com addys.
 
 # References
 [^1]: [https://developers.google.com/identity/openid-connect/openid-connect#an-id-tokens-payload](https://developers.google.com/identity/openid-connect/openid-connect#an-id-tokens-payload)
