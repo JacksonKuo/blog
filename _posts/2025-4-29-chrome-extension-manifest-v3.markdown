@@ -56,7 +56,7 @@ However when filtering for `https://www.youtube.com/shorts/OkR5f2hElwU` things g
 > The webpage at https://www.youtube.com/shorts/OkR5f2hElwU might be temporarily down or it may have moved permanently to a new web address.  
 > `ERR_FAILED`  
 
-An error page is still an error page, I guess. However the bigger issue is that shorts are still accessible through navigation. Even when `sub_frame` is added to the `resourceTypes`. Youtube does not use regular redirects when clicking shorts, but instead in SPA fashion updates the DOM and then rewrites the url address to `/shorts/xxx`. This page update does not trigger the extension block rule at all. 
+An error page is still an error page, I guess. However the bigger issue is that Shorts are still accessible through navigation. Even when `sub_frame` is added to the `resourceTypes`. Youtube does not use regular redirects when clicking Shorts, but instead in SPA fashion updates the DOM and then rewrites the url address to `/shorts/xxx`. This page update does not trigger the extension block rule at all. 
 
 Note that `declarativeNetRequest` does not need `host_permissions` to block a site. `host_permissions` is required when attempting to redirect requests.[^6]
 
@@ -94,7 +94,7 @@ There is an experimental Navigation API[^7] that was specifically tailored for i
 
 > This is a successor to previous web platform features such as the History API and window.location, which solves their shortcomings and is specifically aimed at the needs of single-page applications (SPAs).
 
-Using an event listener should be much more efficient than repeating calling JS every 500 ms. Note this method doesn't proc on direct navigation to shorts URLs, i.e. directly going to `https://www.youtube.com/shorts/OkR5f2hElwU`, but direct navigation is pretty rare and not something I'm super concerned about. 
+Using an event listener should be much more efficient than repeating calling JS every 500 ms. Note this method doesn't proc on direct navigation to Shorts URLs, i.e. directly going to `https://www.youtube.com/shorts/OkR5f2hElwU`, but direct navigation is pretty rare and not something I'm super concerned about. 
 
 ```js
 window.navigation.addEventListener("navigate", (event) => {
