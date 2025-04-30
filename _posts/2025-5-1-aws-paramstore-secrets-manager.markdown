@@ -11,3 +11,7 @@ published: false
 {:toc}
 
 # Problem Statement
+
+paramstore 
+secrets manager
+kms
