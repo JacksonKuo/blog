@@ -20,7 +20,7 @@ The 3rd edition has a nice section covering new features: *Changes from the Seco
 * secret mangement
 * multiple providers
 
-The following will be rote walkthrough of the new sections of Terraform: Up & Running 3rd edition, along with any definitions or interesting points that standout:
+The following will be rote walkthrough of the new sections of Terraform: Up & Running 3rd edition, along with any definitions or interesting points that standout.
 
 #### Chapter 5 -  Moved Blocks
 
