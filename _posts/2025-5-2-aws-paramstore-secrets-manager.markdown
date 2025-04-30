@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AWS: Paramstore vs Secrets Manager"
-date: 2025-5-1
+date: 2025-5-2
 tags: ["aws"]
 published: false
 ---

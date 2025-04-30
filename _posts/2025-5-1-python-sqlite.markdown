@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Python: SQLite"
-date: 2025-5-3
-tags: ["dbs"]
+title: "Python: SQL Query and Export"
+date: 2025-5-1
+tags: ["db"]
 published: false
 ---
 
@@ -11,10 +11,14 @@ published: false
 {:toc}
 
 # Problem Statement
-Setup a DB with a columns that has IP and JSON data. Using Python and SQL, efficiently query the both IP and JSON data using indexing and serialization and output the results to a file in S3.
+Setup a DB with columns that have IP and JSON data. Using Python and SQL, efficiently query the both IP and JSON data using indexing and serialize the output to a file in S3.
 
-# 
+# zzz
 
+json.load
+alchemy
+indexing
+serialize
 
 # References
 [^1]: []()

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Security Tooling"
-date: 2025-5-6
+date: 2025-5-5
 tags: ["browser"]
 published: false
 ---
