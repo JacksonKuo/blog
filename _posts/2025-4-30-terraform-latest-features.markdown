@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Terraform: Latest Features"
+title: "Terraform: Modern Features"
 date: 2025-4-30
 tags: ["IaC"]
 published: true

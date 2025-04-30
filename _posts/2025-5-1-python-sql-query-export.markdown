@@ -22,7 +22,7 @@ state mechanism, in db?
 every 1 hr, written to file?
 date time
 
-
+ways to make as efficient for large data
 
 # Query
 
