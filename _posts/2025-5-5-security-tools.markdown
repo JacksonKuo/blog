@@ -19,3 +19,8 @@ Create a list of tools that check the implementation for security issues:
 * Github Actions: zizmor
 * Github Actions: gato-x
 * SSH: sshamble
+
+
+# cheatsheets
+
+https://cloud.hacktricks.wiki/en/pentesting-ci-cd/okta-security/okta-hardening.html
