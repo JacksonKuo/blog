@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Chrome Extension: Manifest V3"
+title: "Chrome Extension - Manifest V3"
 date: 2025-4-29
 tags: ["browser"]
 published: true
