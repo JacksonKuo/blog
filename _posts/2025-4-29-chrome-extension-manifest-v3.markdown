@@ -87,7 +87,7 @@ setInterval(() => {
 }, 500);
 ```
 
-This version isn't very efficient, as `setInterval` runs every 500 ms on every `www.youtube.com` page. Let's us if we can come up with a more ideal version.
+This version isn't very efficient, as `setInterval` runs every 500 ms on every `www.youtube.com` page. Let's see if we can come up with a more ideal version.
 
 #### Version 4
 There is an experimental Navigation API[^7] that was specifically tailored for intercepting SPA navigation events:
