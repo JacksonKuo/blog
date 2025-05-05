@@ -36,5 +36,5 @@ indexing
 serialize
 
 # References
-[^1]: []()
+[^1]: [https://nerderati.com/a-python-epoch-timestamp-timezone-trap/](https://nerderati.com/a-python-epoch-timestamp-timezone-trap/)
 
