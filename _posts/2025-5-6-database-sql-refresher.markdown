@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "SQL: Refresher Course"
-date: 2025-5-3
+title: "Database: SQL Refresher Course"
+date: 2025-5-15
 tags: ["database"]
 published: false
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "SQL: Corrolate"
-date: 2025-5-3
+title: "Database: Corrolate"
+date: 2025-5-15
 tags: ["database"]
 published: false
 ---
