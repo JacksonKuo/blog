@@ -13,7 +13,7 @@ published: true
 # Problem Statement
 Create a terraform module for `app-springboot` deployment that allows me to easily swap cloud environments.
 
-# Interface
+# Module Interface
 My expected interface is below, effectively one main variable `cloud_provider` which will dictate which cloud platform the infrastructure will be created in. Note that when different cloud environments are introduced the CI/CD pipeline will need to be modified. Currently the pipeline works with a droplet.
 
 ```yaml
@@ -27,8 +27,8 @@ module springboot_app {
 }
 ```
 
-# Design
-My previous terraform housed all resources in the same `main.tf` file: [https://jacksonkuo.github.io/blog/2025/04/03/terraform-droplet.html](https://jacksonkuo.github.io/blog/2025/04/03/terraform-droplet.html). The new module is composed of many modules, one root module called `multicloud` and multiple reusable modules. The conditional logic uses the `count` operator to determine if a resource should be created: `count = var.cloud_provider == "digitalocean" ? 1 : 0`.
+# Module Design
+My previous terraform housed all resources in the same `main.tf` file: [https://jacksonkuo.github.io/blog/2025/04/03/terraform-droplet.html](https://jacksonkuo.github.io/blog/2025/04/03/terraform-droplet.html). The new module is composed of many sub-modules: one root module called `multicloud` and multiple reusable modules. The conditional logic uses the `count` operator to determine if a resource should be created: `count = var.cloud_provider == "digitalocean" ? 1 : 0`.
 
 ```yaml
 * live
@@ -60,11 +60,11 @@ I'm not sure how much this applies to me. The `do_secrets` module does have a de
 
 > *Every time you include a provider block in your code, Terraform spins up a new process to run that provider*
 
-I'm only providing Provider blocks in my root module. Also note that `required_providers` is perfectly fine to include in reusable modules and is actually required.[^1] Normal aliases are not needed since each provider is a different cloud environment. However I am running into conflicts where the default `hashicorp` provider pattern is being expected. I suspect this is because I'm using custom providers. To mitigate the errors, I'm passing the `providers` explicitly using configuration aliases from `live/prod` > `multicloud/cluster` > `digitaloceans/droplet` and `github/secrets`. Lastly, keeping providers out of reusable modules is important for performance. Having the provider run once in the root module avoids inadvertently opening up hundreds of processes if/when reusable modules are frequently called.
+I'm only declaring a provider block in my root module. Also note that `required_providers` is perfectly fine to include in reusable modules and is actually required.[^1] Normal aliases are not needed since each provider is a different cloud environment. However I am running into conflicts where the default `hashicorp` provider pattern is being expected. I suspect this is because I'm using custom providers. To mitigate the errors, I'm passing the `providers` explicitly using configuration aliases from `live/prod` > `multicloud/cluster` > `digitaloceans/droplet` and `github/secrets`. Lastly, keeping providers out of reusable modules is important for performance. Having the provider run once in the root module avoids inadvertently opening up hundreds of processes if/when reusable modules are frequently called.
 
 > *key difference from normal provider aliases is that configuration aliases don’t create any providers themselves; instead, they force users of your module to explicitly pass in a provider for each of your configuration aliases using a providers map*
 
-I do declared `configuration_aliases = [digitalocean.*]` to make passing the provider explicit. And I do label the parent (root) and child (reusable) config aliases just to show how the variables are being mapped and passed through.
+I do declared `configuration_aliases = [digitalocean.*]` to make passing the provider explicit. And I do label the parent (root) and child (reusable) configuration aliases just to show how the variables are being mapped and passed through.
 
 ```yaml
 terraform {
