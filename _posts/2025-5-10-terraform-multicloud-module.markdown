@@ -45,7 +45,7 @@ Source code is located here: [https://github.com/JacksonKuo/terraform](https://g
         * cluster
 ```
 
-A couple issues pointed out by the Terraform: Up & Running 3rd edition book.
+A couple issues pointed out by the Terraform: Up & Running 3rd edition book[^1].
 
 > *If you’re using multiple clouds, you’re far better off managing each one in a separate module.*
 > *you want each provider to be isolated in its own module so that you can manage it separately and limit the blast radius from mistakes or attackers*
@@ -62,7 +62,7 @@ I'm not sure how much this applies to me. The `do_secrets` module does have a de
 
 > *Every time you include a provider block in your code, Terraform spins up a new process to run that provider*
 
-I'm only declaring a provider block in my root module. Also note that `required_providers` is perfectly fine to include in reusable modules and is actually required.[^1] Normal aliases are not needed since each provider is a different cloud environment. However I am running into conflicts where the default `hashicorp` provider pattern is being expected. I suspect this is because I'm using custom providers. To mitigate the errors, I'm passing the `providers` explicitly using configuration aliases from `live/prod` > `multicloud/cluster` > `digitaloceans/droplet` and `github/secrets`. Lastly, keeping providers out of reusable modules is important for performance. Having the provider run once in the root module avoids inadvertently opening up hundreds of processes if/when reusable modules are frequently called.
+I'm only declaring a provider block in my root module. Also note that `required_providers` is perfectly fine to include in reusable modules and is actually required.[^2] Normal aliases are not needed since each provider is a different cloud environment. However I am running into conflicts where the default `hashicorp` provider pattern is being expected. I suspect this is because I'm using custom providers. To mitigate the errors, I'm passing the `providers` explicitly using configuration aliases from `live/prod` > `multicloud/cluster` > `digitaloceans/droplet` and `github/secrets`. Lastly, keeping providers out of reusable modules is important for performance. Having the provider run once in the root module avoids inadvertently opening up hundreds of processes if/when reusable modules are frequently called.
 
 > *key difference from normal provider aliases is that configuration aliases don’t create any providers themselves; instead, they force users of your module to explicitly pass in a provider for each of your configuration aliases using a providers map*
 
@@ -88,4 +88,7 @@ terraform {
 Deployment successful and my multi-cloud module gives me the extensibility for other cloud deployments. 
 
 # References
-[^1]: [https://developer.hashicorp.com/terraform/language/modules/develop/providers](https://developer.hashicorp.com/terraform/language/modules/develop/providers)
+[^1]: [https://jacksonkuo.github.io/blog/2025/04/30/terraform-modern-features.html](https://jacksonkuo.github.io/blog/2025/04/30/terraform-modern-features.html)
+
+[^2]: [https://developer.hashicorp.com/terraform/language/modules/develop/providers](https://developer.hashicorp.com/terraform/language/modules/develop/providers)
+
