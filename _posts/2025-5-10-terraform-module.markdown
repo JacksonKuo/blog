@@ -11,33 +11,26 @@ published: false
 {:toc}
 
 # Problem Statement
-
-Create a terraform module for `app-springboot` deployment that allows me to swap environments.
+Create a terraform module for `app-springboot` deployment that allows me to swap cloud environments.
 
 # Interface
+My expected interface is below, effectively one main variable `cloud_provider` which will dictate which cloud platform the infrastructure will be created in. Note that when different cloud environments are introduced the CI/CD pipeline will need to be modified. Currently the pipeline works with a droplet
 
-# Book
-
-Terraform: Up and Running: Writing Infrastructure as Code
-[https://www.amazon.com/dp/1098116747/](https://www.amazon.com/dp/1098116747/)
-
-Current - 1.12
-3rd edition - 1.2 - September 19, 2022
-2nd edition - 0.9 through 0.12 - September 2019
-https://github.com/hashicorp/terraform/releases
-
-# Terraform Diff
-
-* https://www.reddit.com/r/devops/comments/sqqfz0/is_the_book_terraform_up_running_still_relevant/
-* https://www.gruntwork.io/blog/terraform-up-running-3rd-edition-early-release-is-now-available
+```yaml
+module springboot_app {
+    source = "../../modules/multicloud/cluster"
+    providers = {
+        digitalocean = digitalocean
+        github = github
+    }
+    cloud_provider = "digitalocean"
+}
+```
 
 # Design
+According to Terraform: Up & Running 3rd edition, multi-cloud modules are a bit frowned upon. 
 
 
-# Migration
-
-
-# Why not Pulimi?
 
 # References
 [^1]: [][]

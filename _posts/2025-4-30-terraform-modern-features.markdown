@@ -192,7 +192,7 @@ written in Go to implement a specific interface... designed to work with some pl
         * *typically only include HOSTNAME for custom providers that you’re downloading from private Terraform Registries*
         * *important to control the version of the provider... recommend always including a `required_providers`*
     * How do you use providers?
-        * *`required_providers` block to your code tospecify which provider*
+        * *`required_providers` block to your code to specify which provider*
         * *add a `provider` block to configure that provider*
         * *Once you’ve configured a provider, all the resources and data sources from that provider...will automatically use that configuration*
 * Working with multiple copies of the same provider
