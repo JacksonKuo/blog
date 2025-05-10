@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Terraform: Multi-Cloud Module"
-date: 2025-5-7
+date: 2025-5-10
 tags: ["IaC"]
 published: false
 ---
