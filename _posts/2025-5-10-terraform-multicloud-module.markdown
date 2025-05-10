@@ -45,22 +45,24 @@ My previous terraform housed all resources in the same `main.tf` file: [https://
 
 A couple issues pointed out by the Terraform: Up & Running 3rd edition book.
 
-* `If you’re using multiple clouds, you’re far better off managing each one in a separate module.`
-* `you want each provider to be isolated in its own module so that you can manage it separately and limit the blast radius from mistakes or attackers.`
+> *If you’re using multiple clouds, you’re far better off managing each one in a separate module.*
+> *you want each provider to be isolated in its own module so that you can manage it separately and limit the blast radius from mistakes or attackers*
 
 In the real world, a multi-cloud module might be too much of a hassle to maintain, but for my use case, I still want to implement one for the hell of it.
 
-* `Moreover, Terraform doesn’t have great support for dependency ordering between providers.`
+> *Moreover, Terraform doesn’t have great support for dependency ordering between providers*
 
 I'm not sure how much this applies to me. The `do_secrets` module does have a dependency of the `do_droplet` module, which means module call order should be automatically handled by terraform and a non-issue. However I added a `depends_on = [module.eks_cluster]` to be explicit. 
 
-* `Defining provider blocks within reusable modules is an antipattern`
-* `you should not define any provider blocks in your reusable modules and instead allow your users to create the provider blocks`
-* `Every time you include a provider block in your code, Terraform spins up a new process to run that provider`
+> *Defining provider blocks within reusable modules is an antipattern*
 
-I'm only providing Provider blocks in my root module. Also note that `required_providers` is perfectly fine to include in reusable modules and is actually required.[^1]. Normal aliases are not needed since each provider is a different cloud environment. However I am running into conflicts where the default `hashicorp` provider pattern is being expected. I suspect this is because I'm using custom providers. To mitigate the errors, I'm passing the `providers` explicitly using configuration aliases from `live/prod` > `multicloud/cluster` > `digitaloceans/droplet` and `github/secrets`. Lastly, keeping providers out of reusable modules is important for performance. Having the provider run once in the root module avoids inadvertently opening up hundreds of processes if/when reusable modules are frequently called.
+> *you should not define any provider blocks in your reusable modules and instead allow your users to create the provider blocks*
 
-* *key difference from normal provider aliases is that configuration aliases don’t create any providers themselves; instead, they force users of your module to explicitly pass in a provider for each of your configuration aliases using a providers map.*
+> *Every time you include a provider block in your code, Terraform spins up a new process to run that provider*
+
+I'm only providing Provider blocks in my root module. Also note that `required_providers` is perfectly fine to include in reusable modules and is actually required.[^1] Normal aliases are not needed since each provider is a different cloud environment. However I am running into conflicts where the default `hashicorp` provider pattern is being expected. I suspect this is because I'm using custom providers. To mitigate the errors, I'm passing the `providers` explicitly using configuration aliases from `live/prod` > `multicloud/cluster` > `digitaloceans/droplet` and `github/secrets`. Lastly, keeping providers out of reusable modules is important for performance. Having the provider run once in the root module avoids inadvertently opening up hundreds of processes if/when reusable modules are frequently called.
+
+> *key difference from normal provider aliases is that configuration aliases don’t create any providers themselves; instead, they force users of your module to explicitly pass in a provider for each of your configuration aliases using a providers map*
 
 I do declared `configuration_aliases = [digitalocean.*]` to make passing the provider explicit. And I do label the parent (root) and child (reusable) config aliases just to show how the variables are being mapped and passed through.
 
@@ -84,4 +86,4 @@ terraform {
 Deployment successful and my multi-cloud module gives me the extensibility for other cloud deployments. 
 
 # References
-[^1]: [https://developer.hashicorp.com/terraform/language/modules/develop/providers][https://developer.hashicorp.com/terraform/language/modules/develop/providers]
+[^1]: [https://developer.hashicorp.com/terraform/language/modules/develop/providers](https://developer.hashicorp.com/terraform/language/modules/develop/providers)
