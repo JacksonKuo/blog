@@ -30,6 +30,8 @@ module springboot_app {
 # Module Design
 My previous terraform housed all resources in the same `main.tf` file: [https://jacksonkuo.github.io/blog/2025/04/03/terraform-droplet.html](https://jacksonkuo.github.io/blog/2025/04/03/terraform-droplet.html). The new module is composed of many sub-modules: one root module called `multicloud` and multiple reusable modules. The conditional logic uses the `count` operator to determine if a resource should be created: `count = var.cloud_provider == "digitalocean" ? 1 : 0`.
 
+Source code is located here: [https://github.com/JacksonKuo/terraform](https://github.com/JacksonKuo/terraform)
+
 ```yaml
 * live
     * prod
