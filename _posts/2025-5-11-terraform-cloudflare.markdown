@@ -68,9 +68,9 @@ data "cloudflare_zone" "bakacore" {
 ```
 
 #### Issues
-I ran into two minor issues. The first being that Cloudflare only supports proxying HTTPS using the following ports: 443, 2053, 2083, 2087, 2096, 8443.[^9] I was originally on `8087`, and had to move over to `8443`. 
+I ran into two minor issues. The first being that Cloudflare only supports proxying HTTPS using the following ports: `443, 2053, 2083, 2087, 2096, 8443`.[^9] I was originally on `8087`, and had to move over to `8443`. 
 
-However going to `https://bakacore.com:443` shows this unappealing Cloudflare *Web server is down* page. Cloudflare apparently will always accept from 443 and there's no way to turn this page off without using a Cloudflare worker. Oh well, it's nothing I really care about that much right now..
+However going to `https://bakacore.com:443` shows this unappealing Cloudflare *Error 521: Web server is down* page. Cloudflare apparently will always accept from 443 and there's no way to turn this page off without using a Cloudflare worker. Also note that Custom Error pages can not be set for error codes between `520` and `527`.[^10] Oh well, it's nothing I really care about that much right now... 
 
 The second issue was that my local laptop DNS was using a DNS server set by my routers ISP. This IPv6 nameserver was frequently offline for a few minutes and back online for 5 mins and would continuously cycle between down and available. This unstableness resulted in a random `DNS_PROBE_FINISHED_NXDOMAIN` errors when trying to resolve `bakacore.com`. I switched my default DNS server to `1.1.1.1` which fixed the issue.
 
@@ -94,3 +94,5 @@ The second issue was that my local laptop DNS was using a DNS server set by my r
 [^8]: [https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zone](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zone)
 
 [^9]: [https://developers.cloudflare.com/fundamentals/reference/network-ports/](https://developers.cloudflare.com/fundamentals/reference/network-ports/)
+
+[^10]: [https://developers.cloudflare.com/rules/custom-errors/](https://developers.cloudflare.com/rules/custom-errors/)
