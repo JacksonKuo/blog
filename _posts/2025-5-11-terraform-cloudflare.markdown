@@ -11,7 +11,7 @@ published: true
 {:toc}
 
 # Problem Statement
-Configure a `bakacore.com` Cloudflare zone.[^1]
+Configure a `bakacore.com` Cloudflare zone[^1]
 
 # Configuration
 
