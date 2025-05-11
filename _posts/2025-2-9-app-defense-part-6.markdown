@@ -26,8 +26,8 @@ The next application defense to build is multi-factor authentication (MFA) using
 * Twilio documentation: 
     * [https://www.twilio.com/docs/verify/api](https://www.twilio.com/docs/verify/api)
 * MFA endpoint: 
-    * [https://bakacore.com:8087/mfa](https://bakacore.com:8087/mfa)
-    * [https://bakacore.com:8087/mfa/verify](https://bakacore.com:8087/mfa/verify)
+    * [https://bakacore.com:8443/mfa](https://bakacore.com:8443/mfa)
+    * [https://bakacore.com:8443/mfa/verify](https://bakacore.com:8443/mfa/verify)
 * MfaController: 
     * [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/controller/MfaController.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/controller/MfaController.java)
 

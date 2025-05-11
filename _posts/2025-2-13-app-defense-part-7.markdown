@@ -43,7 +43,7 @@ As for authentication, the default mTLS authentication seems a bit too unwieldy 
 # Smokescreen
 Smokescreen is built into a image and saved into ghcr.io. Helm charts then pull the image into the cluster.
 
-* Endpoint: [https://bakacore.com:8087/smokescreen](https://bakacore.com:8087/smokescreen)
+* Endpoint: [https://bakacore.com:8443/smokescreen](https://bakacore.com:8443/smokescreen)
 * Repository: [https://github.com/JacksonKuo/app-smokescreen](https://github.com/JacksonKuo/app-smokescreen)
 * Service: ~~[https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/controller/SmokescreenController.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/controller/SmokescreenController.java)~~
 * Controller: [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/service/SmokescreenService.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/service/SmokescreenService.java)

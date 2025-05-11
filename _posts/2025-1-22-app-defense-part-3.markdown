@@ -25,7 +25,7 @@ Integation hCaptcha on a Spring Boot web endpoint:
 * hCaptcha documentation: 
     * [https://docs.hcaptcha.com/](https://docs.hcaptcha.com/)
 * hCaptcha endpoint: 
-    * [https://bakacore.com:8087/captcha](https://bakacore.com:8087/captcha)
+    * [https://bakacore.com:8443/captcha](https://bakacore.com:8443/captcha)
 * CaptchaController: 
     * [https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/CaptchaController.java](https://github.com/JacksonKuo/app-springboot/blob/main/src/main/java/com/jkuo/sample/CaptchaController.java)
 
@@ -60,7 +60,7 @@ The Spring Boot app requires the hCaptcha sitekey secret. This secret is safely 
 
 ```bash
 java -jar myapp.jar --spring.profiles.active=local
-docker run -e HCAPTCHA_SECRET=$HCAPTCHA_SECRET -p 8087:8087 springboot
+docker run -e HCAPTCHA_SECRET=$HCAPTCHA_SECRET -p 8443:8443 springboot
 ```
 
 # Future Improvements

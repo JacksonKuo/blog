@@ -80,7 +80,7 @@ docker:
 	docker build -t springboot --build-arg BASE_IMAGE="openjdk:17-jdk-slim" .
 
 cluster:
-	k3d cluster create local-cluster --port 8087:8087@loadbalancer
+	k3d cluster create local-cluster --port 8443:8443@loadbalancer
 
 secrets:
 	kubectl delete secret hcaptcha-secret --ignore-not-found
@@ -208,7 +208,7 @@ free --mega
 
 [^2]: The `~/.kube/config` created points to `host.docker.internal` which does not resolve correctly. Short fix is to change the address to `localhost`. Long-term fix is to edit `/etc/host` with `127.0.0.1 host.docker.internal`
 
-[^3]: Alternative to using loadbalancer is port-forwarding: `kubectl port-forward svc/springboot-service 8087:8087`
+[^3]: Alternative to using loadbalancer is port-forwarding: `kubectl port-forward svc/springboot-service 8443:8443`
 
 [^4]: Note that k3d will add a `REDIS_PORT` environment var which will overwrite the `application.properties` file if `redis.port` field exists. Use `spring.redis.port` instead. Spring Boot will auto map `_` to `.`. 
 
