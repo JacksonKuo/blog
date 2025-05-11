@@ -45,9 +45,7 @@ The encryption mode is set to `Full (Strict)`[^4] [^5].
 * `Full (Strict)`: Allows HTTP/HTTPS, validates the Origin HTTPS cert
 * `Strict (SSL-Only Origin Pull)`: Only HTTPS, validates the Origin HTTPS cert
 
-Since we already have a valid public certificate from Certbot, `Full (Strict)` makes sense. In the future I might want to expose a HTTP endpoint.
-
-I also noticed that Connection #1 used a Google certificate. Turns out that Cloudflare's Universal Certificate can created using Google Trust Services.[^7]
+Since we already have a valid public certificate from Certbot, `Full (Strict)` makes sense. In the future I might want to expose a HTTP endpoint. I also noticed that Connection #1 used a Google certificate. Turns out that Cloudflare's Universal Certificate can created using Google Trust Services.[^7]
 
 #### Terraform
 CF DNS records require a `zone_id`, which can be pulled using a `filter` attribute.[^8] The `zone_id` isn't necessarily sensitive, more like system information, but I'll still pull the value using terraform instead of placing the value in source code. 
