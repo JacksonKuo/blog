@@ -75,7 +75,9 @@ However going to `https://bakacore.com:443` shows this unappealing Cloudflare *W
 The second issue was that my local laptop DNS was using a DNS server set by my routers ISP. This IPv6 nameserver was frequently offline for a few minutes and back online for 5 mins and would continuously cycle between down and available. This unstableness resulted in a random `DNS_PROBE_FINISHED_NXDOMAIN` errors when trying to resolve `bakacore.com`. I switched my default DNS server to `1.1.1.1` which fixed the issue.
 
 # References
-[^1]: Note a Cloudflare zone means a domain added to Cloudflare. [https://developers.cloudflare.com/fundamentals/setup/accounts-and-zones/](https://developers.cloudflare.com/fundamentals/setup/accounts-and-zones/)
+[^1]: Note a Cloudflare zone means a domain added to Cloudflare: [https://developers.cloudflare.com/fundamentals/setup/accounts-and-zones/](https://developers.cloudflare.com/fundamentals/setup/accounts-and-zones/). Whereas a DNS Zone, *is a portion of the DNS namespace that is managed by a specific organization or administrator*: [https://www.cloudflare.com/learning/dns/glossary/dns-zone/](https://www.cloudflare.com/learning/dns/glossary/dns-zone/). Essentially, a CF Zone is a CF-specific DNS Zone, but includes the ability to do additional CF features like security, performance, etc... 
+
+[]()
 
 [^2]: [https://developers.cloudflare.com/fundamentals/setup/manage-domains/add-site/](https://developers.cloudflare.com/fundamentals/setup/manage-domains/add-site/)
 
