@@ -74,7 +74,7 @@ I ran into two minor issues. The first being that Cloudflare only supports proxy
 
 However going to `https://bakacore.com:443` shows this unappealing Cloudflare *Web server is down* page. There is apparently is no way to turn this page off without using a Cloudflare worker. Oh well, it's nothing I really care about that much right now..
 
-The second issue was that my local laptop DNS was using a DNS server set by my routers ISP. This IPv6 nameserver was frequently offline for a few minutes and back online for 5 mins and would continuous cycle between down and available. This unstableness resulted in a random `DNS_PROBE_FINISHED_NXDOMAIN` errors when trying to resolve `bakacore.com`. I wwitched my default DNS server to `1.1.1.1` which fixed the issue.
+The second issue was that my local laptop DNS was using a DNS server set by my routers ISP. This IPv6 nameserver was frequently offline for a few minutes and back online for 5 mins and would continuous cycle between down and available. This unstableness resulted in a random `DNS_PROBE_FINISHED_NXDOMAIN` errors when trying to resolve `bakacore.com`. I switched my default DNS server to `1.1.1.1` which fixed the issue.
 
 # References
 [^1]: [https://developers.cloudflare.com/fundamentals/setup/manage-domains/add-site/](https://developers.cloudflare.com/fundamentals/setup/manage-domains/add-site/)
