@@ -77,8 +77,6 @@ The second issue was that my local laptop DNS was using a DNS server set by my r
 # References
 [^1]: Note a Cloudflare zone means a domain added to Cloudflare: [https://developers.cloudflare.com/fundamentals/setup/accounts-and-zones/](https://developers.cloudflare.com/fundamentals/setup/accounts-and-zones/). Whereas a DNS Zone, *is a portion of the DNS namespace that is managed by a specific organization or administrator*: [https://www.cloudflare.com/learning/dns/glossary/dns-zone/](https://www.cloudflare.com/learning/dns/glossary/dns-zone/). Essentially, a CF Zone is a CF-specific DNS Zone, but includes the ability to do additional CF features like security, performance, etc... 
 
-[]()
-
 [^2]: [https://developers.cloudflare.com/fundamentals/setup/manage-domains/add-site/](https://developers.cloudflare.com/fundamentals/setup/manage-domains/add-site/)
 
 [^3]: [https://developers.cloudflare.com/dns/zone-setups/](https://developers.cloudflare.com/dns/zone-setups/)
