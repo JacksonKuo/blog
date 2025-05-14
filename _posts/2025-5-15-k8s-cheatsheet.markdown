@@ -15,7 +15,6 @@ The do and don't for k8 security. I always end up forgetting the exact k8s secur
 
 # K8s Hardening
 I'm ignoring attacks against the control plane and assuming control plane security is handled by the cloud provider. If we want a nice mnemonic to help remember the various hardening areas, we can use the acronym: `SCAN-PIL`:
-
 * `(S)ecrets, (C)ontrol plane, (A)uthN/authZ, (N)etwork`
 * `(P)od security, (I)mages, (L)ogging`
 
@@ -148,7 +147,7 @@ kubectl get rolebindings
 kubectl describe clusterrolebinding 
 ```
 
-#### Thoughts and Future Ideas
+# Thoughts and Future Ideas
 Note this list is just the tip of the iceberg, is incomplete in some areas, and is fairly vendor agnostic. There are cloud vendor specific hardening that is not included, like: Azure Cluster administrator users without PIM[^12]. But regardless, this is a good base template that'll be more helpful than me trying to remember everything off the cuff. 
 
 Some future projects I plan on doing, include:
