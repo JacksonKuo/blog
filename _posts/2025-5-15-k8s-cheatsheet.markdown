@@ -11,7 +11,7 @@ published: true
 {:toc}
 
 # Problem Statement
-The do and don't for k8 security. I always end up forgetting the various guidance off the top of my head, hence the cheatsheet.
+The do and don't for k8 security. I always end up forgetting the exact k8s security issues I usually look for during a pentest, hence the cheatsheet.
 
 # K8s Hardening
 I'm ignoring attacks against the control plane and assuming control plane security is handled by the cloud provider. If we want a nice mnemonic to help remember the various hardening areas, we can use the acronym: `SCAN-PIL`:
@@ -30,6 +30,7 @@ I'm ignoring attacks against the control plane and assuming control plane securi
         * risky roles
             * system:anonymous user / system:unauthenticated
             * system:masters (bypasses RBAC)[^2]
+            * default:view
         * risky permissions[^3] [^4]
             * Roles and RoleBindings instead of ClusterRoles and ClusterRoleBindings
             * Any verb or resource with `*`
@@ -148,7 +149,9 @@ kubectl describe clusterrolebinding
 ```
 
 #### Thoughts and Future Ideas
-Note this list is just the tip of the iceberg, is incomplete in some areas, and is fairly vendor agnostic. There are cloud vendor specific hardening that is not included, like: Azure Cluster administrator users without PIM[^12]. But regardless, this is a good base template. Some future projects will include:
+Note this list is just the tip of the iceberg, is incomplete in some areas, and is fairly vendor agnostic. There are cloud vendor specific hardening that is not included, like: Azure Cluster administrator users without PIM[^12]. But regardless, this is a good base template that'll be more helpful than me trying to remember everything off the cuff. 
+
+Some future projects I plan on doing, include:
 * practical privilege escalation and attack chains
 * writing a custom controller or operator
 * hardening my k3/k8s infrastructure
