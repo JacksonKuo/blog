@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AI Exploration: Part VII - CAMEL"
-date: 2025-5-14
+date: 2025-5-15
 tags: ["ai"]
 published: false
 ---

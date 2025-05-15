@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "AI Exploration: Part VI - Model Context Protocol"
-date: 2025-5-14
+title: "AI Exploration: Part VI - MCP"
+date: 2025-5-15
 tags: ["ai"]
 published: false
 ---

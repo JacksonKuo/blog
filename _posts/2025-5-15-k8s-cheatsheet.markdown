@@ -156,7 +156,7 @@ Some future projects I plan on doing, include:
 * hardening my k3/k8s infrastructure
 
 # References
-[^1]: [https://www.aquasec.com/blog/kubernetes-configmap-secrets/](https://www.aquasec.com/blog/kubernetes-configmap-secrets/), [https://github.com/rancher/rke/issues/1024](https://github.com/rancher/rke/issues/1024)
+[^1]: [https://www.aquasec.com/blog/kubernetes-configmap-secrets/](https://www.aquasec.com/blog/kubernetes-configmap-secrets/), [rke](https://github.com/rancher/rke/issues/1024)
 
 [^2]: [https://www.aquasec.com/blog/kubernetes-authorization/](https://www.aquasec.com/blog/kubernetes-authorization/)
 
