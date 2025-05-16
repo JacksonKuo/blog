@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AI Exploration: Part VI - MCP"
-date: 2025-5-15
+date: 2025-5-16
 tags: ["ai"]
 published: false
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AI Exploration: Part VIII - Agents"
-date: 2025-5-15
+date: 2025-5-17
 tags: ["ai"]
 published: false
 ---

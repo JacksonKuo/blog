@@ -97,7 +97,7 @@ job = client.fine_tuning.jobs.create(
 | Total time         | 6m 45s           |
 
 
-#### Test Bypass
+#### Test the Bypass
 
 ```python
 from openai import OpenAI
