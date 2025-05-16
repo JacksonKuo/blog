@@ -20,7 +20,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 
 # hCaptcha
 
-Integation hCaptcha on a Spring Boot web endpoint:
+Integrate hCaptcha on a Spring Boot web endpoint:
 
 * hCaptcha documentation: 
     * [https://docs.hcaptcha.com/](https://docs.hcaptcha.com/)

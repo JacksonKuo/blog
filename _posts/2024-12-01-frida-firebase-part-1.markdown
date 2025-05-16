@@ -19,7 +19,7 @@ How do you use Frida to hook into a client app that uses the Firebase SDK?[^1] T
 
 Learning notes on how to use Xcode:
 * In order to push don't forget to add a commit message
-* To create a Github repo: Source Control navigator > Respositories > Remotes > New `<project>` Remote
+* To create a Github repo: Source Control navigator > Repositories > Remotes > New `<project>` Remote
 
 ```objective-c
 // main.m

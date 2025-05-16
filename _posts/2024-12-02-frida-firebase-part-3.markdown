@@ -65,7 +65,7 @@ service cloud.firestore {
 #### Firebase App Setup[^5]
 
 * New > Project > App
-    * Organization Identifer: `com.jkuo`
+    * Organization Identifier: `com.jkuo`
     * Interface: SwiftUI
     * Language: Swift
     * Testing System: None

@@ -47,7 +47,7 @@ Authorization: Bearer: base64({"typ": "JWT"}.{"admin": true}.{})
 2. The Kong Gateway parses the `jwt` parameter first, finds that the JWT signature is valid, then forwards the full request to the backend service
 3. The backend service ignores the `jwt` query parameter, only parses the JWT in the header, reads the JWT claims, and then performs any authorization checks based on the parsed claims
 
-As a result, an attacker can mint a JWT with arbitary token claims, smuggling the token through the gateway to a backend service, and impersonate any account. The default JWT plugin for Kong gateway was vulnerable to this issue. 
+As a result, an attacker can mint a JWT with arbitrary token claims, smuggling the token through the gateway to a backend service, and impersonate any account. The default JWT plugin for Kong gateway was vulnerable to this issue. 
 
 # Mitigation
 
@@ -66,7 +66,7 @@ I would disagree with this validity assumption. While revalidating tokens at bot
 An argument could be made of why even use a API gateway if the endpoint still has to revalidate the token, which is fair a point. But a better way to think of the initial validation is that you need a valid token to be able to initiate communication to a backend service. If we imagine an office building, the first authentication check gets you through the door, but each floor requires a second authentication check as well as an authorization check.
 
 # References
-[^1]: Note there exists a similiarly named "token smuggling" term in the LLM space, which is why i prefix my technique with the title "gateway" to differentiate. Though anything that forwards traffic like proxies, middleware, authorizers, or service meshes has potential to run afoul of token smuggling.
+[^1]: Note there exists a similarly named "token smuggling" term in the LLM space, which is why i prefix my technique with the title "gateway" to differentiate. Though anything that forwards traffic like proxies, middleware, authorizers, or service meshes has potential to run afoul of token smuggling.
 [^2]: [https://docs.konghq.com/gateway/changelog/#3210](https://docs.konghq.com/gateway/changelog/#3210)
 [^3]: [https://docs.konghq.com/hub/kong-inc/jwt/#send-a-request-with-the-jwt](https://docs.konghq.com/hub/kong-inc/jwt/#send-a-request-with-the-jwt)
 [^4]: [https://docs.konghq.com/hub/kong-inc/jwt/](https://docs.konghq.com/hub/kong-inc/jwt/)

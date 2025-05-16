@@ -86,7 +86,7 @@ response = client.chat.completions.create(
 
 Vision appears to not have a great concept of logos. The output states, `the Amazon logo appears again in the top left corner`, however that is clearly not true. Perhaps Vision is getting confused with the text `Amazon Basics` in the top bar. And maybe the "Amazon" in `Amazon Basics` text is being considered a logo. 
 
-The comparsion is successful on this next image which has no Amazon textwords. 
+The comparison is successful on this next image which has no Amazon textwords. 
 
 {:refdef: style="text-align: center;"}
 ![Image]({{ site.baseurl }}/assets/images/site-3.png){: width="800"}
@@ -99,7 +99,7 @@ If a logo is mostly text, Vision may mistakenly associate regular text words to 
 
 # Costs
 
-The cost calculation is still a bit of a mystery to me. I'm not sure if the image base64 counts as part of the input tokens or if "low res" mode only charges a flat 85 token plus output tokens. I'll continue to test and update this section, but i'm seeing input tokens in the tens of thosands per image right now
+The cost calculation is still a bit of a mystery to me. I'm not sure if the image base64 counts as part of the input tokens or if "low res" mode only charges a flat 85 token plus output tokens. I'll continue to test and update this section, but i'm seeing input tokens in the tens of thousands per image right now
 
 * Don't forget to specify "low res" mode in the image url:
     * `image_url": {"url": f"data:image/png;base64,{base64_screenshot}", "detail": "low"},`

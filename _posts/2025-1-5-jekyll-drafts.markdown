@@ -12,7 +12,7 @@ published: true
 
 # Problem Statement
 
-Come up with an alterative method for Jekyll drafts, since the offical draft process in Jekyll kinda sucks. The following is how the official draft method works:
+Come up with an alterative method for Jekyll drafts, since the official draft process in Jekyll kinda sucks. The following is how the official draft method works:
 
 * Since `drafts are posts without a date in the filename`[^1], publishing requires adding a date to the filename.
 * Publishing requires moving the post file from `_drafts` to the `_posts` folder

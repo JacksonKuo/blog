@@ -147,7 +147,7 @@ Some helpful troubleshooting commands:
 * `kubectl exec -it $(kubectl get pod -l app=springboot -o jsonpath="{.items[0].metadata.name}") -- /bin/bash`
 * `kubectl logs -l app=springboot --tail=100`
 
-Note to self, you shouldn't instantinate a service in the constructor. That will breaks the autowiring. 
+Note to self, you shouldn't instantiate a service in the constructor. That will breaks the autowiring. 
 
 ```java
     public MfaService mfaService;

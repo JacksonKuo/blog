@@ -49,7 +49,7 @@ Much of this will be a rote walkthrough of OpenAI's documentation: [https://plat
 * Speech to text
 * Embeddings
     * *An embedding is a vector (list) of floating point numbers. The distance between two vectors measures their relatedness*
-    * Follows the same to the mathmatical definition of a vector but in n-dimensional space.
+    * Follows the same to the mathematical definition of a vector but in n-dimensional space.
 * Moderation
 * Reasoning
     * *The o1 models introduce reasoning tokens. The models use these reasoning tokens to "think"*
@@ -59,7 +59,7 @@ Much of this will be a rote walkthrough of OpenAI's documentation: [https://plat
     * Current o1 models - Available to Tier 5 customers only
 * Structure Output
     * *Structured Outputs is a feature that ensures the model will always generate responses that adhere to your supplied JSON Schema*
-    * *Structured Outputs is the evolution of JSON mode. While both ensure valid JSON is produced, only Structured Outputs ensure schema adherance.*
+    * *Structured Outputs is the evolution of JSON mode. While both ensure valid JSON is produced, only Structured Outputs ensure schema adherence.*
     * *When JSON mode is turned on, the model's output is ensured to be valid JSON, except for in some edge cases that you should detect and handle appropriately.*
     * *When using JSON mode, you must always instruct the model to produce JSON via some message in the conversation, for example via your system message.*
     * *Structured Outputs can be enabled by setting the parameter strict: true*
@@ -153,4 +153,4 @@ Much of this will be a rote walkthrough of OpenAI's documentation: [https://plat
 
 [^2]: [https://aws.amazon.com/what-is/overfitting/](https://aws.amazon.com/what-is/overfitting/)
 
-[^3]: InstructGPT is an earlier version of ChatGPT, a fine-tuned GPT-3.5 that is trained to be more truthful and less toxic. InstructGPT was appoximately released on January 27 2022 and ChatGPT was released November 30, 2022. 
+[^3]: InstructGPT is an earlier version of ChatGPT, a fine-tuned GPT-3.5 that is trained to be more truthful and less toxic. InstructGPT was approximately released on January 27 2022 and ChatGPT was released November 30, 2022. 

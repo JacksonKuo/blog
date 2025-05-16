@@ -11,11 +11,14 @@ published: false
 {:toc}
 
 # Problem Statement
-Walkthough of Model Context Protocol
+Walkthrough of Model Context Protocol
 
 # Model Context Protocol
 * [https://modelcontextprotocol.io/](https://modelcontextprotocol.io/)
 * [https://svnscha.de/posts/ai-meets-windbg/](https://svnscha.de/posts/ai-meets-windbg/)
+
+https://www.nccgroup.com/us/research-blog/5-mcp-security-tips/
+https://www.nccgroup.com/us/research-blog/http-to-mcp-bridge/
 
 #### Latest Research
 * [https://www.wiz.io/blog/mcp-security-research-briefing](https://www.wiz.io/blog/mcp-security-research-briefing)

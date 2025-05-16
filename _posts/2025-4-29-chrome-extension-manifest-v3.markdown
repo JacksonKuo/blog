@@ -21,7 +21,7 @@ Years ago I wrote a Manifest V2 chrome extension that checks for a `x-java-seria
 | manifest_version | 2 | 3 | 
 | webpage scripts | content scripts | content scripts | 
 | extension scripts | background scripts | background service workers | 
-| permissions | pemissions | host permission seperated |
+| permissions | permissions | host permission separated |
 | web request listeners | `chrome.webRequest.onBeforeRequest.addListener` | Rules |
 | web request permissions | webRequestBlocking | declarativeNetRequest | 
 
@@ -66,7 +66,7 @@ Okay. So instead of a Rules block, let's try to use a Rules redirect and see if 
 Turns out Rules redirects run into the same problem. Going directly to a `/shorts` page will properly redirect according to the extension. However for SPA the extension isn't able to catch the navigation to Shorts. 
 
 #### Version 3
-Let's write a extension that will work. Intead of rules, we'll use a script that run a `redirect.js` script on every `document_start` for only `www.youtube.com`. If the pathname starts with `/shorts/` then redirect to the home page. 
+Let's write a extension that will work. Instead of rules, we'll use a script that run a `redirect.js` script on every `document_start` for only `www.youtube.com`. If the pathname starts with `/shorts/` then redirect to the home page. 
 
 ```js
     "host_permissions": ["https://www.youtube.com/*"],
@@ -106,7 +106,7 @@ window.navigation.addEventListener("navigate", (event) => {
 ```
 
 # References
-[^1]: [https://github.com/JacksonKuo/java-serial-header-check](https://github.com/JacksonKuo/java-serial-header-check), indicative of a deseralization vulnerabilty. 
+[^1]: [https://github.com/JacksonKuo/java-serial-header-check](https://github.com/JacksonKuo/java-serial-header-check), indicative of a deserialization vulnerability. 
 
 [^2]: [https://blog.chromium.org/2024/05/manifest-v2-phase-out-begins.html](https://blog.chromium.org/2024/05/manifest-v2-phase-out-begins.html)
 

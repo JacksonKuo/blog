@@ -89,7 +89,7 @@ jobs:
 
 #### Artifacts
 
-The workflow will generate a JAR file that will be saved in the Github Releases as a publically available attachment.[^1] The workflow does need read / write permissions in order to create Releases. 
+The workflow will generate a JAR file that will be saved in the Github Releases as a publicly available attachment.[^1] The workflow does need read / write permissions in order to create Releases. 
 
 * Github Artifacts and Packages don't have a mechanism to download without authentication. I want a internet facing artifact that can be downloaded without any sort of Github Token. The idea is I should be able to download and run this JAR from any platform anywhere at any time.
 * Note to self, when calling the Github API always use Github CLI instead of direct `curl` calls. The code simplicity with using `gh cli` is like night and day.

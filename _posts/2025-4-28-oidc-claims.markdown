@@ -11,7 +11,7 @@ published: true
 {:toc}
 
 # Problem Statement
-A few years ago a colleague created a fantastic OIDC Claims security writeup. I have since forgetten the specifics, but I thought it might be fun to try create my own writeup based on public research.
+A few years ago a colleague created a fantastic OIDC Claims security writeup. I have since forgotten the specifics, but I thought it might be fun to try create my own writeup based on public research.
 
 # ID Token Claims
 
@@ -59,7 +59,7 @@ Google
 Microsoft
 > Never use claims like email, preferred_username or unique_name to store or determine whether the user in an access token should have access to data. These claims aren't unique and can be controllable by tenant administrators or sometimes users, which make them unsuitable for authorization decisions.
 
-It sounds like the `sub` claims is the ideal unique identifier for determining identity. There are some issues though with using the `sub` claim. Individual providers may guarantee that their `sub` identifier is unique, however they make no such claims that the `sub` identifier is unique between different providers. Provider A and Provider B many inadvertately use the same `sub` value. To account for this, applications should use a combination of `sub` + IdP to identify a user. 
+It sounds like the `sub` claims is the ideal unique identifier for determining identity. There are some issues though with using the `sub` claim. Individual providers may guarantee that their `sub` identifier is unique, however they make no such claims that the `sub` identifier is unique between different providers. Provider A and Provider B many inadvertently use the same `sub` value. To account for this, applications should use a combination of `sub` + IdP to identify a user. 
 
 Additionally, Trufflehog put out a blog post which went in-depth into the domain recycle scenario: [https://trufflesecurity.com/blog/millions-at-risk-due-to-google-s-oauth-flaw](https://trufflesecurity.com/blog/millions-at-risk-due-to-google-s-oauth-flaw). But interestingly they argue that the `sub` identifier does not solve this, because despite the Google documentation stating that `sub` never changes[^7]:
 
@@ -69,7 +69,7 @@ There's no further explanation for why this occurs. The crux of this issue seems
 
 > Because the sub claim is inconsistent, it cannot be used to uniquely identify users - leaving services reliant on the email and hd claims.
 
-Using `sub` as a unique identifer as far as I'm aware is the prevailing wisdom. I'm hesitant to leave this guidance until I have a better understanding on when and why `sub` is changing. 
+Using `sub` as a unique identifier as far as I'm aware is the prevailing wisdom. I'm hesitant to leave this guidance until I have a better understanding on when and why `sub` is changing. 
 
 Google `said they were working on a fix`, but there are no further details. Perhaps Google is working on making `sub` more consistent. Side note there's a lively and healthy discussion about this issue on Hacker News[^8], where someone also pointed out the `hd` field can't be trusted either, which is something I'll have to investigate later..
 

@@ -17,7 +17,7 @@ A few years I read the [Terraform: Up & Running 2nd edition book](https://www.am
 The 3rd edition has a nice section covering new features: *Changes from the Second Edition to the Third Edition*. Some significant changes include[^1]:
 * `count` and `for_each` with modules
 * `moved` blocks
-* secret mangement
+* secret management
 * multiple providers
 
 The following will be rote walkthrough of the new sections of Terraform: Up & Running 3rd edition, along with any definitions or interesting points that standout.

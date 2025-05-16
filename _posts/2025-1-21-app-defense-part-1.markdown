@@ -28,7 +28,7 @@ Simple Spring Boot app built using Gradle Kotlin DSL. A simple controller and so
 
 # Book Reading Notes[^1]
 
-A majority of these notes will be pulled straight from the book. My notes are kinda a mess, but just a hogpodge of things that stood out. Haven't read the entire book yet, will continously update as I get further. 
+A majority of these notes will be pulled straight from the book. My notes are kinda a mess, but just a hodgepodge of things that stood out. Haven't read the entire book yet, will continuously update as I get further. 
 
 #### Chapter 1 - Intro
 
@@ -62,7 +62,7 @@ A majority of these notes will be pulled straight from the book. My notes are ki
 * beans
 	* @Bean annotation
 	* stereotype annotation
-	* programatically
+	* programmatically
 
 > Spring Bean is nothing special, any object in the Spring framework that we initialize through Spring container is called Spring Bean. Any normal Java POJO class can be a Spring Bean if it’s configured to be initialized via container by providing configuration metadata information.[^2]
 
@@ -160,7 +160,7 @@ How to have Cat and Person wire together? Three methods:
 2. method parameters - enable Spring to provide us a value using a method parameter
 3. @Autowired
 
-* implement relationships between beans. we want this so one object can delegate responibility of something to another object
+* implement relationships between beans. we want this so one object can delegate responsibility of something to another object
 * direct wiring
     * in config class call one method from another
 
@@ -329,7 +329,7 @@ Person person(@Qualifier("BlueCat") Cat cat) {
     * 1) between two (or more) objects
     * 2) object and framework capability
     * 3) app with persistence layer
-    * don't neccessrily have to mock dependencies. can still mock if test doesn't care about that specific service
+    * don't necessarily have to mock dependencies. can still mock if test doesn't care about that specific service
     * use a in-memory database such as H2, use real db can cause latencies
     * in a spring app, generally use integration tests to verify app's behavior correctly interacts with the capabilities Spring provides
     * spring integration test: enables spring to create beans and configure the context
