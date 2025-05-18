@@ -19,6 +19,8 @@ Walkthrough of Model Context Protocol
 
 https://www.nccgroup.com/us/research-blog/5-mcp-security-tips/
 https://www.nccgroup.com/us/research-blog/http-to-mcp-bridge/
+https://arxiv.org/pdf/2504.03767
+https://aaronparecki.com/2025/04/03/15/oauth-for-model-context-protocol
 
 #### Latest Research
 * [https://www.wiz.io/blog/mcp-security-research-briefing](https://www.wiz.io/blog/mcp-security-research-briefing)
