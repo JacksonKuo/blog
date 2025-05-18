@@ -21,6 +21,9 @@ https://www.nccgroup.com/us/research-blog/5-mcp-security-tips/
 https://www.nccgroup.com/us/research-blog/http-to-mcp-bridge/
 https://arxiv.org/pdf/2504.03767
 https://aaronparecki.com/2025/04/03/15/oauth-for-model-context-protocol
+https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks
+https://invariantlabs.ai/blog/whatsapp-mcp-exploited
+https://invariantlabs.ai/blog/introducing-mcp-scan
 
 #### Latest Research
 * [https://www.wiz.io/blog/mcp-security-research-briefing](https://www.wiz.io/blog/mcp-security-research-briefing)

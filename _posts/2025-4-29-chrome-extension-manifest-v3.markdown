@@ -105,6 +105,8 @@ window.navigation.addEventListener("navigate", (event) => {
 })
 ```
 
+As a nice bonus, even I do use direct navigation and go directly to a shorts page, any SPA navigation from the page will trigger a redirect to the home page. So if there's a shorts video I want to watch, I can, but additional doom scrolling is halted. 
+
 # References
 [^1]: [https://github.com/JacksonKuo/java-serial-header-check](https://github.com/JacksonKuo/java-serial-header-check), indicative of a deserialization vulnerability. 
 
