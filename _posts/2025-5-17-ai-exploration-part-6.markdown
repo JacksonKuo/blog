@@ -24,6 +24,8 @@ https://aaronparecki.com/2025/04/03/15/oauth-for-model-context-protocol
 https://invariantlabs.ai/blog/mcp-security-notification-tool-poisoning-attacks
 https://invariantlabs.ai/blog/whatsapp-mcp-exploited
 https://invariantlabs.ai/blog/introducing-mcp-scan
+https://github.com/github/github-mcp-server
+https://github.blog/changelog/2025-04-04-copilot-code-review-now-generally-available/
 
 #### Latest Research
 * [https://www.wiz.io/blog/mcp-security-research-briefing](https://www.wiz.io/blog/mcp-security-research-briefing)
