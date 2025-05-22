@@ -65,7 +65,7 @@ Given the LLM security state of the world, the prompt injection still seems diff
     },
 ```
 
- TaskTasker is pretty finicky based on the defense results: [https://github.com/microsoft/llmail-inject-challenge-analysis/tree/main/defense_eval/defenses_results](https://github.com/microsoft/llmail-inject-challenge-analysis/tree/main/defense_eval/defenses_results), grep for `"answer": false`. 
+LLM-as-a-judge is pretty finicky based on the defense results: [https://github.com/microsoft/llmail-inject-challenge-analysis/tree/main/defense_eval/defenses_results](https://github.com/microsoft/llmail-inject-challenge-analysis/tree/main/defense_eval/defenses_results), grep for `"answer": false`. 
 
 https://github.com/microsoft/TaskTracker
 
