@@ -14,7 +14,7 @@ published: true
 Create a terraform module for `app-springboot` deployment that allows me to easily swap cloud environments.
 
 # Module Interface
-My expected interface is below, effectively one main variable `cloud_provider` which will dictate which cloud platform the infrastructure will be created in. Note that when different cloud environments are introduced the CI/CD pipeline will need to be modified. Currently the pipeline works with a droplet.
+My expected interface is below, effectively one main variable `cloud_provider` which will dictate which cloud platform the infrastructure will be created in. Note that when different cloud environments are introduced the application CI/CD pipeline will need to be modified. Currently the pipeline works with a droplet.
 
 ```yaml
 module springboot_app {
