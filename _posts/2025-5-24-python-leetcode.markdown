@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Python: Leetcode Practice II"
-date: 2025-5-23
+date: 2025-5-25
 tags: ["python"]
 published: false
 ---
@@ -76,7 +76,7 @@ k = 3
 get_substrings(s,k)
 ```
 
-# Vowel Substring
+#### Vowel Substring
 ```python
 # A vowel substring is a substring that only consists of vowels ('a', 'e', 'i', 'o', and 'u') and has all five vowels present in it.
 
