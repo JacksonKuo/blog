@@ -17,7 +17,7 @@ Solve some Leetcode problems using Python: [https://leetcode.com/problemset/](ht
 Private Repo: [https://github.com/JacksonKuo/scripts-leetcode](https://github.com/JacksonKuo/scripts-leetcode)
 
 * [https://leetcode.com/problems/palindrome-partitioning/](https://leetcode.com/problems/palindrome-partitioning/)
-* [https://leetcode.com/problems/count-vowel-substrings-of-a-string/description/](https://leetcode.com/problems/count-vowel-substrings-of-a-string/description/)
+* [https://leetcode.com/problems/count-vowel-substrings-of-a-string/](https://leetcode.com/problems/count-vowel-substrings-of-a-string/)
 
 #### Palindrome Substring - Fixed
 ```python
@@ -144,7 +144,7 @@ def vowel_list(input):
                 substring = ""
     return substring_list
 
-input = "cuaieuouacaaaaace"
+input = "cuaieuouac"
 vowel_substring(input)
 
 '''
