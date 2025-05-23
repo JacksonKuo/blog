@@ -60,6 +60,10 @@ print(palindrome(str))
 ```python
 import re
 
+#s = 'abcdcxy' write a function that returns true, if s contains a substring that is a palindrome of length equal to or greater than k
+
+#the previous scripts only check if the length was exactly k. not equal to or greater
+
 def clean(str):
     lower = str.lower()
     return re.sub("[^a-z]","",lower)
@@ -81,13 +85,27 @@ def check(str):
         return True
 
 def get_substrings(s, k):
-	length = len(s)
-	slide = length - k + 1
-	print("slide: ",slide)
-	for i in range(slide):
-		substring = s[i:i+k]
-		print(substring)
-		print(isPalindrome(substring))
+    last_index = len(s) - k
+    total_loops = last_index + 1
+    #print(last_index)
+    for c in range(total_loops):
+        substring = s[c:]
+        substring_len = len(substring)
+        #print(substring)
+        sub_loops = substring_len - k + 1
+        for d in range(sub_loops):
+            print(isPalindrome(substring[:k+d]))
+
+'''
+racar
+
+rac
+raca
+racar
+ aca
+ acar
+  car
+'''
 
 s = "racar"
 k = 3
