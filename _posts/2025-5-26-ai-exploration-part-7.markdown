@@ -32,6 +32,7 @@ The example weather app however leverages Claude Desktop and not OpenAI, which I
 brew install uv
 export PATH="$HOME/.local/bin:$PATH"
 
+# don't forget to export OPENAI_API_KEY
 uv venv
 source .venv/bin/activate
 uv add "mcp[cli]" httpx openai
