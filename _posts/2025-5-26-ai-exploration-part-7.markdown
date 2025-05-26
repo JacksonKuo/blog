@@ -18,7 +18,7 @@ I thought it might be fun to write an app to track the International Space Stati
 
 [https://github.com/JacksonKuo/app-mcp-iss](https://github.com/JacksonKuo/app-mcp-iss)
 
-Turns out there an convenient page that publishes ISS updates. [iss-now.json](http://api.open-notify.org/iss-now.json). And we can use the second site to verify our app is working properly: [www.astroviewer.net](https://www.astroviewer.net/iss/en/). 
+Turns out there an convenient page that publishes ISS updates: [iss-now.json](http://api.open-notify.org/iss-now.json). And we can use this second site to verify our app is working properly: [www.astroviewer.net](https://www.astroviewer.net/iss/en/). 
 
 # Model Context Protocol
 The best place to learn about MCP is from [https://modelcontextprotocol.io/](https://modelcontextprotocol.io/). In a nutshell, MCP is a shim server that provides an interface to LLMs. There are server and client examples available for an MCP weather app that is a great starting point to understanding MCP:
