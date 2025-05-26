@@ -3,7 +3,7 @@ layout: post
 title: "AI Exploration: Part VII - MCP"
 date: 2025-5-26
 tags: ["ai"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -13,7 +13,7 @@ published: false
 # Problem Statement
 Let's build a simple app that uses MCP (Model Context Protocol) in order learn what MCP is and how it works
 
-# MCP App
+# International Space Station Tracker
 I thought it might be fun to write an app to track the International Space Station (ISS) and say which city the station is closest too. Turns out the ISS is moving around 17500 mph, or 4.861 miles per second.[^1] It circles the earth approximately every 90 mins, so the geo-location will change pretty fast. 
 
 [https://github.com/JacksonKuo/app-mcp-iss](https://github.com/JacksonKuo/app-mcp-iss)
@@ -21,12 +21,12 @@ I thought it might be fun to write an app to track the International Space Stati
 Turns out there an convenient page that publishes ISS updates. [iss-now.json](http://api.open-notify.org/iss-now.json). And we can use the second site to verify our app is working properly: [www.astroviewer.net](https://www.astroviewer.net/iss/en/). 
 
 # Model Context Protocol
-The best place to learn about MCP is from [https://modelcontextprotocol.io/](https://modelcontextprotocol.io/). In a nutshell, MCP is a shim server that provides an interface to an LLM. There are server and client examples available for a weather app that are a great starting point to understanding MCP:
+The best place to learn about MCP is from [https://modelcontextprotocol.io/](https://modelcontextprotocol.io/). In a nutshell, MCP is a shim server that provides an interface to LLMs. There are server and client examples available for an MCP weather app that is a great starting point to understanding MCP:
 
 * [https://modelcontextprotocol.io/quickstart/server](https://modelcontextprotocol.io/quickstart/server)
 * [https://modelcontextprotocol.io/quickstart/client](https://modelcontextprotocol.io/quickstart/client)
 
-The examples however focus on using Claude Desktop and not OpenAI, which I'll have to refactor in my app for ChatGPT. The ISS JSON page doesn't require any parameters, which makes setup a bit easier. The python setup uses `astral-sh/uv` package manager[^2]:
+The example weather app however leverages Claude Desktop and not OpenAI, which I'll have to refactor to use ChatGPT. The ISS JSON page doesn't require any parameters, which makes setup a bit easier. The python setup uses `astral-sh/uv` package manager[^2]:
 
 ```bash
 brew install uv
@@ -41,10 +41,10 @@ uv run mcp-server-iss.py
 uv run mcp-client-responses.py
 ```
 
-Note that I'm not using OpenAI's Remote MCP because that service can only interact with internet facing MCP servers.[^3] 
+Note that I'm not using OpenAI's Remote MCP because that service can only interact with internet-facing MCP servers.[^3] 
 
 # MCP Server
-The server is pretty easy to implement: [https://github.com/JacksonKuo/app-mcp-iss/blob/main/mcp-server-iss.py](https://github.com/JacksonKuo/app-mcp-iss/blob/main/mcp-server-iss.py). A couple of things to note. The transport uses `stdio`, so I don't have to continually run a server, the client will call and instantiate this server at runtime. The comment below `get_position()` is actually required and is the description of the method that the LLM will use to decide which tool method to call. 
+The server is pretty easy to implement: [https://github.com/JacksonKuo/app-mcp-iss/blob/main/mcp-server-iss.py](https://github.com/JacksonKuo/app-mcp-iss/blob/main/mcp-server-iss.py). A couple of things to note. The transport uses `stdio`, so I don't have to continually run a server, the client will call and instantiate this server at runtime from the CLI. The description comment below `get_position()` is actually required and is the description of the function. The LLM needs this description in order to understand what the function does and ultimately what tools the LLM should call. 
 
 ```python
 from typing import Any
@@ -79,25 +79,25 @@ if __name__ == "__main__":
 ```
 
 # MCP Client
-The MCP Client is a bit more complex. First, there is a specific flow for provide ChatGPT with external data:
+The MCP Client is a bit more complex. First, there is a specific flow for providing ChatGPT with external data:
 
-* `[-->]` User leverages MCP Client to call MCP Server to get list of tools
-* `[-->]` User asks ChatGPT a prompt that includes list of available tools
-* `[<--]` ChatGPT responds with a specific tool to call with any parameters
-* `[-->]` User leverages MCP Client to call MCP Server tool function
-* `[<->]` MCP Server calls external datasource and pass data back to user
-* `[-->]` User calls ChatGPT with the combined 3 messages containing:
+* `-->` User leverages the MCP Client to call the MCP Server to get list of tools
+* `-->` User asks ChatGPT a prompt that includes list of available tools and their descriptions
+* `<--` ChatGPT responds by requesting a specific tool be called with parameters
+* `-->` User leverages the MCP Client to call the MCP Server tool function
+* `<->` MCP Server calls the external data source and passes data back to user
+* `-->` User calls ChatGPT with the combined 3 messages containing:
     - Message 1: Original prompt
-    - Message 2: ChatGPT request for tool call
+    - Message 2: ChatGPT requesting for tool call
     - Message 3: Tool call result
-* `[<--]` ChatGPT responds to original prompt using tool call result 
+* `<--` ChatGPT responds to original prompt using tool call result 
 
 Secondly there are two different methods to fetch external data. The original being Chat Completions API[^4] and the newer being Responses API[^5]. The key differences being slightly different input and output[^6]:
-1. Responses being easier to parse
+1. Responses output being easier to parse
 2. Different checks for call type
     * Responses: `response.output[0].type == "function_call`
     * Completions: `response.choices[0].finish_reason == "tool_calls":`
-3. No `tool_choice="auto"` for responses
+3. No `tool_choice="auto"` for Responses
     
 I have written clients using both, see below:
 * [https://github.com/JacksonKuo/app-mcp-iss/blob/main/mcp-client-completion.py](https://github.com/JacksonKuo/app-mcp-iss/blob/main/mcp-client-completion.py)
