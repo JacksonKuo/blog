@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AI Exploration: Part VII - MCP"
+title: "AI Exploration: Part VII - MCP Client-Server"
 date: 2025-5-26
 tags: ["ai"]
 published: true

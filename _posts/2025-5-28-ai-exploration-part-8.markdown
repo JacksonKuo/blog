@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AI Exploration: Part VIII - MCP Security"
-date: 2025-5-27
+date: 2025-5-26
 tags: ["ai"]
 published: false
 ---
@@ -43,6 +43,8 @@ https://github.blog/changelog/2025-04-04-copilot-code-review-now-generally-avail
 #### Misc
 * [https://blog.extensiontotal.com/trust-me-im-local-chrome-extensions-mcp-and-the-sandbox-escape-1875a0ee4823](https://blog.extensiontotal.com/trust-me-im-local-chrome-extensions-mcp-and-the-sandbox-escape-1875a0ee4823)
 * [https://thehackernews.com/2025/04/experts-uncover-critical-mcp-and-a2a.html](https://thehackernews.com/2025/04/experts-uncover-critical-mcp-and-a2a.html)
+
+mcp inspector
 
 # References
 [^1]: []()
