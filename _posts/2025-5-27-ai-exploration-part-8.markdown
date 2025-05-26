@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "AI Exploration: Part VII - MCP"
+title: "AI Exploration: Part VIII - MCP Security"
 date: 2025-5-25
 tags: ["ai"]
 published: false
@@ -11,11 +11,14 @@ published: false
 {:toc}
 
 # Problem Statement
-Walkthrough of Model Context Protocol
+agents
 
-# Model Context Protocol
-* [https://modelcontextprotocol.io/](https://modelcontextprotocol.io/)
-* [https://svnscha.de/posts/ai-meets-windbg/](https://svnscha.de/posts/ai-meets-windbg/)
+
+# Agents
+* https://github.blog/ai-and-ml/github-copilot/copilot-ask-edit-and-agent-modes-what-they-do-and-when-to-use-them/
+* https://github.blog/news-insights/product-news/github-copilot-agent-mode-activated/
+* https://github.blog/ai-and-ml/github-copilot/from-prompt-to-production-building-a-landing-page-with-copilot-agent-mode/
+* https://github.blog/ai-and-ml/vibe-coding-your-roadmap-to-becoming-an-ai-developer/
 
 https://www.nccgroup.com/us/research-blog/5-mcp-security-tips/
 https://www.nccgroup.com/us/research-blog/http-to-mcp-bridge/
@@ -41,6 +44,6 @@ https://github.blog/changelog/2025-04-04-copilot-code-review-now-generally-avail
 * [https://blog.extensiontotal.com/trust-me-im-local-chrome-extensions-mcp-and-the-sandbox-escape-1875a0ee4823](https://blog.extensiontotal.com/trust-me-im-local-chrome-extensions-mcp-and-the-sandbox-escape-1875a0ee4823)
 * [https://thehackernews.com/2025/04/experts-uncover-critical-mcp-and-a2a.html](https://thehackernews.com/2025/04/experts-uncover-critical-mcp-and-a2a.html)
 
-
 # References
 [^1]: []()
+
