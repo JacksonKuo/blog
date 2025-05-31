@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "AI Exploration: Part VIII - MCP Security"
-date: 2025-5-26
+date: 2025-6-5
 tags: ["ai"]
 published: false
 ---
@@ -41,6 +41,8 @@ agents
     - handshake: `initialize`, available protocols, `notifications/initialized`
     - Claude Desktop -> `tools/list` auto-loaded into the system prompt
     - tool metadata injection + unicode
+
+    ~/Library/Application Support/Code/User/settings.json
 
 #### General
 * [https://github.blog/ai-and-ml/llms/what-the-heck-is-mcp-and-why-is-everyone-talking-about-it/](https://github.blog/ai-and-ml/llms/what-the-heck-is-mcp-and-why-is-everyone-talking-about-it/)
