@@ -106,9 +106,9 @@ Let's do a overview of the current state of MCP security. Note that this is very
             * *description shadows and re-programs the agent's behavior with respect to the WhatsApp MCP server*
         * [https://invariantlabs.ai/blog/mcp-github-vulnerability](https://invariantlabs.ai/blog/mcp-github-vulnerability)
             * [https://github.com/github/github-mcp-server](https://github.com/github/github-mcp-server)
-            * Toxic Agent Flows - indirect prompt injection to trigger a malicious tool use sequence
-            * affects any agent that uses the GitHub MCP server
-            * Claude Desktop - “Always Allow” confirmation policy when using agents
+            * Toxic Agent Flows - *indirect prompt injection to trigger a malicious tool use sequence*
+            * *affects any agent that uses the GitHub MCP server*
+            * Claude Desktop - *“Always Allow” confirmation policy when using agents*
             * [https://explorer.invariantlabs.ai/docs/guardrails/](https://explorer.invariantlabs.ai/docs/guardrails/)
                 * *deploy Invariant within minutes using our hosted LLM-level gateway*
 * Misc
