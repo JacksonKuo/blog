@@ -178,10 +178,11 @@ The `PYTHONPATH` is required to run in the python virtual environment using `uv`
 {: refdef}
 
 # Todo List
-* Proxy MCP Traffic specifically Copilot in Agent mode
-* Test out some of the MCP scanners
+* Proxy MCP traffic specifically Copilot in Agent mode
+* Test Burp MCP plugins
+* Test MCP scanners
 * Attempt some cross-server attacks
-* List which agents allow code execution and what settings are required
+* List which agents allow command/code execution and what settings are required
 * Setup MCP with OAuth 2.1
 * Read the whitepapers
 
