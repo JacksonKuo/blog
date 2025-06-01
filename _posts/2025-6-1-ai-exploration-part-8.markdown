@@ -150,7 +150,7 @@ Let's add our ISS MCP server to Github Copilot in agent mode.[^1] This process e
 }
 ```
 
-The `PYTHONPATH` is required to run in the python virtual environment using `uv`. There's probably an easier way to run `uv` in VS Code that i'm not aware of. For some weird reason, the `PYTHONPATH` works correctly, but when trying to use input variables[^2] for `OPENAI_API_KEY` the env var never imported. However, I just loaded the API key the old fashion way via terminal export. 
+The `PYTHONPATH` is required to run in the python virtual environment using `uv`. There's probably an easier way to run `uv` in VS Code that i'm not aware of. For some weird reason, the `PYTHONPATH` works correctly, but when trying to use input variables[^2] for `OPENAI_API_KEY` the env variable never imports. However, I just loaded the API key the old fashion way via terminal export. 
 
 ```json
 {
