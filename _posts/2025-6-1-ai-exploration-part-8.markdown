@@ -3,7 +3,7 @@ layout: post
 title: "AI Exploration: Part VIII - MCP Security"
 date: 2025-6-1
 tags: ["ai"]
-published: false
+published: true
 ---
 
 **Contents**
