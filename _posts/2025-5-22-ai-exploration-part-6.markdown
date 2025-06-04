@@ -80,6 +80,12 @@ CaMel doesn't solve the prompt injection problem at the root level. CaMeL only s
 # State of the World
 The verdict is that prompt injection is still a difficult to solve. Spotlighting and LLM-as-as-judge relies on LLMs which can be tricked. TaskTracker based on the LLMail results is still bypassable. CaMeL requires bespoke security policies and layers security checks on top of prompt injection, but doesn't yet *defeat prompt injection by design*.
 
+> Update: 6/3/25
+
+Excellent list of prompt injection defenses
+
+* https://github.com/tldrsec/prompt-injection-defenses
+
 # References
 [^1]: [https://msrc.microsoft.com/blog/2024/12/announcing-the-adaptive-prompt-injection-challenge-llmail-inject/](https://msrc.microsoft.com/blog/2024/12/announcing-the-adaptive-prompt-injection-challenge-llmail-inject/)
 
