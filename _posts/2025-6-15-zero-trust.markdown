@@ -11,3 +11,11 @@ published: false
 {:toc}
 
 # Problem Statement
+
+iddna
+
+identity
+device
+data
+network
+applications
