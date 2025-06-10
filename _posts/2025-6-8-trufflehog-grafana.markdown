@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Trufflehog Scanner"
+title: "Trufflehog Scanner: GH Action"
 date: 2025-6-7
 tags: ["scanner"]
 published: false
@@ -11,26 +11,26 @@ published: false
 {:toc}
 
 # Problem Statement
-Let's build an trufflehog scanner that scans a github organization and pipes the data to Grafana.
+Let's build an trufflehog scanner that scans a GitHub organization and pipes the data to Grafana.
 
 # Building Blocks
 The fundamental building blocks will be:
 
 * OrgAdmin IAM user with YubiKey MFA
-* Terraform IAM user
-* Terraform
+* Terraform IAM user + API key
+* Local Terraform
 * S3 Bucket
 * Trufflehog
-    * Github Action
+    * GitHub Action
     * Fargate 
 * Athena/Glue
 * Grafana Cloud
 
-The reason I'm not using AWS Lambda is that Lambdas have a maximum runtime of 15 minutes per execution[^1]. Github Actions have a longer runtime, i.e. 35 days[^2] and can natively pull code. It could be argued that Actions are more catered to CI/CD workflows such as PRs and are not intended to be used for regular security scans. Additionally, Actions have a rich history of outages. But Actions are much easier to setup. I'll be testing both GH Actions and Fargate.
+The reason I'm not using AWS Lambda is that Lambdas have a maximum runtime of 15 minutes per execution[^1]. GitHub Actions have a longer runtime, i.e. 35 days[^2] and can natively pull code. It could be argued that Actions are more catered to CI/CD workflows such as PRs and are not intended to be used for regular security scans[^3]. Additionally, Actions have a rich history of outages. But Actions are much easier to setup, so I'll be testing first using GH Actions. 
 
 # AWS S3 Bucket
 * Storage:
-    * S3 Standard, General Frequent Access, First 50 TB / Month, $0.023 per GB[^3]
+    * S3 Standard, General Frequent Access, First 50 TB / Month, $0.023 per GB[^4]
 * Requests
     * PUT, COPY, POST, LIST requests (per 1,000 requests)	
         * $0.005
@@ -78,14 +78,81 @@ resource "aws_s3_bucket_lifecycle_configuration" "main_lifecycle" {
 }
 ```
 
-# Github Action
-My Actions linux usage for the month of May was 27 min with a $0.008 price per minute totaling $0.22. The Github Free tier provides 2000 free minutes per month[^4], so I'm not close to surpassing the limits.
+# Trufflehog w/ GitHub Actions
+My scanner will live in [https://github.com/JacksonKuo/scanner-trufflehog](https://github.com/JacksonKuo/scanner-trufflehog) and will scan the org: [https://github.com/jkuo-org](https://github.com/jkuo-org). I'll be using a fine-grained PAT token with Contents `readonly` access: `scanner-trufflehog-gh-pat`, to scan the following repos:
+* [https://github.com/jkuo-org/repo-private](https://github.com/jkuo-org/repo-private)
+* [https://github.com/jkuo-org/repo-public](https://github.com/jkuo-org/repo-public)
+
+#### Pricing Estimate
+My Actions linux usage for the month of May was 27 min with a $0.008 price per minute totaling $0.22[^5]. The GitHub Free tier provides 2000 free minutes per month[^6], so I'm not close to surpassing the limits.
+
+#### Download Trufflehog
+There's a lot of different ways to install Trufflehog using GitHub Actions
+* Trufflehog docker container
+* Trufflehog GH Action
+* shell scripting
+
+The Trufflehog GH Action is intended to be used for scanning PRs using checkout. Shell scripting is fine, but the easier method is to use the packaged container made by Trufflehog and available on GH container registry: [https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog](https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog). 
+
+#### Json Reduction
+I'm using [Canary Tokens](https://canarytokens.org) to proc Trufflehog and then using `jq` to reduce the Trufflehog output to a minimal JSON file. The Trufflehog container `alpine:3.21`[^7] doesn't have `jq`, `app-get`, `aws`, but it does allow `apk add jq aws-cli`[^8]. 
+
+```json
+{"repo":"https://github.com/jkuo-org/repo-private.git","detector":"AWS","link":"https://github.com/jkuo-org/repo-private/blob/9faaa8f4fb5e8e61d8cfd87ffb890b851257c583/canary.properties#L8"}
+```
+Initial results are saved in artifacts. Artifacts in public repos are public, while private repo artifacts are scoped to those who have permissions to the repo. Note I'm just using artifacts to see the output, eventually the file will be filtered and written to S3. 
+
+#### S3 OIDC
+A couple of notes. The `thumbprint_list` is now Optional and for AWS is no longer required: `AWS relies on its own library of trusted root certificate authorities (CAs) for validation instead of using any configured thumbprints`.[^9]
+
+Some good guides for OIDC setup.
+* [https://medium.com/@thiagosalvatore/using-terraform-to-connect-github-actions-and-aws-with-oidc-0e3d27f00123](https://medium.com/@thiagosalvatore/using-terraform-to-connect-github-actions-and-aws-with-oidc-0e3d27f00123)
+* [https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
+
+In public repos by default `id-token` is set to  `write` but for private repos by default `id-token` is set to `none`. Don't forget to set `id-token: write`.[^10] Also when `id-token` is explicitly set, all permissions are overwritten to none, so `content: read` needs to be reset. 
+
+| Repo Type | id-token | contents |
+|------------|----------|----------|
+| Public | write | read |
+| Private | none | read |
+
+My terraform does the following:
+* Add GitHub as a Identity Provider `aws_iam_openid_connect_provider`
+* Create a IAM role `github_oidc_role`
+* Attaches a `aws_iam_policy` that creates a permission policy for S3 `PutObject`
+* Attaches a `assume_role_policy` that creates a trust policy with the GitHub repo: `JacksonKuo/scanner-trufflehog`
+
+And `aws-actions/configure-aws-credentials@v4` will fail if no role can be assumed.
+
+# Future Improvements
+* Fargate[^11]
+    * VPC
+        * Public VPC + security groups
+        * Private VPC
+        * S3 VPC Endpoints
+    * AWS Identity Center
+    * GitHub Action OIDC + IAM roles instead of IAM groups
+    * Terraform CI/CD linter
 
 # References
 [^1]: [https://aws.amazon.com/lambda/faqs/#topic-1](https://aws.amazon.com/lambda/faqs/#topic-1)
 
 [^2]: [https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/troubleshooting-workflows/actions-limits](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/troubleshooting-workflows/actions-limits)
 
-[^3]: [https://aws.amazon.com/s3/pricing/](https://aws.amazon.com/s3/pricing/)
+[^3]: That said GH Actions are used for all sorts of workflow: [https://github.com/alex/nyt-2020-election-scraper](https://github.com/alex/nyt-2020-election-scraper). 
 
-[^4]: [https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-actions/about-billing-for-github-actions](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-actions/about-billing-for-github-actions)
+[^4]: [https://aws.amazon.com/s3/pricing/](https://aws.amazon.com/s3/pricing/)
+
+[^5]: [https://github.com/settings/billing/usage](https://github.com/settings/billing/usage)
+
+[^6]: [https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-actions/about-billing-for-github-actions](https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-actions/about-billing-for-github-actions)
+
+[^7]: [https://github.com/trufflesecurity/trufflehog/blob/main/Dockerfile](https://github.com/trufflesecurity/trufflehog/blob/main/Dockerfile)
+
+[^8]: [https://pkgs.alpinelinux.org/package/edge/community/x86_64/aws-cli](https://pkgs.alpinelinux.org/package/edge/community/x86_64/aws-cli)
+
+[^9]: [https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_openid_connect_provider#thumbprint_list-1](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_openid_connect_provider#thumbprint_list-1)
+
+[^10]: [https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect#adding-permissions-settings](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect#adding-permissions-settings)
+
+[^11]: [https://medium.com/@MUmarAmanat/setup-aws-vpc-for-fargate-246d1c515135](https://medium.com/@MUmarAmanat/setup-aws-vpc-for-fargate-246d1c515135)
