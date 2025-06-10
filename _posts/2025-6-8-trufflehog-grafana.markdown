@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Trufflehog Scanner: GH Action"
+title: "Trufflehog Scanner"
 date: 2025-6-7
 tags: ["scanner"]
 published: false
@@ -11,7 +11,7 @@ published: false
 {:toc}
 
 # Problem Statement
-Let's build an trufflehog scanner that scans a GitHub organization and pipes the data to Grafana.
+Let's build an Trufflehog scanner that scans a GitHub organization and pipes the data to Grafana.
 
 # Building Blocks
 The fundamental building blocks will be:
@@ -29,6 +29,11 @@ The fundamental building blocks will be:
 The reason I'm not using AWS Lambda is that Lambdas have a maximum runtime of 15 minutes per execution[^1]. GitHub Actions have a longer runtime, i.e. 35 days[^2] and can natively pull code. It could be argued that Actions are more catered to CI/CD workflows such as PRs and are not intended to be used for regular security scans[^3]. Additionally, Actions have a rich history of outages. But Actions are much easier to setup, so I'll be testing first using GH Actions. 
 
 # AWS S3 Bucket
+S3 Bucket created: `jkuo-prod-us-east-1`
+
+#### Pricing
+Based on the expected usage, I should only pay 2.3 cents per month. Requests are negligible and data transfer shouldn't surpass 100GB. Storage will never get close to 50 TB and all objects are auto-expired after 90 days. 
+
 * Storage:
     * S3 Standard, General Frequent Access, First 50 TB / Month, $0.023 per GB[^4]
 * Requests
@@ -47,10 +52,8 @@ The reason I'm not using AWS Lambda is that Lambdas have a maximum runtime of 15
         * Objects - List, Write
         * Bucket ACL - Read, Write
 
-#### Pricing Estimate
-Based on the expected usage, I should only pay 2.3 cents per month. Requests are negligible and data transfer shouldn't surpass 100GB. Storage will never get close to 50 TB and all objects are auto-expired after 90 days. 
-
-```yaml
+#### Terraform
+```yml
 resource "aws_s3_bucket" "main_bucket" {
    bucket = "jkuo-prod-us-east-1"
 }
@@ -78,12 +81,12 @@ resource "aws_s3_bucket_lifecycle_configuration" "main_lifecycle" {
 }
 ```
 
-# Trufflehog w/ GitHub Actions
+# Trufflehog - GitHub Actions
 My scanner will live in [https://github.com/JacksonKuo/scanner-trufflehog](https://github.com/JacksonKuo/scanner-trufflehog) and will scan the org: [https://github.com/jkuo-org](https://github.com/jkuo-org). I'll be using a fine-grained PAT token with Contents `readonly` access: `scanner-trufflehog-gh-pat`, to scan the following repos:
 * [https://github.com/jkuo-org/repo-private](https://github.com/jkuo-org/repo-private)
 * [https://github.com/jkuo-org/repo-public](https://github.com/jkuo-org/repo-public)
 
-#### Pricing Estimate
+#### Pricing
 My Actions linux usage for the month of May was 27 min with a $0.008 price per minute totaling $0.22[^5]. The GitHub Free tier provides 2000 free minutes per month[^6], so I'm not close to surpassing the limits.
 
 #### Download Trufflehog
@@ -92,7 +95,7 @@ There's a lot of different ways to install Trufflehog using GitHub Actions
 * Trufflehog GH Action
 * shell scripting
 
-The Trufflehog GH Action is intended to be used for scanning PRs using checkout. Shell scripting is fine, but the easier method is to use the packaged container made by Trufflehog and available on GH container registry: [https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog](https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog). 
+The Trufflehog GH Action is intended to be used for scanning PRs using checkout. Shell scripting is fine, but the easier method is to use the packaged container made by Trufflehog and available on GH container registry: [https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog](https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog). The Trufflehog step requires `continue-on-error: true` to be set because when a secret is found Trufflehog will return an exit code of 127, which will be interpreted as a failed step and stop the rest of the action. 
 
 #### Json Reduction
 I'm using [Canary Tokens](https://canarytokens.org) to proc Trufflehog and then using `jq` to reduce the Trufflehog output to a minimal JSON file. The Trufflehog container `alpine:3.21`[^7] doesn't have `jq`, `app-get`, `aws`, but it does allow `apk add jq aws-cli`[^8]. 
@@ -122,10 +125,60 @@ My terraform does the following:
 * Attaches a `aws_iam_policy` that creates a permission policy for S3 `PutObject`
 * Attaches a `assume_role_policy` that creates a trust policy with the GitHub repo: `JacksonKuo/scanner-trufflehog`
 
-And `aws-actions/configure-aws-credentials@v4` will fail if no role can be assumed.
+And `aws-actions/configure-aws-credentials@v4` will fail if no role can be assumed. The S3 file write following this format `S3_KEY="trufflehog/year=${YEAR}/month=${MONTH}/day=${DAY}/scan.json"`, which allows one file per day. Any new files within a day will overwrite the last file.  
+
+# Glue
+Glue is a metadata repository that holds partition data. There are two methods to do Glue partitioning. Both parse the same folder naming structures: `…/partitionKey=value/` which is called Apache Hive style partitions, where *data paths contain key value pairs connected by equal signs (year=2021/month=01/day=26/)*[^11]. However there are important differences:
+* Hive-style partitioning
+    * must run `MSCK REPAIR TABLE` by Athena or Glue crawler
+    * declared using `PARTITIONED BY (dt string)`
+    * AWS Glue crawler run auto runs MSCK
+    * AWS Glue crawler stores partition info in the Glue metadata catalog
+    * Adds partition column at runtime
+* Partition projection
+    * Athena only
+    * Skips Glue catalog lookup
+    * Skips the Glue crawler
+    * declared using `TBLPROPERTIES (`
+    * Adds partition column at runtime
+
+#### Pricing[^12]
+* Data Catalog
+    * Metadata storage:
+        * Free for the first million objects stored
+        * $1.00 per 100,000 objects stored above 1 million per month
+    * Metadata requests:
+        * Free for the first million requests per month
+        * $1.00 per million requests above 1 million per month
+* Glue Crawler
+    * $0.44 per DPU-Hour, billed per second, with a 10-minute minimum per crawler run
+    * 1 DPU × 0.1667 hours × $0.44/DPU-hour ≈ $0.07 per crawl
+
+# Athena   
+
+
+#### Pricing
+* SQL queries
+    * $5.00 per TB of data scanned.
+    * You are charged for the number of bytes scanned per query, rounded up to the nearest megabyte, with a 10 MB minimum per query
+    * Minimum query cost: 10MB ÷ 1,048,576MB/​TB × $5/TB ≈ $0.00005
+
+# Grafana Cloud
+`jkuo.grafana.net`
+
+#### Pricing
+Free tier
+* 10k series Prometheus metrics
+* 50GB logs, 50GB traces, 50GB profiles
+* 500VUh k6 testing
+* 20+ Enterprise data source plugins
+* 100+ pre-built solutions
+
+
+
 
 # Future Improvements
-* Fargate[^11]
+* Fargate[^13]
     * VPC
         * Public VPC + security groups
         * Private VPC
@@ -155,4 +208,8 @@ And `aws-actions/configure-aws-credentials@v4` will fail if no role can be assum
 
 [^10]: [https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect#adding-permissions-settings](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/about-security-hardening-with-openid-connect#adding-permissions-settings)
 
-[^11]: [https://medium.com/@MUmarAmanat/setup-aws-vpc-for-fargate-246d1c515135](https://medium.com/@MUmarAmanat/setup-aws-vpc-for-fargate-246d1c515135)
+[^11]: Partition: divides db into different files aka partitions in order to not have to pull all files at once: [https://docs.aws.amazon.com/athena/latest/ug/partitions.html](https://docs.aws.amazon.com/athena/latest/ug/partitions.html), [https://docs.aws.amazon.com/athena/latest/ug/partition-projection.html](https://docs.aws.amazon.com/athena/latest/ug/partition-projection.html)
+
+[^12]: [https://aws.amazon.com/glue/pricing/](https://aws.amazon.com/glue/pricing/)
+
+[^13]: [https://medium.com/@MUmarAmanat/setup-aws-vpc-for-fargate-246d1c515135](https://medium.com/@MUmarAmanat/setup-aws-vpc-for-fargate-246d1c515135)
