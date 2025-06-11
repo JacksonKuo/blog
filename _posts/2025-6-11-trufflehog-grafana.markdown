@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Trufflehog Scanner"
+title: "Trufflehog: Scanner"
 date: 2025-6-11
 tags: ["scanner"]
 published: true
