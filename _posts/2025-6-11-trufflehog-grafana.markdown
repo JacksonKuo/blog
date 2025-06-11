@@ -2,7 +2,7 @@
 layout: post
 title: "Trufflehog: Scanner"
 date: 2025-6-11
-tags: ["scanner"]
+tags: ["devsecops"]
 published: true
 ---
 
