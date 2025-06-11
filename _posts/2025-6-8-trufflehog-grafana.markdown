@@ -93,7 +93,7 @@ My Actions linux usage for the month of May was 27 min with a $0.008 price per m
 There's a lot of different ways to install Trufflehog using GitHub Actions
 * Trufflehog docker container
 * Trufflehog GH Action
-* shell scripting
+* Shell scripting
 
 The Trufflehog GH Action is intended to be used for scanning PRs using checkout. Shell scripting is fine, but the easier method is to use the packaged container made by Trufflehog and available on GH container registry: [https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog](https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog). The Trufflehog step requires `continue-on-error: true` to be set because when a secret is found Trufflehog will return an exit code of 127, which will be interpreted as a failed step and stop the rest of the action. 
 
@@ -122,8 +122,9 @@ In public repos by default `id-token` is set to  `write` but for private repos b
 My terraform does the following:
 * Add GitHub as a Identity Provider `aws_iam_openid_connect_provider`
 * Create a IAM role `github_oidc_role`
-* Attaches a `aws_iam_policy` that creates a permission policy for S3 `PutObject`
-* Attaches a `assume_role_policy` that creates a trust policy with the GitHub repo: `JacksonKuo/scanner-trufflehog`
+* Attaches a inline `assume_role_policy` that creates a trust policy with the GitHub repo: `JacksonKuo/scanner-trufflehog`
+* Attaches a inline `aws_iam_policy` that creates a permission policy for S3 `PutObject`
+
 
 And `aws-actions/configure-aws-credentials@v4` will fail if no role can be assumed. The S3 file write following this format `S3_KEY="trufflehog/year=${YEAR}/month=${MONTH}/day=${DAY}/scan.json"`, which allows one file per day. Any new files within a day will overwrite the last file.  
 
@@ -154,8 +155,10 @@ Glue is a metadata repository that holds partition data. There are two methods t
     * $0.44 per DPU-Hour, billed per second, with a 10-minute minimum per crawler run
     * 1 DPU × 0.1667 hours × $0.44/DPU-hour ≈ $0.07 per crawl
 
-# Athena   
+Importantly using partition projection should skip having to use the glue crawler. 
 
+# Athena
+Athena requires setting a workgroup, which the S3 output location of the athena result[^13]. Set `enforce_workgroup_configuration = true` to prevent the location from being changed. 
 
 #### Pricing
 * SQL queries
@@ -164,21 +167,55 @@ Glue is a metadata repository that holds partition data. There are two methods t
     * Minimum query cost: 10MB ÷ 1,048,576MB/​TB × $5/TB ≈ $0.00005
 
 # Grafana Cloud
-`jkuo.grafana.net`
+* Create a new subdomain: `jkuo.grafana.net`
+* Install Athena Plugin: 
+* Connections > Data sources: [https://jkuo.grafana.net/plugins/grafana-athena-datasource](https://jkuo.grafana.net/plugins/grafana-athena-datasource)
+
+Couple of things to note. Currently OIDC support does not exist. There is the regular assume role, but according to documentation: *Grafana Assume Role is currently in private preview for Grafana Cloud* (only invited customers), and *only available for Amazon CloudWatch*[^14]. 
+
+For simplicity sake, I create a IAM user with the IAM permissions listed here: [https://grafana.com/grafana/plugins/grafana-athena-datasource/](https://grafana.com/grafana/plugins/grafana-athena-datasource/) for datasource AWS authentication. 
 
 #### Pricing
-Free tier
-* 10k series Prometheus metrics
-* 50GB logs, 50GB traces, 50GB profiles
-* 500VUh k6 testing
-* 20+ Enterprise data source plugins
-* 100+ pre-built solutions
+* Free tier (woohoo!)
+    * 10k series Prometheus metrics
+    * 50GB logs, 50GB traces, 50GB profiles
+    * 500VUh k6 testing
+    * 20+ Enterprise data source plugins
+    * 100+ pre-built solutions
 
+#### Dashboard
+* Add visualization
+    * Last 7 days
+    * Axis
+        * Time zone: Coordinated Universal Time
+        * Soft min: 0
+    * Standard options:
+        * Unit: Number
+        * Decimals: 0
 
+{:refdef: style="text-align: center;"}
+![Image]({{ site.baseurl }}/assets/images/grafana-secrets.png){: width="600"}
+{: refdef}
+{:refdef: style="text-align: center;"}
+\[Grafana Dashboard\]
+{: refdef}
 
+The file path format is `s3://jkuo-prod-us-east-1/trufflehog/date=2025-06-11/scan.json`. And the SQL call is:
+
+```sql
+SELECT
+  date,
+  COUNT(*) AS total_secrets
+FROM trufflehog_table
+WHERE date >= current_date - interval '7' day
+GROUP BY date
+ORDER BY date;
+```
+
+For a more advanced guide here on Grafana see: [https://aws.amazon.com/blogs/mt/exploring-aws-config-data-using-amazon-athena-and-amazon-managed-grafana/](https://aws.amazon.com/blogs/mt/exploring-aws-config-data-using-amazon-athena-and-amazon-managed-grafana/)
 
 # Future Improvements
-* Fargate[^13]
+* Fargate[^15]
     * VPC
         * Public VPC + security groups
         * Private VPC
@@ -212,4 +249,8 @@ Free tier
 
 [^12]: [https://aws.amazon.com/glue/pricing/](https://aws.amazon.com/glue/pricing/)
 
-[^13]: [https://medium.com/@MUmarAmanat/setup-aws-vpc-for-fargate-246d1c515135](https://medium.com/@MUmarAmanat/setup-aws-vpc-for-fargate-246d1c515135)
+[^13]: [https://registry.terraform.io/providers/hashicorp/aws/6.0.0-beta3/docs/resources/athena_workgroup](https://registry.terraform.io/providers/hashicorp/aws/6.0.0-beta3/docs/resources/athena_workgroup)
+
+[^14]: [https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/#use-grafana-assume-role](https://grafana.com/docs/grafana/latest/datasources/aws-cloudwatch/aws-authentication/#use-grafana-assume-role)
+
+[^15]: [https://medium.com/@MUmarAmanat/setup-aws-vpc-for-fargate-246d1c515135](https://medium.com/@MUmarAmanat/setup-aws-vpc-for-fargate-246d1c515135)
