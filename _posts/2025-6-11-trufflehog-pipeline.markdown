@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Trufflehog: Pipeline"
+title: "Trufflehog - CI/CD Pipeline"
 date: 2025-6-11
 tags: ["devsecops"]
 published: false

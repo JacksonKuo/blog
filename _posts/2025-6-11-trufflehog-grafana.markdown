@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Trufflehog: Scanner"
+title: "Trufflehog - Scanner and Grafana"
 date: 2025-6-11
 tags: ["devsecops"]
 published: true
