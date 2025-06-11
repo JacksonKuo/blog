@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Trufflehog Scanner"
-date: 2025-6-7
+date: 2025-6-11
 tags: ["scanner"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -16,8 +16,8 @@ Let's build an Trufflehog scanner that scans a GitHub organization and pipes the
 # Building Blocks
 The fundamental building blocks will be:
 
-* OrgAdmin IAM user with YubiKey MFA
-* Terraform IAM user + API key
+* `org-admin` IAM user with YubiKey MFA
+* `terraform` IAM user + API key
 * Local Terraform
 * S3 Bucket
 * Trufflehog
@@ -82,7 +82,7 @@ resource "aws_s3_bucket_lifecycle_configuration" "main_lifecycle" {
 ```
 
 # Trufflehog - GitHub Actions
-My scanner will live in [https://github.com/JacksonKuo/scanner-trufflehog](https://github.com/JacksonKuo/scanner-trufflehog) and will scan the org: [https://github.com/jkuo-org](https://github.com/jkuo-org). I'll be using a fine-grained PAT token with Contents `readonly` access: `scanner-trufflehog-gh-pat`, to scan the following repos:
+My scanner will live in [https://github.com/JacksonKuo/scanner-trufflehog](https://github.com/JacksonKuo/scanner-trufflehog) and will scan the org: [https://github.com/jkuo-org](https://github.com/jkuo-org). I'll be using a fine-grained PAT token with Contents `readonly` access: `scanner-trufflehog-gh-pat` to scan the following repos:
 * [https://github.com/jkuo-org/repo-private](https://github.com/jkuo-org/repo-private)
 * [https://github.com/jkuo-org/repo-public](https://github.com/jkuo-org/repo-public)
 
@@ -103,16 +103,16 @@ I'm using [Canary Tokens](https://canarytokens.org) to proc Trufflehog and then 
 ```json
 {"repo":"https://github.com/jkuo-org/repo-private.git","detector":"AWS","link":"https://github.com/jkuo-org/repo-private/blob/9faaa8f4fb5e8e61d8cfd87ffb890b851257c583/canary.properties#L8"}
 ```
-Initial results are saved in artifacts. Artifacts in public repos are public, while private repo artifacts are scoped to those who have permissions to the repo. Note I'm just using artifacts to see the output, eventually the file will be filtered and written to S3. 
+Initial results are saved in artifacts. Artifacts in public repos are public, while private repo artifacts are scoped to those who have permissions to the repo. Note I'm just using artifacts to see the output for testing, eventually the file will be filtered and written to S3. 
 
 #### S3 OIDC
-A couple of notes. The `thumbprint_list` is now Optional and for AWS is no longer required: `AWS relies on its own library of trusted root certificate authorities (CAs) for validation instead of using any configured thumbprints`.[^9]
+A couple of notes. The `thumbprint_list` is now Optional and for AWS is no longer required: *AWS relies on its own library of trusted root certificate authorities (CAs) for validation instead of using any configured thumbprints*.[^9]
 
-Some good guides for OIDC setup.
+Some good guides for OIDC setup:
 * [https://medium.com/@thiagosalvatore/using-terraform-to-connect-github-actions-and-aws-with-oidc-0e3d27f00123](https://medium.com/@thiagosalvatore/using-terraform-to-connect-github-actions-and-aws-with-oidc-0e3d27f00123)
 * [https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services](https://docs.github.com/en/actions/security-for-github-actions/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services)
 
-In public repos by default `id-token` is set to  `write` but for private repos by default `id-token` is set to `none`. Don't forget to set `id-token: write`.[^10] Also when `id-token` is explicitly set, all permissions are overwritten to none, so `content: read` needs to be reset. 
+In public repos by default `id-token` is set to  `write` but for private repos by default `id-token` is set to `none`. Don't forget to set `id-token: write`.[^10] Also when `id-token` is explicitly set, all permissions are overwritten to `none`, so `content: read` needs to be reset. 
 
 | Repo Type | id-token | contents |
 |------------|----------|----------|
@@ -126,14 +126,14 @@ My terraform does the following:
 * Attaches a inline `aws_iam_policy` that creates a permission policy for S3 `PutObject`
 
 
-And `aws-actions/configure-aws-credentials@v4` will fail if no role can be assumed. The S3 file write following this format `S3_KEY="trufflehog/year=${YEAR}/month=${MONTH}/day=${DAY}/scan.json"`, which allows one file per day. Any new files within a day will overwrite the last file.  
+And `aws-actions/configure-aws-credentials@v4` will fail if no role can be assumed. The S3 file write follows this format `trufflehog/date=${DATE}/scan.json"`, which allows one file for each date. Any new files within a day will overwrite the last file.  
 
 # Glue
-Glue is a metadata repository that holds partition data. There are two methods to do Glue partitioning. Both parse the same folder naming structures: `…/partitionKey=value/` which is called Apache Hive style partitions, where *data paths contain key value pairs connected by equal signs (year=2021/month=01/day=26/)*[^11]. However there are important differences:
+Glue is a metadata repository that holds partition data. There are two methods to do Glue partitioning. Both methods parse the same folder naming structures: `…/partitionKey=value/` which is called Apache Hive style partitions, where *data paths contain key value pairs connected by equal signs (year=2021/month=01/day=26/)*[^11]. However there are important differences:
 * Hive-style partitioning
     * must run `MSCK REPAIR TABLE` by Athena or Glue crawler
     * declared using `PARTITIONED BY (dt string)`
-    * AWS Glue crawler run auto runs MSCK
+    * AWS Glue crawler auto runs `MSCK`
     * AWS Glue crawler stores partition info in the Glue metadata catalog
     * Adds partition column at runtime
 * Partition projection
@@ -155,10 +155,10 @@ Glue is a metadata repository that holds partition data. There are two methods t
     * $0.44 per DPU-Hour, billed per second, with a 10-minute minimum per crawler run
     * 1 DPU × 0.1667 hours × $0.44/DPU-hour ≈ $0.07 per crawl
 
-Importantly using partition projection should skip having to use the glue crawler. 
+Importantly using partition projection skips having to use the Glue crawler. 
 
 # Athena
-Athena requires setting a workgroup, which the S3 output location of the athena result[^13]. Set `enforce_workgroup_configuration = true` to prevent the location from being changed. 
+Athena requires setting a workgroup, which is the S3 output location of the Athena results[^13]. Set `enforce_workgroup_configuration = true` to prevent the location from being changed. 
 
 #### Pricing
 * SQL queries
@@ -173,7 +173,7 @@ Athena requires setting a workgroup, which the S3 output location of the athena 
 
 Couple of things to note. Currently OIDC support does not exist. There is the regular assume role, but according to documentation: *Grafana Assume Role is currently in private preview for Grafana Cloud* (only invited customers), and *only available for Amazon CloudWatch*[^14]. 
 
-For simplicity sake, I create a IAM user with the IAM permissions listed here: [https://grafana.com/grafana/plugins/grafana-athena-datasource/](https://grafana.com/grafana/plugins/grafana-athena-datasource/) for datasource AWS authentication. 
+For simplicity sake, I create a IAM user with the IAM permissions listed here: [https://grafana.com/grafana/plugins/grafana-athena-datasource/](https://grafana.com/grafana/plugins/grafana-athena-datasource/) for the datasource AWS authentication. 
 
 #### Pricing
 * Free tier (woohoo!)
@@ -193,13 +193,6 @@ For simplicity sake, I create a IAM user with the IAM permissions listed here: [
         * Unit: Number
         * Decimals: 0
 
-{:refdef: style="text-align: center;"}
-![Image]({{ site.baseurl }}/assets/images/grafana-secrets.png){: width="600"}
-{: refdef}
-{:refdef: style="text-align: center;"}
-\[Grafana Dashboard\]
-{: refdef}
-
 The file path format is `s3://jkuo-prod-us-east-1/trufflehog/date=2025-06-11/scan.json`. And the SQL call is:
 
 ```sql
@@ -211,6 +204,13 @@ WHERE date >= current_date - interval '7' day
 GROUP BY date
 ORDER BY date;
 ```
+
+{:refdef: style="text-align: center;"}
+![Image]({{ site.baseurl }}/assets/images/grafana-secrets.png){: width="600"}
+{: refdef}
+{:refdef: style="text-align: center;"}
+\[Grafana Dashboard\]
+{: refdef}
 
 For a more advanced guide here on Grafana see: [https://aws.amazon.com/blogs/mt/exploring-aws-config-data-using-amazon-athena-and-amazon-managed-grafana/](https://aws.amazon.com/blogs/mt/exploring-aws-config-data-using-amazon-athena-and-amazon-managed-grafana/)
 
