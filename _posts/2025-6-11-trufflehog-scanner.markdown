@@ -212,7 +212,7 @@ ORDER BY date;
 \[Grafana Dashboard\]
 {: refdef}
 
-For a more advanced guide here on Grafana see: [https://aws.amazon.com/blogs/mt/exploring-aws-config-data-using-amazon-athena-and-amazon-managed-grafana/](https://aws.amazon.com/blogs/mt/exploring-aws-config-data-using-amazon-athena-and-amazon-managed-grafana/)
+For a more advanced guide on Grafana see: [https://aws.amazon.com/blogs/mt/exploring-aws-config-data-using-amazon-athena-and-amazon-managed-grafana/](https://aws.amazon.com/blogs/mt/exploring-aws-config-data-using-amazon-athena-and-amazon-managed-grafana/)
 
 # Future Improvements
 * Fargate[^15]
