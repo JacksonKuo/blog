@@ -187,18 +187,18 @@ TruffleHog...............................................................Passed
  create mode 100644 .pre-commit-config.yaml
 ```
 
-Something I noticed is that edits to the `canary.properties` file like newlines that move the existing secret around, do not cause Trufflehog to proc. Looks like Trufflehog works off the diff. This is good, since it means old secrets won't trigger. In order to trigger again, both lines for `aws_access_key_id` and `aws_secret_access_key` have to be changed at the same time or `--since-commit HEAD` has to be removed.
+Something I noticed is that edits to the `canary.properties` file like newlines that move the existing secret around, do not cause Trufflehog to proc. Looks like Trufflehog works off the diff. This is good, since it means old secrets won't trigger unnecessarily. In order to trigger again, both lines for `aws_access_key_id` and `aws_secret_access_key` have to be changed at the same time or `--since-commit HEAD` has to be removed.
 
-Also Trufflehog uses `AKIA` to find a AWS API secret. If we want to explicitly ignore a credential then `#trufflehog:ignore` needs to be placed on the `AKIA` line. 
+Also Trufflehog uses `AKIA` to find a AWS API token. If we want to explicitly ignore a credential then `#trufflehog:ignore` needs to be placed on the `AKIA` line. 
 
 # Pros and Cons
-So which one should be use githooks or the pre-commit framework? Note that I'm going to refer to the pre-commit framework as just pre-commits. Githooks are a better fit for individuals. For team projects, pre-commits is preferred. 
-* Githooks required bootstrap shell commands to set globally, and the per repo `$GIT_DIR/hooks` aren't included when pushing source to GitHub.com
-* Githooks you need your root script to properly call your child scripts, where as pre-commits allows for easily adding multiple different hooks via built-ins
-* Githooks you need to manage dependencies, where as pre-commit dependencies and virtual environments are built-in
+So which one should be used githooks or the pre-commit framework? Note that I'm going to refer to the pre-commit framework as just pre-commits. Githooks are a better fit for individuals. For team projects, pre-commits is preferred. 
+* Githooks require bootstrapped shell commands to set global pre-commits, and the per repo `$GIT_DIR/hooks` aren't included when pushing sourcecode to GitHub.com
+* Githooks require a root script to properly call child scripts, whereas pre-commits allow for adding multiple hooks via easy built-ins
+* Githooks require managing dependencies, where as pre-commit dependencies and virtual environments have built-ins
 * Pre-commits also have built-in versioning
 
-Pre-commits does require developers to install and run `pre-commit install`. But developer can configure their `git` to point to a template that will auto call `.pre-commit-config.yaml` so that `install` isn't required.[^10] Alternative, `pre-commit install` can just be part of the `Makefile` build file. 
+Pre-commits do require developers to install and run `pre-commit install`. But developers can configure their `git` to point to a template that will auto call `.pre-commit-config.yaml` so that `pre-commit install` isn't required after every `git clone`.[^10] Alternatively, `pre-commit install` can just be part of the `Makefile` build process. 
 
 ```bash
 # pre-commit uninstall
