@@ -220,9 +220,7 @@ TruffleHog...............................................................Failed
 Pre-commits require a unique `.pre-commit-config.yaml` file per repository. And pre-commits do require developers will need to explicitly install pre-commits and have `pre-commit install` executed. But developers can configure their `git` to point to a template that will auto call `.pre-commit-config.yaml` so that `pre-commit install` isn't required after every `git clone`.[^10] Alternatively, `pre-commit install` can just be part of the `Makefile` build process. 
 
 # Performance
-Performance wise, the first instance of downloading the Trufflehog container will be a bit slow, as well as any version updates. Running the Trufflehog binary may have better performance. The risk of supply chain attacks on Trufflehog warrant commit pinning along with frequent version updates from the security team. 
-
-The best approach would be to have a version check inside the pre-commit, that if an update is required, call the installation script[^11] or download directly from Releases: [https://github.com/trufflesecurity/trufflehog/releases](https://github.com/trufflesecurity/trufflehog/releases)
+Performance wise, the first instance of downloading the Trufflehog container will be a bit slow, as well as any version updates. Running the Trufflehog binary may have better performance. The risk of supply chain attacks on Trufflehog warrant commit pinning along with frequent version updates from the security team. The best approach would be to have a version check inside the pre-commit and if an update is required call the installation script[^11] or download directly from Github Releases[^12]
 
 #### Local binary vs docker container
 ```
@@ -252,7 +250,7 @@ repos:
     * *git commit -m "update"  0.11s user 0.08s system 5% cpu 3.255 total*
     * *git commit -m "update"  0.12s user 0.08s system 8% cpu 2.367 total*
 
-Based on the `time` results, looks like the docker container takes 2-3x longer. 
+Based on the `time` results, looks like the docker container takes approximately 2-3x longer. 
 
 # References
 [^1]: [https://docs.trufflesecurity.com/block-secrets-from-leaking](https://docs.trufflesecurity.com/block-secrets-from-leaking)
@@ -276,3 +274,5 @@ Based on the `time` results, looks like the docker container takes 2-3x longer.
 [^10]: [https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories](https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories)
 
 [^11]: [https://github.com/trufflesecurity/trufflehog?tab=readme-ov-file#using-installation-script-to-install-a-specific-version](https://github.com/trufflesecurity/trufflehog?tab=readme-ov-file#using-installation-script-to-install-a-specific-version)
+
+[^12]: [https://github.com/trufflesecurity/trufflehog/releases](https://github.com/trufflesecurity/trufflehog/releases)
