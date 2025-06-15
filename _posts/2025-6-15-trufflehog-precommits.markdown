@@ -237,8 +237,10 @@ repos:
         stages: ["pre-commit", "pre-push"]
 ```
 
-* binary = ``
-* docker = `git commit -m "update"  0.12s user 0.09s system 5% cpu 3.606 total`
+* binary = `time git commit -m "update"`
+    * 
+* docker = `time git commit -m "update"`
+    * `git commit -m "update"  0.12s user 0.09s system 5% cpu 3.606 total`
 
 # References
 [^1]: [https://docs.trufflesecurity.com/block-secrets-from-leaking](https://docs.trufflesecurity.com/block-secrets-from-leaking)
