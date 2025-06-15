@@ -198,8 +198,6 @@ So which one should be used githooks or the pre-commit framework? Note that I'm 
 * Githooks require managing dependencies, where as pre-commit dependencies and virtual environments have built-ins
 * Pre-commits also have built-in versioning
 
-Pre-commits do require developers to install and run `pre-commit install`. But developers can configure their `git` to point to a template that will auto call `.pre-commit-config.yaml` so that `pre-commit install` isn't required after every `git clone`.[^10] Alternatively, `pre-commit install` can just be part of the `Makefile` build process. 
-
 ```bash
 # pre-commit uninstall
 git config --global init.templateDir ~/.git-template
@@ -219,12 +217,12 @@ TruffleHog...............................................................Failed
 # git config --global --list
 # mv .git/hooks/pre-commit .git/hooks/pre-commit.disabled
 ```
+Pre-commits require a unique `.pre-commit-config.yaml` file per repository. And pre-commits do require developers will need to explicitly install pre-commits and have `pre-commit install` executed. But developers can configure their `git` to point to a template that will auto call `.pre-commit-config.yaml` so that `pre-commit install` isn't required after every `git clone`.[^10] Alternatively, `pre-commit install` can just be part of the `Makefile` build process. 
 
-Performance wise, the first instance of downloading the Trufflehog container will be a bit slow, as well as any version updates. Running the Trufflehog binary may have better performance, but does not include a method for automated updates. The risk of supply chain attacks on Trufflehog warrant commit pinning along with frequent version updates from the security team. Pre-commits also will require a unique `.pre-commit-config.yaml` file per repository. And developers will need to explicitly install pre-commits and have `pre-commit install` executed.
+# Performance
+Performance wise, the first instance of downloading the Trufflehog container will be a bit slow, as well as any version updates. Running the Trufflehog binary may have better performance, but does not include a method for automated updates. The risk of supply chain attacks on Trufflehog warrant commit pinning along with frequent version updates from the security team. 
 
-# To Do
-* Measure the performance speed of the Trufflehog local binary over the docker container
-
+#### Local binary vs docker container
 ```
 repos:
   - repo: local
@@ -243,6 +241,9 @@ repos:
 * docker = `time git commit -m "update"`
     * *git commit -m "update"  0.12s user 0.09s system 5% cpu 3.606 total*
     * *git commit -m "update"  0.11s user 0.08s system 5% cpu 3.255 total*
+    * *git commit -m "update"  0.12s user 0.08s system 8% cpu 2.367 total*
+
+Based on the `time` results, looks like the docker container takes 2-3x longer. 
 
 # References
 [^1]: [https://docs.trufflesecurity.com/block-secrets-from-leaking](https://docs.trufflesecurity.com/block-secrets-from-leaking)
