@@ -223,7 +223,7 @@ Pre-commits require a unique `.pre-commit-config.yaml` file per repository. And 
 Performance wise, the first instance of downloading the Trufflehog container will be a bit slow, as well as any version updates. Running the Trufflehog binary may have better performance. The risk of supply chain attacks on Trufflehog warrant commit pinning along with frequent version updates from the security team. The best approach would be to have a version check inside the pre-commit and if an update is required call the installation script[^11] or download directly from Github Releases[^12]
 
 #### Local binary vs docker container
-```
+```yml
 repos:
   - repo: local
     hooks:
