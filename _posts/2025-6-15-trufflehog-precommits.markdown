@@ -118,7 +118,7 @@ jacksonkuo@JacksonKuos-MacBook-Air repo-private % git commit -m "update" --no-ve
 # Pre-commit framework
 A couple things for `pre-commit` framework - [https://pre-commit.com/](https://pre-commit.com/):
 * *Every time you clone a project using pre-commit running pre-commit install should always be the first thing you do*
-* *If you want to manually run all pre-commit hooks on a repository, run pre-commit run --all-files. To run individual hooks use pre-commit run <hook_id>*
+* *If you want to manually run all pre-commit hooks on a repository, run pre-commit run --all-files. To run individual hooks use pre-commit run \<hook_id\>*
 * *new in 3.2.0: The values of stages match the hook names. Previously, commit, push, and merge-commit matched pre-commit, pre-push, and pre-merge-commit respectively.*
 
 ```sh
@@ -221,6 +221,21 @@ TruffleHog...............................................................Failed
 ```
 
 Performance wise, the first instance of downloading the Trufflehog container will be a bit slow, as well as any version updates. Running the Trufflehog binary may have better performance, but does not include a method for automated updates. The risk of supply chain attacks on Trufflehog warrant commit pinning along with frequent version updates from the security team. Pre-commits also will require a unique `.pre-commit-config.yaml` file per repository. And developers will need to explicitly install pre-commits and have `pre-commit install` executed.
+
+# To Do
+* Measure the performance speed of the Trufflehog local binary over the docker container
+
+```
+repos:
+  - repo: local
+    hooks:
+      - id: trufflehog
+        name: TruffleHog
+        description: Detect secrets in your data.
+        entry: bash -c 'trufflehog git file://. --since-commit HEAD --results=verified,unknown --fail'
+        language: system
+        stages: ["pre-commit", "pre-push"]
+```
 
 # References
 [^1]: [https://docs.trufflesecurity.com/block-secrets-from-leaking](https://docs.trufflesecurity.com/block-secrets-from-leaking)
