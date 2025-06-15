@@ -95,7 +95,7 @@ There's a lot of different ways to install Trufflehog using GitHub Actions
 * Trufflehog GH Action
 * Shell scripting
 
-The Trufflehog GH Action is intended to be used for scanning PRs using checkout. Shell scripting is fine, but the easier method is to use the packaged container made by Trufflehog and available on GH container registry: [https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog](https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog). The Trufflehog step requires `continue-on-error: true` to be set because when a secret is found Trufflehog will return an exit code of 127, which will be interpreted as a failed step and stop the rest of the action. 
+The Trufflehog GH Action is intended to be used for scanning PRs using checkout. Shell scripting is fine, but the easier method is to use the packaged container made by Trufflehog and available on GH container registry: [https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog](https://github.com/trufflesecurity/trufflehog/pkgs/container/trufflehog). The Trufflehog step requires `continue-on-error: true` to be set because in some settings when a secret is found Trufflehog may return a non-zero exit code, which will be interpreted as a failed step and stop the rest of the action. 
 
 #### Json Reduction
 I'm using [Canary Tokens](https://canarytokens.org) to proc Trufflehog and then using `jq` to reduce the Trufflehog output to a minimal JSON file. The Trufflehog container `alpine:3.21`[^7] doesn't have `jq`, `app-get`, `aws`, but it does allow `apk add jq aws-cli`[^8]. 
