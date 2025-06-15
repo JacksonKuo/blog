@@ -242,6 +242,7 @@ repos:
     * *git commit -m "update"  0.84s user 0.18s system 73% cpu 1.388 total*
 * docker = `time git commit -m "update"`
     * *git commit -m "update"  0.12s user 0.09s system 5% cpu 3.606 total*
+    * *git commit -m "update"  0.11s user 0.08s system 5% cpu 3.255 total*
 
 # References
 [^1]: [https://docs.trufflesecurity.com/block-secrets-from-leaking](https://docs.trufflesecurity.com/block-secrets-from-leaking)
