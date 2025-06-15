@@ -16,7 +16,7 @@ Let's prevent secrets before they're ever committed using Trufflehog pre-commit 
 # Overview
 So there's actually two ways to prevent commits: pre-receive and pre-commit hooks.[^1] However pre-receive hooks are only if you control the git server. GitHub.com doesn't support pre-received hooks, but the self-hosted GitHub Enterprise Server does.[^2] Trufflehog has a great pre-commit hook guide: 
 * [https://github.com/trufflesecurity/trufflehog/blob/main/PreCommit.md](https://github.com/trufflesecurity/trufflehog/blob/main/PreCommit.md)
-* [https://docs.trufflesecurity.com/pre-commit-hooks](https://docs.trufflesecurity.com/pre-commit-hooks). 
+* [https://docs.trufflesecurity.com/pre-commit-hooks](https://docs.trufflesecurity.com/pre-commit-hooks) 
 
 Let's walk through `githooks`/`hooksPath` and the precommit framework, woohoo!
 
@@ -220,7 +220,7 @@ TruffleHog...............................................................Failed
 # mv .git/hooks/pre-commit .git/hooks/pre-commit.disabled
 ```
 
-Performance wise, the first instance of downloading the trufflehog container will be a bit slow, as well as any version updates. Pre-commits will require a unique `.pre-commit-config.yaml` file per repository. And developers will need to explicitly have pre-commits installed and the `pre-commit install` executed.
+Performance wise, the first instance of downloading the trufflehog container will be a bit slow, as well as any version updates. Running the Trufflehog binary may have better performance, but does not include automated updates of latest. The risk of supply chain attacks on Trufflehog should be considered. Pre-commits also will require a unique `.pre-commit-config.yaml` file per repository. And developers will need to explicitly install pre-commits and have `pre-commit install` executed.
 
 # References
 [^1]: [https://docs.trufflesecurity.com/block-secrets-from-leaking](https://docs.trufflesecurity.com/block-secrets-from-leaking)
