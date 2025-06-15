@@ -18,9 +18,9 @@ So there's actually two ways to prevent commits: pre-receive and pre-commit hook
 * [https://github.com/trufflesecurity/trufflehog/blob/main/PreCommit.md](https://github.com/trufflesecurity/trufflehog/blob/main/PreCommit.md)
 * [https://docs.trufflesecurity.com/pre-commit-hooks](https://docs.trufflesecurity.com/pre-commit-hooks) 
 
-Let's walk through `githooks`/`hooksPath` and the pre-commit framework, woohoo!
+Let's walk through `Githooks`/`hooksPath` and the pre-commit framework, woohoo!
 
-# githooks
+# Githooks
 A couple things for `githooks` - [https://git-scm.com/docs/githooks](https://git-scm.com/docs/githooks): 
 * `$GIT_DIR/hooks` is not uploaded to GitHub.com
 * *By default the hooks directory is `$GIT_DIR/hooks`, but that can be changed via the `core.hooksPath` configuration variable*
