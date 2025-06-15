@@ -18,7 +18,7 @@ So there's actually two ways to prevent commits: pre-receive and pre-commit hook
 * [https://github.com/trufflesecurity/trufflehog/blob/main/PreCommit.md](https://github.com/trufflesecurity/trufflehog/blob/main/PreCommit.md)
 * [https://docs.trufflesecurity.com/pre-commit-hooks](https://docs.trufflesecurity.com/pre-commit-hooks) 
 
-Let's walk through `githooks`/`hooksPath` and the precommit framework, woohoo!
+Let's walk through `githooks`/`hooksPath` and the pre-commit framework, woohoo!
 
 # githooks
 A couple things for `githooks` - [https://git-scm.com/docs/githooks](https://git-scm.com/docs/githooks): 
@@ -115,7 +115,7 @@ jacksonkuo@JacksonKuos-MacBook-Air repo-private % git commit -m "update" --no-ve
  1 file changed, 6 insertions(+)
 ```
 
-# Precommit framework
+# Pre-commit framework
 A couple things for `pre-commit` framework - [https://pre-commit.com/](https://pre-commit.com/):
 * *Every time you clone a project using pre-commit running pre-commit install should always be the first thing you do*
 * *If you want to manually run all pre-commit hooks on a repository, run pre-commit run --all-files. To run individual hooks use pre-commit run <hook_id>*
