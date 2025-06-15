@@ -220,7 +220,7 @@ TruffleHog...............................................................Failed
 # mv .git/hooks/pre-commit .git/hooks/pre-commit.disabled
 ```
 
-Performance wise, the first instance of downloading the trufflehog container will be a bit slow, as well as any version updates. Running the Trufflehog binary may have better performance, but does not include a method for automated updates. The risk of supply chain attacks on Trufflehog warrant commit pinning along with frequent updates from the security team. Pre-commits also will require a unique `.pre-commit-config.yaml` file per repository. And developers will need to explicitly install pre-commits and have `pre-commit install` executed.
+Performance wise, the first instance of downloading the Trufflehog container will be a bit slow, as well as any version updates. Running the Trufflehog binary may have better performance, but does not include a method for automated updates. The risk of supply chain attacks on Trufflehog warrant commit pinning along with frequent version updates from the security team. Pre-commits also will require a unique `.pre-commit-config.yaml` file per repository. And developers will need to explicitly install pre-commits and have `pre-commit install` executed.
 
 # References
 [^1]: [https://docs.trufflesecurity.com/block-secrets-from-leaking](https://docs.trufflesecurity.com/block-secrets-from-leaking)
