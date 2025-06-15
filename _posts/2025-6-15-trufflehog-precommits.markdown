@@ -238,9 +238,9 @@ repos:
 ```
 
 * binary = `time git commit -m "update"`
-    * 
+    * *git commit -m "update"  0.84s user 0.17s system 73% cpu 1.374 total*
 * docker = `time git commit -m "update"`
-    * `git commit -m "update"  0.12s user 0.09s system 5% cpu 3.606 total`
+    * *git commit -m "update"  0.12s user 0.09s system 5% cpu 3.606 total*
 
 # References
 [^1]: [https://docs.trufflesecurity.com/block-secrets-from-leaking](https://docs.trufflesecurity.com/block-secrets-from-leaking)
