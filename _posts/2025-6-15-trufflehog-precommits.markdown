@@ -3,7 +3,7 @@ layout: post
 title: "Trufflehog - Precommits Hooks"
 date: 2025-6-15
 tags: ["devsecops"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -14,7 +14,7 @@ published: false
 Let's prevent secrets before they're ever committed using Trufflehog pre-commit hooks.
 
 # Overview
-So there's actually two ways to prevent commits: pre-receive and pre-commit hooks.[^1] However pre-receive hooks are only if you control the git server. Github.com doesn't support pre-received hooks, but the self-hosted Github Enterprise Server does.[^2] Trufflehog has a great pre-commit hook guide: 
+So there's actually two ways to prevent commits: pre-receive and pre-commit hooks.[^1] However pre-receive hooks are only if you control the git server. GitHub.com doesn't support pre-received hooks, but the self-hosted GitHub Enterprise Server does.[^2] Trufflehog has a great pre-commit hook guide: 
 * [https://github.com/trufflesecurity/trufflehog/blob/main/PreCommit.md](https://github.com/trufflesecurity/trufflehog/blob/main/PreCommit.md)
 * [https://docs.trufflesecurity.com/pre-commit-hooks](https://docs.trufflesecurity.com/pre-commit-hooks). 
 
@@ -22,7 +22,7 @@ Let's walk through `githooks`/`hooksPath` and the precommit framework, woohoo!
 
 # githooks
 A couple things for `githooks` - [https://git-scm.com/docs/githooks](https://git-scm.com/docs/githooks): 
-* `$GIT_DIR/hooks` is not uploaded to Github.com
+* `$GIT_DIR/hooks` is not uploaded to GitHub.com
 * *By default the hooks directory is `$GIT_DIR/hooks`, but that can be changed via the `core.hooksPath` configuration variable*
     * `$GIT_DIR/hooks` local to a git repo
 * only runs this specific ``$GIT_DIR/hooks/pre-commit` file
@@ -116,10 +116,13 @@ jacksonkuo@JacksonKuos-MacBook-Air repo-private % git commit -m "update" --no-ve
 ```
 
 # Precommit framework
-[https://pre-commit.com/](https://pre-commit.com/)
+A couple things for `pre-commit` framework - [https://pre-commit.com/](https://pre-commit.com/):
+* *Every time you clone a project using pre-commit running pre-commit install should always be the first thing you do*
+* *If you want to manually run all pre-commit hooks on a repository, run pre-commit run --all-files. To run individual hooks use pre-commit run <hook_id>*
+* *new in 3.2.0: The values of stages match the hook names. Previously, commit, push, and merge-commit matched pre-commit, pre-push, and pre-merge-commit respectively.*
 
 ```sh
-#.pre-commit-config.yaml
+# .pre-commit-config.yaml in repo root
 repos:
   - repo: local
     hooks:
@@ -128,22 +131,96 @@ repos:
         description: Detect secrets in your data.
         entry: bash -c 'docker run --rm -v "$(pwd):/workdir" -i --rm trufflesecurity/trufflehog:latest git file:///workdir --since-commit HEAD --results=verified,unknown --fail'
         language: system
-        stages: ["commit", "push"]
+        stages: ["pre-commit", "pre-push"]
 ```
+* `repos` - *a list of repository mappings*
+    * `repo` - *repository url to git clone from or one of the special sentinel values: local, meta.*[^8]
+    * `hooks`[^9]
+        * `id` - *which hook from the repository to use*
+        * `name` - *(optional) override the name of the hook - shown during hook execution*
+        * `entry` - *the entry point - the executable to run*
+        * `language` - *the language of the hook - tells pre-commit how to install the hook*
+            * `system` - *system hooks provide a way to write hooks for system-level executables which don't have a supported language*
+        * `stages` - *(optional) selects which git hook(s) to run for*
 
 ```bash
 brew install pre-commit
+git config --global --unset-all core.hooksPath
 pre-commit install
+# pre-commit install --overwrite
+# pre-commit run --all-files, only won't due to the --since-commit HEAD
 ```
 
+```bash
+jacksonkuo@JacksonKuos-MacBook-Air repo-private % git commit -m "labels"
+TruffleHog...............................................................Failed
+- hook id: trufflehog
+- exit code: 183
 
+🐷🔑🐷  TruffleHog. Unearth your secrets. 🐷🔑🐷
+
+2025-06-15T09:50:15Z	info-0	trufflehog	running source	{"source_manager_worker_id": "07asZ", "with_units": true}
+2025-06-15T09:50:15Z	info-0	trufflehog	scanning repo	{"source_manager_worker_id": "07asZ", "unit_kind": "dir", "unit": "/workdir", "repo": "https://github.com/jkuo-org/repo-private.git", "base": "b6d22bf8ae018920e35647e49b4711bc3ddc96c9"}
+✅ Found verified result 🐷🔑
+Detector Type: AWS
+Decoder Type: PLAIN
+Raw result: xxx
+Resource_type: Access key
+Account: xxx
+Rotation_guide: https://howtorotate.com/docs/tutorials/aws/
+User_id: xxx
+Arn: arn:aws:iam::xxx:user/trufflehog
+Commit: Staged
+File: canary.properties
+Line: 2
+Repository: https://github.com/jkuo-org/repo-private.git
+Timestamp: 0001-01-01 00:00:00 +0000
+
+2025-06-15T09:50:15Z	info-0	trufflehog	finished scanning	{"chunks": 1, "bytes": 179, "verified_secrets": 1, "unverified_secrets": 0, "scan_duration": "232.504083ms", "trufflehog_version": "3.89.1", "verification_caching": {"Hits":0,"Misses":1,"HitsWasted":0,"AttemptsSaved":0,"VerificationTimeSpentMS":216}}
+```
+
+```bash
+jacksonkuo@JacksonKuos-MacBook-Air repo-private % git commit -m "pre-commit"
+TruffleHog...............................................................Passed
+[main df1914a] pre-commit
+ 1 file changed, 10 insertions(+)
+ create mode 100644 .pre-commit-config.yaml
+```
+
+Something I noticed is that edits to the `canary.properties` file like newlines that move the existing secret around, do not cause Trufflehog to proc. Looks like Trufflehog works off the diff. This is good, since it means old secrets won't trigger. In order to trigger again, both lines for `aws_access_key_id` and `aws_secret_access_key` have to be changed at the same time or `--since-commit HEAD` has to be removed.
+
+Also Trufflehog uses `AKIA` to find a AWS API secret. If we want to explicitly ignore a credential then `#trufflehog:ignore` needs to be placed on the `AKIA` line. 
 
 # Pros and Cons
-Per repo, global?
-performance
+So which one should be use githooks or the pre-commit framework? Note that I'm going to refer to the pre-commit framework as just pre-commits. Githooks are a better fit for individuals. For team projects, pre-commits is preferred. 
+* Githooks required bootstrap shell commands to set globally, and the per repo `$GIT_DIR/hooks` aren't included when pushing source to GitHub.com
+* Githooks you need your root script to properly call your child scripts, where as pre-commits allows for easily adding multiple different hooks via built-ins
+* Githooks you need to manage dependencies, where as pre-commit dependencies and virtual environments are built-in
+* Pre-commits also have built-in versioning
 
-how to force it
+Pre-commits does require developers to install and run `pre-commit install`. But developer can configure their `git` to point to a template that will auto call `.pre-commit-config.yaml` so that `install` isn't required.[^10] Alternative, `pre-commit install` can just be part of the `Makefile` build file. 
 
+```bash
+# pre-commit uninstall
+git config --global init.templateDir ~/.git-template
+pre-commit init-templatedir ~/.git-template
+# pre-commit installed at /Users/jacksonkuo/.git-template/hooks/pre-commit
+git clone https://github.com/jkuo-org/repo-private.git
+cd repo-private
+
+jacksonkuo@JacksonKuos-MacBook-Air repo-private % git commit -m "reorder"
+TruffleHog...............................................................Failed
+- hook id: trufflehog
+- exit code: 183
+
+🐷🔑🐷  TruffleHog. Unearth your secrets. 🐷🔑🐷
+
+# git config --global --unset-all init.templatedir
+# git config --global --list
+# mv .git/hooks/pre-commit .git/hooks/pre-commit.disabled
+```
+
+Performance wise, the first instance of downloading the trufflehog container will be a bit slow, as well as any version updates. Pre-commits will require a unique `.pre-commit-config.yaml` file per repository. And developers will need to explicitly have pre-commits installed and the `pre-commit install` executed.
 
 # References
 [^1]: [https://docs.trufflesecurity.com/block-secrets-from-leaking](https://docs.trufflesecurity.com/block-secrets-from-leaking)
@@ -159,3 +236,9 @@ how to force it
 [^6]: [https://trufflesecurity.com/blog/trufflehog-commands-git-vs-filesystem](https://trufflesecurity.com/blog/trufflehog-commands-git-vs-filesystem)
 
 [^7]: [https://github.com/trufflesecurity/trufflehog?tab=readme-ov-file#s3](https://github.com/trufflesecurity/trufflehog?tab=readme-ov-file#s3)
+
+[^8]: [https://pre-commit.com/#pre-commit-configyaml---repos](https://pre-commit.com/#pre-commit-configyaml---repos)
+
+[^9]: [https://pre-commit.com/#pre-commit-configyaml---hooks](https://pre-commit.com/#pre-commit-configyaml---hooks)
+
+[^10]: [https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories](https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories)
