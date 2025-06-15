@@ -220,19 +220,28 @@ TruffleHog...............................................................Failed
 Pre-commits require a unique `.pre-commit-config.yaml` file per repository. And pre-commits do require developers will need to explicitly install pre-commits and have `pre-commit install` executed. But developers can configure their `git` to point to a template that will auto call `.pre-commit-config.yaml` so that `pre-commit install` isn't required after every `git clone`.[^10] Alternatively, `pre-commit install` can just be part of the `Makefile` build process. 
 
 # Performance
-Performance wise, the first instance of downloading the Trufflehog container will be a bit slow, as well as any version updates. Running the Trufflehog binary may have better performance, but does not include a method for automated updates. The risk of supply chain attacks on Trufflehog warrant commit pinning along with frequent version updates from the security team. 
+Performance wise, the first instance of downloading the Trufflehog container will be a bit slow, as well as any version updates. Running the Trufflehog binary may have better performance. The risk of supply chain attacks on Trufflehog warrant commit pinning along with frequent version updates from the security team. 
+
+The best approach would be to have a version check inside the pre-commit, that if an update is required, call the installation script[^11] or download directly from Releases: [https://github.com/trufflesecurity/trufflehog/releases](https://github.com/trufflesecurity/trufflehog/releases)
 
 #### Local binary vs docker container
 ```
 repos:
   - repo: local
     hooks:
-      - id: trufflehog
-        name: TruffleHog
+      - id: trufflehog-binary
+        name: TruffleHog-Binary
         description: Detect secrets in your data.
         entry: bash -c 'trufflehog git file://. --since-commit HEAD --results=verified,unknown --fail'
         language: system
         stages: ["pre-commit", "pre-push"]
+      - id: trufflehog-docker
+        name: TruffleHog-Docker
+        description: Detect secrets in your data.
+        entry: bash -c 'docker run --rm -v "$(pwd):/workdir" -i --rm trufflesecurity/trufflehog:latest git file:///workdir --since-commit HEAD --results=verified,unknown --fail'
+        language: system
+        stages: ["manual"]
+        #stages: ["pre-commit", "pre-push"]
 ```
 
 * binary = `time git commit -m "update"`
@@ -265,3 +274,5 @@ Based on the `time` results, looks like the docker container takes 2-3x longer.
 [^9]: [https://pre-commit.com/#pre-commit-configyaml---hooks](https://pre-commit.com/#pre-commit-configyaml---hooks)
 
 [^10]: [https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories](https://pre-commit.com/#automatically-enabling-pre-commit-on-repositories)
+
+[^11]: [https://github.com/trufflesecurity/trufflehog?tab=readme-ov-file#using-installation-script-to-install-a-specific-version](https://github.com/trufflesecurity/trufflehog?tab=readme-ov-file#using-installation-script-to-install-a-specific-version)
