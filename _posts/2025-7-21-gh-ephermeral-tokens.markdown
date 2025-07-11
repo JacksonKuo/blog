@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Github - Ephemeral Tokens"
-date: 2025-7-10
+date: 2025-7-21
 tags: ["github"]
 published: false
 ---
@@ -13,3 +13,8 @@ published: false
 # Problem Statement
 
 zzz
+
+
+# References
+[^1]: [https://oauth.net/2/grant-types/](https://oauth.net/2/grant-types/)
+
