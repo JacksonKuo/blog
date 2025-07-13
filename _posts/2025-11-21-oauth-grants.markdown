@@ -18,6 +18,11 @@ Let's walk through the different OAuth grant types.
 * Authorization Code Grant
 * Authorization Code Grant + PKCE
 * Client Credentials
+    * Service to Service Auth
+    * No refresh token
+    * JWT w/ expiration
+        * Should use a cache
 
 * Token Introspection
 
+* OIDC
