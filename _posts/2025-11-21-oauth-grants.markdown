@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "OAuth 2.0 - Grant Types"
-date: 2025-7-10
+date: 2025-11-21
 tags: ["oauth"]
 published: false
 ---

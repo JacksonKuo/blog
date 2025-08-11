@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Trufflehog - Pipeline"
-date: 2025-7-21
+date: 2025-11-21
 tags: ["devsecops"]
 published: false
 ---
