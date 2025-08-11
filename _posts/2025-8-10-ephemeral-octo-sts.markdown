@@ -3,7 +3,7 @@ layout: post
 title: "Ephemeral GitHub Tokens: Octo-STS"
 date: 2025-8-10
 tags: ["github"]
-published: false
+published: true
 ---
 
 **Contents**
