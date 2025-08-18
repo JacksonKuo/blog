@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Chainguard Migration"
-date: 2025-8-20
+date: 2025-8-17
 tags: ["devsecops"]
 published: false
 ---
@@ -11,9 +11,22 @@ published: false
 {:toc}
 
 # Problem Statement
-Let's migrate our base images to Chainguard.
+Let's migrate our base images to Chainguard. This problem can be further broken down into:
+
+Step 1: Repair my local build pipeline
+Step 2: Run Trivy
+Step 3: Chainguard migration
+
+#### Summary
 
 # Services
+
+I got three services:
+* app-springboot - Dockerfile
+* app-smokescreen - Dockerfile
+* redis:latest` - Helm Chart
+
+I got confirmed my local cluster build is working. 
 
 * app-springboot, Dockerfile
 

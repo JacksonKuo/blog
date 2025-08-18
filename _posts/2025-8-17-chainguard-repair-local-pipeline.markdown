@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Dependency Upgrades: Local Pipeline"
+title: "Chainguard Migration - Repair Local Pipeline"
 date: 2025-8-17
-tags: ["upgrades"]
+tags: ["chainguard"]
 published: true
 ---
 
@@ -11,6 +11,10 @@ published: true
 {:toc}
 
 # Problem Statement
+Let's migrate our base images to Chainguard. This problem can be further broken down into:
+
+Step 1: Repair my local build pipeline
+
 After not running my local cluster build for a while, I reran my Makefile and had errors. Let's fix this shit...
 
 #### Problem 1 - .zprofile
@@ -53,26 +57,24 @@ tasks.jacocoTestReport {
 }
 ```
 
-before running: `./gradlew wrapper --gradle-version=9.0.0 --distribution-type=bin`[^3], and then removing my comments. My `gradle-wrapper.properties` looks good: `distributionUrl=https\://services.gradle.org/distributions/gradle-9.0.0-bin.zip`.
+before running: `./gradlew wrapper --gradle-version=9.0.0 --distribution-type=bin`[^2], and then removing my comments. My `gradle-wrapper.properties` looks good: `distributionUrl=https\://services.gradle.org/distributions/gradle-9.0.0-bin.zip`.
 
 #### Problem 3 - Jekyll
-My local Jekyll will not automatically catch file updates anymore for some reason. Using `--force_polling` will reach out and check the if any file has changed versus the default system that uses `listen`[^4] [^5] that was really flaky as more files were added to jekyll.
+My local Jekyll will not automatically catch file updates anymore for some reason. Using `--force_polling` will reach out and check the if any file has changed versus the default system that uses `listen`[^3] [^4] that was really flaky as more files were added to jekyll.
 
 ```bash
 bundle exec jekyll serve --unpublished --livereload --force_polling
 ```
 
 #### Problem 4 - Makefile
-My blog post Deployment Pipeline 2.0[^2] was using a older Makefile... updated. And added the localhost URL for cluster's local service. Build is working now, woohoo!
+My blog post, [Application Defense: Part IV -  Deployment Pipeline 2.0](https://jacksonkuo.github.io/blog/2025/02/04/app-defense-part-4.html) was using a older Makefile... updated. And added the localhost URL for cluster's local service. Build is working now, woohoo!
 
 # References
 [^1]: [https://docs.gradle.org/current/userguide/compatibility.html](https://docs.gradle.org/current/userguide/compatibility.html)
 
-[^2]: [https://jacksonkuo.github.io/blog/2025/02/04/app-defense-part-4.html](https://jacksonkuo.github.io/blog/2025/02/04/app-defense-part-4.html)
+[^2]: [https://gradle.org/install/](https://gradle.org/install/)
 
-[^3]: [https://gradle.org/install/](https://gradle.org/install/)
+[^3]: [https://github.com/jekyll/jekyll-watch/blob/master/jekyll-watch.gemspec](https://github.com/jekyll/jekyll-watch/blob/master/jekyll-watch.gemspec)
 
-[^4]: [https://github.com/jekyll/jekyll-watch/blob/master/jekyll-watch.gemspec](https://github.com/jekyll/jekyll-watch/blob/master/jekyll-watch.gemspec)
-
-[^5]: [https://github.com/guard/listen](https://github.com/guard/listen)
+[^4]: [https://github.com/guard/listen](https://github.com/guard/listen)
 
