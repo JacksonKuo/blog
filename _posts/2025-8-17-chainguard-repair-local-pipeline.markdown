@@ -11,11 +11,11 @@ published: true
 {:toc}
 
 # Problem Statement
-Let's migrate our base images to Chainguard. This problem can be further broken down into:
+Let's migrate our base images to Chainguard. This problem can be first broken down into:
 
 * Step 1: Repair the local build pipeline
 
-After not running my local cluster build for a while, I reran my Makefile and had errors. Let's fix this shit...
+After not running my local cluster build for a while, I reran my Makefile and had errors. Let's fix this shindig...
 
 #### Problem 1 - .zprofile
 OpenJDK upgraded to 24. Which breaks my `~/.zprofile`. Apparently, this was a bad idea: `export PATH="/opt/homebrew/Cellar/openjdk/23.0.1/bin:"$PATH`. Changed to `export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"` which is apparently the recommended way.
@@ -37,7 +37,7 @@ Could not create task ':test'.
          > Type T not present
 ```
 
-I just had to comment out this section momentarily in my `build.gradle.kts`:
+I just had to comment out this section momentarily in my `build.gradle.kts` and then use `.set()` instead of `=` which apparently the new way to configure in Kotlin DSL:
 
 ```bash
 tasks.withType<Test> {
@@ -60,7 +60,7 @@ tasks.jacocoTestReport {
 before running: `./gradlew wrapper --gradle-version=9.0.0 --distribution-type=bin`[^2], and then removing my comments. My `gradle-wrapper.properties` looks good: `distributionUrl=https\://services.gradle.org/distributions/gradle-9.0.0-bin.zip`.
 
 #### Problem 3 - Jekyll
-My local Jekyll will not automatically catch file updates anymore for some reason. Using `--force_polling` will reach out and check the if any file has changed versus the default system that uses `listen`[^3] [^4] that was really flaky as more files were added to jekyll.
+My local Jekyll will not automatically catch file updates anymore for some reason. Using `--force_polling` will reach out and check the if any file has changed versus the default update system that uses `listen`[^3] [^4] that was really flaky as more files were added to jekyll.
 
 ```bash
 bundle exec jekyll serve --unpublished --livereload --force_polling
