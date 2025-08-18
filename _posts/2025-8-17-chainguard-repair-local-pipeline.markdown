@@ -69,6 +69,9 @@ bundle exec jekyll serve --unpublished --livereload --force_polling
 #### Problem 4 - Makefile
 My blog post, [Application Defense: Part IV -  Deployment Pipeline 2.0](https://jacksonkuo.github.io/blog/2025/02/04/app-defense-part-4.html) was using a older Makefile... updated. And added the localhost URL for cluster's local service. Build is working now, woohoo!
 
+#### Problem 5 - vCPU
+I pushed the changes to my droplet and my server crashed. Maybe because it was due to having been a while since I've restarted, but the CPU graph maxed out and I couldn't SSH in. I resized my droplet from the $6 regular CPU type to the $7 premium AMD CPU. That's 16.7% additional compute spend...mmm
+
 # References
 [^1]: [https://docs.gradle.org/current/userguide/compatibility.html](https://docs.gradle.org/current/userguide/compatibility.html)
 
