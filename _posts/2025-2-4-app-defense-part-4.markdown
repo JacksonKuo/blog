@@ -55,6 +55,16 @@ I have three environments that i try to maintain: local JAR, local k3d, prod K3s
 # Local Environment Setup: k3d[^1] [^2] [^3] [^4]
 
 #### Build
+```bash
+# /private/etc/hosts
+127.0.0.1       local.bakacore.com
+```
+
+```bash
+# ~/.zprofile
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+alias k="kubectl"
+```
 
 ```bash
 brew install k3d
@@ -65,8 +75,7 @@ alias k="kubectl"
 ```bash
 # Description: Makefile for the springboot application
 
-# Don't forget to export the environment variables secrets
-# Don't forget to run redis
+# Don't forget to export the environment variables secrets, keychain `export secrets`
 
 .PHONY: test build docker cluster secrets deploy
 
@@ -121,6 +130,10 @@ delete:
 	k3d cluster delete local-cluster
 
 all: build docker cluster secrets deploy
+```
+
+```bash
+http://local.bakacore.com:8443/
 ```
 
 # Droplet Environment Setup: K3s
