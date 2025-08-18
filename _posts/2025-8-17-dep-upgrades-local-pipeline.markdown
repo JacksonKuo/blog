@@ -33,7 +33,7 @@ Could not create task ':test'.
          > Type T not present
 ```
 
-I just had to comment out this section momentarily:
+I just had to comment out this section momentarily in my `build.gradle.kts`:
 
 ```bash
 tasks.withType<Test> {
@@ -53,7 +53,7 @@ tasks.jacocoTestReport {
 }
 ```
 
-before running: `./gradlew wrapper --gradle-version=9.0.0 --distribution-type=bin`[^3], and then removing my comments. 
+before running: `./gradlew wrapper --gradle-version=9.0.0 --distribution-type=bin`[^3], and then removing my comments. My `gradle-wrapper.properties` looks good: `distributionUrl=https\://services.gradle.org/distributions/gradle-9.0.0-bin.zip`.
 
 #### Problem 3 - Jekyll
 My local Jekyll will not automatically catch file updates anymore for some reason. Using `--force_polling` will reach out and check the if any file has changed versus the default system that uses `listen`[^4] [^5] that was really flaky as more files were added to jekyll.
@@ -63,7 +63,7 @@ bundle exec jekyll serve --unpublished --livereload --force_polling
 ```
 
 #### Problem 4 - Makefile
-My blog post Deployment Pipeline 2.0[^2] was using a older Makefile... updated. And added url to local service.
+My blog post Deployment Pipeline 2.0[^2] was using a older Makefile... updated. And added the localhost URL for cluster's local service. Build is working now, woohoo!
 
 # References
 [^1]: [https://docs.gradle.org/current/userguide/compatibility.html](https://docs.gradle.org/current/userguide/compatibility.html)
