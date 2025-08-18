@@ -71,13 +71,17 @@ alias k="kubectl"
 .PHONY: test build docker cluster secrets deploy
 
 test:
+# redis-server --daemonize yes 
+# sleep 1
 	./gradlew test --info -Dspring.profiles.active=local
+#redis-cli shutdown
 
 build:
-	./gradlew build -Dspring.profiles.active=localk8
+	./gradlew build -x test -Dspring.profiles.active=localk8
 
 docker:
 	docker build -t springboot --build-arg BASE_IMAGE="openjdk:17-jdk-slim" .
+	docker build -t smokescreen -f /Users/jacksonkuo/workspace/app-smokescreen/Dockerfile /Users/jacksonkuo/workspace/app-smokescreen/
 
 cluster:
 	k3d cluster create local-cluster --port 8443:8443@loadbalancer
@@ -100,6 +104,7 @@ secrets-check:
 
 deploy:
 	k3d image import springboot --cluster local-cluster
+	k3d image import smokescreen --cluster local-cluster
 	helm install springboot ./springboot-chart -f ./springboot-chart/values-local.yaml
 
 restart:
@@ -109,10 +114,13 @@ log:
 	kubectl describe pod -l app=springboot
 	kubectl logs -l app=springboot --tail=100
 
-uninstall:
+k3d-log:
+	docker exec k3d-local-cluster-server-0 crictl images
+
+delete:
 	k3d cluster delete local-cluster
 
-all: test build docker cluster secrets deploy
+all: build docker cluster secrets deploy
 ```
 
 # Droplet Environment Setup: K3s
