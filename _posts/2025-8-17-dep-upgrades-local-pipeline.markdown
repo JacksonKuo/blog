@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Upgrade - Local Pipeline"
+title: "Dependency Upgrades: Local Pipeline"
 date: 2025-8-17
 tags: ["upgrades"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -11,13 +11,13 @@ published: false
 {:toc}
 
 # Problem Statement
-After not running my local build for a while, I attempted to run my local k3 cluster and ran into errors. Let's fix this shit...
+After not running my local cluster build for a while, I reran my Makefile and had errors. Let's fix this shit...
 
 #### Problem 1 - .zprofile
 OpenJDK upgraded to 24. Which breaks my `~/.zprofile`. Apparently, this was a bad idea: `export PATH="/opt/homebrew/Cellar/openjdk/23.0.1/bin:"$PATH`. Changed to `export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"` which is apparently the recommended way.
 
 #### Problem 2 - gradlew
-OpenJDK 24 is not compatible with my current version of Gradle 8.11.1, which needs Gradle 8.14 or later.[^1] Trying to upgrade my `./gradlew` wrapper ran into some weird type issue. No duckin idea what this is.
+OpenJDK 24 is not compatible with my current version of Gradle 8.11.1, which needs Gradle 8.14 or later.[^1] Let's go up to Gradle 9. Trying to upgrade my `./gradlew` wrapper ran into some weird type issue. No duckin idea what this is.
 
 ```bash
 FAILURE: Build failed with an exception.
@@ -33,7 +33,7 @@ Could not create task ':test'.
          > Type T not present
 ```
 
-I just had to comment out this section:
+I just had to comment out this section momentarily:
 
 ```bash
 tasks.withType<Test> {
@@ -53,19 +53,26 @@ tasks.jacocoTestReport {
 }
 ```
 
-before running: `./gradlew wrapper --gradle-version=9.0.0 --distribution-type=bin`
+before running: `./gradlew wrapper --gradle-version=9.0.0 --distribution-type=bin`[^3], and then removing my comments. 
 
-#### Problem 3 - jekyll
-My local jekyll will not automatically update anymore for some unknown reason. Using `--force_polling` will reach out and check the if any file have changed versus the event-based system that was really flaky as more files were added to jekyll.
+#### Problem 3 - Jekyll
+My local Jekyll will not automatically catch file updates anymore for some reason. Using `--force_polling` will reach out and check the if any file has changed versus the default system that uses `listen`[^4] [^5] that was really flaky as more files were added to jekyll.
 
 ```bash
 bundle exec jekyll serve --unpublished --livereload --force_polling
 ```
 
-#### Problem 3 - Make file
-My blog post Deployment Pipeline 2.0[^2] was using a older Makefile... updated.
+#### Problem 4 - Makefile
+My blog post Deployment Pipeline 2.0[^2] was using a older Makefile... updated. And added url to local service.
 
 # References
 [^1]: [https://docs.gradle.org/current/userguide/compatibility.html](https://docs.gradle.org/current/userguide/compatibility.html)
 
 [^2]: [https://jacksonkuo.github.io/blog/2025/02/04/app-defense-part-4.html](https://jacksonkuo.github.io/blog/2025/02/04/app-defense-part-4.html)
+
+[^3]: [https://gradle.org/install/](https://gradle.org/install/)
+
+[^4]: [https://github.com/jekyll/jekyll-watch/blob/master/jekyll-watch.gemspec](https://github.com/jekyll/jekyll-watch/blob/master/jekyll-watch.gemspec)
+
+[^5]: [https://github.com/guard/listen](https://github.com/guard/listen)
+

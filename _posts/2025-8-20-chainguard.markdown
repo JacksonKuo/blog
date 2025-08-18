@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Chainguard Migration"
-date: 2025-8-16
+date: 2025-8-20
 tags: ["devsecops"]
 published: false
 ---
@@ -72,3 +72,6 @@ brew install trivy
 https://trivy.dev/v0.65/docs/advanced/private-registries/
 
 https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
+
+
+https://github.com/github/roadmap/issues/558
