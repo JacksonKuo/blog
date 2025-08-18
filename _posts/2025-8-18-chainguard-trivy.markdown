@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Chainguard Migration - Trivy"
+title: "Chainguard: Part II - Trivy"
 date: 2025-8-18
 tags: ["chainguard"]
 published: true

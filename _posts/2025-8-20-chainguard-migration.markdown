@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Chainguard Migration"
+title: "Chainguard: Part III - Migration"
 date: 2025-8-18
 tags: ["chainguard"]
 published: false

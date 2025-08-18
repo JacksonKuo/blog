@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Chainguard Migration - Repair Local Pipeline"
+title: "Chainguard: Part I - Repair Pipeline"
 date: 2025-8-17
 tags: ["chainguard"]
 published: true
