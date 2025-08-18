@@ -45,7 +45,7 @@ INFO	[secret] Secret scanning is enabled
 The results match what dependabot alerts on. Trivy finds the Netty MadeYouReset CVE-2025-55163 and then does not alert on the Testcontainers CVE-2024-25710 as `testImplementation("org.testcontainers:testcontainers:1.21.0")` is only used when running tests. Docker Scout only finds 28 vulns.[^5]
  
 ```bash
-#### Spring Image Result
+#### ===== Spring Image Result ===== 
 trivy image ghcr.io/jacksonkuo/springboot:latest
 trivy image ghcr.io/jacksonkuo/springboot:latest --scanners vuln,misconfig,secret
 
@@ -54,16 +54,19 @@ trivy image ghcr.io/jacksonkuo/springboot:latest --scanners vuln,misconfig,secre
 
 #Java (jar)
 #Total: 1 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 1, CRITICAL: 0)
-#===
+```
 
-#### OpenJDK Alpine Image Result
+```bash
+#### ===== OpenJDK Alpine Image Result ===== 
 docker pull --platform=linux/amd64 openjdk:17-jdk-alpine
 trivy image openjdk:17-jdk-alpine
 
 #openjdk:17-jdk-alpine (alpine 3.14.0)
 #Total: 49 (UNKNOWN: 0, LOW: 0, MEDIUM: 10, HIGH: 34, CRITICAL: 5)
+```
 
-#### Chainguard Results
+```bash
+#### ===== Chainguard Results ===== 
 docker pull cgr.dev/chainguard/gradle
 trivy image cgr.dev/chainguard/gradle
 
