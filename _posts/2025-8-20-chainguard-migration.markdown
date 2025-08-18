@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "Chainguard Migration"
-date: 2025-8-17
-tags: ["devsecops"]
+date: 2025-8-18
+tags: ["chainguard"]
 published: false
 ---
 
@@ -13,15 +13,13 @@ published: false
 # Problem Statement
 Let's migrate our base images to Chainguard. This problem can be further broken down into:
 
-Step 1: Repair my local build pipeline
-Step 2: Run Trivy
-Step 3: Chainguard migration
+* Step 1: Repair the local build pipeline
+* Step 2: Run Trivy scans
+* Step 3: Chainguard migration
 
 #### Summary
-
-# Services
-
 I got three services:
+
 * app-springboot - Dockerfile
 * app-smokescreen - Dockerfile
 * redis:latest` - Helm Chart
@@ -76,15 +74,3 @@ CMD ["./smokescreen", "--config-file", "/app/config.yaml", "--egress-acl-file", 
 
 * https://images.chainguard.dev/directory/image/gradle/overview
 
-use trivy to scan for vulns and compare
-
-* https://edu.chainguard.dev/chainguard/chainguard-images/staying-secure/working-with-scanners/trivy-tutorial/
-
-brew install trivy
-
-https://trivy.dev/v0.65/docs/advanced/private-registries/
-
-https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry
-
-
-https://github.com/github/roadmap/issues/558

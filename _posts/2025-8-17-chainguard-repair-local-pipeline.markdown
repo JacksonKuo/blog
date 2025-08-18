@@ -13,7 +13,7 @@ published: true
 # Problem Statement
 Let's migrate our base images to Chainguard. This problem can be further broken down into:
 
-Step 1: Repair my local build pipeline
+* Step 1: Repair the local build pipeline
 
 After not running my local cluster build for a while, I reran my Makefile and had errors. Let's fix this shit...
 
