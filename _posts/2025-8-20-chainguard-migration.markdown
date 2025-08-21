@@ -17,32 +17,57 @@ Let's migrate our base images to Chainguard. This problem can be further broken 
 * Step 2: Run Trivy scans
 * Step 3: Chainguard migration
 
-#### Summary
+#### Services
 I got three services:
 
 * app-springboot - Dockerfile
 * app-smokescreen - Dockerfile
 * redis:latest` - Helm Chart
 
-I got confirmed my local cluster build is working. 
-
-* app-springboot, Dockerfile
+I got confirmed my local cluster build is working. Let's just see what happens if I update the base image:
 
 ```bash
 ARG BASE_IMAGE=openjdk:17-jdk-alpine
-FROM ${BASE_IMAGE}
+ARG BASE_IMAGE=cgr.dev/chainguard/jdk:latest-dev
+```
+
+#### Permissions
+My `make docker` call failed due to Chainguard running as nonroot and `chmod +x` not being allowed. The solution is change the file permission before writing to the image:
+
+```bash
+COPY --chmod=755 entrypoint.sh /entrypoint.sh
+#RUN chmod +x /entrypoint.sh
+```
+
+
+brew install chainguard-dev/tap/dfc
+dfc -v
+
+
+Wolfi packages typically match what is available in Alpine,
+https://edu.chainguard.dev/chainguard/migration/migrating-to-chainguard-images/#migrating-from-alpine-dockerfiles
+
+
+https://edu.chainguard.dev/chainguard/migration/migrating-to-chainguard-images/
+https://edu.chainguard.dev/chainguard/migration/migration-checklist/
+
+```
+jacksonkuo@JacksonKuos-MacBook-Air app-smokescreen % cat ./Dockerfile | dfc -
+FROM cgr.dev/ORG/go:1.23-dev
+USER root
 
 WORKDIR /app
-COPY build/libs/sample-0.0.1-SNAPSHOT.jar /app
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+COPY acl.yaml config.yaml .
 
-EXPOSE 8443
+RUN apk add --no-cache git
+RUN git clone https://github.com/stripe/smokescreen.git
+WORKDIR /app/smokescreen
+RUN go build
 
-ENV JAVA_OPTS="-Xms128m -Xmx256m"
-ENV SPRING_PROFILE="prod"
+EXPOSE 4750
 
-ENTRYPOINT ["/entrypoint.sh"]
+CMD ["./smokescreen", "--config-file", "/app/config.yaml", "--egress-acl-file", "/app/acl.yaml"]
+#CMD ["./smokescreen"]
 ```
 
 * app-smokescreen, Dockerfile
@@ -73,4 +98,9 @@ CMD ["./smokescreen", "--config-file", "/app/config.yaml", "--egress-acl-file", 
 * https://edu.chainguard.dev/chainguard/migration/migration-guides/java-images/
 
 * https://images.chainguard.dev/directory/image/gradle/overview
+
+
+# References
+[^1]: []()
+
 

@@ -67,15 +67,10 @@ alias k="kubectl"
 ```
 
 ```bash
-brew install k3d
-k3d version
-alias k="kubectl"
-```
-
-```bash
 # Description: Makefile for the springboot application
 
-# Don't forget to export the environment variables secrets, keychain `export secrets`
+# Don't forget to export the environment variables secrets
+# Don't forget to run redis
 
 .PHONY: test build docker cluster secrets deploy
 
@@ -89,7 +84,8 @@ build:
 	./gradlew build -x test -Dspring.profiles.active=localk8
 
 docker:
-	docker build -t springboot --build-arg BASE_IMAGE="openjdk:17-jdk-slim" .
+# docker build -t springboot --build-arg BASE_IMAGE="openjdk:17-jdk-slim" .
+	docker build -t springboot .
 	docker build -t smokescreen -f /Users/jacksonkuo/workspace/app-smokescreen/Dockerfile /Users/jacksonkuo/workspace/app-smokescreen/
 
 cluster:

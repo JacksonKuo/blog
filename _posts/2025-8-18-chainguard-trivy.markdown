@@ -63,15 +63,17 @@ trivy image openjdk:17-jdk-alpine
 
 #openjdk:17-jdk-alpine (alpine 3.14.0)
 #Total: 49 (UNKNOWN: 0, LOW: 0, MEDIUM: 10, HIGH: 34, CRITICAL: 5)
+#Size: 181.71 MB
 ```
 
 ```bash
 #### ===== Chainguard Results ===== 
-docker pull cgr.dev/chainguard/gradle
-trivy image cgr.dev/chainguard/gradle
+docker pull cgr.dev/chainguard/jdk
+trivy image cgr.dev/chainguard/jdk
 
-#cgr.dev/chainguard/gradle (wolfi 20230201)
+#cgr.dev/chainguard/jdk (wolfi 20230201)
 #Total: 0
+#Size: 134.06 MB
 ```
 
 Apparently, `openjdk:17-jdk-alpine` used to be an official image, but has been deprecated since late 2022.[^6] [^7]
