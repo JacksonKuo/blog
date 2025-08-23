@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Chainguard: Part III - Migration"
-date: 2025-8-18
+date: 2025-8-22
 tags: ["chainguard"]
 published: false
 ---
@@ -39,10 +39,10 @@ COPY --chmod=755 entrypoint.sh /entrypoint.sh
 #RUN chmod +x /entrypoint.sh
 ```
 
-
+```
 brew install chainguard-dev/tap/dfc
 dfc -v
-
+```
 
 Wolfi packages typically match what is available in Alpine,
 https://edu.chainguard.dev/chainguard/migration/migrating-to-chainguard-images/#migrating-from-alpine-dockerfiles
@@ -51,8 +51,8 @@ https://edu.chainguard.dev/chainguard/migration/migrating-to-chainguard-images/#
 https://edu.chainguard.dev/chainguard/migration/migrating-to-chainguard-images/
 https://edu.chainguard.dev/chainguard/migration/migration-checklist/
 
-```
-jacksonkuo@JacksonKuos-MacBook-Air app-smokescreen % cat ./Dockerfile | dfc -
+```bash
+cat ./Dockerfile | dfc -
 FROM cgr.dev/ORG/go:1.23-dev
 USER root
 
