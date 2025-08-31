@@ -3,7 +3,7 @@ layout: post
 title: "Chainguard: Part III - Migration"
 date: 2025-8-22
 tags: ["chainguard"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -132,7 +132,7 @@ spec:
         - containerPort: 6379
 ```
 
-Lastly, when i push a new build my cluster is freezing up. I'm having to restart the whole droplet. Fun. 
+Lastly, when i push a new build my cluster is freezing up. I'm having to restart the whole droplet. Looks like it's the CPU going to 100%. Fun. 
 
 # References
 [^1]: [https://github.com/chainguard-dev/dfc](https://github.com/chainguard-dev/dfc)
