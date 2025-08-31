@@ -1,9 +1,9 @@
 ---
 layout: post
-title: "Python: Leetcode Practice II"
-date: 2025-11-21
+title: "Python: Leetcode Practice III"
+date: 2025-9-1
 tags: ["python"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -154,7 +154,6 @@ dict
     .values() = [True, True]
 '''
 ```
-
 
 # References
 

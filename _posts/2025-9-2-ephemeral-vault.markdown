@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Ephemeral GitHub Tokens: Vault Plugin"
-date: 2025-9-1
+date: 2025-9-2
 tags: ["github"]
 published: false
 ---
