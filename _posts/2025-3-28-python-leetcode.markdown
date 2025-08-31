@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Python: Leetcode Practice II"
+title: "Python: Leetcode Practice I"
 date: 2025-3-28
 tags: ["python"]
 published: true
