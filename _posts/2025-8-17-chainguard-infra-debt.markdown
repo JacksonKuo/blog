@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Chainguard: Part I - OpenJDK 24"
+title: "Chainguard: Part I -  Infrastructure Debt"
 date: 2025-8-17
 tags: ["chainguard"]
 published: true
