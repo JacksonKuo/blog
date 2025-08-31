@@ -174,6 +174,8 @@ Certbot is manually run on droplet and then TLS PKCS#12 is volume mounted to the
 			-out /etc/letsencrypt/live/bakacore.com/keystore.p12 \
 			-name springboot \
 			-password pass:<placeholder>
+		# world readonly for non-root chainguard
+		chmod 644 /etc/letsencrypt/live/bakacore.com/keystore.p12
 	```
 
 #### Secrets
