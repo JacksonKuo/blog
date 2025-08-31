@@ -20,9 +20,9 @@ Let's migrate our base images to Chainguard. This problem can be further broken 
 # Services
 I got three services:
 
-* app-springboot - Dockerfile
-* app-smokescreen - Dockerfile
-* redis:latest` - Helm Chart
+* `app-springboot` - Dockerfile
+* `app-smokescreen` - Dockerfile
+* `redis:latest` - Helm Chart
 
 #### Dockerfile - Springboot
 
@@ -41,7 +41,7 @@ dfc -v
 dfc ./Dockerfile
 ```
 
-Also here's a bunch of Chainguard documentation. Note Chainguard uses a Wolfi distribution based imag, which Chainguard calls undistro or distro-less in that they're minimal without a package manager: 
+Also here's a bunch of Chainguard documentation. Note that Chainguard uses a Wolfi distribution based image, which Chainguard calls undistro or distro-less in that they're minimal without a package manager.
 * [https://edu.chainguard.dev/chainguard/migration/](https://edu.chainguard.dev/chainguard/migration/)
 * [https://edu.chainguard.dev/chainguard/migration/migration-guides/](https://edu.chainguard.dev/chainguard/migration/migration-guides/)
 * [https://www.chainguard.dev/unchained/how-to-transition-to-secure-container-images-with-new-migration-guides](https://www.chainguard.dev/unchained/how-to-transition-to-secure-container-images-with-new-migration-guides)
@@ -58,7 +58,7 @@ COPY entrypoint.sh /entrypoint.sh
 #RUN chmod +x /entrypoint.sh
 ```
 
-Now it works locally great. Let's try pushing this to my live server. 
+Now it works locally. Great. Let's try pushing this to my live server. 
 
 ```bash
 Caused by: java.lang.IllegalStateException: Could not load store from '/etc/letsencrypt/live/bakacore.com/keystore.p12
@@ -74,9 +74,9 @@ root@debian-s-1vcpu-1gb-nyc1-01:~# ls -l /etc/letsencrypt/live/bakacore.com/
 chmod 644 /etc/letsencrypt/live/bakacore.com/keystore.p12
 ```
 
-Great, that works. Turns out my local tests didn't detect the issue because my local instance doesn't run with SSL. 
+Great. That works. Turns out my local tests didn't detect the issue because my local instance doesn't run with SSL. 
 
-Note, I am getting some weird VSCode errors that don't seem to matter, but I don't understand how to fix them. I'll sort it out later...
+Sidenote: I am getting some weird VSCode errors that don't seem to matter outside of my IDE, but I don't understand how to fix them. I'll sort it out later...
 
 ```bash
 [error] FAILURE: Build failed with an exception.
@@ -88,7 +88,7 @@ org.gradle.api.plugins.internal.DefaultDecoratedConvention
 
 #### Dockerfile -  Smokescreen
 
-I'm just using `FROM cgr.dev/chainguard/go:latest-dev`. So `-dev` will include a shell, but also additional tools like `apk`.
+I'm using `FROM cgr.dev/chainguard/go:latest-dev`. `-dev` will include a shell, but also additional tools like `apk`.
 
 ```bash
 FROM cgr.dev/chainguard/go:latest-dev
@@ -108,7 +108,7 @@ CMD ["./smokescreen", "--config-file", "/app/config.yaml", "--egress-acl-file", 
 #CMD ["./smokescreen"]
 ```
 
-This configuration fails because the Chainguard `golang` image uses a specific entrypoint: `"/usr/bin/go"`.[^2] Remember `ENTRYPOINT` is the primary executable that runs and `CMD` are the arguments which results in `go ./smokescreen` which is invalid since `smokescreen` is a binary. The yaml has been changed to the following:
+This configuration fails because the Chainguard `go` image uses a specific entrypoint: `/usr/bin/go`.[^2] Remember `ENTRYPOINT` is the primary executable that runs and `CMD` is the arguments which results in `go ./smokescreen`. This bash is invalid since `smokescreen` is a binary. The yaml has been changed to the following:
 
 ```bash
 ENTRYPOINT ["./smokescreen"]
@@ -117,7 +117,7 @@ CMD ["--config-file", "/app/config.yaml", "--egress-acl-file", "/app/acl.yaml"]
 
 #### Helm Chart - Redis
 
-Redis, which I'm not even using right now:
+The redis, which I'm not even using right now...
 
 ```yaml
 #springboot-chart > deployment-redis.yaml
@@ -134,9 +134,9 @@ spec:
 
 # Results
 
-Whew, everything is up and running.
+Whew. Everything is up and running.
 
-Lastly, when I push a new build my whole cluster is freezing up. I'm having to restart the whole droplet. Looks like it's the CPU going to 100%. Fun. 
+Lastly when I push a new build my whole cluster is freezing up. I'm having to restart the whole droplet. Looks like it's the CPU going to 100%. Fun. 
 
 # References
 [^1]: [https://github.com/chainguard-dev/dfc](https://github.com/chainguard-dev/dfc)
