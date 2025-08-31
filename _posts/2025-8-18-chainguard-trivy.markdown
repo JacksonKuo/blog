@@ -19,7 +19,7 @@ Let's migrate our base images to Chainguard. This problem can be further broken 
 #### Download Spring Image from GHCR
 > Apparently, I forgot that I made my images public, so none of the following was necessary. 
 
-Fine-grained PAT tokens don't have `package` permission, weirdly.[^1] So only classic PATs and GitHub Apps can read packages.[^2] 
+Fine-grained PAT tokens don't have `package` permissions, weirdly.[^1] So only classic PATs and GitHub Apps can read packages.[^2] 
 
 ```bash
 export TRIVY_PAT=
@@ -76,7 +76,7 @@ trivy image cgr.dev/chainguard/jdk
 #Size: 134.06 MB
 ```
 
-Apparently, `openjdk:17-jdk-alpine` used to be an official image, but has been deprecated since late 2022.[^6] [^7]
+`openjdk:17-jdk-alpine` used to be an official image, but has been deprecated since late 2022, oops.[^6] [^7]
 
 # References
 [^1]: [https://github.com/github/roadmap/issues/558](https://github.com/github/roadmap/issues/558)
