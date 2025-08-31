@@ -91,14 +91,14 @@ org.gradle.api.plugins.internal.DefaultDecoratedConvention
 I'm just using `FROM cgr.dev/chainguard/go:latest-dev`. So `-dev` will include a shell, but also additional tools like `apk`.
 
 ```bash
-cat ./Dockerfile | dfc -
-FROM cgr.dev/ORG/go:1.23-dev
+FROM cgr.dev/chainguard/go:latest-dev
+#FROM golang:1.23.6-alpine3.21
 
 WORKDIR /app
 COPY acl.yaml config.yaml .
 
 RUN apk add --no-cache git
-RUN git clone https://github.com/stripe/smokescreen.git
+RUN git clone https://github.com/stripe/smokescreen.git 
 WORKDIR /app/smokescreen
 RUN go build
 
