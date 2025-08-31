@@ -25,7 +25,6 @@ I got three services:
 * `redis:latest` - Helm Chart
 
 #### Dockerfile - Springboot
-
 I've confirmed my local cluster build is working. Let's just see what happens if I update the base image:
 
 ```bash
@@ -87,7 +86,6 @@ org.gradle.api.plugins.internal.DefaultDecoratedConvention
 ```
 
 #### Dockerfile -  Smokescreen
-
 I'm using `FROM cgr.dev/chainguard/go:latest-dev`. `-dev` will include a shell, but also additional tools like `apk`.
 
 ```bash
@@ -116,7 +114,6 @@ CMD ["--config-file", "/app/config.yaml", "--egress-acl-file", "/app/acl.yaml"]
 ```
 
 #### Helm Chart - Redis
-
 The redis, which I'm not even using right now...
 
 ```yaml
@@ -133,7 +130,6 @@ spec:
 ```
 
 # Results
-
 Whew. Everything is up and running.
 
 Lastly when I push a new build my whole cluster is freezing up. I'm having to restart the whole droplet. Looks like it's the CPU going to 100%. Fun. 

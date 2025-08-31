@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Chainguard: Part I - Upgrade Local Env"
+title: "Chainguard: Part I - OpenJDK 24"
 date: 2025-8-17
 tags: ["chainguard"]
 published: true
