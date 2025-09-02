@@ -254,7 +254,7 @@ Based on the `time` results, looks like the docker container takes approximately
 
 > Update: 9/2/25
 
-Adding `--no-update` seem to significantly speed up the pre-commit
+Adding `--no-update` seems to significantly speed up the pre-commit
 
 # References
 [^1]: [https://docs.trufflesecurity.com/block-secrets-from-leaking](https://docs.trufflesecurity.com/block-secrets-from-leaking)
