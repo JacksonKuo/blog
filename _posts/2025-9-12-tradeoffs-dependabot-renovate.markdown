@@ -20,7 +20,7 @@ What are the trade offs with dependabot vs renovate? There's been a lot of compa
 Some of these breakdowns are already out-of-date due to GitHub adding a lot of functionality to GitHub Advanced Security (GHAS) in the last couple of years. 
 
 # Grouped PRs
-For the longest time the most important differentiator had been Dependabot not supporting grouped PRs. And Dependabot has a reputation for creating a unmanageably large amount of PRs. As a result, developers have typically gravitated towards Renovate for dependency management, due to its support for groups. However GitHub has added "recently" added `groups` and `multi-ecosystem-groups`.
+For the longest time the most important differentiator had been Dependabot not supporting grouped PRs. And Dependabot has a reputation for creating a unmanageably large amount of PRs. As a result, developers have typically gravitated towards Renovate for dependency management, due to its support for grouped PRs. However GitHub has added "recently" added `groups` and `multi-ecosystem-groups`.
 
 * GitHub
     * 2017 Apr - Dependabot created by Grey Baker
