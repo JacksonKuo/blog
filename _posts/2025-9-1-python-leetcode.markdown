@@ -154,7 +154,3 @@ dict
     .values() = [True, True]
 '''
 ```
-
-# References
-
-[^1]: [https://docs.python-guide.org/writing/tests/](https://docs.python-guide.org/writing/tests/)
