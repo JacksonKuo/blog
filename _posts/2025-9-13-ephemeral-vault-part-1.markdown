@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Ephemeral GitHub Tokens: Vault Plugin"
-date: 2025-9-2
+title: "Ephemeral GitHub Tokens: Part I - Vault Plugin"
+date: 2025-9-3
 tags: ["github"]
 published: false
 ---
@@ -11,7 +11,9 @@ published: false
 {:toc}
 
 # Problem Statement
-A walkthrough of the vault plugin github secret: [https://github.com/martinbaillie/vault-plugin-secrets-github](https://github.com/martinbaillie/vault-plugin-secrets-github)
+Let's deploy ephemeral GitHub Tokens via the Vault Plugin. This problem can be broken down into:
+
+* Step 1: Run Vault
 
 # Setup
 [https://developer.hashicorp.com/vault/tutorials/get-started/setup](https://developer.hashicorp.com/vault/tutorials/get-started/setup)
@@ -64,3 +66,6 @@ vault operator unseal
 vault status
 vault login
 ```
+
+# References
+[^1]: []()

@@ -11,7 +11,7 @@ published: true
 {:toc}
 
 # Problem Statement
-Solve some Leetcode problems using Python: [https://leetcode.com/problemset/](https://leetcode.com/problemset/)
+Solve some Leetcode problems using Python: [https://leetcode.com/problemset/](https://leetcode.com/problemset/). Meant to upload this a while ago...
 
 # Leetcode
 Private Repo: [https://github.com/JacksonKuo/scripts-leetcode](https://github.com/JacksonKuo/scripts-leetcode)
