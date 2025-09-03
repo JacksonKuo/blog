@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Tradeoffs - Dependabot × Renovate"
-date: 2025-9-1
+date: 2025-9-2
 tags: ["github"]
-published: false
+published: ture
 ---
 
 **Contents**
