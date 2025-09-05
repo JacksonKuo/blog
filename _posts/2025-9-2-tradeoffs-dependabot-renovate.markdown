@@ -20,7 +20,7 @@ What are the trade offs with dependabot vs renovate? There's been a lot of compa
 Some of these breakdowns are already out-of-date due to GitHub adding a lot of functionality to GitHub Advanced Security (GHAS) in the last couple of years. 
 
 # Grouped PRs
-For the longest time the most important differentiator had been Dependabot not supporting grouped PRs. And Dependabot has a reputation for creating a unmanageably large amount of PRs. As a result, developers have typically gravitated towards Renovate for dependency management, due to its support for grouped PRs. However GitHub has added "recently" added `groups` and `multi-ecosystem-groups`.
+For the longest time the most important differentiator had been Dependabot not supporting grouped PRs. And Dependabot has a reputation for creating a unmanageably large amount of PRs. As a result, developers have typically gravitated towards Renovate for dependency management. However GitHub has added "recently" added `groups` and `multi-ecosystem-groups`.
 
 * GitHub
     * 2017 Apr - Dependabot created by Grey Baker
@@ -50,6 +50,7 @@ updates:
           - "org.redisson:redisson"
           - "com.twilio.sdk:twilio"
           - "com.googlecode.libphonenumber:libphonenumber"
+          - "org.springframework.boot"
         update-types:
           - "minor"
           - "patch"
@@ -58,7 +59,7 @@ updates:
 Note that if PR hasn't been merged for 30 days, Dependabot will stop rebasing.[^3] 
 
 #### Renovate
-Renovate has supported package groups for a while now, though I'm not sure exactly when. Renovate also provides presets-group: [https://docs.renovatebot.com/presets-group/](https://docs.renovatebot.com/presets-group/). I updated my `renovate.json` with a package group:
+Renovate has supported package groups for a while now, though I'm not sure exactly when they started. Renovate also provides `presets-group`: [https://docs.renovatebot.com/presets-group/](https://docs.renovatebot.com/presets-group/). I updated my `renovate.json` with the following package group:
 
 ```yaml
 {
@@ -83,12 +84,12 @@ Renovate has supported package groups for a while now, though I'm not sure exact
 ```
 
 #### Results
-I updated both Dependabot and Renovate with groups. Renovate updated instantly. Dependabot is set to `interval: "daily"`, so I'll wait and see what's what tomorrow.
+Dependabot and Renovate are both updated with groups. In Dependabot setting `org.springframework.boot:*` doesn't include `org.springframework.boot` itself, but just setting `- "org.springframework.boot"` works fine. 
 
-Actually, the Dependabot Graph can be triggered visa Insights > Dependency Graph > Dependabot > Check for Updates. Not super sure if that causes Dependabot to close old PRs. There might be a separate backend process that handles that every hour or so, if I had to guess, but looks pretty good...
+Looks pretty good... woohoo!
 
 {:refdef: style="text-align: center;"}
-![Image]({{ site.baseurl }}/assets/images/grouped-pr.png){: width="600"}
+![Image]({{ site.baseurl }}/assets/images/dependabot-renovate.png){: width="600"}
 {: refdef}
 
 # References
