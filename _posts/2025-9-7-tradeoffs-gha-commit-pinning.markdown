@@ -164,7 +164,7 @@ There seems to be multiple ways to call this helper as `helpers:pinGitHubActionD
 ![Image]({{ site.baseurl }}/assets/images/hashpin-renovate-digest-commit.png){: width="600"}
 {: refdef}
 
-The SemVer version will add the SemVer to the PR instead of the SHA for readability. This helpers looks to only proc on tags. 
+The SemVer version will add the SemVer to the PR instead of the SHA for readability. This helper seems to only proc on tags and not hashes. 
 
 ```json
 {
