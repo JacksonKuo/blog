@@ -176,7 +176,7 @@ The SemVer version will add the SemVer to the PR instead of the SHA for readabil
 ![Image]({{ site.baseurl }}/assets/images/hashpin-renovate-digestsemver-commit.png){: width="600"}
 {: refdef}
 
-For some reason in the Mend dashboard the version shows up as undefined: `actions/checkout undefined→ [Updates: ]`
+For some reason in the Mend dashboard the version shows up as `undefined`: `actions/checkout undefined→ [Updates: ]`. Ahh if it's in SHA form, the dashboard shows as `undefined`. In tag form, `actions/checkout 4.3.0→ [Updates: 5.0.0]` the version shows up. 
 
 # Upsize Droplet
 I finally bit the bullet and upgraded to 2GB of RAM for $12. My droplet was having trouble redeploying my services. Looks like I was running out of RAM. One day I'll refactor and get back down to 1GB by adding feature flags and turning off services I don't need running, sigh...
