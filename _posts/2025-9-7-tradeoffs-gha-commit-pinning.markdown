@@ -146,6 +146,17 @@ Renovate has two preset helpers: `pinGitHubActionDigests`[^7] and `helpers:pinGi
   ]
 }
 ```
+There seems to be multiple ways to call this helper as `helpers:pinGitHubActionDigests` also seems to work:
+
+```json
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests"
+  ],
+```
+
 {:refdef: style="text-align: center;"}
 ![Image]({{ site.baseurl }}/assets/images/hashpin-renovate-digest-pr.png){: width="600"}
 {: refdef}
@@ -157,17 +168,34 @@ The SemVer version will add the SemVer to the PR instead of the SHA for readabil
 
 ```json
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "helpers:pinGitHubActionDigests"
+  ],
   "packageRules": [
     {
-      "extends": [
-        "helpers:pinGitHubActionDigests"
+      "groupName": "all dependencies",
+      "groupSlug": "all-major-minor-patch",
+      "matchPackageNames": [
+        "*"
       ],
+      "matchUpdateTypes": [
+        "major",
+        "minor",
+        "patch"
+      ]
+    },
+    {
+      "matchDepTypes": ["action"],
       "extractVersion": "^(?<version>v?\\d+\\.\\d+\\.\\d+)$",
       "versioning": "regex:^v?(?<major>\\d+)(\\.(?<minor>\\d+)\\.(?<patch>\\d+))?$"
     }
   ]
 }
 ```
+
+For some reason this helper always seems to be missing a dependency compared to the non-SemVer version. I'm not sure why...
 
 {:refdef: style="text-align: center;"}
 ![Image]({{ site.baseurl }}/assets/images/hashpin-renovate-digestsemver-pr.png){: width="600"}
