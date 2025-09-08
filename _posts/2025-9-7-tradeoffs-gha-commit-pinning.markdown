@@ -153,7 +153,7 @@ Renovate has two preset helpers: `pinGitHubActionDigests`[^7] and `helpers:pinGi
 ![Image]({{ site.baseurl }}/assets/images/hashpin-renovate-digest-commit.png){: width="600"}
 {: refdef}
 
-The SemVer version will add the SemVer to the PR instead of the SHA for readability. 
+The SemVer version will add the SemVer to the PR instead of the SHA for readability. This helpers looks to only proc on tags. 
 
 ```json
 {
