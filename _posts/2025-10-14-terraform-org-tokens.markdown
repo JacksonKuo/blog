@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Terraform: Org Secrets"
-date: 2025-9-4
+date: 2025-10-4
 tags: ["IaC"]
 published: false
 ---
