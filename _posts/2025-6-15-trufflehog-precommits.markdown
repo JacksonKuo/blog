@@ -25,7 +25,7 @@ A couple things for `githooks` - [https://git-scm.com/docs/githooks](https://git
 * `$GIT_DIR/hooks` is not uploaded to GitHub.com
 * *By default the hooks directory is `$GIT_DIR/hooks`, but that can be changed via the `core.hooksPath` configuration variable*
     * `$GIT_DIR/hooks` local to a git repo
-* only runs this specific ``$GIT_DIR/hooks/pre-commit` file
+* only runs this specific `$GIT_DIR/hooks/pre-commit` file
 * git config[^3] - [https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration)
     * local - `git config core.hooksPath ~/.git-hooks`
     * global - `git config --global core.hooksPath ~/.git-hooks`
