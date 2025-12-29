@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Trufflehog - Custom Detector"
-date: 2025-12-28
+date: 2025-12-29
 tags: ["trufflehog"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -57,7 +57,6 @@ update-default:
 	| sed '/return \[\]detectors.Detector{/r /dev/stdin' \
 		"$$tmp" > "$$tmp.2"; \
 	mv "$$tmp.2" ./trufflehog/pkg/engine/defaults/defaults.go
-
 
 custom:
 	lower="$$(echo "$(name)" | tr 'A-Z' 'a-z')"; \
