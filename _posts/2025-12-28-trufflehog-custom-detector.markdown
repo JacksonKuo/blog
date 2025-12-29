@@ -18,7 +18,7 @@ Create a makefile that will auto-generate a custom detector: [https://github.com
 
 Getting the Makefile syntax to be not horrifying ended up taking a while:
 
-```
+```bash
 .PHONY: usage clone update-proto generate update-default custom build
 
 # make usage name=zzz id=9000 prefix=zzz
