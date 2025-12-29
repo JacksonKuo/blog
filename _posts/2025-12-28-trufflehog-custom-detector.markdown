@@ -87,4 +87,4 @@ I also added a simple listener server that helps observe the trufflehog verify i
 # References
 [https://github.com/trufflesecurity/trufflehog/blob/main/hack/docs/Adding_Detectors_external.md](https://github.com/trufflesecurity/trufflehog/blob/main/hack/docs/Adding_Detectors_external.md)
 
-https://trufflesecurity.com/blog/improving-trufflehog-part-i-adding-a-new-detector[](https://trufflesecurity.com/blog/improving-trufflehog-part-i-adding-a-new-detector)
+[https://trufflesecurity.com/blog/improving-trufflehog-part-i-adding-a-new-detector](https://trufflesecurity.com/blog/improving-trufflehog-part-i-adding-a-new-detector)
