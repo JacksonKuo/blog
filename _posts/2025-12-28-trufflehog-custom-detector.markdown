@@ -14,7 +14,7 @@ published: true
 How to create a custom trufflehog detector?
 
 # Summary
-Create a makefile that will auto-generate a custom detector: [https://github.com/JacksonKuo/scripts-trufflehog-custom-detector](https://github.com/JacksonKuo/scripts-trufflehog-custom-detector).
+Create a makefile that will auto-generate a custom detector: [https://github.com/JacksonKuo/scripts-trufflehog-custom-detector](https://github.com/JacksonKuo/scripts-trufflehog-custom-detector)[^1] [^2].
 
 Getting the Makefile syntax to be not horrifying ended up taking a while:
 
@@ -85,6 +85,6 @@ all: usage clone update-proto generate update-default custom build
 I also added a simple listener server that helps observe the trufflehog verify is working correctly.
 
 # References
-[https://github.com/trufflesecurity/trufflehog/blob/main/hack/docs/Adding_Detectors_external.md](https://github.com/trufflesecurity/trufflehog/blob/main/hack/docs/Adding_Detectors_external.md)
+[^1]: [https://github.com/trufflesecurity/trufflehog/blob/main/hack/docs/Adding_Detectors_external.md](https://github.com/trufflesecurity/trufflehog/blob/main/hack/docs/Adding_Detectors_external.md)
 
-[https://trufflesecurity.com/blog/improving-trufflehog-part-i-adding-a-new-detector](https://trufflesecurity.com/blog/improving-trufflehog-part-i-adding-a-new-detector)
+[^2]: [https://trufflesecurity.com/blog/improving-trufflehog-part-i-adding-a-new-detector](https://trufflesecurity.com/blog/improving-trufflehog-part-i-adding-a-new-detector)
