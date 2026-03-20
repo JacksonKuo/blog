@@ -32,6 +32,9 @@ A better method is to save the draft in the `_posts` folder, but do the followin
     * `published: false`
 3. To toggle the local draft visibility, change the date to the current day.
 4. To publish the draft in Github Pages, change `published` to true
+5. Use `--livereload --force_polling` to auto refresh changes
+    * `bundle exec jekyll serve --unpublished --livereload --force_polling`
+    * `http://localhost:4000`
 
 # References
 

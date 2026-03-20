@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Tradeoffs - Trufflehog × GHAS"
-date: 2025-10-1
+date: 2026-10-1
 tags: ["github"]
 published: false
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GitHub Secrets - Workflow Types"
-date: 2025-10-12
+date: 2026-10-12
 tags: ["IaC"]
 published: false
 ---
