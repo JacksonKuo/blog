@@ -15,6 +15,6 @@ Breakdown threading in Python
 
 # Python Threads
 
-*
-*
-*
+* threading
+* multi-processing
+* asyncio

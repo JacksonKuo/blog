@@ -23,7 +23,7 @@ Additionally, sleep just makes you more cheery, which definitely helps when inte
 
 #### 2. Triple Everything 
 
-Project estimation or work estimations of any kinda must be 3x what you initially think, no exceptions.
+Project estimation or work estimations of any kinda must be 3x what you initially think, no exceptions. Things will always take longer than expected, since often you don't know what is required until you do that actual work. 
 
 #### 3. Careful About the Work Backlog
 
@@ -77,11 +77,17 @@ Additionally, I have a hyper addictive brain. If I find some interesting content
 
 I've noticed that when context switching between big topics, it takes a few days for my brain to re-adjust to the new topic. I call it loading time. Work this time into the estimates. Prep for the fact that the transition phase will feel slow and that it takes time for the brain to rewire when doing large context switching
 
-#### 9. It's Not on Your Shoulders
+#### 9. Brain Break
+
+I've noticed that when I put in a ton of work and make a huge leap in my understanding of a new subject that my brain feels fatigued. The brain stupor is not surprising, but after that gigantic leap it hard to continue to push a little farther. 
+
+For example, a good analogy is I just ran 5 miles, but doing an extra twenty feet feels impossible. If I put down the work for like a week, and focus on something else, it's lot easier for me to dial-in. I think my brain needs a timeout in order to rewires the synapses. After that it's easy to push forward. 
+
+#### 10. It's Not on Your Shoulders
 
 You are not responsible for the security of the company. The company is responsible for the security. If the company is hacked, it's not your fault. Fortunately, I've been lucky in that I've never had a big breach during any of my tenures, but even if it happens, it's not on you. You might have a better understanding of the threat since you have an offensive background, but you don't dictate what the company and management decides to prioritize
 
-#### 10. Stop Being So Darn Helpful
+#### 11. Stop Being So Darn Helpful
 
 You have a tendency help people too much. On the surface this might seem good, however this will eventually lead to long-term trouble and burn out. 
 
@@ -94,7 +100,7 @@ You have a tendency help people too much. On the surface this might seem good, h
 * When taking on work, think about if this is sustainable in the long-term
 * Don't be the guy that always answers, otherwise the whole company is going to always ping you
 
-#### 11. Guard Your Time Like a Dragon
+#### 12. Guard Your Time Like a Dragon
 
 Day to day context switching will involve:
 
@@ -107,24 +113,24 @@ For example, each meeting will typically burn an extra 2 additional hours of pro
 
 Essentially this is large-term project work that moves the company forward versus short-term fire fighting that maintains the status quo. Both are valuable, but it becomes a problem when the needle says stuck in the putting out fires mode. 
 
-#### 12. You Write To Much
+#### 13. You Write Too Much
 
 I fully realize a lot of my slack responses can be way too verbose. But when trying to solve a problem, I write out my thought process in order to figure out my answer. This can lead to literal essays in slack, which I'm sure many folks find annoying. When you solve a problem and don't immediately press send. Curated your response and par down the content.
 
-#### 13. You Read To Quickly
+#### 14. You Read Too Quickly
 
 I've noticed that I read people's questions in slack too fast. Often, I don't read the underlying question that is asked or the central concern that is voiced. I'm imposing a new rule, that any slack question must be re-read 3x times. And one of them must be out loud.
 
-#### 14. Calendar Feng Shui
+#### 15. Caffeine Intake
+
+Only 1 energy drink a day. When I go above that, my body starts to feel a bit ill. Pretty sure that stuff isn't great for you
+
+#### 16. Calendar Feng-Shui
 
 Folks will often throw weird meeting hours on your calendar or a meeting right at 9:00am when you haven't even settled in yet. 
 
 * Google Calendar has a working hours features that I set to 9:30am to 5:00pm
 * Focus time blocks are set between 9am-5pm every day, with the exception of 9:30am to 12:00pm for Mon-Weds. Those are my office hours for things like code screen interviews
-
-#### 15. Caffeine Intake
-
-Only 1 energy drink a day. When I go above that, my body starts to feel a bit ill. Pretty sure that stuff isn't great for you
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
