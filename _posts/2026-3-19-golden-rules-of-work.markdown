@@ -117,11 +117,11 @@ I've noticed that I read people's questions in slack too fast. Often, I don't re
 Folks will often throw weird meeting hours on your calendar or a meeting right at 9:00am when you haven't even settled in yet. 
 
 * Google Calendar has a working hours features that I set to 9:30am to 5:00pm
-* Focus time are blocked out everyone between 9-5, with the exception of 9:30am to 12:00pm for Mon-Weds. Those are my office hours for things like code screen interviews. 
+* Focus time blocks are set between 9am-5pm every day, with the exception of 9:30am to 12:00pm for Mon-Weds. Those are my office hours for things like code screen interviews
 
 #### 15. Caffeine Intake
 
-Only 1 energy drink a day. When I go above that, my body starts to feel a bit ill.
+Only 1 energy drink a day. When I go above that, my body starts to feel a bit ill. Pretty sure that stuff isn't great for you
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
