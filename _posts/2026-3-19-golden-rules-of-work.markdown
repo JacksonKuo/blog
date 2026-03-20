@@ -102,7 +102,7 @@ Day to day context switching will involve:
 
 For example, each meeting will typically burn an extra 2 additional hours of productivity. 1 hour before the meeting and 1 hour after the meeting is spent not locked in. And if I accidentally lock in before a meeting, I run the risk of getting so tunnel visioned that I forget about the meeting entirely.
 
-Essentially this is large-term project work that moves the company forward versus short-term fire fighting that maintains the status quo. Both are valuable and when it becomes a problem when the needle says stuck in the pulling out fires mode. 
+Essentially this is large-term project work that moves the company forward versus short-term fire fighting that maintains the status quo. Both are valuable, but it becomes a problem when the needle says stuck in the putting out fires mode. 
 
 #### 12. You Write To Much
 
