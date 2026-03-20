@@ -114,7 +114,7 @@ I fully realize a lot of my slack responses can be way too verbose. But when try
 
 I've noticed that I read people's questions in slack too fast. Often, I don't read the underlying question that is asked or the central concern that is voiced. I'm imposing a new rule, that any slack question must be re-read 3x times. And one of them must be out loud.
 
-#### 14. Book Out Your Calendar
+#### 14. Calendar Feng Shui
 
 Folks will often throw weird meeting hours on your calendar or a meeting right at 9:00am when you haven't even settled in yet. 
 
