@@ -89,6 +89,7 @@ You have a tendency help people too much. On the surface this might seem good, h
     - typically I'll be the first to respond, but really try to avoid the urge to immediately reply
     - push the slack sherpas, being the sole on-call for months and months is not sustainable
 * When taking on work, think about if this is sustainable in the long-term
+* Don't be the guy that always answers, otherwise the whole company is going to always ping you
 
 #### 11. Guard Your Time Like a Dragon
 
