@@ -79,9 +79,11 @@ I've noticed that when context switching between big topics, it takes a few days
 
 #### 9. Brain Break
 
+Note this is slightly different than brain loading. Brain loading happens at the start of a project. Brain break happens at the end of a big chunk of work.
+
 I've noticed that when I put in a ton of work and make a huge leap in my understanding of a new subject that my brain feels fatigued. The brain stupor is not surprising, but after that gigantic leap it hard to continue to push a little farther. 
 
-For example, a good analogy is I just ran 5 miles, but doing an extra twenty feet feels impossible. If I put down the work for like a week, and focus on something else, it's lot easier for me to dial-in. I think my brain needs a timeout in order to rewires the synapses. After that it's easy to push forward. 
+For example, a good analogy is I just ran five miles, but doing an extra twenty feet feels impossible. If I put down the work for like a week, and focus on something else, it's lot easier for me to dial-in. I think my brain needs a timeout in order to rewires the synapses. After that it's easy to push forward. 
 
 #### 10. It's Not on Your Shoulders
 
