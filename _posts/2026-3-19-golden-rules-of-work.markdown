@@ -66,10 +66,11 @@ Additionally, I have a hyper addictive brain. If I find some interesting content
 
 | Good | Try | Avoid |
 |---|---|---|
-| Billions [^2] | Landman | Books |
-| Critical Role | The Good Witch | Video games |
-| Morning Somewhere | - | Youtube shorts [^3] |
+| Billions [^2] (show) | Landman (show) | Books |
+| Critical Role (twitch) | The Good Witch (show) | Video games |
+| Morning Somewhere (podcast) | - | Youtube shorts [^3] |
 | - | - | New web novels |
+| - | - | - |
 | - | - | - |
 
 #### 8. Brain Loading
@@ -131,3 +132,5 @@ Only 1 energy drink a day. When I go above that, my body starts to feel a bit il
 [^2]: [https://www.amazon.com/gp/video/mystuff/library](https://www.amazon.com/gp/video/mystuff/library)
 
 [^3]: [https://jacksonkuo.github.io/blog/2025/04/29/chrome-extension-manifest-v3.html](https://jacksonkuo.github.io/blog/2025/04/29/chrome-extension-manifest-v3.html)
+
+[^4]: TV: SW, WAI, XV
