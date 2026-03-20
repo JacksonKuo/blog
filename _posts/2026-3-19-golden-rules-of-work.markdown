@@ -108,7 +108,7 @@ Essentially this is large-term project work that moves the company forward versu
 
 #### 12. You Write To Much
 
-I fully realize a lot of my slack responses can be way too verbose. But when trying to solve a problem, I write out my thought process in order to figure out my answer. This can lead to literal essays in slack, which I'm sure many folks find annoying. When you solve problem and don't immediately press send. Curated your response and par down the content.
+I fully realize a lot of my slack responses can be way too verbose. But when trying to solve a problem, I write out my thought process in order to figure out my answer. This can lead to literal essays in slack, which I'm sure many folks find annoying. When you solve a problem and don't immediately press send. Curated your response and par down the content.
 
 #### 13. You Read To Quickly
 
