@@ -115,24 +115,24 @@ For example, each meeting will typically burn an extra 2 additional hours of pro
 
 Essentially this is large-term project work that moves the company forward versus short-term fire fighting that maintains the status quo. Both are valuable, but it becomes a problem when the needle says stuck in the putting out fires mode. 
 
-#### 13. You Write Too Much
-
-I fully realize a lot of my slack responses can be way too verbose. But when trying to solve a problem, I write out my thought process in order to figure out my answer. This can lead to literal essays in slack, which I'm sure many folks find annoying. When you solve a problem and don't immediately press send. Curated your response and par down the content.
-
-#### 14. You Read Too Quickly
-
-I've noticed that I read people's questions in slack too fast. Often, I don't read the underlying question that is asked or the central concern that is voiced. I'm imposing a new rule, that any slack question must be re-read 3x times. And one of them must be out loud.
-
-#### 15. Caffeine Intake
-
-Only 1 energy drink a day. When I go above that, my body starts to feel a bit ill. Pretty sure that stuff isn't great for you
-
-#### 16. Calendar Feng-Shui
+#### 13. Calendar Feng-Shui
 
 Folks will often throw weird meeting hours on your calendar or a meeting right at 9:00am when you haven't even settled in yet. 
 
 * Google Calendar has a working hours features that I set to 9:30am to 5:00pm
 * Focus time blocks are set between 9am-5pm every day, with the exception of 9:30am to 12:00pm for Mon-Weds. Those are my office hours for things like code screen interviews
+
+#### 14. You Write Too Much
+
+I fully realize a lot of my slack responses can be way too verbose. But when trying to solve a problem, I write out my thought process in order to figure out my answer. This can lead to literal essays in slack, which I'm sure many folks find annoying. When you solve a problem and don't immediately press send. Curated your response and par down the content.
+
+#### 15. You Read Too Quickly
+
+I've noticed that I read people's questions in slack too fast. Often, I don't read the underlying question that is asked or the central concern that is voiced. I'm imposing a new rule, that any slack question must be re-read 3x times. And one of them must be out loud.
+
+#### 16. Caffeine Intake
+
+Only 1 energy drink a day. When I go above that, my body starts to feel a bit ill. Pretty sure that stuff isn't great for you
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
