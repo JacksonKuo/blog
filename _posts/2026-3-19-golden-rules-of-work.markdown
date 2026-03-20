@@ -115,7 +115,7 @@ For example, each meeting will typically burn an extra 2 additional hours of pro
 
 Essentially this is large-term project work that moves the company forward versus short-term fire fighting that maintains the status quo. Both are valuable, but it becomes a problem when the needle says stuck in the putting out fires mode. 
 
-#### 13. Calendar Feng-Shui
+#### 13. Calendar Feng Shui
 
 Folks will often throw weird meeting hours on your calendar or a meeting right at 9:00am when you haven't even settled in yet. 
 
