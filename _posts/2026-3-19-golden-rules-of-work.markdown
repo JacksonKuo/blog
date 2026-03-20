@@ -71,7 +71,7 @@ Additionally, I have a hyper addictive brain. If I find some interesting content
 
 #### 8. Brain Loading
 
-I've noticed that when context switching between big topics, it takes a few days for my brain to re-adjust to the new topic. I call it loading time. Work this time into the estimates. Prep for the fact that the transition phase will feel slow
+I've noticed that when context switching between big topics, it takes a few days for my brain to re-adjust to the new topic. I call it loading time. Work this time into the estimates. Prep for the fact that the transition phase will feel slow and that it takes time for the brain to rewire when doing large context switching
 
 #### 9. It's Not on Your Shoulders
 
@@ -90,7 +90,7 @@ You have a tendency help people too much. On the surface this might seem good, h
 
 #### 11. You Write To Much
 
-I fully realize a lot of my slack responses can be way too verbose. But when trying to solve a problem, I write out my thought process in order to figure out my answer. This can lead to literal essays in slack, which I'm sure many folks find annoying. When you solve problem and don't immediately press send. Curated your response and par down the content. 
+I fully realize a lot of my slack responses can be way too verbose. But when trying to solve a problem, I write out my thought process in order to figure out my answer. This can lead to literal essays in slack, which I'm sure many folks find annoying. When you solve problem and don't immediately press send. Curated your response and par down the content.
 
 #### 12. You Read To Quickly
 
