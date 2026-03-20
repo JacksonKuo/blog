@@ -65,9 +65,10 @@ Additionally, I have a hyper addictive brain. If I find some interesting content
 | Good | Try | Avoid |
 |---|---|---|
 | Billions [^2] | Landman | Books |
-| - | - | Video games |
+| - | The Good Witch | Video games |
 | - | - | Youtube shorts [^3] |
 | - | - | New web novels |
+| - | - | - |
 
 #### 8. Brain Loading
 
@@ -77,7 +78,7 @@ I've noticed that when context switching between big topics, it takes a few days
 
 You are not responsible for the security of the company. The company is responsible for the security. If the company is hacked, it's not your fault. Fortunately, I've been lucky in that I've never had a big breach during any of my tenures, but even if it happens, it's not on you. You might have a better understanding of the threat since you have an offensive background, but you don't dictate what the company and management decides to prioritize
 
-#### 10. Burn Out Boundaries
+#### 10. Stop Being So Darn Helpful
 
 You have a tendency help people too much. On the surface this might seem good, however this will eventually lead to long-term trouble and burn out. 
 
@@ -86,15 +87,40 @@ You have a tendency help people too much. On the surface this might seem good, h
 * Any DMs push them to the official team channel
 * Slack channels: 
     - typically I'll be the first to respond, but really try to avoid the urge to immediately reply
-    - push the slack sherpas, being the sole on-call for months and months is not sustainable 
+    - push the slack sherpas, being the sole on-call for months and months is not sustainable
+* When taking on work, think about if this is sustainable in the long-term
 
-#### 11. You Write To Much
+#### 11. Guard Your Time Like a Dragon
+
+Day to day context switching will involve:
+
+* Meetings
+* Interviews
+* Slack on-call
+* Time tracking
+
+For example, each meeting will typically burn an extra 2 additional hours of productivity. 1 hour before the meeting and 1 hour after the meeting is spent not locked in. And if I accidentally lock in before a meeting, I run the risk of getting so tunnel visioned that I forget about the meeting entirely.
+
+Essentially this is large-term project work that moves the company forward versus short-term fire fighting that maintains the status quo. Both are valuable and when it becomes a problem when the needle says stuck in the pulling out fires mode. 
+
+#### 12. You Write To Much
 
 I fully realize a lot of my slack responses can be way too verbose. But when trying to solve a problem, I write out my thought process in order to figure out my answer. This can lead to literal essays in slack, which I'm sure many folks find annoying. When you solve problem and don't immediately press send. Curated your response and par down the content.
 
-#### 12. You Read To Quickly
+#### 13. You Read To Quickly
 
 I've noticed that I read people's questions in slack too fast. Often, I don't read the underlying question that is asked or the central concern that is voiced. I'm imposing a new rule, that any slack question must be re-read 3x times. And one of them must be out loud.
+
+#### 14. Book Out Your Calendar
+
+Folks will often throw weird meeting hours on your calendar or a meeting right at 9:00am when you haven't even settled in yet. 
+
+* Google Calendar has a working hours features that I set to 9:30am to 5:00pm
+* Focus time are blocked out everyone between 9-5, with the exception of 9:30am to 12:00pm for Mon-Weds. Those are my office hours for things like code screen interviews. 
+
+#### 15. Caffeine Intake
+
+Only 1 energy drink a day. When I go above that, my body starts to feel a bit ill.
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
