@@ -25,7 +25,7 @@ Project estimation or work estimations of any kinda must be 3x what you initiall
 
 #### 3. Careful About the Work Backlog
 
-If i don't make consistent contribution to this backlog, I notice my mood starts to get a little depressed. PTO is your safety net. When work starts stacking up and stress is increasing, book PTO immediately. The PTO should be 2 weeks to clear stuck times on the backlog. 
+If i don't make consistent contribution to this backlog, I notice my mood starts to get a little depressed. PTO is your safety net. When work starts stacking up and stress is increasing, book PTO immediately. The PTO should be 2 weeks to clear stuck items on the backlog. 
 
 #### 4. Laundry Must Be Done 
 
