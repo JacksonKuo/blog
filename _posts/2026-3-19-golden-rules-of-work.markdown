@@ -67,8 +67,8 @@ Additionally, I have a hyper addictive brain. If I find some interesting content
 | Good | Try | Avoid |
 |---|---|---|
 | Billions [^2] | Landman | Books |
-| - | The Good Witch | Video games |
-| - | - | Youtube shorts [^3] |
+| Critical Role | The Good Witch | Video games |
+| Morning Somewhere | - | Youtube shorts [^3] |
 | - | - | New web novels |
 | - | - | - |
 
