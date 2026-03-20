@@ -19,7 +19,7 @@ Document my golden rules of work. Includes my understanding how i do work person
 
 Nine hours and on-time is so important. Sometimes I need to pull an all nighter, which is fine, but must be the rare exception. I'm a night owl, so my best work hours are between 11pm - 3am. Sorry Jackson, you'll need to find a way to work outside your best hours. 10:00 pm - 6:30 am should be protected for sleep.
 
-Additionally, sleep just make you more cheery, which definitely helps when interacting with your coworkers. You're less likely to be crabby and less prone to making technical as well as interpersonal snafus. 
+Additionally, sleep just makes you more cheery, which definitely helps when interacting with your coworkers. You're less likely to be crabby and less prone to making technical as well as interpersonal snafus. 
 
 #### 2. Triple Everything 
 
