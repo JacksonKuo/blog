@@ -33,7 +33,7 @@ If i don't make consistent contribution to this backlog, I notice my mood starts
 
 If laundry isn't done, something has gone wrong. It's really important that the in-unit laundry is fast. Wash time should be approximately thirty minutes and dry times one hour. On new apartment inspections bring a towel to test out the washer dryer unit. Combined washer dryers are terrible, never accept a unit that uses them
 
-#### 5. No More Work From Home
+#### 5. No More Working From Home
 
 I realize I work so much more efficiently in-office. It's a struggle to stay focused at home. This is just me personally.
 
