@@ -25,7 +25,7 @@ Additionally, sleep just makes you more cheery, which definitely helps when inte
 
 Project estimation or work estimations of any kinda must be 3x what you initially think, no exceptions. Things will always take longer than expected, since often you don't know what is required until you do that actual work. 
 
-#### 3. Careful About the Work Backlog
+#### 3. Work Backlog Depression
 
 If i don't make consistent contribution to this backlog, I notice my mood starts to get a little depressed. PTO is your safety net. When work starts stacking up and stress is increasing, book PTO immediately. The PTO should be 2 weeks to clear stuck items on the backlog. 
 
@@ -41,7 +41,7 @@ I realize I work so much more efficiently in-office. It's a struggle to stay foc
 
 Don't take things personally, even if folks come off as rude. Keep your eye on the prize. 
 
-#### 7. It's Not You It's the Environment
+#### 7. It's Not You It's Your Habitat
 
 If you're having trouble getting work done, it's not because you're lazy. It's because there's certain environments that your brain needs. If you're having trouble, don't try harder, but find an easy environment for that type of work. 
 
@@ -130,9 +130,13 @@ I fully realize a lot of my slack responses can be way too verbose. But when try
 
 I've noticed that I read people's questions in slack too fast. Often, I don't read the underlying question that is asked or the central concern that is voiced. I'm imposing a new rule, that any slack question must be re-read 3x times. And one of them must be out loud.
 
-#### 16. Caffeine Intake
+#### 16. Caffeine Overload
 
 Only 1 energy drink a day. When I go above that, my body starts to feel a bit ill. Pretty sure that stuff isn't great for you
+
+#### 17. Move It, Move It
+
+You need some sort of exercise. This was a recommendation add. I ended up living semi-close by to the office and walk a little over a mile each day to work. Not too shabby. And don't eat so much rice. 
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
