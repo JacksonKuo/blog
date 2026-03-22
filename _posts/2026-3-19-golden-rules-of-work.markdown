@@ -47,13 +47,15 @@ For example, some of this work can be a struggle at work or home, but by changin
 * Technical video (1 hour): 
     - open a game of [colonist.io](https://colonist.io) and watch the video between turns
 
-Certain types of context really help my brain do work and other types are the opposite. Things that help my brain work usually include the following: [^1] 
+Certain types of content really help my brain do work and other types are the opposite. Things that help my brain work usually include the following: [^1] 
 
 * low simulating content
 * no loud noises
 * dialogue focused
 * doesn't require constant attention
 * generally non-life or death stakes involved
+
+That said, different types of work required different types of content. Work that requires actual thinking usually I can only listen to melodic music or ambient rain sounds. Other more brute force or by the numbers work, explicitly require distracting content. 
 
 Additionally, I have a hyper addictive brain. If I find some interesting content, I basically have to binge the entire series in order to kick the addiction. Never ever pick up something like WoW.
 
