@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Terraform: HCL "
+title: "Terraform: HCL and GCP Workload Identity"
 date: 2026-3-23
 tags: ["IaC"]
 published: true
