@@ -66,11 +66,11 @@ Additionally, I have a hyper addictive brain. If I find some interesting content
 
 | Good | Try | Avoid |
 |---|---|---|
-| Billions [^2] (show) | Landman (show) | Books |
-| Critical Role (twitch) | The Good Witch (show) | Video games |
-| Morning Somewhere (podcast) | - | Youtube shorts [^3] |
-| - | - | New web novels |
-| - | - | - |
+| Billions [^2] | Landman | Books |
+| Morning Somewhere | The Good Witch (show) | Video games |
+| SW-WAI-YV | - | Youtube shorts [^3] |
+| Critical Role (kinda iffy) | - | New web novels |
+|  | - | - |
 | - | - | - |
 
 #### 8. Brain Loading
@@ -83,7 +83,7 @@ Note this is slightly different than brain loading. Brain loading happens at the
 
 I've noticed that when I put in a ton of work and make a huge leap in my understanding of a new subject that my brain feels fatigued. The brain stupor is not surprising, but after that gigantic leap it hard to continue to push a little farther. 
 
-For example, a good analogy is I just ran five miles, but doing an extra twenty feet feels impossible. If I put down the work for like a two weeks, and focus on something else, it's lot easier for me to dial-in. I think my brain needs a timeout in order to rewires the synapses. After that it's easy to push forward. 
+For example, a good analogy is I just ran five miles, but doing an extra twenty feet feels impossible. If I put down the work for like two weeks, and focus on something else, it's lot easier for me to dial-in. I think my brain needs a timeout in order to rewires the synapses. After that it's easy to push forward. 
 
 #### 10. It's Not on Your Shoulders
 
@@ -91,9 +91,9 @@ You are not responsible for the security of the company. The company is responsi
 
 #### 11. Stop Being So Darn Helpful
 
-You have a tendency help people too much. On the surface this might seem good, however this will eventually lead to long-term trouble and burn out. 
+You have a tendency to help people too much. On the surface this might seem good, however this will eventually lead to long-term trouble and burn out. 
 
-* Don't work at 100% percent, else any additional work will lead to burn out
+* Don't work at 100% percent, else any additional work will cause the glass to overfill
 * When asked to pivot to other work, track what work needs to be placed on hold and ask if that is acceptable
 * Any DMs push them to the official team channel
 * Slack channels: 
@@ -124,7 +124,7 @@ Folks will often throw weird meeting hours on your calendar or a meeting right a
 
 #### 14. You Write Too Much
 
-I fully realize a lot of my slack responses can be way too verbose. But when trying to solve a problem, I write out my thought process in order to figure out my answer. This can lead to literal essays in slack, which I'm sure many folks find annoying. When you solve a problem and don't immediately press send. Curated your response and par down the content.
+I fully realize a lot of my slack responses can be way too verbose. But when trying to solve a problem, I write out my thought process in order to figure out my answer. This can lead to literal essays in slack, which I'm sure many folks find annoying. When you solve a problem and don't immediately press send. Curate your response and par down the content.
 
 #### 15. You Read Too Quickly
 
@@ -132,7 +132,7 @@ I've noticed that I read people's questions in slack too fast. Often, I don't re
 
 #### 16. Caffeine Overload
 
-Only 1 energy drink a day. When I go above that, my body starts to feel a bit ill. Pretty sure that stuff isn't great for you
+Only 1 energy drink a day. When I go above that, my body starts to feel a bit ill. Pretty sure that stuff isn't great for you.
 
 #### 17. Move It, Move It
 
@@ -144,5 +144,3 @@ You need some sort of exercise. This was a recommendation add. I ended up living
 [^2]: [https://www.amazon.com/gp/video/mystuff/library](https://www.amazon.com/gp/video/mystuff/library)
 
 [^3]: [https://jacksonkuo.github.io/blog/2025/04/29/chrome-extension-manifest-v3.html](https://jacksonkuo.github.io/blog/2025/04/29/chrome-extension-manifest-v3.html)
-
-[^4]: TV: SW, WAI, XV
