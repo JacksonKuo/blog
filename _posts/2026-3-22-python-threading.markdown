@@ -34,7 +34,7 @@ This is a little confusing to me. By default `threading.Thread` uses non-daemon 
 
 >  Daemon threads are abruptly stopped at shutdown [^2]
 
-> A non-daemon thread must finish its work before the program can exit.[^3]
+> A non-daemon thread must finish its work before the program can exit[^3]
 
 So a daemon thread, primarily matters when the main program exits. 
 
@@ -61,7 +61,7 @@ So a join at the end of main kinda acts like a non-daemon thread.
 
 Also `args` accepts either a tuple or a list. 
 
-Also, `import concurrent.futures` has `ThreadPoolExecutor` and is recommended so you don't accident forget to call `join`. However the `ThreadPoolExecutor` uses the `executor.map()` which is kinda confusing to look at. 
+Also `import concurrent.futures` has `ThreadPoolExecutor` and is recommended so you don't accident forget to call `join`. However the `ThreadPoolExecutor` uses the `executor.map()` which is kinda confusing to look at. 
 
 #### Locks
 
