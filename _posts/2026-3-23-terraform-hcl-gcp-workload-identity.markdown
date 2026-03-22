@@ -11,7 +11,7 @@ published: true
 {:toc}
 
 # Problem Statement
-Remind myself how to add a GH repo to auto sync with HCL Terraform. And also include a refresher on how I setup workload identity originally. 
+Remind myself how to add a GH repo to auto sync with HCL Terraform. And also include a refresher on how I setup GCP federated workload identity originally. 
 
 # HCL Terraform
 I believe I mostly followed this documentation and that it was quite tedious to setup:
