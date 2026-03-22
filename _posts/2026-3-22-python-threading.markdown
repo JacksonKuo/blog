@@ -14,7 +14,6 @@ published: true
 Breakdown threading in Python primarily following this guide: [https://realpython.com/intro-to-python-threading/](https://realpython.com/intro-to-python-threading/). With examples being here: [https://github.com/JacksonKuo/scripts-threading](https://github.com/JacksonKuo/scripts-threading)
 
 # Python Threads
-
 Apparently there's a few ways to do threads in Python:
 
 * thread
@@ -29,7 +28,6 @@ Good candidates for threads include:
 Perfect, I have a great case subject that would fit.
 
 #### Daemon Threads
-
 This is a little confusing to me. By default `threading.Thread` uses non-daemon threads.
 
 >  Daemon threads are abruptly stopped at shutdown [^2]
@@ -39,11 +37,9 @@ This is a little confusing to me. By default `threading.Thread` uses non-daemon 
 So a daemon thread, primarily matters when the main program exits. 
 
 #### Threading and Joins
-
 `thread.join` is basically telling the caller, in our case `main`, hey you can't continue until this specific thread finishes. 
 
 #### Threading module
-
 ```python
     threads = list()
     for index in range(15):
@@ -63,8 +59,16 @@ Also `args` accepts either a tuple or a list.
 
 Also `import concurrent.futures` has `ThreadPoolExecutor` and is recommended so you don't accident forget to call `join`. However the `ThreadPoolExecutor` uses the `executor.map()` which is kinda confusing to look at. 
 
-#### Locks
+#### Content Manager
+Python has something called context managers: [https://www.geeksforgeeks.org/python/context-manager-in-python/](https://www.geeksforgeeks.org/python/context-manager-in-python/)
 
+> Python’s context managers provide a neat way to automatically set up and clean up resources, ensuring they’re properly managed even if errors occur.
+
+Implemented using `with:` and replaces the `try` and `finally` and will auto clean up when exiting the scope.
+
+`ThreadPoolExecutor` is a content manager for `.join()`.
+
+#### Locks
 So I think technically python `dict` is safe for atomic writes. But it's generally good practice to include a lock on the shared dict. 
 
 ```python
@@ -77,18 +81,7 @@ def wrap_thread_function(name):
         lock.release()
 ```
 
-#### Content Manager
-
-Python has something called context managers: [https://www.geeksforgeeks.org/python/context-manager-in-python/](https://www.geeksforgeeks.org/python/context-manager-in-python/)
-
-> Python’s context managers provide a neat way to automatically set up and clean up resources, ensuring they’re properly managed even if errors occur.
-
-Implemented using `with:` and replaces the `try` and `finally` and will auto clean up when exiting the scope.
-
-`ThreadPoolExecutor` is a content manager for `.join()`.
-
 #### Case Subject
-
 So the final code for my use case ended up being:
 
 ```python
