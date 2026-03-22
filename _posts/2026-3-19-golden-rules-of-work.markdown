@@ -59,6 +59,8 @@ That said, different types of work required different types of content. Work tha
 
 Additionally, I have a hyper addictive brain. If I find some interesting content, I basically have to binge the entire series in order to kick the addiction. Never ever pick up something like WoW.
 
+The following table will be where I sort out what content works:
+
 | Good | Try | Avoid |
 |---|---|---|
 | Billions [^2] | Landman | Books |
