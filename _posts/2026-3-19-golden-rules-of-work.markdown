@@ -26,7 +26,7 @@ Project estimation or work estimations of any kinda must be 3x what you initiall
 #### 3. Work Backlog Depression
 If i don't make consistent contribution to this backlog, I notice my mood starts to get a little depressed. PTO is your safety net. When work starts stacking up and stress is increasing, book PTO immediately. The PTO should be 2 weeks to clear stuck items on the backlog. 
 
-#### 4. Laundry Must Be Done 
+#### 4. Laundry Must Be Easy
 If laundry isn't done, something has gone wrong. It's really important that the in-unit laundry is fast. Wash time should be approximately thirty minutes and dry times one hour. On new apartment inspections bring a towel to test out the washer dryer unit. Combined washer dryers are terrible, never accept a unit that uses them
 
 #### 5. No More Working From Home
@@ -124,6 +124,9 @@ Only 1 energy drink a day. When I go above that, my body starts to feel a bit il
 
 #### 17. Move It, Move It
 You need some sort of exercise. This was a recommendation add. I ended up living semi-close by to the office and walk a little over a mile each day to work. Not too shabby. And don't eat so much rice. 
+
+#### 18. 
+Sometimes I notice it can be hard to focus, at home or in the middle of the day. I notice my brain is a bit flighty. Notice that tumultuous internal feeling, and try some breath control. 
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
