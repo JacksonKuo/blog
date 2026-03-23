@@ -126,7 +126,7 @@ Only 1 energy drink a day. When I go above that, my body starts to feel a bit il
 You need some sort of exercise. This was a recommendation add. I ended up living semi-close by to the office and walk a little over a mile each day to work. Not too shabby. And don't eat so much rice. 
 
 #### 18. Breathe
-Sometimes I notice it can be hard to focus, at home or in the middle of the day. I notice my brain is a bit flighty. Notice that tumultuous internal feeling, and try some breath control. 
+Sometimes I notice it can be hard to focus, at home or in the middle of the day. I notice my brain is a bit flighty. Notice that tumultuous internal feeling, and try some breath control. Each breath burns away extraneous thoughts. 
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
