@@ -136,7 +136,7 @@ Another thing I've noticed. When I don't really have a clear picture of what the
 And then when it's time to actually do the work, don't focus on the todo list, only focus on the current moment. 
 
 #### 20. Good Stress
-Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducting more healthy stress earlier for smoother timelines. 
+Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducing more healthy stress earlier for smoother timelines. 
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
