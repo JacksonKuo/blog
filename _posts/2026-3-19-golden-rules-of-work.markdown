@@ -133,8 +133,8 @@ Sometimes I notice it can be hard to focus, at home or in the middle of the day.
 #### 19. Clarity
 Another thing I've noticed. When I don't really have a clear picture of what the next steps are, it tends to be hard for me to get started. In this case, it might be a good idea to right down my general todos. Importantly don't stress about actually doing the work just highlevel points of what needs to be done. 
 
-#### 20. Stress
-Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducting more stress earlier for smoother timelines. 
+#### 20. Good Stress
+Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducting more healthy stress earlier for smoother timelines. 
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
