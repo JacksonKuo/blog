@@ -130,8 +130,10 @@ You need some sort of exercise. This was a recommendation add. I ended up living
 #### 18. Breathe
 Sometimes I notice it can be hard to focus, at home or in the middle of the day. I notice my brain is a bit flighty. Notice that tumultuous internal feeling, and try some breath control. Each breath burns away extraneous thoughts. Feel all the emotions, worries, and todos floating through your mind and let them through. In through your nose and mouth and them let them air out slowly. The gold standard is 1 hr of breath control and where you're able to have your mind think of nothing but the breath. 
 
-#### 19. Clarity
+#### 19. Focus on the Right Thing
 Another thing I've noticed. When I don't really have a clear picture of what the next steps are, it tends to be hard for me to get started. In this case, it might be a good idea to right down my general todos. Importantly don't stress about actually doing the work just highlevel points of what needs to be done. 
+
+And then when it's time to actually do the work, don't focus on the todo list, only focus on the current moment. 
 
 #### 20. Good Stress
 Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducting more healthy stress earlier for smoother timelines. 
