@@ -52,6 +52,3 @@ Under IAM & Admin > Service Accounts > View by Principals
 * `principal://iam.googleapis.com/projects/xxx/locations/global/workloadIdentityPools/hcp-terraform-pool/subject/organization:jkuo-tf-org:project:security:workspace:appsec-deploys:run_phase:apply` to `Workload Identity User`
 
 And ensure there's one for apply, destroy, and plan. 
-
-# References
-[^1]: 
