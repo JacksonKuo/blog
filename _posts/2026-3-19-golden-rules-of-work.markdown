@@ -20,6 +20,8 @@ Nine hours and on-time is so important. Sometimes I need to pull an all nighter,
 
 Additionally, sleep just makes you more cheery, which definitely helps when interacting with your coworkers. You're less likely to be crabby and less prone to making technical as well as interpersonal snafus. 
 
+During vacation this can be flexible.
+
 #### 2. Triple Everything 
 Project estimation or work estimations of any kinda must be 3x what you initially think, no exceptions. Things will always take longer than expected, since often you don't know what is required until you do that actual work. 
 
@@ -127,6 +129,12 @@ You need some sort of exercise. This was a recommendation add. I ended up living
 
 #### 18. Breathe
 Sometimes I notice it can be hard to focus, at home or in the middle of the day. I notice my brain is a bit flighty. Notice that tumultuous internal feeling, and try some breath control. Each breath burns away extraneous thoughts. Feel all the emotions, worries, and todos floating through your mind and let them through. In through your nose and mouth and them let them air out slowly. The gold standard is 1 hr of breath control and where you're able to have your mind think of nothing but the breath. 
+
+#### 19. Clarity
+Another thing I've noticed. When I don't really have a clear picture of what the next steps are, it tends to be hard for me to get started. In this case, it might be a good idea to right done my todos. 
+
+#### 20. Stress
+Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducting more stress earlier for smoother timelines. 
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
