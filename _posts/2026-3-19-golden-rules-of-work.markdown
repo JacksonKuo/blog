@@ -26,7 +26,7 @@ During vacation this can be flexible.
 Project estimation or work estimations of any kinda must be 3x what you initially think, no exceptions. Things will always take longer than expected, since often you don't know what is required until you do that actual work. 
 
 #### 3. Work Backlog Depression
-If i don't make consistent contribution to this backlog, I notice my mood starts to get a little depressed. PTO is your safety net. When work starts stacking up and stress is increasing, book PTO immediately. The PTO should be 2 weeks to clear stuck items on the backlog. 
+If i don't make consistent contribution to this backlog, I notice my mood starts to get a little depressed. PTO is your safety net. When work starts stacking up and stress is increasing, book PTO immediately. The PTO should be 2 weeks to clear stuck items on the backlog, once a year. Anything less than 2 weeks is much less effective. 
 
 #### 4. Laundry Must Be Easy
 If laundry isn't done, something has gone wrong. It's really important that the in-unit laundry is fast. Wash time should be approximately thirty minutes and dry times one hour. On new apartment inspections bring a towel to test out the washer dryer unit. Combined washer dryers are terrible, never accept a unit that uses them
@@ -71,6 +71,8 @@ The following table will be where I sort out what content works:
 | Critical Role (kinda iffy) | - | New web novels |
 |  | - | - |
 | - | - | - |
+
+Also another good tip is when typing in the short hand for YT "you", have that page not go to the homepage. This is to avoid the start of these loops that cause distractions. 
 
 #### 8. Brain Loading
 I've noticed that when context switching between big topics, it takes a few days for my brain to re-adjust to the new topic. I call it loading time. Work this time into the estimates. Prep for the fact that the transition phase will feel slow and that it takes time for the brain to rewire when doing large context switching
@@ -127,22 +129,31 @@ Only 1 energy drink a day. When I go above that, my body starts to feel a bit il
 #### 17. Move It, Move It
 You need some sort of exercise. This was a recommendation add. I ended up living semi-close by to the office and walk a little over a mile each day to work. Not too shabby. And don't eat so much rice. 
 
+And the sore muscles is kinda cathartic.
+
 #### 18. Breathe
 Sometimes I notice it can be hard to focus, at home or in the middle of the day. I notice my brain is a bit flighty. Notice that tumultuous internal feeling, and try some breath control. Each breath burns away extraneous thoughts. Feel all the emotions, worries, and todos floating through your mind and let them through. In through your nose and mouth and them let them air out slowly. The gold standard is 1 hr of breath control and where you're able to have your mind think of nothing but the breath. 
 
 #### 19. Focus on the Right Thing
 Another thing I've noticed. When I don't really have a clear picture of what the next steps are, it tends to be hard for me to get started. In this case, it might be a good idea to right down my general todos. Importantly don't stress about actually doing the work just highlevel points of what needs to be done. 
 
-And then when it's time to actually do the work, don't focus on the todo list, only focus on the current moment. 
+And then when it's time to actually do the work, don't focus on the todo list, only focus on the current moment. Focus on the small increment work and not on the better picture. Don't focus on the end goal, or what needs to get done. Just focus on the small tasks. 
+
+And if you ever get kinda in a rut and stuck on a certain concept. It honestly can be helpful to just ask AI and workshop it together. 
 
 #### 20. Good Stress
 Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducing more healthy stress earlier for smoother timelines. 
 
 Also take things less seriously. Life is just the journey until you die. Revel in the absurity until you croak. 
 
+Also walks through nature can reduce stress. 
+
+#### 21. Gratitude
+And then remember how fortunate you are and be thankful for everything you have right now. 
+
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
 
 [^2]: [https://www.amazon.com/gp/video/mystuff/library](https://www.amazon.com/gp/video/mystuff/library)
 
-[^3]: [https://jacksonkuo.github.io/blog/2025/04/29/chrome-extension-manifest-v3.html](https://jacksonkuo.github.io/blog/2025/04/29/chrome-extension-manifest-v3.html)
+[^3]: [https://jacksonkuo.github.io/blog/2025/04/29/chrome-extension-manifest-v3.html](https://jacksonkuo.github.io/blog/2025/04/29/chrome-extension-manifest-v3.html). 
