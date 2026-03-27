@@ -40,10 +40,15 @@ if __name__ == "__main__":
 
 Build and load Dockerfile:
 
+* Dockerfile
+  - runs `git clone`
+  - runs `entrypoint.sh`
 * `gcloud auth login`
 * `gcloud auth configure-docker us-central1-docker.pkg.dev`
-* local `GITHUB_TOKEN` env var needs `contents:read`
+  - should be already configured
+* local `GITHUB_TOKEN` env var needs fine-grainted `contents:read`
 * `./build.sh`
+  - just runs `docker buildx` and pushes to artifact repo
 
 # Terraform
 
