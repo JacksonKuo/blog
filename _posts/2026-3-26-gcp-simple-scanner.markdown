@@ -3,7 +3,7 @@ layout: post
 title: "GCP Simple Scanner"
 date: 2026-3-26
 tags: ["devsecops"]
-published: true
+published: false
 ---
 
 **Contents**
@@ -52,7 +52,13 @@ Build and load Dockerfile:
 
 # Terraform
 
-* 
+* `module "github_org_scanner"` in [jobs/main.tf](https://github.com/JacksonKuo/terraform-gcp/blob/main/jobs/main.tf) creates an instance of `google_cloud_run_v2_job`
+* `google_cloud_scheduler_job` also in in [jobs/main.tf](https://github.com/JacksonKuo/terraform-gcp/blob/main/jobs/main.tf) schedules the cron job
+
+* Job Execution: [https://console.cloud.google.com/run/jobs/details/us-central1/github-org-scanner/executions](https://console.cloud.google.com/run/jobs/details/us-central1/github-org-scanner/executions)
+* Cloud Storage: [https://console.cloud.google.com/storage/browser/jkuo-security-hcp-demo-bucket](https://console.cloud.google.com/storage/browser/jkuo-security-hcp-demo-bucket)
+
+Big Query: [https://github.com/JacksonKuo/terraform-gcp/blob/main/observability/bigquery.tf](https://github.com/JacksonKuo/terraform-gcp/blob/main/observability/bigquery.tf)
 
 # References
 [^1]: []()
