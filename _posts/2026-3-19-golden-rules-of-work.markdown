@@ -20,7 +20,7 @@ Nine hours and on-time is so important. Sometimes I need to pull an all nighter,
 
 Additionally, sleep just makes you more cheery, which definitely helps when interacting with your coworkers. You're less likely to be crabby and less prone to making technical as well as interpersonal snafus. 
 
-During vacation this can be flexible.
+During vacation this can be flexible. Also I'm starting to suspect, that I'm not just a night owl, but that my mind is calmer at the end of the long day, regardless if it's at night. 
 
 #### 2. Triple Everything 
 Project estimation or work estimations of any kinda must be 3x what you initially think, no exceptions. Things will always take longer than expected, since often you don't know what is required until you do that actual work. 
