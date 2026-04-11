@@ -46,7 +46,9 @@ Build and load Dockerfile:
 * `gcloud auth login`
 * `gcloud auth configure-docker us-central1-docker.pkg.dev`
   - should be already configured
-* local `GITHUB_TOKEN` env var needs fine-grained repo `contents:read, actions:read, metadata: read` and org `secrets:read`
+* local `GITHUB_TOKEN` env var needs fine-grained repo 
+  - repo inherit `contents:read, actions:read, metadata: read` 
+  - org visibility `secrets:read`
 * `./build.sh`
   - just runs `docker buildx` and pushes to artifact repo
 
