@@ -153,10 +153,13 @@ This one is going to be hard, but ignore the clock. Just focus internally on you
 #### 23. Take a Walk
 I find that often for complex problem, just sitting there is not helpful when workshopping a problem. By just going for a short walk and having the brain churn in the background, I often break new ground on subject. 
 
-#### 24. Good Stress
+#### 24. Pick One Thing to Do Over the Weekend
+Often I have lofty goals for the weekend, that I'll do all these things. And then inevitably I don't get these things done. It's helpful if I just have expectations to do just 1 item to get done. 1 item and then maybe a todo list for next week, to do the brain loading. 
+
+#### 25. Good Stress
 Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducing more healthy stress earlier for smoother timelines. Also take things less seriously. Life is just the journey until you die. Revel in the absurity until you croak. Also walks through nature can reduce stress. 
 
-#### 25. Gratitude
+#### 26. Gratitude
 And then remember how fortunate you are and be thankful for everything you have right now. 
 
 # References
