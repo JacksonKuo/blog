@@ -151,7 +151,7 @@ You tend to get stuck on technical issues when you haven't run the code yourself
 This one is going to be hard, but ignore the clock. Just focus internally on yourself, if you can. 
 
 #### 23. Take a Walk
-I find that often for new or complex problems, just sitting there is not very helpful. By just standup and going for a short walk my brain will start popping out new ideas, running through scenarios, and my understanding of a subject or a risk greatly increases.
+I find that often for new or complex problems, just sitting there is not very helpful. By just standup and going for a short walk my brain will start popping out new ideas, running through scenarios in a comprehensive way, and my understanding of a subject or a risk greatly increases.
 
 #### 24. Pick One Thing to Do Over the Weekend
 Often I have lofty goals for the weekend, that I'll do all these things. And then inevitably I don't get these things done. It's helpful if I just have expectations to do just 1 item. 1 item and then maybe a todo list for next week, to do the brain loading and that's all for expectations
