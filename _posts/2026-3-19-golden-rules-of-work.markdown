@@ -142,23 +142,19 @@ And then when it's time to actually do the work, don't focus on the todo list, o
 And if you ever get kinda in a rut and stuck on a certain concept. It honestly can be helpful to just ask AI and workshop it together. 
 
 #### 20. Do Nothing At First
-It's a contradiction but start doing things, by first doing nothing. Just sit there or lay there and don't do anything. That's always step one. 
+It's a contradiction but start by doing things, by first doing nothing. Just sit there or lay there and don't do anything, but breathe. That's always step one. 
 
 #### 21. Need to Run Code To Be Confident
-You tend to get stuck on technical issues when you having run the code yourself. When you haven't testing the code, line by line. 
+You tend to get stuck on technical issues when you haven't run the code yourself. When you haven't testing the code, line by line, you can't be confident. So start by building a runnable test environment to confirm. 
 
 #### 22. Stop Focusing on the Clock
 This one is going to be hard, but ignore the clock. Just focus internally on yourself, if you can. 
 
 #### 23. Take a Walk
-I find that often for complex problem, just sitting there is not helpful when workshopping a problem. Just going for a short walk and having the brain churn in the background, I often break new ground on subject. 
+I find that often for complex problem, just sitting there is not helpful when workshopping a problem. By just going for a short walk and having the brain churn in the background, I often break new ground on subject. 
 
 #### 24. Good Stress
-Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducing more healthy stress earlier for smoother timelines. 
-
-Also take things less seriously. Life is just the journey until you die. Revel in the absurity until you croak. 
-
-Also walks through nature can reduce stress. 
+Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducing more healthy stress earlier for smoother timelines. Also take things less seriously. Life is just the journey until you die. Revel in the absurity until you croak. Also walks through nature can reduce stress. 
 
 #### 25. Gratitude
 And then remember how fortunate you are and be thankful for everything you have right now. 
