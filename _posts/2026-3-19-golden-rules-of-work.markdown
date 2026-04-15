@@ -93,9 +93,17 @@ For internal application reviews, it becomes a little trickier since there's no 
 
 But i think it's unrealistic to treat these applications engagements much differently. Why would the actual work expectations be different? 
 
-That said, often internal applications start earlier in the review cycle than consulting engagements. Which makes harder to review since significant parts of the apps are still being churned out. Early is Better, But Harder. 
+That said, often internal applications start earlier in the review cycle than consulting engagements. Which makes harder to review since significant parts of the apps are still being churned out. 
 
-The `21. Need to Run Code To Be Confident` is also important here for code review. Need to run through everything to fully understand. 
+Early is Better, But Harder. Which means these internal application reviews especially of huge important systems, need to be as thorough scoped as a pentest. There needs to be
+
+* A scoping meeting with the components are listed out
+* Multiple valid accounts
+* A Walkthrough
+* A Documentation
+* Swagger
+* Ideally a functioning application
+* Threat model
 
 #### 11. Stop Being So Darn Helpful
 You have a tendency to help people too much. On the surface this might seem good, however this will eventually lead to long-term trouble and burn out. 
@@ -157,6 +165,8 @@ It's a contradiction but start by doing things, by first doing nothing. Just sit
 
 #### 21. Need to Run Code To Be Confident
 You tend to get stuck on technical issues when you haven't run the code yourself. When you haven't testing the code, line by line, you can't be confident. So start by building a runnable test environment to confirm. 
+
+The `10. It's Not on Your Shoulders` is also important here for code review. Need to run through everything to fully understand, and help with the anxiety. Once you fully understand theoretically the fear should abide. 
 
 #### 22. Stop Focusing on the Clock
 This one is going to be hard, but ignore the clock. Just focus internally on yourself, if you can. 
