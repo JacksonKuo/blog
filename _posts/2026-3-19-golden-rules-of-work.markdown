@@ -87,6 +87,16 @@ For example, a good analogy is I just ran five miles, but doing an extra twenty 
 #### 10. It's Not on Your Shoulders
 You are not responsible for the security of the company. The company is responsible for the security. If the company is hacked, it's not your fault. Fortunately, I've been lucky in that I've never had a big breach during any of my tenures, but even if it happens, it's not on you. You might have a better understanding of the threat since you have an offensive background, but you don't dictate what the company and management decides to prioritize
 
+Additionally, for security reviews. It's not on your shoulders to find every single critical. I followed this advice especially in consulting, where often these apps are millions of lines of code. The general rule of thumb is a critical or high per week is good enough. 
+
+For internal application reviews, it becomes a little trickier since there's no clean timebox scope. And often your review is what releases an app to the rest of the company. That's a lot of responsibility to put on your shoulders, since if something slips by, there's someone to point the finger at, which results in higher fear and anxiety. 
+
+But i think it's unrealistic to treat these applications engagements much differently. Why would the actual work expectations be different? 
+
+That said, often internal applications start earlier in the review cycle than consulting engagements. Which makes harder to review since significant parts of the apps are still being churned out. Early is Better, But Harder. 
+
+The `21. Need to Run Code To Be Confident` is also important here for code review. Need to run through everything to fully understand. 
+
 #### 11. Stop Being So Darn Helpful
 You have a tendency to help people too much. On the surface this might seem good, however this will eventually lead to long-term trouble and burn out. 
 
@@ -98,6 +108,7 @@ You have a tendency to help people too much. On the surface this might seem good
     - push the slack sherpas, being the sole on-call for months and months is not sustainable
 * When taking on work, think about if this is sustainable in the long-term
 * Don't be the guy that always answers, otherwise the whole company is going to always ping you
+* Be careful about any addition asks for responsibility. This includes reviews and includes code owners approvals. 
 
 #### 12. Guard Your Time Like a Dragon
 Day to day context switching will involve:
