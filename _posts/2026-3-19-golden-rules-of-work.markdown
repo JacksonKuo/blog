@@ -95,7 +95,7 @@ But i think it's unrealistic to treat these applications engagements much differ
 
 That said, often internal applications start earlier in the review cycle than consulting engagements. Which makes harder to review since significant parts of the apps are still being churned out. 
 
-Early is Better, But Harder. Which means these internal application reviews especially of huge important systems, need to be as thorough scoped as a pentest. There needs to be
+Early is Better, But Harder. Which means these internal application reviews especially of huge important systems, need to be as thoroughly scoped as a pentest. There needs to be
 
 * A scoping meeting with the components are listed out
 * Multiple valid accounts
@@ -104,6 +104,7 @@ Early is Better, But Harder. Which means these internal application reviews espe
 * Swagger
 * Ideally a functioning application
 * Threat model
+* Depending on the size, dedicated time, at minimum a week to do reviews, but ideally the same amount of time as a pentest, which is three weeks
 
 #### 11. Stop Being So Darn Helpful
 You have a tendency to help people too much. On the surface this might seem good, however this will eventually lead to long-term trouble and burn out. 
