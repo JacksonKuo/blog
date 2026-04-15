@@ -99,8 +99,8 @@ Early is Better, But Harder. Which means these internal application reviews espe
 
 * A scoping meeting with the components are listed out
 * Multiple valid accounts
-* A Walkthrough
-* A Documentation
+* A walkthrough
+* Documentation
 * Swagger
 * Ideally a functioning application
 * Threat model
