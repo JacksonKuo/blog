@@ -182,7 +182,7 @@ Often I have lofty goals for the weekend, that I'll do all these things. And the
 Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducing more healthy stress earlier for smoother timelines. Also take things less seriously. Life is just the journey until you die. Revel in the absurity until you croak. Also walks through nature can reduce stress. 
 
 #### 26. Gratitude
-And then remember how fortunate you are and be thankful for everything you have right now. 
+And then remember how fortunate you are and be thankful for everything you have right now. Sometimes the green eye monster definitely will rear it's head, but I think you're at a stage of your career, where slow and steady makes the biggest difference. 
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
