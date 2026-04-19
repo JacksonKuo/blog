@@ -27,9 +27,9 @@ Weekend work i know there's a habit of working late on Sat, but with the breathi
 #### 2. Triple Deadline For Everything 
 Project estimation or work estimations of any kinda must be 3x what you initially think, no exceptions. Things will always take longer than expected, since often you don't know what is required until you do that actual work. 
 
-Additionally, security reviews need to be scoped initially. Some times, there's be an item that you might not fully understand how large it is? You need to treat some of these cases is consultanting pentest, with a scope, accounts, walkthroughs, dedicated testing time, app needs to be completed. 
+Additionally, security reviews need to be scoped initially. Sometimes, there'll be an review that you might not fully understand how large it is. You need to treat some of these cases like consulting pentests, with a scope, accounts, walkthroughs, dedicated testing time, app needs to be completed...
 
-Resist the urge to just say, Yes. It sometimes may seem easier to just say yes to someone, so they'll go away momentarily but that's debt you're taking on. That's finance debt that will build interest and you'll have to pay it down while it gouges you. 
+Consulting security reviews have a clearly defined scope and dedicated timebox for work. You're protect in a fashion from over work. But product engineering security reviews, unless you're part of the pentest team, has no scoped. And if it's a giant platform, doing comprehensive security review while juggling other projects makes doing a thorough review difficult. These types of review needs to be fully scoped out.  
 
 #### 3. Work Backlog Depression
 If i don't make consistent contribution to this backlog, I notice my mood starts to get a little depressed. PTO is your safety net. When work starts stacking up and stress is increasing, book PTO immediately. The PTO should be 2 weeks to clear stuck items on the backlog, once a year. Anything less than 2 weeks is much less effective. 
@@ -87,7 +87,7 @@ Also another good tip is when typing in the short hand for YT "you", have that p
 #### 8. Brain Loading
 I've noticed that when context switching between big topics, it takes a few days for my brain to re-adjust to the new topic. I call it loading time. Work this time into the estimates. Prep for the fact that the transition phase will feel slow and that it takes time for the brain to rewire when doing large context switching
 
-Doing brain loading on the weekend, tends to work out pretty well. 
+Doing brain loading on the weekend tends to work out pretty well. Creating and sorting through a todo list, and then picking 1 problem to do on Sun could be a good system. 
 
 #### 9. Brain Break
 Note this is slightly different than brain loading. Brain loading happens at the start of a project. Brain break happens at the end of a big chunk of work.
@@ -119,6 +119,8 @@ Early is Better, But Harder. Which means these internal application reviews espe
 * Depending on the size, dedicated time, at minimum a week to do reviews, but ideally the same amount of time as a pentest, which is three weeks
 
 #### 11. Resist the Urge to Just Say, Yes.
+Resist the urge to just say, Yes. It sometimes may seem easier to just say yes to someone, so they'll go away momentarily but that's debt you're taking on. That's financal debt that will build interest and you'll have to pay it down while it gouges you. 
+
 Stop being so darn helpful. You have a tendency to help people too much. On the surface this might seem good, however this will eventually lead to long-term trouble and burn out. 
 
 * Don't work at 100% percent, else any additional work will cause the glass to overfill
@@ -130,6 +132,7 @@ Stop being so darn helpful. You have a tendency to help people too much. On the 
 * When taking on work, think about if this is sustainable in the long-term
 * Don't be the guy that always answers, otherwise the whole company is going to always ping you
 * Be careful about any addition asks for responsibility. This includes reviews and includes code owners approvals. 
+* Security reviews need to be scoped
 
 #### 12. Guard Your Time Like a Dragon
 Day to day context switching will involve:
@@ -192,7 +195,7 @@ I find that often for new or complex problems, just sitting there is not very he
 #### 24. Pick One Thing to Do Over the Weekend
 Often I have lofty goals for the weekend, that I'll do all these things. And then inevitably I don't get these things done. It's helpful if I just have expectations to do just 1 item. 1 item and then maybe a todo list for next week, to do the brain loading and that's all for expectations
 
-Do one thing on Sunday, tends to put you in a good mood for the week. You're already ahead, which releases some of stress. And then you can maybe take it easy Friday. 
+Doing one thing on Sunday tends to put you in a good mood for the rest of the week. You're already ahead, which releases some of stress and makes you more confidence. And then you can maybe take it easy on Friday. 
 
 #### 25. Good Stress
 Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducing more healthy stress earlier for smoother timelines. Also take things less seriously. Life is just the journey until you die. Revel in the absurity until you croak. Also walks through nature can reduce stress. 
