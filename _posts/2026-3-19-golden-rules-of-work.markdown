@@ -22,8 +22,14 @@ Additionally, sleep just makes you more cheery, which definitely helps when inte
 
 During vacation this can be flexible. Also I'm starting to suspect, that I'm not just a night owl, but that my mind is calmer at the end of the long day, regardless if it's at night. 
 
-#### 2. Triple Everything 
+Weekend work i know there's a habit of working late on Sat, but with the breathing techinques, do a full day Sunday is not an impossible hurdle. 
+
+#### 2. Triple Deadline For Everything 
 Project estimation or work estimations of any kinda must be 3x what you initially think, no exceptions. Things will always take longer than expected, since often you don't know what is required until you do that actual work. 
+
+Additionally, security reviews need to be scoped initially. Some times, there's be an item that you might not fully understand how large it is? You need to treat some of these cases is consultanting pentest, with a scope, accounts, walkthroughs, dedicated testing time, app needs to be completed. 
+
+Resist the urge to just say, Yes. It sometimes may seem easier to just say yes to someone, so they'll go away momentarily but that's debt you're taking on. That's finance debt that will build interest and you'll have to pay it down while it gouges you. 
 
 #### 3. Work Backlog Depression
 If i don't make consistent contribution to this backlog, I notice my mood starts to get a little depressed. PTO is your safety net. When work starts stacking up and stress is increasing, book PTO immediately. The PTO should be 2 weeks to clear stuck items on the backlog, once a year. Anything less than 2 weeks is much less effective. 
@@ -31,11 +37,15 @@ If i don't make consistent contribution to this backlog, I notice my mood starts
 #### 4. Laundry Must Be Easy
 If laundry isn't done, something has gone wrong. It's really important that the in-unit laundry is fast. Wash time should be approximately thirty minutes and dry times one hour. On new apartment inspections bring a towel to test out the washer dryer unit. Combined washer dryers are terrible, never accept a unit that uses them
 
+Maybe Saturday is laundry day, to leave Sunday as Brain Loading day. 
+
 #### 5. No More Working From Home
 I realize I work so much more efficiently in-office. It's a struggle to stay focused at home. This is just me personally.
 
 #### 6. Be Professional
 Don't take things personally, even if folks come off as rude. Keep your eye on the prize. 
+
+If you're sleep deprived or tired, just shut up. Don't chime in on meetings and don't have your camera on. You're not in a good state to represent yourself. Treat it like you're drunk (though obviously you're not)
 
 #### 7. It's Not You It's Your Habitat
 If you're having trouble getting work done, it's not because you're lazy. It's because there's certain environments that your brain needs. If you're having trouble, don't try harder, but find an easy environment for that type of work. 
@@ -77,6 +87,8 @@ Also another good tip is when typing in the short hand for YT "you", have that p
 #### 8. Brain Loading
 I've noticed that when context switching between big topics, it takes a few days for my brain to re-adjust to the new topic. I call it loading time. Work this time into the estimates. Prep for the fact that the transition phase will feel slow and that it takes time for the brain to rewire when doing large context switching
 
+Doing brain loading on the weekend, tends to work out pretty well. 
+
 #### 9. Brain Break
 Note this is slightly different than brain loading. Brain loading happens at the start of a project. Brain break happens at the end of a big chunk of work.
 
@@ -106,8 +118,8 @@ Early is Better, But Harder. Which means these internal application reviews espe
 * Threat model
 * Depending on the size, dedicated time, at minimum a week to do reviews, but ideally the same amount of time as a pentest, which is three weeks
 
-#### 11. Stop Being So Darn Helpful
-You have a tendency to help people too much. On the surface this might seem good, however this will eventually lead to long-term trouble and burn out. 
+#### 11. Resist the Urge to Just Say, Yes.
+Stop being so darn helpful. You have a tendency to help people too much. On the surface this might seem good, however this will eventually lead to long-term trouble and burn out. 
 
 * Don't work at 100% percent, else any additional work will cause the glass to overfill
 * When asked to pivot to other work, track what work needs to be placed on hold and ask if that is acceptable
@@ -146,6 +158,8 @@ I've noticed that I read people's questions in slack too fast. Often, I don't re
 #### 16. Caffeine Overload
 Only 1 energy drink a day. When I go above that, my body starts to feel a bit ill. Pretty sure that stuff isn't great for you.
 
+Oh but the Pure Leaf UnSweetened Green Tea is like nitro for brain focus. 
+
 #### 17. Move It, Move It
 You need some sort of exercise. This was a recommendation add. I ended up living semi-close by to the office and walk a little over a mile each day to work. Not too shabby. And don't eat so much rice. 
 
@@ -172,11 +186,13 @@ The `10. It's Not on Your Shoulders` is also important here for code review. Nee
 #### 22. Stop Focusing on the Clock
 This one is going to be hard, but ignore the clock. Just focus internally on yourself, if you can. 
 
-#### 23. Take a Walk
+#### 23. Take a Break From the Screen
 I find that often for new or complex problems, just sitting there is not very helpful. By just standup and going for a short walk my brain will start popping out new ideas, running through scenarios in a comprehensive way, and my understanding of a subject or a risk greatly increases.
 
 #### 24. Pick One Thing to Do Over the Weekend
 Often I have lofty goals for the weekend, that I'll do all these things. And then inevitably I don't get these things done. It's helpful if I just have expectations to do just 1 item. 1 item and then maybe a todo list for next week, to do the brain loading and that's all for expectations
+
+Do one thing on Sunday, tends to put you in a good mood for the week. You're already ahead, which releases some of stress. And then you can maybe take it easy Friday. 
 
 #### 25. Good Stress
 Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducing more healthy stress earlier for smoother timelines. Also take things less seriously. Life is just the journey until you die. Revel in the absurity until you croak. Also walks through nature can reduce stress. 
