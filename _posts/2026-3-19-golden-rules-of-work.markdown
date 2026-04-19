@@ -24,7 +24,7 @@ During vacation this can be flexible. Also I'm starting to suspect, that I'm not
 
 Weekend work i know there's a habit of working late on Sat, but with the breathing techinques, do a full day Sunday is not an impossible hurdle. 
 
-#### 2. Triple Deadline For Everything 
+#### 2. Triple Deadlines For Everything 
 Project estimation or work estimations of any kinda must be 3x what you initially think, no exceptions. Things will always take longer than expected, since often you don't know what is required until you do that actual work. 
 
 Additionally, security reviews need to be scoped initially. Sometimes, there'll be an review that you might not fully understand how large it is. You need to treat some of these cases like consulting pentests, with a scope, accounts, walkthroughs, dedicated testing time, app needs to be completed...
