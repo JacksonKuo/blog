@@ -200,7 +200,12 @@ Doing one thing on Sunday tends to put you in a good mood for the rest of the we
 #### 25. Good Stress
 Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducing more healthy stress earlier for smoother timelines. Also take things less seriously. Life is just the journey until you die. Revel in the absurity until you croak. Also walks through nature can reduce stress. 
 
-#### 26. Gratitude
+#### 26. Leave Writing for Vacation
+Sometimes i feel bad that I don't add to the blog as much, or find time on the weekends to post. It's fine, Jackson. What tends to happen is you learn a bunch of things from big chunks of time. And then you backfill the learning to the blog when you're on vacation. 
+
+That said, try to keep detailed notes when you can. 
+
+#### 27. Gratitude
 And then remember how fortunate you are and be thankful for everything you have right now. Sometimes the green eye monster definitely will rear it's head, but I think you're at a stage of your career, where slow and steady makes the biggest difference. 
 
 # References
