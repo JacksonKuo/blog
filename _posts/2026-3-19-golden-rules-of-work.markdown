@@ -205,7 +205,14 @@ Sometimes i feel bad that I don't add to the blog as much, or find time on the w
 
 That said, try to keep detailed notes when you can. 
 
-#### 27. Gratitude
+#### 27. Try To Reduce the Noise
+Obviously oncall can makes things tricky. And then there's always the newest security incidents. But try ignore the internal nagging to see if there's any new pings and not routinely check slack on your days off. 
+
+Keeping the work laptop on the lockscreen can be helpful to not see slack. If there's an urgent ping, that should show up on our phone. 
+
+Additionally, I found it really helpful to mute all channels that I don't 100% need to be watching. The constant pings from a busy channel can be super disruptive when trying to focus. 
+
+#### 28. Gratitude
 And then remember how fortunate you are and be thankful for everything you have right now. Sometimes the green eye monster definitely will rear it's head, but I think you're at a stage of your career, where slow and steady makes the biggest difference. 
 
 # References
