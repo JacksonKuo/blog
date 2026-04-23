@@ -218,7 +218,7 @@ And then remember how fortunate you are and be thankful for everything you have 
 #### 29. Close Your Laptop Screen After Work
 This seems to really help with shifting your mind off work
 
-#### 30. No, Serious Stop Saying Yes
+#### 30. No, Seriously Stop Saying Yes By Reflex or By Under Pressure
 Even when it's your boss. The pressure you feel to reply, it's really powerful, but it's okay to wait a minute or two to write up a response. That said, having a general response prepped could be helpful. Something like:
 
 Could you posted this in the appsec channel, internal or external, and we can see when someone has the bandwidth?
