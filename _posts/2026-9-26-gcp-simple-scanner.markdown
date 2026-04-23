@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GCP Simple Scanner"
-date: 2026-3-26
+date: 2026-9-26
 tags: ["devsecops"]
 published: false
 ---

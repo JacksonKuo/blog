@@ -215,6 +215,23 @@ Additionally, I found it really helpful to mute all channels that I don't 100% n
 #### 28. Gratitude
 And then remember how fortunate you are and be thankful for everything you have right now. Sometimes the green eye monster definitely will rear it's head, but I think you're at a stage of your career, where slow and steady makes the biggest difference. 
 
+#### 29. Close Your Laptop Screen After Work
+This seems to really help with shifting your mind off work
+
+#### 30. No, Serious Stop Saying Yes
+Even when it's your boss. The pressure you feel to reply, it's really powerful, but it's okay to wait a minute or two to write up a response. That said, having a general response prepped could be helpful. Something like:
+
+Could you posted this in the appsec channel, internal or external, and we can see when someone has the bandwidth?
+
+Don't ever say these following words. 
+
+* Ok
+* Sure
+* Yes
+* Yeah, i can do it
+
+I don't care who it is. 
+
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
 
