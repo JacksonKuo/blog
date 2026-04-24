@@ -226,8 +226,6 @@ Don't ever say these following words.
 * Yes
 * Yeah, i can do it
 
-I don't care who it is. 
-
 #### 30. Gratitude
 And then remember how fortunate you are and be thankful for everything you have right now. Sometimes the green eye monster definitely will rear it's head, but I think you're at a stage of your career, where slow and steady makes the biggest difference. 
 
