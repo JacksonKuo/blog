@@ -24,7 +24,7 @@ I've configured two accounts:
 | Type | Name | Role | 
 |---|---|---|
 | GCS Bucket | jkuo-security-hcp-demo-bucket| storage.objectViewer |
-| BQ Dataset | github_org_scanner | bigquery.dataEditor |
+| BQ Dataset | scanner | bigquery.dataEditor |
 
 * GCP default DTS service account
     - `service-{project_number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com`
@@ -76,7 +76,7 @@ I might not need these:
 
 > If you're using predefined roles like bigquery.admin for the Terraform SA, you're already covered.
 
-Apparently, the Schedule backfill will only run once on a GCS file, unless the file has been updated. 
+Apparently, the DTS Schedule backfill will only run once on a GCS file, unless the file has been updated. 
 
 # References
 [^1]: [https://docs.cloud.google.com/bigquery/docs/enable-transfer-service#service_agent](https://docs.cloud.google.com/bigquery/docs/enable-transfer-service#service_agent)
