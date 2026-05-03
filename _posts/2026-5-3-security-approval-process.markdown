@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Security Approvals"
+title: "Security Approval Process"
 date: 2026-5-3
 tags: ["advice"]
 published: true
@@ -17,7 +17,7 @@ But for me, the highest difficulty and stress of security tends to happen at the
 
 This is a writeup on how to someone navigate this process, particularly the murky situations
 
-# Security Approvals
+# Security Approval Process
 When developer asks for permission/approval there a number of competing interests that influence the approval:
 * Actual Risk
 * Business need
