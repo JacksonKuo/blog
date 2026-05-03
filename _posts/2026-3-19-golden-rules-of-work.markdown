@@ -34,8 +34,10 @@ Consulting security reviews have a clearly defined scope and dedicated timebox f
 #### 3. Work Backlog Depression
 If i don't make consistent contribution to this backlog, I notice my mood starts to get a little depressed. PTO is your safety net. When work starts stacking up and stress is increasing, book PTO immediately. The PTO should be 2 weeks to clear stuck items on the backlog, once a year. Anything less than 2 weeks is much less effective. 
 
-#### 4. Laundry Must Be Easy
-If laundry isn't done, something has gone wrong. It's really important that the in-unit laundry is fast. Wash time should be approximately thirty minutes and dry times one hour. On new apartment inspections bring a towel to test out the washer dryer unit. Combined washer dryers are terrible, never accept a unit that uses them
+#### 4. Laundry Litmus Test
+If laundry isn't done, something has gone wrong and you know the week is going to be shit. 
+
+That said, it's really important that the in-unit laundry is fast. Wash time should be approximately thirty minutes and dry times one hour. On new apartment inspections bring a towel to test out the washer dryer unit. Combined washer dryers are terrible, never accept a unit that uses them
 
 Maybe Saturday is laundry day, to leave Sunday as Brain Loading day. 
 
@@ -184,7 +186,7 @@ It's a contradiction but start by doing things, by first doing nothing. Just sit
 #### 21. Need to Run Code To Be Confident
 You tend to get stuck on technical issues when you haven't run the code yourself. When you haven't testing the code, line by line, you can't be confident. So start by building a runnable test environment to confirm. 
 
-The `10. It's Not on Your Shoulders` is also important here for code review. Need to run through everything to fully understand, and help with the anxiety. Once you fully understand theoretically the fear should abide. 
+The [10. It's Not on Your Shoulders](https://jacksonkuo.github.io/blog/2026/03/19/golden-rules-of-work.html#10-its-not-on-your-shoulders)` is also important here for code review. Need to run through everything to fully understand, and help with the anxiety. Once you fully understand theoretically the fear should abide. 
 
 #### 22. Stop Focusing on the Clock
 This one is going to be hard, but ignore the clock. Just focus internally on yourself, if you can. 
