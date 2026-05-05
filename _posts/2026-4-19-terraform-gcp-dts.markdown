@@ -78,6 +78,8 @@ I might not need these:
 
 Apparently, the DTS Schedule backfill will only run once on a GCS file, unless the file has been updated. 
 
+Also make sure you GCP user is an Editor make sure it also has BigQuery User and BigQuery Data Viewer role, otherwise trying to view the table will return errors.  
+
 # References
 [^1]: [https://docs.cloud.google.com/bigquery/docs/enable-transfer-service#service_agent](https://docs.cloud.google.com/bigquery/docs/enable-transfer-service#service_agent)
 [^2]: [https://docs.cloud.google.com/bigquery/docs/use-service-accounts](https://docs.cloud.google.com/bigquery/docs/use-service-accounts)
