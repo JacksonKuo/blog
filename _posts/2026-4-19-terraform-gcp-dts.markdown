@@ -61,7 +61,7 @@ A few things to notes:
     * Temp token uses custom SA permissions to read from GCS bucket
     * The DTS default SA `gcp-sa-bigquerydatatransfer` and writes data to BQ tables
 
-> Note: Starting March 17, 2026, the BigQuery Data Transfer Service will require the bigquery.datasets.getIamPolicy and bigquery.datasets.setIamPolicy permissions. For more information, see Changes to dataset-level access controls.[^5]
+> Note: Starting March 17, 2026, the BigQuery Data Transfer Service will require the bigquery.datasets.getIamPolicy and bigquery.datasets.setIamPolicy permissions. This is only if the `enable_fine_grained_dataset_acls_option` option is opted-in. For more information, see Changes to dataset-level access controls.[^5]
 
 I'm not going to lie, i still don't fully understand how all this works... but some how it works in my instance
 
