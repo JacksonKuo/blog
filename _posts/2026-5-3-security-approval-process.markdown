@@ -32,7 +32,7 @@ When developer asks for permission/approval there a number of competing interest
 
 #### When to Say Yes
 * Yes
-    - When security has done a review and the risk is well understood. And Security gives approval if the risk doesn't warrant higher disgression. These are the easy cases
+    - When security has done a review and the risk is well understood. And Security gives approval if the risk doesn't warrant higher discretion. These are the easy cases
 * Yes, But Fix This
     - If a security risk is severe enough, security will work with developers to fix the issue, so both devs can continue but security is also happy
 * Yes, But Fix This Later
