@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Hardest Thing About Work"
+title: "Interview Tips"
 date: 2026-5-16
 tags: ["advice"]
 published: false
