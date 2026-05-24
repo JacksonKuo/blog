@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "GHApp"
-date: 2026-5-16
+title: "GHApp Permissions"
+date: 2026-9-16
 tags: ["advice"]
 published: false
 ---
