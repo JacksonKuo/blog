@@ -1,0 +1,43 @@
+---
+layout: post
+title: "GitHub - Forks and Dark Forks"
+date: 2026-5-20
+tags: ["github"]
+published: false
+---
+
+**Contents**
+* TOC
+{:toc}
+
+# Problem Statement
+Breakdown forks and dark forks, when do use them and why. And then how to develop around them with branch protections enabled.
+
+# Terms 
+
+* Forks: *repository that shares code and visibility settings with the original “upstream” repository*[^1]
+* Dark Forks: also called a mirror repo or manual fork. A repo that points to the upstream repo via `git remote add` but is not created through the `Create a new fork` button
+* Upstream
+* Remote Repository
+* Fork network
+
+# Tradeoffs
+
+|  | Pro | Cons |
+|---|---|---|---|
+| Fork | No Secrets | Public<br>Fork Network | 
+| Dark Fork | Non-Public | Secrets |
+
+Dark forks are preferred because they're not on the internet. An attacker can't create a PR against a fork dark and/or attempt the typical tried and true github workflow attack vectors. And secrets committed to the dark fork aren't exposed via the fork network, aka the internet. 
+
+The downsides is that dark forks don't the normal secret protection that regular forks have. Secrets are directly passed to dark forks, whereas they're not inherited for regular forks. So a dark fork workflow can dump secrets without a `pull_request_target`. That said, regular forks can still expose secrets via `pull_request_target`. And the dark fork would need to enumerate your companies secret names first and then get a malicious workflow into the upstream repository, which is a non-trivial barrier. And it would make the attack specific to a single company, which is not great value.
+
+# Upstream / Github / 
+
+# Sync
+
+# Working with Branch Protections
+
+# References
+
+[^1]: [https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)

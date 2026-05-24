@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GHApp Permissions"
+title: "GitHub - GHApp Permissions"
 date: 2026-9-16
 tags: ["advice"]
 published: false
