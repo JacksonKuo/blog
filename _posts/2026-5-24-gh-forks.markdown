@@ -13,7 +13,7 @@ published: false
 # Problem Statement
 Breakdown forks, fork security, and dark forks. When do use them and why. And then how to develop around them with branch protections enabled. Most of GitHub fork documentation is here: [https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks)
 
-# Terms 
+# Terminology 
 * Forks: *repository that shares code and visibility settings with the original “upstream” repository*[^1]
 * Upstream: a common name used for a remote that points to repo that was forked
 * Origin: the default name of remote[^3] when you git clone. similiar idea to `main` being the default branch name
@@ -21,7 +21,7 @@ Breakdown forks, fork security, and dark forks. When do use them and why. And th
 * Fork network: *All repositories belong to a repository network. A repository network contains the upstream repository, the upstream repository's direct forks, and all forks of those forks.*[^4]
 * Dark Forks: also called a mirror repo or manual fork. A repo that points to the upstream repo via `git remote add` but is not created through the `Create a new fork` button
 
-# Fork Security
+# Security
 Making a copy of the GitHub fork [security considerations](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-permissions-and-visibility-of-forks#important-security-considerations):
 > If you work with forks, or if you're the owner of a repository or organization that allows forking, it's important to be aware of the following security considerations.
 > * Forks have their own permissions separate from the upstream repository.
@@ -34,7 +34,7 @@ Making a copy of the GitHub fork [security considerations](https://docs.github.c
 The last line is very important. Trufflehog had a great post about this: [https://trufflesecurity.com/blog/anyone-can-access-deleted-and-private-repo-data-github](https://trufflesecurity.com/blog/anyone-can-access-deleted-and-private-repo-data-github). The takeaway is:
 > As long as one fork exists, any commit to that repository network (ie: commits on the “upstream” repo or “downstream” forks) will exist forever.
 
-# Tradeoffs
+#### Tradeoffs
 
 |  | Pro | Cons |
 |---|---|---|---|
@@ -70,28 +70,28 @@ commit - [https://git-scm.com/docs/git-commit](https://git-scm.com/docs/git-comm
     * `-s` - *Add a Signed-off-by trailer by the committer at the end of the commit log message.* common in open source
 
 push - [https://git-scm.com/docs/git-push](https://git-scm.com/docs/git-push)
-* - `--follow-tags`
+* `--follow-tags`
     * basically add tags to the fork
-* - `--all`
+* `--all`
     * seems to push branches in alphabetical order
 
-# Dark Fork
+# Setup
+We're working with the model that PR branch protections are enabled, but only on `main`,`master`, and `default_branch`. Feature branches don't require PR approvals. 
 
-Goal:
+#### Dark Fork
+The goal is two branches, with the main branch
+
+* `main` branch
+* `upstream` branc
+
+
 * branch -> main (default)
 * branch -> upstream-main
 * upstream remote -> original_repo
 * origin remote -> owner_repo
 
-#### Sync
-#### Master
-#### Branch Protections
 
-# Fork
-
-#### Sync
-#### Master
-#### Branch Protections
+#### Fork
 
 # References
 [^1]: [https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
