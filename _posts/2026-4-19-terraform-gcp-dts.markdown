@@ -51,7 +51,7 @@ A few things to notes:
 * Transfer Creator = sets up transfer config (Terraform account)
 * Transfer Owner = `user identity that the BigQuery DTS uses to authorize the data transfer, specifically, for extracting the source data.`[^4]
 
-# Setup Instructions:
+# Setup Instructions
 1. Enable BQ DTS API, which creates default DTS SA
     * To see the account, IAM & Admin > click the Include Google-provided role grants
 2. Running `terraform apply` creates the `dts-gcs-loader` SA
@@ -67,10 +67,15 @@ Weird. The deadline has already passed, so maybe DTS auto-receives those policy 
 
 I'm not going to lie, i still don't fully understand how all this works... but some how it works in my instance
 
+# Finetuning Permissions
 I might not need these:
 * dts_bq_editor — custom SA doesn't need dataEditor, only datasets.get and datasets.update
 * dts_agent_bq_editor_repos — DTS grants this automatically
 * dts_agent_bq_editor_visibility — DTS grants this automatically
+
+> 5/26/26 - double confirmed in another environment, the above terraform was not needed.[^7] [^8]
+
+Chatting with Claude:
 
 > If DTS automatically grants dataset-level dataEditor to the default DTS SA at transfer creation time, your table-level restrictions are effectively bypassed by that broader grant
 
@@ -78,9 +83,10 @@ I might not need these:
 
 > If you're using predefined roles like bigquery.admin for the Terraform SA, you're already covered.
 
-Apparently, the DTS Schedule backfill will only run once on a GCS file, unless the file has been updated. 
+# Misc
+Also apparently, the DTS Schedule backfill will only run once on a GCS file, unless the file has been updated. 
 
-Also make sure you GCP user is an Editor make sure it also has BigQuery User and BigQuery Data Viewer role, otherwise trying to view the table will return errors.  
+And Also make sure you GCP user is an Editor make sure it also has BigQuery User and BigQuery Data Viewer role, otherwise trying to view the table will return errors.  
 
 # References
 [^1]: [https://docs.cloud.google.com/bigquery/docs/enable-transfer-service#service_agent](https://docs.cloud.google.com/bigquery/docs/enable-transfer-service#service_agent)
@@ -89,3 +95,6 @@ Also make sure you GCP user is an Editor make sure it also has BigQuery User and
 [^4]: [https://docs.cloud.google.com/bigquery/docs/dts-authentication-authorization#transfer_creator_versus_transfer_owner](https://docs.cloud.google.com/bigquery/docs/dts-authentication-authorization#transfer_creator_versus_transfer_owner)
 [^5]: [[https://docs.cloud.google.com/bigquery/docs/dataset-access-control](https://docs.cloud.google.com/bigquery/docs/dataset-access-control)
 [^6]: [https://docs.cloud.google.com/iam/docs/roles-permissions/bigquery](https://docs.cloud.google.com/iam/docs/roles-permissions/bigquery)
+
+[^7]: [remove data editor](https://github.com/JacksonKuo/terraform-gcp/commit/56f6690a83688b708861b780ac05ae4acb3ad09d)
+[^8]: [remove table permissions](https://github.com/JacksonKuo/terraform-gcp/commit/56f6690a83688b708861b780ac05ae4acb3ad09d)
