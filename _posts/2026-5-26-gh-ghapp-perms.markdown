@@ -3,7 +3,7 @@ layout: post
 title: "GitHub - GHApp Permissions Cheatsheet"
 date: 2026-5-26
 tags: ["github"]
-published: false
+published: true
 ---
 
 **Contents**
