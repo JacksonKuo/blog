@@ -177,7 +177,7 @@ curl -L \
 
 Weirdly, it looks like right now the only way to change the visiblity is manually or via an undocumented call using a bummed cookie + `authenticity_token`. 
 
-There's a bunch of changes coming via the GitHub Actions 2026 Security Roadmap: [https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/](https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/). However, i don't think there's anything that fixes this directly.
+There's a bunch of changes coming via the GitHub Actions 2026 Security Roadmap: [https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/](https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/). However, i don't think there's anything that fixes this directly. And terraform or safe-settings[^2] doesn't really help this situation
 
 # Solution
 I guess the step-by-step to change the visibility from `all` or `private/internal` to `selected` is:
@@ -197,3 +197,5 @@ I guess the step-by-step to change the visibility from `all` or `private/interna
 
 # References
 [^1]: [https://docs.github.com/en/graphql/reference/mutations](https://docs.github.com/en/graphql/reference/mutations)
+
+[^2]: [https://github.com/github/safe-settings](https://github.com/github/safe-settings)
