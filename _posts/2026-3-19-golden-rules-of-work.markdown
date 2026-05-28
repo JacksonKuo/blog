@@ -229,7 +229,7 @@ Don't ever say these following words.
 * Yeah, i can do it
 
 #### 30. Gratitude
-And then remember how fortunate you are and be thankful for everything you have right now. Sometimes the green eye monster definitely will rear it's head, but I think you're at a stage of your career, where slow and steady makes the biggest difference. 
+And then remember how fortunate you are and be thankful for everything you have right now. I think you're at a stage of your career, where slow and steady progress makes the biggest difference. And then what sometimes helps is after a long day at work watch some Midwest Safety[^4] youtube videos, which can help remind you how lucky you are sometimes. 
 
 # References
 [^1]: [https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/](https://www.reddit.com/r/AutismInWomen/comments/1q9ldoq/looking_for_help_with_specific_calm_tv_shows/)
@@ -237,3 +237,5 @@ And then remember how fortunate you are and be thankful for everything you have 
 [^2]: [https://www.amazon.com/gp/video/mystuff/library](https://www.amazon.com/gp/video/mystuff/library)
 
 [^3]: [https://jacksonkuo.github.io/blog/2025/04/29/chrome-extension-manifest-v3.html](https://jacksonkuo.github.io/blog/2025/04/29/chrome-extension-manifest-v3.html). 
+
+[^4]: [https://www.youtube.com/@MidwestSafety](https://www.youtube.com/@MidwestSafety)
