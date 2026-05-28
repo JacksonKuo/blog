@@ -35,7 +35,7 @@ gh api \
 }'
 ```
 * [set-selected-repositories-for-an-organization-secret](https://docs.github.com/en/rest/actions/secrets?apiVersion=2026-03-10#set-selected-repositories-for-an-organization-secret)
-    * *Replaces all repositories for an organization secret*
+    * ***Replaces all repositories for an organization secret***
     * `"Secrets" organization permissions (write)`
 * [add-selected-repository-to-an-organization-secret](https://docs.github.com/en/rest/actions/secrets?apiVersion=2026-03-10#add-selected-repository-to-an-organization-secret)
     * *"Secrets" organization permissions (write) and "Metadata" repository permissions (read)*
@@ -125,7 +125,7 @@ repository_ids%5B%5D=R_kgDOO4Zqhw
 
 However there's no corresponding functionality in the REST API. And there's no secrets functionality in the GraphQL API[^1].
 
-Attempts to use a blank `""` or empty `encrypted_value` return errors
+Attempts to use a blank `""` or empty `encrypted_value` return errors:
 ```json
 curl -L \
   -X PUT \
@@ -156,7 +156,7 @@ curl -L \
   "documentation_url": "https://docs.github.com/rest/actions/secrets#create-or-update-an-organization-secret",
 }
 ```
-And attempts to call the `set-selected-repositories-for-an-organization-secret` return an error: 
+And attempts to call the `set-selected-repositories-for-an-organization-secret` return the error: 
 
 ```json
 curl -L \
@@ -180,11 +180,17 @@ Weirdly, it looks like right now the only way to change the visiblity is manuall
 There's a bunch of changes coming via the GitHub Actions 2026 Security Roadmap: [https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/](https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/). However, i don't think there's anything that fixes this directly.
 
 # Solution
-I guess the step-by-step is:
+I guess the step-by-step to change the visibility from `all` or `private/internal` to `selected`:
 
-1. Change the visibility from `all` or `private/internal` to `selected`
-    * manual
-    * session token riding + handling CSRF (maybe automated using playwright, ugh)
+* Manual
+    * clickops change visibility
+    * clickops the selected repos
+* Session token riding
+    * handling CSRF
+    * maybe automate using playwright, ugh
+    * use `add-selected-repository-to-an-organization-secret` multiple times or...
+    * use `set-selected-repositories-for-an-organization-secret` once, as this call deletes the existing repo list
+
 
 # References
 [^1]: [https://docs.github.com/en/graphql/reference/mutations](https://docs.github.com/en/graphql/reference/mutations)
