@@ -100,7 +100,7 @@ method=put&authenticity_token=tktk&encrypted_value=&
 key_id=3380204578043523366&visibility=VISIBILITY_SELECTED_REPOSITORIES
 ```
 
-And here's the difference when include 1 or more repos:
+And here's the difference when including 1 or more repos:
 
 One repository
 ```xml
@@ -125,7 +125,7 @@ repository_ids%5B%5D=R_kgDOO4Zqhw
 
 However there's no corresponding functionality in the REST API. And there's no secrets functionality in the GraphQL API[^1].
 
-Attempts to use a blank `""` or empty `encrypted_value` return errors:
+Attempts to use a blank `""` or an empty `encrypted_value` return errors:
 ```json
 curl -L \
   -X PUT \
@@ -175,22 +175,25 @@ curl -L \
 }
 ```
 
-Weirdly, it looks like right now the only way to change the visiblity is manually or via an undocumented call using a bummed `authenticity_token`. 
+Weirdly, it looks like right now the only way to change the visiblity is manually or via an undocumented call using a bummed cookie + `authenticity_token`. 
 
 There's a bunch of changes coming via the GitHub Actions 2026 Security Roadmap: [https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/](https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/). However, i don't think there's anything that fixes this directly.
 
 # Solution
-I guess the step-by-step to change the visibility from `all` or `private/internal` to `selected`:
+I guess the step-by-step to change the visibility from `all` or `private/internal` to `selected` is:
 
 * Manual
-    * clickops change visibility
-    * clickops the selected repos
-* Session token riding
-    * handling CSRF
+    * change visibility clickops
+    * update selected repos
+        * clickops
+        * call `set-selected-repositories-for-an-organization-secret` once, as this call deletes the existing repo list
+* Session Riding
+    * get cookie
+    * handle CSRF
     * maybe automate using playwright, ugh
-    * use `add-selected-repository-to-an-organization-secret` multiple times or...
-    * use `set-selected-repositories-for-an-organization-secret` once, as this call deletes the existing repo list
-
+    * update selected repos
+        * call `add-selected-repository-to-an-organization-secret` multiple times
+        * call `set-selected-repositories-for-an-organization-secret` once, as this call deletes the existing repo list
 
 # References
 [^1]: [https://docs.github.com/en/graphql/reference/mutations](https://docs.github.com/en/graphql/reference/mutations)
