@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GitHub - Actions Org Secret Rightsizing"
+title: "GitHub - Org Secret Rightsizing"
 date: 2026-5-27
 tags: ["github"]
 published: true
@@ -11,7 +11,7 @@ published: true
 {:toc}
 
 # Problem Statement
-Document the process for migrating GitHub org secret from `all` or `private/internal` access to `selected` repositories.
+Document the process for migrating GitHub Actions Org Secrets from `all` or `private/internal` access to `selected` repositories.
 
 # REST APIs and GH CLI
 * [create-or-update-an-organization-secret](https://docs.github.com/en/rest/actions/secrets?apiVersion=2026-03-10#create-or-update-an-organization-secret)

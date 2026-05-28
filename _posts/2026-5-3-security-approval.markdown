@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Security Approval Process"
+title: "Security Approvals"
 date: 2026-5-3
 tags: ["advice"]
 published: true
