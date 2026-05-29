@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GitHub - Forks and Dark Forks"
-date: 2026-5-24
+date: 2026-5-29
 tags: ["github"]
 published: false
 ---
@@ -79,11 +79,12 @@ push - [https://git-scm.com/docs/git-push](https://git-scm.com/docs/git-push)
 We're working with the model that PR branch protections are enabled, but only on `main`,`master`, and `default_branch`. Feature branches don't require PR approvals. 
 
 #### Dark Fork
-The goal is two branches, with the main branch
+The goal is two branches, with the `main` branch where you add custom code. And the `upstream` branch 
 
 * `main` branch
 * `upstream` branc
 
+safety for updates
 
 * branch -> main (default)
 * branch -> upstream-main

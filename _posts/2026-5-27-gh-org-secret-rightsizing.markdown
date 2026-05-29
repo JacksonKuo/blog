@@ -90,7 +90,7 @@ Hmm, the REST API and GH CLI documentation looks like you have to re-pass in the
 * [#9808](https://github.com/cli/cli/issues/9808)
 
 # Learnings
-Well that's pretty bad. The UI endpoint [https://github.com/organizations/jkuo-org/settings/secrets/actions/](https://github.com/organizations/jkuo-org/settings/secrets/actions/) allows changing the visibility without knowing the secret. This is the underlying UI request, with the `encrypted_value` not set.
+Well that's pretty bad. The UI endpoint [https://github.com/organizations/jkuo-org/settings/secrets/actions/](https://github.com/organizations/jkuo-org/settings/secrets/actions/) allows changing the visibility without knowing the secret. This is the underlying UI request, with the `encrypted_value` not set:
 
 ```
 POST /organizations/jkuo-org/settings/secrets/actions/ORG_SECRET_TEST
@@ -177,7 +177,7 @@ curl -L \
 
 Weirdly, it looks like right now the only way to change the visiblity is manually or via an undocumented call using a bummed cookie + `authenticity_token`. 
 
-There's a bunch of changes coming via the GitHub Actions 2026 Security Roadmap: [https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/](https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/). However, i don't think there's anything that fixes this directly. And terraform or safe-settings[^2] doesn't really help this situation
+There's a bunch of changes coming via the GitHub Actions 2026 Security Roadmap: [https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/](https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/). However, i don't think there's anything that fixes this directly. And terraform or safe-settings[^2] doesn't really help this situation.
 
 # Solution
 I guess the step-by-step to change the visibility from `all` or `private/internal` to `selected` is:
