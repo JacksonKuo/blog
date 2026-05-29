@@ -36,7 +36,19 @@ gh api \
 ```
 * [set-selected-repositories-for-an-organization-secret](https://docs.github.com/en/rest/actions/secrets?apiVersion=2026-03-10#set-selected-repositories-for-an-organization-secret)
     * ***Replaces all repositories for an organization secret***
-    * `"Secrets" organization permissions (write)`
+    * *"Secrets" organization permissions (write)*
+```
+gh api \
+    --method PUT \
+    -H "Accept: application/vnd.github+json" \
+    -H "X-GitHub-Api-Version: 2026-03-10" \
+    /orgs/ORG/actions/secrets/SECRET_NAME/repositories \
+    --input - <<< '{
+    "selected_repository_ids": [
+        64780797
+    ]
+}'
+```
 * [add-selected-repository-to-an-organization-secret](https://docs.github.com/en/rest/actions/secrets?apiVersion=2026-03-10#add-selected-repository-to-an-organization-secret)
     * *"Secrets" organization permissions (write) and "Metadata" repository permissions (read)*
 ```
