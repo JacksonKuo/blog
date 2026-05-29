@@ -31,8 +31,8 @@ gh api \
         "selected_repository_ids": [
             1296269,
             1296280
-    ]
-}'
+        ]
+    }'
 ```
 * [set-selected-repositories-for-an-organization-secret](https://docs.github.com/en/rest/actions/secrets?apiVersion=2026-03-10#set-selected-repositories-for-an-organization-secret)
     * ***Replaces all repositories for an organization secret***
@@ -44,10 +44,10 @@ gh api \
     -H "X-GitHub-Api-Version: 2026-03-10" \
     /orgs/ORG/actions/secrets/SECRET_NAME/repositories \
     --input - <<< '{
-    "selected_repository_ids": [
-        64780797
-    ]
-}'
+        "selected_repository_ids": [
+            64780797
+        ]
+    }'
 ```
 * [add-selected-repository-to-an-organization-secret](https://docs.github.com/en/rest/actions/secrets?apiVersion=2026-03-10#add-selected-repository-to-an-organization-secret)
     * *"Secrets" organization permissions (write) and "Metadata" repository permissions (read)*
