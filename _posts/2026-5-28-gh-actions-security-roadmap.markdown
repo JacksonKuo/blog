@@ -87,3 +87,5 @@ dependencies:
 | Firewall | Nice | Maybe getting a list of approval domains. I doubt this would really stop exfiltration unless the list was actually locked down. And I don't know if applies to self-hosted runners |
 
 I'll fleshout the attack surface of these new security improvement overtime and get a better understanding what can easily be incorporated and where we can further locked down the GitHub ecosystem.
+
+And as far as i can tell none of this directly really helps with the org secret problem. Though it can decrease the attack surface from `pull_request_target` and maybe help with decreasing overscoped secret inheritance.
