@@ -11,5 +11,9 @@ published: false
 {:toc}
 
 # Problem Statement
+How to design branch protections and other rulesets using custom properties
+
+# Breakdown
+Structure of ruleset. How they work without each other. 
 
 https://github.blog/changelog/2026-04-14-deployment-context-in-repository-properties-and-alerts/

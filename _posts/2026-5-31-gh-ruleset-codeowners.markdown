@@ -134,6 +134,9 @@ What's going to break if you just enable this for all repos?
 * Any user that is not part of the CO file but has WRITE perms can't approve
 * Any CO files that are erroneous, users won't be able to approve
 
+#### Solution
+Create an evaluate ruleset and see how often the ruleset blocks
+
 # Misc
 What in the world is this: `Require review from specific teams`: [https://github.blog/changelog/2025-11-03-required-review-by-specific-teams-now-available-in-rulesets/](https://github.blog/changelog/2025-11-03-required-review-by-specific-teams-now-available-in-rulesets/).
 
