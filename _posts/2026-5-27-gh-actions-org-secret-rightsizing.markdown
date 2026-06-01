@@ -194,12 +194,14 @@ There's a bunch of changes coming via the GitHub Actions 2026 Security Roadmap: 
 # Solution
 I guess the step-by-step to change the visibility from `all` or `private/internal` to `selected` is:
 
-* Manual
+* Limited Repos List
+    * change visibility and selected repos via clickops
+* Large Repos List
     * change visibility via clickops
     * update selected repos
         * clickops
         * call `set-selected-repositories-for-an-organization-secret` once, as this call deletes the existing repo list
-* Session Riding
+* ~~Session Riding~~
     * get cookie
     * handle CSRF
     * maybe automate using playwright, ugh
