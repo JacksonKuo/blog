@@ -127,6 +127,13 @@ Assuming we're using custom properties + `Require review from Code Owners`, what
 * Dark forks
     * Dark forks aren't actual forks, so I don't think they need an exception
 
+#### Impact
+What's going to break if you just enable this for all repos?
+* Any GHApps that approves PRs and are not part of the CO bypass list
+* Any service account PATs that approve PRs and are not part of the CO bypass list
+* Any user that is not part of the CO file but has WRITE perms can't approve
+* Any CO files that are erroneous, users won't be able to approve
+
 # Misc
 What in the world is this: `Require review from specific teams`: [https://github.blog/changelog/2025-11-03-required-review-by-specific-teams-now-available-in-rulesets/](https://github.blog/changelog/2025-11-03-required-review-by-specific-teams-now-available-in-rulesets/).
 
