@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GitHub - Ruleset Custom Properties"
+title: "GitHub: Ruleset - Custom Properties"
 date: 2026-6-1
 tags: ["github"]
 published: false

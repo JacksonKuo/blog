@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GitHub: Ruleset - Codeowners"
+title: "GitHub: Ruleset - Code Owners"
 date: 2026-5-31
 tags: ["github"]
 published: false
