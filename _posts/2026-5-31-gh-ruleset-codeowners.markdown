@@ -104,7 +104,7 @@ Assuming we're using custom properties + `Require review from Code Owners`, what
 * Target repositories
     * Repositories matching a filter
         * `fork:false`
-        * `props.codeowners:true`?      #TODO :bookmark: 
+        * `props.codeowners:true`? `[#TODO]`
 * Target branches
     * Include default branch
     * Include by pattern
@@ -123,7 +123,7 @@ Assuming we're using custom properties + `Require review from Code Owners`, what
 * Forks[^4]
     * *To trigger review requests, pull requests use the version of CODEOWNERS from the base branch of the pull request. The base branch is the branch that a pull request will modify if the pull request is merged.*
     * Fork Repo Filter - `fork:false`. Have the optional exclude
-    * But should forks have a CO file? I think so... why would it not? It's public. Could be helpful against pwn requests... Also forks don't import secrets in PRs     #TODO :bookmark: 
+    * But should forks have a CO file? I think so... why would it not? It's public. Could be helpful against pwn requests... Also forks don't import secrets in PRs `[#TODO]`
 * Dark forks
     * Dark forks aren't actual forks, so I don't think they need an exception
 
