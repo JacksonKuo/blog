@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GitHub - Org Secret Rightsizing"
+title: "GitHub: Actions - Org Secret Rightsizing"
 date: 2026-5-27
 tags: ["github"]
 published: true
