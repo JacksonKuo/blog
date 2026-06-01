@@ -8,3 +8,5 @@ permalink: /about/
 
 security musings, notes, and miscellaneous
 
+the goal is not to write perfect technical renditions, but to serve as a foundation to document, formalize, and think through problem sets
+
