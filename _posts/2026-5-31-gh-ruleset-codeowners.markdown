@@ -92,9 +92,9 @@ First, if there's no CO file or if the file is invalid, then the `Require review
     * Ideally single user repos are tied to a GH team
     * Using `@username` wouldn't help since you need an approval that's different than the PR author
 * Non-prod repos
-    * Hmm, do non-prod repos need code owner approvals? Hmm, well non-prod doesn't need approvals in general, sooo no. 
+    * Hmm, do non-prod repos need code owner approvals? Hmm, well non-prod doesn't need approvals in general, sooo no
 * External contributors 
-    * A `ext-<org>-<team>` team might work, if there are team structure available. The idea that if someone leaves, the team still owns the repo still makes sense in this case. Would need a mapping of external contributors to external orgs + teams. Optionally, external contributors could be added as a username. The main diff between the two is external-contributors may not be on SSO. 
+    * A `ext-<org>-<team>` team might work, if there are team structure available. The idea that if someone leaves, the team still owns the repo still makes sense in this case. Would need a mapping of external contributors to external orgs + teams. Optionally, external contributors could be added as a username. The main diff between the two is external-contributors may not be on SSO
 
 #### Ruleset Construction
 Assuming we're using custom properties + `Require review from Code Owners`, what would we need?
@@ -130,8 +130,8 @@ Assuming we're using custom properties + `Require review from Code Owners`, what
 # Misc
 What in the world is this: `Require review from specific teams`: [https://github.blog/changelog/2025-11-03-required-review-by-specific-teams-now-available-in-rulesets/](https://github.blog/changelog/2025-11-03-required-review-by-specific-teams-now-available-in-rulesets/).
 
-> * You can now require approvals from specific teams to merge changes into protected branches based on files and folders,
-> * This new rule is designed to augment CODEOWNER files but not replace them.
+> * You can now require approvals from specific teams to merge changes into protected branches based on files and folders
+> * This new rule is designed to augment CODEOWNER files but not replace them
 
  I wonder if this sends an email out. This is probably most helpful for security teams for very specific filenames/paths. 
 
