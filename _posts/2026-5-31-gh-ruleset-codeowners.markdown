@@ -117,9 +117,9 @@ Assuming we're using custom properties + `Require review from Code Owners`, what
 
 #### Exceptions
 * Exemptions
-    * Ruleset Bypass List: team, apps, roles
+    * Ruleset bypass list: team, apps, roles
 * Breakglass
-    * Ruleset Bypass List: org admin role[^3]
+    * Ruleset bypass list: org admin role[^3]
 * Forks[^4]
     * *To trigger review requests, pull requests use the version of CODEOWNERS from the base branch of the pull request. The base branch is the branch that a pull request will modify if the pull request is merged.*
     * Fork Repo Filter - `fork:false`. Have the optional exclude
