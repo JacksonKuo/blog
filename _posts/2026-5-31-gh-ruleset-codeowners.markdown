@@ -22,7 +22,7 @@ What is the `Require review from Code Owners` and what's the value. The descript
     * GHApps
     * LLMs
     * Workflows
-    * PATs
+    * Service Account PATs
 
 #### Cons
 * Need code owners org-level enforcement 
