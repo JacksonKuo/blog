@@ -3,7 +3,7 @@ layout: post
 title: "GitHub: Ruleset - Code Owners"
 date: 2026-5-31
 tags: ["github"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -14,23 +14,26 @@ published: false
 Breakdown the branch protection: `Require review from Code Owners`, what it does and what is needed to enable it. Also from time to time, I'm going to abbreviate CODEOWNERS/Code Owners as CO. 
 
 # Breakdown
-What's the point of requiring review from code owners?
+What is the `Require review from Code Owners` and what's the value. The description of the requirement is: *require an approving review in pull requests that modify files that have a designated code owner*. 
 
 #### Pros
 * Ensure not anyone in the org with WRITE perms can approve PRs
-* Prevent GHApps/Bots with PR WRITE perms from approving PRs
+* Prevent automation with PR WRITE perms from approving PRs
+    * GHApps
+    * LLMs
+    * Workflows
+    * PATs
 
 #### Cons
 * Need code owners org-level enforcement 
 * If you have base permission set to None, most entities won't have WRITE perms to start out with
 * Users with READ-only perms can't approve anymore
 * GHApps can't be used in CODEOWNERS[^1], unless the GHApp is acting on behalf of a user
-    * GHApp have either installation access token or user access token[^2]
+    * GHApps have either installation access token or user access token[^2]
 
-
-# Overview + Syntax
-* CODEOWNERS locations and order of operations: `.github/`, `root`, `docs/`
-* CODEOWNERS pattern: `@username`, `@org/team-name`, `user@example.com`
+# CODEOWNERS file
+* `CODEOWNERS` locations and order of operations: `.github/`, `root`, `docs/`
+* `CODEOWNERS` pattern: `@username`, `@org/team-name`, `user@example.com`
 
 > * The people you choose as code owners must have write permissions for the repository
 > * Users and teams must have explicit write access to the repository, even if the team's members already have access
@@ -70,8 +73,7 @@ apps/ @octocat
 /apps/github
 ```
 
-# Ruleset Branch Protection
-The description of the requirement is: *require an approving review in pull requests that modify files that have a designated code owner*. There's are multiple scenarios that need to be documented out. 
+# Scenarios
 
 #### Missing
 * No CO
@@ -81,25 +83,37 @@ First, if there's no CO file or if the file is invalid, then the `Require review
 
 #### Use Cases
 * Monorepos
-    * Monorepos are interesting. Paths that have a code owners are protected. Paths that don't have code owners, will accept an approver from anyone with WRITE perms. You could have a wildcard path as a fallthrough mechanism. 
+    * Monorepos are interesting. Paths that have a code owners are protected. Paths that don't have code owners, will accept an approver from anyone with WRITE perms. You could have a wildcard path as a fallthrough mechanism 
 * Branches
-    * The CO applies to the specific branch. What does this mean? It means the ruleset needs to point to a specific branches
+    * The CO applies to the specific branch. What does this mean? It means the ruleset needs to point to a specific branch
     * `default branch/main/master` - target branches to set
     * Don't set CO Approvals on feature branches, since those don't need branch protections
 * Single user repos
-    * Ideally single user repos have tied to a GH team
+    * Ideally single user repos are tied to a GH team
     * Using `@username` wouldn't help since you need an approval that's different than the PR author
 * Non-prod repos
-    * Hmm, do non-prod repos need code owner approvals? Hmm, well non-prod doesn't need approvals in general, soo no. 
+    * Hmm, do non-prod repos need code owner approvals? Hmm, well non-prod doesn't need approvals in general, sooo no. 
 * External contributors 
-    * A `ext-<org>-<team>` team might work, if there are teams available. The idea that if someone leaves, the team still owns the repo still makes sense in this case. Would need a mapping of external contributors to create teams. Optionally, external contributors could be added as a username. The main diff between the two is external-contributors may not be on SSO. 
+    * A `ext-<org>-<team>` team might work, if there are team structure available. The idea that if someone leaves, the team still owns the repo still makes sense in this case. Would need a mapping of external contributors to external orgs + teams. Optionally, external contributors could be added as a username. The main diff between the two is external-contributors may not be on SSO. 
 
 #### Ruleset Construction
 Assuming we're using custom properties + `Require review from Code Owners`, what would we need?
 
-`Repositories matching a filter` + `props.codeowners:true`
-
-> Todo: workshop this section more
+* Bypass list:
+    * Organization admin
+* Target repositories
+    * Repositories matching a filter
+        * `fork:false`
+        * `props.codeowners:true`? # Todo: workshop this section more
+* Target branches
+    * Include default branch
+    * Include by pattern
+        * `main`
+        * `master`
+* Branch rules
+    * Require a pull request before merging
+        * Required approvals: 1
+        * Require review from Code Owners
 
 #### Exceptions
 * Exemptions
@@ -109,8 +123,17 @@ Assuming we're using custom properties + `Require review from Code Owners`, what
 * Forks[^4]
     * *To trigger review requests, pull requests use the version of CODEOWNERS from the base branch of the pull request. The base branch is the branch that a pull request will modify if the pull request is merged.*
     * Fork Repo Filter - `fork:false`. Have the optional exclude
+    * But should forks have a CO file? I think so... why would it not? It's public. Could be helpful against pwn requests... Also forks don't import secrets in PRs
 * Dark forks
     * Dark forks aren't actual forks, so I don't think they need an exception
+
+# Require review from specific teams
+What in the world is this: `Require review from specific teams`: [https://github.blog/changelog/2025-11-03-required-review-by-specific-teams-now-available-in-rulesets/](https://github.blog/changelog/2025-11-03-required-review-by-specific-teams-now-available-in-rulesets/).
+
+> * You can now require approvals from specific teams to merge changes into protected branches based on files and folders,
+> * This new rule is designed to augment CODEOWNER files but not replace them.
+
+ I wonder if this sends an email out. This is probably most helpful for security teams for very specific filenames/paths. 
 
 # References
 [^1]: [https://github.com/orgs/community/discussions/23064](https://github.com/orgs/community/discussions/23064)
