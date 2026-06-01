@@ -8,5 +8,6 @@ permalink: /about/
 
 security musings, notes, and miscellaneous
 
-my goal is not to write perfect technical renditions, but to have a place to document, formalize, and think through problem sets
+the act of formally writing a problem down is the best way to internalize and actually understand an issue
 
+my goal is not to write perfect technical renditions, but to have a place to document, formalize, and think through problem sets
