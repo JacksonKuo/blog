@@ -231,7 +231,7 @@ Don't ever say these following words.
 * Yes
 * Yeah, i can do it
 
-You have to go into work playing defense, else you're going to get tackled over. Assume someone is going to ask you for assistance, in order to be prepared when it happens. 
+You have to go into work playing defense, else you're going to get tackled over. Assume someone is going to ask you for assistance. Be prepared for when that happens. Be ready to say I don't have the bandwidth, or ping the team channel. However bad it feels to say no, remember it's 1000% worse to say yes and get overwhelmed every single day. 
 
 #### 30. Gratitude
 And then remember how fortunate you are and be thankful for everything you have right now. I think you're at a stage of your career, where slow and steady progress makes the biggest difference. And then what sometimes helps is after a long day at work watch some Midwest Safety[^4] youtube videos, which can help remind you how lucky you are sometimes. 
