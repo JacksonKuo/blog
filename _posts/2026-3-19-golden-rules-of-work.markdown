@@ -128,6 +128,7 @@ Stop being so darn helpful. You have a tendency to help people too much. On the 
 * Don't work at 100% percent, else any additional work will cause the glass to overfill
 * When asked to pivot to other work, track what work needs to be placed on hold and ask if that is acceptable
 * Any DMs push them to the official team channel
+* Be wary when folks say, can i add you to this group DM?
 * Slack channels: 
     - typically I'll be the first to respond, but really try to avoid the urge to immediately reply
     - push the slack sherpas, being the sole on-call for months and months is not sustainable
@@ -218,7 +219,9 @@ Additionally, I found it really helpful to mute all channels that I don't 100% n
 This seems to really help with shifting your mind off work
 
 #### 29. No, Seriously Stop Saying Yes
-Even when it's a higher up, a manager, or the boss. The pressure you feel to reply, it's really powerful. Fight the pressure. It's okay to wait a minute or two to write up a response. That said, having a general response prepped could be helpful. Something like:
+Even when it's a higher up, a manager, your boss, an intern, an coworker. 
+
+The pressure you feel to reply, it's really powerful. Fight the pressure. It's okay to wait a minute or two to write up a response. That said, having a general response prepped could be helpful. Something like:
 
 Could you posted this in the appsec channel, internal or external, and we can see when someone has the bandwidth? If the ask is coming from a manager, then say by taking on this work, other work has to be put on hold. List what that pending work is and if that's okay?
 
