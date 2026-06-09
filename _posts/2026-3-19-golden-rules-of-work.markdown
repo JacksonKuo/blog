@@ -241,6 +241,9 @@ That feeling when someone says, who wants to handle this? That pressure to say, 
 
 Play defense, because the feeling when you get suckered into a bunch of work you didn't realize you signed up for... feels pretty bad. 
 
+The words you should be saying are:
+* Not me!
+
 #### 30. Gratitude
 And then remember how fortunate you are and be thankful for everything you have right now. I think you're at a stage of your career, where slow and steady progress makes the biggest difference. And then what sometimes helps is after a long day at work watch some Midwest Safety[^4] youtube videos, which can help remind you how lucky you are sometimes. 
 
