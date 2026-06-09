@@ -219,11 +219,15 @@ Additionally, I found it really helpful to mute all channels that I don't 100% n
 This seems to really help with shifting your mind off work
 
 #### 29. No, Seriously Stop Saying Yes. Play Defense
-Even when it's a higher up, a manager, your boss, an intern, an coworker. 
+Even when it's a higher up, a manager, your boss, an intern, a coworker. 
 
-The pressure you feel to reply, it's really powerful. Fight the pressure. It's okay to wait a minute or two to write up a response. That said, having a general response prepped could be helpful. Something like:
+The pressure you feel to reply, it's really powerful. Fight the pressure. It's okay to wait a minute or five to write up a response. That said, having a general response prepped could be helpful. Something like:
 
-Could you posted this in the appsec channel, internal or external, and we can see when someone has the bandwidth? If the ask is coming from a manager, then say by taking on this work, other work has to be put on hold. List what that pending work is and if that's okay?
+```
+Could you posted this in the appsec channel, internal or external, and we can see when someone has the bandwidth? 
+```
+
+If the ask is coming from a manager, then say by taking on this work, other work has to be put on hold. List what that pending work is and if that's okay?
 
 Don't ever say these following words. 
 * Ok
@@ -235,7 +239,7 @@ You have to go into work playing defense, else you're going to get tackled over.
 
 That feeling when someone says, who wants to handle this? That pressure to say, I can. That's intentional. It's bait. You've gotten ahead in life by being the person that says yes, that trys to be helpful, but at the detriment to yourself. Be selfish with your time and attention. Whatever you have plans to do, is likely way more important than what someone else is trying to pressure you to do.  
 
-Play Defense! Because otherwise you always get suckered. 
+Play defense, because the feeling when you get suckered into a bunch of work you didn't realize you signed up for... feels pretty bad. 
 
 #### 30. Gratitude
 And then remember how fortunate you are and be thankful for everything you have right now. I think you're at a stage of your career, where slow and steady progress makes the biggest difference. And then what sometimes helps is after a long day at work watch some Midwest Safety[^4] youtube videos, which can help remind you how lucky you are sometimes. 
