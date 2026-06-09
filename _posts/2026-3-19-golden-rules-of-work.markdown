@@ -239,7 +239,7 @@ You have to go into work playing defense, else you're going to get tackled over.
 
 That feeling when someone says, who wants to handle this? That pressure to say, I can. That's intentional. It's bait. You've gotten ahead in life by being the person that says yes, that trys to be helpful, but at the detriment to yourself. Be selfish with your time and attention. Whatever you have plans to do, is likely way more important than what someone else is trying to pressure you to do.  
 
-Play defense, because the feeling when you get suckered into a bunch of work you didn't realize you signed up for... feels pretty bad. 
+Play defense, because the feeling when you get suckered into a bunch of work you didn't realize you signed up for... feels pretty bad. And even the tiniest, hey can you take a quick look at this, will always turn into a gigantic platform review that will take weeks of work. And the pay special attention to the teams that keep asking for work done. 
 
 The words you should be saying are:
 * Not me!
