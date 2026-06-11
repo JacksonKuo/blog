@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GitHub: Actions - problems"
+title: "GitHub: PR Check"
 date: 2026-6-7
 tags: ["github"]
 published: false
@@ -11,12 +11,26 @@ published: false
 {:toc}
 
 # Problem Statement
-What's the requirement for view in a org
+
+push workflow.yaml to reach repo
+required workflows
+status checks
+
+shim -> reusable. requires merge into each repo, not as easily scalable. 
+
+if you want folks to be able to modiify for this own needs, can't use reusable
+becomes a real headable. or would have to somehow make it modular
+
+required workflows, github has a check that prevents workflows from triggering other workflows to prevent a infinite loop
+
+if a workflow creates a pr, you need to use a ghapp to circumvent the protection. need to review the workflows that create prs
+
+status checks, but requires upfront infra work
+
+
+another problem
+how to prevent feature branches from access gha secrets. env secrets + deployment branch but has ptr bypass?
 
 # Problems
 
-Roles don't have basic read/write, weird mismash
-rulesets read require write
-no fine-grained package read
-no 2fa scoped to outside collaborator
 
