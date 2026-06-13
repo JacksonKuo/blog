@@ -32,7 +32,7 @@ The following 2FA enforcement is all or nothing, doesn't differentiate between i
 
 > Organization members who do not have two-factor authentication enabled will be unable to access resources owned by the jkuo-org organization, but will remain a member of jkuo-org until they update their settings. Outside collaborators who do not have two-factor authentication enabled will be removed from the organization and notified. View organization membership to see which users will be impacted.
 
-Some organization enforce 2FA through Okta which i don't believe is reflected here. It would be nice if 2FA enforcement had granularity and could be configured to specifically target outside collaborators. 
+Some organization enforce 2FA through Okta which i don't believe is reflected here. It would be nice if 2FA enforcement had granularity and could be configured to specifically target outside collaborators. Additionally, it would be much easier if the outside collaborators were blocked from accessing resources until 2FA was enabled, instead of removed from the organization.
 
 #### Org Secrets
 As mentioned in this post, [https://jacksonkuo.github.io/blog/2026/05/27/gh-actions-org-secret-rightsizing.html](https://jacksonkuo.github.io/blog/2026/05/27/gh-actions-org-secret-rightsizing.html), there's no REST API endpoint to switch a existing org secret repo access from `all` to `selected` without re-providing the original secret
