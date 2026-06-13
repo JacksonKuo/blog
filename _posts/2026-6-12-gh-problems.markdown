@@ -13,6 +13,8 @@ published: true
 # Problem Statement
 Create a list of missing features, oddities, and frustrations with GitHub. Things that should be a one click button, but instead you need create a whole project plan to make up for the inherent missing functionality.
 
+This list will definitely be updated overtime.
+
 #### Custom Roles
 There's no method to construct an Audit-type Custom Role with org-level read-only permissions. This is because custom roles don't have standard READ / WRITE permissions. Instead GitHub provides a weird mishmash of random verbs.[^1]
 
