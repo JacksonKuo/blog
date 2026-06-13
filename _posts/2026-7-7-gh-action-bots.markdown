@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GitHub: Actions - [bot] bypass"
-date: 2026-6-6
+date: 2026-8-7
 tags: ["github"]
 published: false
 ---
