@@ -23,12 +23,12 @@ For example, there's no way to have a read-only webhooks custom role because the
 And there's no way to have a read-only org ruleset role because there's only the permission `Manage organization ref update rules and rulesets` available
 
 #### PATs
-Only classic PATs have the ability to READ packages. Fine-grained PATs still have no package READ permission
+Only classic PATs have the ability to READ packages. Fine-grained PATs still have no package READ permission[^2]
 
 #### Authentication
 The following 2FA enforcement is all or nothing, doesn't differentiate between internal and external users.
 
-`Require two-factor authentication for everyone in the jkuo-org organization.`[^2]
+`Require two-factor authentication for everyone in the jkuo-org organization.`[^3]
 
 > Organization members who do not have two-factor authentication enabled will be unable to access resources owned by the jkuo-org organization, but will remain a member of jkuo-org until they update their settings. Outside collaborators who do not have two-factor authentication enabled will be removed from the organization and notified. View organization membership to see which users will be impacted.
 
@@ -38,11 +38,13 @@ Some organization enforce 2FA through Okta which i don't believe is reflected he
 As mentioned in this post, [https://jacksonkuo.github.io/blog/2026/05/27/gh-actions-org-secret-rightsizing.html](https://jacksonkuo.github.io/blog/2026/05/27/gh-actions-org-secret-rightsizing.html), there's no REST API endpoint to switch a existing org secret repo access from `all` to `selected` without re-providing the original secret
 
 #### Workflows
-Workflow have a infinite recursive protection for the default GITHUB_TOKEN.[^3] This protection does not apply to GHApp Tokens. If a workflow using the default GITHUB_TOKEN creates a new PR, any new workflow that spawns from the PR must be approval. However this interferes with Required Workflows and causes them to fail when calls like `peter-evans/create-pull-request` are made
+Workflow have a infinite recursive protection for the default GITHUB_TOKEN.[^4] This protection does not apply to GHApp Tokens. If a workflow using the default GITHUB_TOKEN creates a new PR, any new workflow that spawns from the PR must be approval. However this interferes with Required Workflows and causes them to fail when calls like `peter-evans/create-pull-request` are made
 
 # References
 [^1]: Organization Roles > Org Management > Organization
 
-[^2]: Authentication Security > Two-factor authentication
+[^2]: [https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries](https://docs.github.com/en/packages/learn-github-packages/about-permissions-for-github-packages#about-scopes-and-permissions-for-package-registries)
 
-[^3]: [https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow#triggering-a-workflow-from-a-workflow](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow#triggering-a-workflow-from-a-workflow)
+[^3]: Authentication Security > Two-factor authentication
+
+[^4]: [https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow#triggering-a-workflow-from-a-workflow](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow#triggering-a-workflow-from-a-workflow)
