@@ -97,7 +97,7 @@ Uh there's a lot. I don't really want to go through them all, but it's a lot jus
 
 Just adding pre-defined role which includes Owners: [https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-predefined-organization-roles#permissions-of-predefined-roles](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-predefined-organization-roles#permissions-of-predefined-roles)
 
-# Danger Zone
+# Top Gun
 * Default Role - Apps Manager
 * PAT/GHApp - `"Members" organization permissions (write)`
 * PAT/GHApp - `"Administration" organization permissions (write)`
