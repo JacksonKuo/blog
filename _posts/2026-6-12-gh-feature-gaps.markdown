@@ -43,7 +43,7 @@ Workflow have a infinite recursive protection for the default GITHUB_TOKEN.[^5] 
 #### GHApps
 GHApp pull request WRITE permissions are so over scoped and dangerous. Most of the time folks just want to make comments in PRs. But PR WRITE perms can trigger and inject content into workflows. I wish there was a lower scoped comment permission that couldn't trigger anything. 
 
-I also wish there was a way to filter GHApp by permissions both first and third-party without having to call the REST API, a las...
+I also wish there was a way to filter GHApp by permissions both first and third-party without having to call the REST API, alas...
 
 # References
 [^1]: Organization Roles > Org Management > Organization
