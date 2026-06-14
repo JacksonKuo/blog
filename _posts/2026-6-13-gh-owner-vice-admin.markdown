@@ -108,13 +108,13 @@ Maxing out a team with a custom role with all permissions and all default roles 
 But does this setup provide me everything I need?
 * Available
     * Rulesets
-    * Custom Properties
+    * Custom properties
     * Secrets and variables
     * Audit logs
 * Not available
     * Member privilege
     * Pages
-    * Authentication Security
+    * Authentication security
 
 # References
 [^1]: [https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access](https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)
