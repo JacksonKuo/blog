@@ -62,7 +62,10 @@ It's wild that even with everything checked in Roles, there's still a ton of fun
 
 #### Questions and Comments
 * Many high-level permissions are only granted to Owners
-* Even if `Manage custom organization roles` is enabled, because custom roles don't give the ability to change membership or add default roles, there's no way to privilege escalation to owner... i'm pretty sure. You can only create a new custom role or edit an existing custom role
+* Custom role permissions analysis[^1]
+    * `Manage custom organization roles`: even if this is enabled, because custom roles don't give the ability to change membership or add default roles, there's no way to privilege escalation to owner... i'm pretty sure. You can only create a new custom role or edit an existing custom role
+    * `Manage organization credentials`: I honestly can't find documentation for this...
+    * `Manage organization OAuth application policies`: Not sure if this is a privilege escalation mechanism, a future todo...
 * I don't see Moderator or Billing Managers, where are they?
     * Settings > Billing and licensing[^2]
     * Settings > Access > Moderation > Moderators
@@ -95,9 +98,9 @@ Uh there's a lot. I don't really want to go through them all, but it's a lot jus
 Just adding pre-defined role which includes Owners: [https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-predefined-organization-roles#permissions-of-predefined-roles](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-predefined-organization-roles#permissions-of-predefined-roles)
 
 # Danger Zone
-* Apps Manager
-* `"Members" organization permissions (write)`
-* `"Administration" organization permissions (write)`
+* Default Role - Apps Manager
+* PAT/GHApp - `"Members" organization permissions (write)`
+* PAT/GHApp - `"Administration" organization permissions (write)`
 
 # Lessons Learned
 Maxing out a team with a custom role with all permissions and all default roles expect App Manager should be safe. 
