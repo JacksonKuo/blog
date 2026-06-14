@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GitHub: Owners - Vice Admin"
+title: "GitHub Defense: Part VI - ViceAdmin"
 date: 2026-6-13
 tags: ["github"]
 published: true

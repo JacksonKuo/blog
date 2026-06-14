@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GitHub: GHApp - Permissions"
+title: "GitHub Defense: Part I - GHApp Permissions"
 date: 2026-5-26
 tags: ["github"]
 published: true

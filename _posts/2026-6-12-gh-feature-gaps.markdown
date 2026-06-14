@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GitHub: Feature - Gaps and Limitations"
+title: "GitHub Defense: Part V - Feature Gaps"
 date: 2026-6-12
 tags: ["github"]
 published: true

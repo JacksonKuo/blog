@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GitHub: Actions - Security Roadmap"
+title: "GitHub Defense: Part III - Actions Security Roadmap"
 date: 2026-5-28
 tags: ["github"]
 published: true

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GitHub: Actions - Zizmor"
+title: "GitHub Defense: Part VII - Zizmor"
 date: 2026-6-14
 tags: ["github"]
 published: false

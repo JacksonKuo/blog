@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "GitHub: Ruleset - Code Owners"
+title: "GitHub Defense: Part IV - Code Owner Approvals"
 date: 2026-5-31
 tags: ["github"]
 published: true
