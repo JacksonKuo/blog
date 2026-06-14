@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GitHub: Actions - Zizmor"
-date: 2026-8-7
+date: 2026-6-13
 tags: ["github"]
 published: false
 ---
@@ -35,13 +35,36 @@ There are 3 `personas`[^1]:
 
 
 # Auto-Fix
-* [https://docs.zizmor.sh/usage/#auto-fixing-results](https://docs.zizmor.sh/usage/#auto-fixing-results)
-
-How does auto-fix work? Auto-fix has different modes:
+How does auto-fix work ([auto-fixing-results](https://docs.zizmor.sh/usage/#auto-fixing-results))? Auto-fix has different modes:
 * `--fix` (default safe)
 * `--fix=all`
 * `--fix=unsafe-only`
 
+{% raw %}
+```yaml
+name: zizmor-template-inject
+
+on:
+  pull_request_target:
+    types: [opened, edited]
+
+jobs:
+  vuln-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 
+        run: |
+          #danger
+          echo "PR Title: ${{ github.event.pull_request.title }}"
+          echo "PR Ref: ${{ github.event.pull_request.head.ref }}"
+          #safe
+          echo "SHA: ${{ github.sha }}"
+```
+{% endraw %}
+
+Auto-Fixed
+
+{% raw %}
 ```yaml
 name: zizmor-template-inject
 
@@ -64,14 +87,18 @@ jobs:
         env:
           GITHUB_EVENT_PULL_REQUEST_TITLE: ${{ github.event.pull_request.title }}
           GITHUB_EVENT_PULL_REQUEST_HEAD_REF: ${{ github.event.pull_request.head.ref }}
-
 ```
+{% endraw %}
 
 # Threat Model
 `Approval for running fork pull request workflows from contributors`: 
 Require approval for all external contributors
 
-zizmor --offline . --format json --fix
+zizmor . --offline --format json --fix
+
+# self-hosted runners
+
+# create PRs
 
 # References
 [^1]: [https://docs.zizmor.sh/usage/#using-personas](https://docs.zizmor.sh/usage/#using-personas)

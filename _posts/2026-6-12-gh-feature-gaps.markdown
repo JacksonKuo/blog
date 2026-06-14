@@ -40,6 +40,9 @@ As mentioned in this post, [https://jacksonkuo.github.io/blog/2026/05/27/gh-acti
 #### Workflows
 Workflow have a infinite recursive protection for the default GITHUB_TOKEN.[^5] This protection does not apply to GHApp Tokens. If a workflow using the default GITHUB_TOKEN creates a new PR, any new workflow that spawns from the PR must be approval. However this interferes with Required Workflows and causes them to fail when calls like `peter-evans/create-pull-request` are made.
 
+#### GHApps
+GHApp pull request WRITE permissions are so over scoped and dangerous. Most of the time folks just want to make comments in PRs. But PR WRITE perms can trigger and inject content into workflows. I wish there was a lower scoped comment permission that couldn't trigger anything. 
+
 # References
 [^1]: Organization Roles > Org Management > Organization
 
