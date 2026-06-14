@@ -88,7 +88,7 @@ It's wild that even with everything checked in Roles, there's still a ton of fun
 # What's Missing
 Uh there's a lot. I don't really want to go through them all, but it's a lot just comparing visually. 
 
-| Org Admin 1 | Org Admin 2 |
+| Page 1 | Page 2 |
 |:---:|:---:|
 | ![]({{ site.baseurl }}/assets/images/github-orgadmin-1.png){: width="250"} | ![]({{ site.baseurl }}/assets/images/github-orgadmin-2.png){: width="250"} |
 
