@@ -105,6 +105,17 @@ Just adding pre-defined role which includes Owners: [https://docs.github.com/en/
 # Lessons Learned
 Maxing out a team with a custom role with all permissions and all default roles expect App Manager should be safe. 
 
+But does this setup provide me everything I need?
+* Available
+    * Rulesets
+    * Custom Properties
+    * Secrets and variables
+    * Audit logs
+* Not available
+    * Member privilege
+    * Pages
+    * Authentication Security
+
 # References
 [^1]: [https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access](https://docs.github.com/en/enterprise-cloud@latest/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-custom-organization-roles#permissions-for-organization-access)
 [^2]: [https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/adding-a-billing-manager-to-your-organization#inviting-a-billing-manager](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/adding-a-billing-manager-to-your-organization#inviting-a-billing-manager)
