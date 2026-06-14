@@ -62,7 +62,7 @@ It's wild that even with everything checked in Roles, there's still a ton of fun
 
 #### Questions and Comments
 * Many high-level permissions are only granted to Owners
-* If `Manage custom organization roles` is enabled, because custom roles don't give the ability to change membership or non-custom roles, there's no way to privilege escalation to owner, i'm pretty sure
+* Even if `Manage custom organization roles` is enabled, because custom roles don't give the ability to change membership or add default roles, there's no way to privilege escalation to owner... i'm pretty sure. You can only create a new custom role or edit an existing custom role
 * I don't see Moderator or Billing Managers, where are they?
     * Settings > Billing and licensing[^2]
     * Settings > Access > Moderation > Moderators
@@ -86,7 +86,13 @@ It's wild that even with everything checked in Roles, there's still a ton of fun
 * Should maybe consider org-level backups[^12]
 
 # What's Missing
-Uh there's a lot. 
+Uh there's a lot. I don't really want to go through them all, but it's a lot just comparing visually. 
+
+| Org Admin 1 | Org Admin 2 |
+|:---:|:---:|
+| ![]({{ site.baseurl }}/assets/images/github-orgadmin-1.png){: width="250"} | ![]({{ site.baseurl }}/assets/images/github-orgadmin-2.png){: width="250"} |
+
+Just adding pre-defined role which includes Owners: [https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-predefined-organization-roles#permissions-of-predefined-roles](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-predefined-organization-roles#permissions-of-predefined-roles)
 
 # Danger Zone
 * Apps Manager
