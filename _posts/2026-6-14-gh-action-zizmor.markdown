@@ -193,12 +193,35 @@ rules:
   * To include self-hosted runners the `--persona` must be enabled to `pedantic`
   * `zizmor . --offline --persona pedantic --config ../zizmor-rules/zizmor.yml`
 
+* Is `--persona pedantic` the same as --pedantic?
+  * `This persona can also be enabled with --pedantic, which is an alias for --persona=pedantic.`
+
+#### Severity and Confidence
+For template injection
+* Severity 
+  * High
+  * Medium
+  * Informational
+* Confidence
+  * High
+    * `github.event.inputs.version`
+    * `github.head_ref`
+    * `inputs.*`
+    * `github.actor`
+  * Medium
+    * `env.*`
+    * `matrix.directory`
+  * Low
+    * `steps.*.outputs.*`
+    * `needs.*`
+    * `job.status`
+  
 # Threat Model
 `Approval for running fork pull request workflows from contributors`: 
 Require approval for all external contributors
 
 `zizmor . --offline --persona pedantic --config ../zizmor-rules/zizmor.yml`
-
+--min-severity=medium --min-confidence=medium
 
 # self-hosted runners
 
