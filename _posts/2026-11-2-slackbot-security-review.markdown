@@ -1,3 +1,17 @@
+---
+layout: post
+title: "Database: Slack Approval"
+date: 2026-11-2
+tags: ["slackbot"]
+published: false
+---
+
+**Contents**
+* TOC
+{:toc}
+
+# Problem Statement
+
 
 
 third party vendor. marketplace or not 
