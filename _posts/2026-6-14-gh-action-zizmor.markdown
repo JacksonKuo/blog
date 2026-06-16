@@ -32,15 +32,17 @@ There are 3 `personas`[^1]:
 2. `pedantic` - code smell, non-actionable
 3. `auditor` - everything
 
-# Auto-Fix
+# Template Injection Remediation
+
+#### Auto-Fix
 How does auto-fix work ([auto-fixing-results](https://docs.zizmor.sh/usage/#auto-fixing-results))? Auto-fix has different modes:
 * `--fix` default safe mode
 * `--fix=unsafe-only` often correct, but require review
 * `--fix=all` both safe and unsafe fixes
 
-It seems like template injection type rules fall under the unsafe type of fix. Running the default `--fix` returns: `No fixes available to apply (3 held back by safe mode). Use --fix=unsafe-only or --fix=all to apply unsafe fixes.`. 
+It seems like template injection type rules fall under the unsafe fix type. Running the default `--fix` on a injectable workflow returns: `No fixes available to apply (3 held back by safe mode). Use --fix=unsafe-only or --fix=all to apply unsafe fixes`. 
 
-Original
+Example - Original
 {% raw %}
 ```yaml
 name: zizmor-template-inject
@@ -63,8 +65,7 @@ jobs:
 ```
 {% endraw %}
 
-Auto-Fixed
-
+Example - Auto-Fixed
 {% raw %}
 ```yaml
 name: zizmor-template-inject
@@ -93,8 +94,8 @@ jobs:
 
 The output appends an `env` block with an uppercase variable, which is substituted in the `run` block. 
 
-# Rules Filter
-Unfortunately zizmor doesn't have a way to only trigger on a specific type of rule. You can feed zizmor a config file that can ignore explicit types of rules. I asked claude to generate a list of rules using the audit rules markdown page: [https://raw.githubusercontent.com/zizmorcore/zizmor/main/docs/audits.md](https://raw.githubusercontent.com/zizmorcore/zizmor/main/docs/audits.md)
+#### Rules Filter
+Unfortunately zizmor doesn't have a way to only trigger on a specific type of rule. A workaround is you can feed zizmor a config file that can ignore explicit types of rules. I asked Claude to generate a list of rules using the audit rules markdown page: [https://raw.githubusercontent.com/zizmorcore/zizmor/main/docs/audits.md](https://raw.githubusercontent.com/zizmorcore/zizmor/main/docs/audits.md)
 
 <details markdown="1">
 <summary>EXPAND ME - List of 39 zizmor rules</summary>
@@ -184,48 +185,146 @@ rules:
 </details>
 <br>
 
+#### JSON Format Structure
+Let's look at the output values: `zizmor . --offline --format json | jq '.[2]'`
+
+* `ident`
+* `desc` (unneeded cruft)
+* `url` (unneeded cruft)
+* `determination`
+  * `confidence`
+  * `severity`
+  * `persona`
+* `locations[]`
+  * `symbolic` - paths
+  * `concrete`
+    * `location` - line numbers
+    * `feature` - source code
+* `ignored`
+
+<details markdown="1">
+<summary>EXPAND ME - JSON Format Output</summary>
+```json
+{
+  "ident": "dangerous-triggers",
+  "desc": "use of fundamentally insecure workflow trigger",
+  "url": "https://docs.zizmor.sh/audits/#dangerous-triggers",
+  "determinations": {
+    "confidence": "Medium",
+    "severity": "High",
+    "persona": "Regular"
+  },
+  "locations": [
+    {
+      "symbolic": {
+        "key": {
+          "Local": {
+            "prefix": ".",
+            "given_path": "./.github/workflows/rule-template-inject.yml"
+          }
+        },
+        "annotation": "pull_request_target is almost always used insecurely",
+        "route": {
+          "route": [
+            {
+              "Key": "on"
+            }
+          ]
+        },
+        "feature_kind": "Normal",
+        "kind": "Primary"
+      },
+      "concrete": {
+        "location": {
+          "start_point": {
+            "row": 2,
+            "column": 0
+          },
+          "end_point": {
+            "row": 4,
+            "column": 27
+          },
+          "offset_span": {
+            "start": 30,
+            "end": 84
+          }
+        },
+        "feature": "on:\n  pull_request_target:\n    types: [opened, edited]",
+        "comments": []
+      }
+    }
+  ],
+  "ignored": false
+}
+```
+</details>
+<br>
+
+#### Severity and Confidence
+Breakdown of how zizmor template injection severity and confidence values and what actually needs fixing
+
+Just a reminder `workflow_dispatch` is a manual trigger. `workflow_call` is for reusable workflows.[^2] Both accept either `github.event.inputs.version` or `inputs.*`[^3]
+
+| Expression | Severity | Confidence | Public Exploit | Desc |
+|---|---|---|---|
+| `github.event.inputs.version` | High | High | Taint | `workflow_dispatch` No<br>`workflow_call` Maybe | 
+| `inputs.*` | High | High | Taint | `workflow_dispatch` No<br>`workflow_call` Maybe | 
+| `github.head_ref` | High | High | Yes | - | 
+| `github.actor` | High | High | No | GH username alphanumeric + hyphen[^4] | 
+| `github.event` | High | High | Yes | needs testing | 
+| `github.ref` | High | High | No | - | 
+| `github.ref_name` | High | High | No | - | 
+| `env.*` | Low | High | No | can't set via PR |  
+| `matrix.*` | Med | Med | Unk | unknown |
+| `steps.*.outputs.*` | Info | Low | Taint | - |
+| `steps.outputs.outcome` | Info | Low | Taint | - |
+| `needs.*`  | Info | Low | No | - |
+| `job.status`  | Info | Low | No | - |
+
+Seems like zizmor is a little over zealous on the high confidence high severity. It's probably best to do a second level of filter PR user-controlled values[^5] + `github.event`.
+
 # Commands
 * Basic Template Injection
   * `zizmor . --offline --fix=unsafe-only`
-* Filtered Template Injection
+* Filter Template Injection
   * `zizmor . --offline --config ../zizmor-rules/zizmor.yml`
-* Filtered Self-Hosted Runners
+* Filter Self-Hosted Runners
   * To include self-hosted runners the `--persona` must be enabled to `pedantic`
+  * Is `--persona pedantic` the same as --pedantic?
+    > This persona can also be enabled with --pedantic, which is an alias for --persona=pedantic.
   * `zizmor . --offline --persona pedantic --config ../zizmor-rules/zizmor.yml`
+* Filter High Sev / High confidence
+  * `zizmor . --offline --persona pedantic --config ../zizmor-rules/zizmor.yml --min-severity=High --min-confidence=High` 
 
-* Is `--persona pedantic` the same as --pedantic?
-  * `This persona can also be enabled with --pedantic, which is an alias for --persona=pedantic.`
-
-#### Severity and Confidence
-For template injection
-* Severity 
-  * High
-  * Medium
-  * Informational
-* Confidence
-  * High
-    * `github.event.inputs.version`
-    * `github.head_ref`
-    * `inputs.*`
-    * `github.actor`
-  * Medium
-    * `env.*`
-    * `matrix.directory`
-  * Low
-    * `steps.*.outputs.*`
-    * `needs.*`
-    * `job.status`
-  
 # Threat Model
+
+Fork / non-fork
+
+* Non-forks
+  * Pwn request + self-hosted runners = RCE
+  * Pwn request + pull_request_target = credential theft
+  * Pwn request + pull_request = GITHUB_TOKEN
+* Forks
+  * Pwn request + self-hosted runners = RCE
+  * Pwn request + pull_request_target = credential theft
+  * Pwn request + pull_request = GITHUB_TOKEN
+
 `Approval for running fork pull request workflows from contributors`: 
 Require approval for all external contributors
 
-`zizmor . --offline --persona pedantic --config ../zizmor-rules/zizmor.yml`
---min-severity=medium --min-confidence=medium
 
-# self-hosted runners
+
+
 
 # create PRs
 
 # References
 [^1]: [https://docs.zizmor.sh/usage/#using-personas](https://docs.zizmor.sh/usage/#using-personas)
+
+[^2]: [https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows](https://docs.github.com/en/actions/how-tos/reuse-automations/reuse-workflows)
+
+[^3]: [https://github.blog/changelog/2022-06-09-github-actions-inputs-unified-across-manual-and-reusable-workflows/](https://github.blog/changelog/2022-06-09-github-actions-inputs-unified-across-manual-and-reusable-workflows/)
+
+[^4]: [https://github.com/shinnn/github-username-regex](https://github.com/shinnn/github-username-regex)
+
+[^5]: [https://jacksonkuo.github.io/blog/2024/12/18/gh-action-exploitation-part-1.html#attack-scenario](https://jacksonkuo.github.io/blog/2024/12/18/gh-action-exploitation-part-1.html#attack-scenario)
