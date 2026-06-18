@@ -267,7 +267,7 @@ Just a reminder `workflow_dispatch` is a manual trigger. `workflow_call` is for 
 
 | Expression | Severity | Confidence | Public Exploit | Desc |
 |---|---|---|---|
-| `github.event.inputs.version` | High | High | Taint | `workflow_dispatch` No<br>`workflow_call` Maybe | 
+| `github.event.inputs.*` | High | High | Taint | `workflow_dispatch` No<br>`workflow_call` Maybe | 
 | `inputs.*` | High | High | Taint | `workflow_dispatch` No<br>`workflow_call` Maybe | 
 | `github.head_ref` | High | High | Yes | - | 
 | `github.actor` | High | High | No | GH username alphanumeric + hyphen[^4] | 
@@ -309,14 +309,16 @@ Fork / non-fork
   * Pwn request + pull_request_target = credential theft
   * Pwn request + pull_request = GITHUB_TOKEN
 
+cache busting
+
+protections
 `Approval for running fork pull request workflows from contributors`: 
 Require approval for all external contributors
 
-
-
-
-
-# create PRs
+# Fast Search
+Problem only includes the default branch. need to use the null pat
+assuming that the rest api calls are get active workflows.
+does local zizmor look through feature branches
 
 # References
 [^1]: [https://docs.zizmor.sh/usage/#using-personas](https://docs.zizmor.sh/usage/#using-personas)
