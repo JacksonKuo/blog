@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "GitHub Defense: Part VII - Zizmor"
-date: 2026-6-14
+title: "GitHub Defense: Part VII - GHA Template Injection"
+date: 2026-6-18
 tags: ["github"]
 published: false
 ---
@@ -11,7 +11,7 @@ published: false
 {:toc}
 
 # Problem Statement
-How to fix zizmor template injection findings holistically
+Thinking through GHA template injection via zizmor
 
 # Zizmor
 Not going to explain zizmor, if ya know ya know. Documentation below:
@@ -272,42 +272,17 @@ Just a reminder `workflow_dispatch` is a manual trigger. `workflow_call` is for 
 | `github.head_ref` | High | High | Yes | user-controllable | 
 | `github.actor` | High | High | No | GH username = alphanumeric + hyphen + 39 chars[^4] | 
 | `github.event` | High | High | Yes | user-controllable | 
+| `github.event` | High | High | No | require `WRITE` perms | 
 | `github.ref` | High | High | No | `pull_request`+`refs/pull/PR_num>/merge`<br>`pull_request_target`+`refs/heads/<base_branch>` | 
 | `github.ref_name` | High | High | No | `pull_request`+`PR_num/merge`<br>`pull_request_target`+base branch name | 
-| `env.*` | Low | High | No | can't set via PR |  
 | `matrix.*` | Med | Med | Unk | unknown |
-| `steps.*.outputs.*` | Info | Low | Taint | - |
-| `steps.outputs.outcome` | Info | Low | Taint | - |
+| `env.*` | Low | High | No | requires user-control output to `GITHUB_ENV` |  
+| `steps.*.outputs.*` | Info | Low | Taint | requires user-control output to `GITHUB_OUTPUT` |
+| `steps.outputs.outcome` | Info | Low | Taint | requires user-control output to `GITHUB_OUTPUT` |
 | `needs.*`  | Info | Low | No | - |
 | `job.status`  | Info | Low | No | - |
 
-Seems like zizmor is a little over zealous on the high confidence high severity. It's probably best to do a second level of filter PR user-controlled values[^5] + `github.event`.
-
-#### Self-Hosted Runners 
-The documentation is a little confusing. Zizmor has a rule for self-hosted runners. In the usage it says it requires `persona=auditor`[^6], but in the audit rules, it says `--pedantic`[^7]. I think `auditor` is the correct setting
-
-The [PR #34](https://github.com/zizmorcore/zizmor/pull/34/changes) comments includes some useful info: 
-> NOTE: GHA docs are unclear on whether runner groups always imply self-hosted runners or not. All examples suggest that they do, but I'm not sure.
-> This audit is "pedantic" only, since zizmor can't detect! whether self-hosted runners are ephemeral or not.
-
-Seems like zizmor parses the workflow file and looks for `self-hosted` or runner groups. And looks like zizmor doesn't call the REST API for runners, since the permissions are much higher: `only owner or administrator accounts can see the runner settings`.[^8] And the ephermerality can't easily be discovered via GitHub.
-
-How this works is there's self-hosted and GitHub-hosted runners. GitHub-hosted runners are pay-as-you-go. Runner groups are essentially permissions that can be assigned to each runner instance that restrict where and what the runner can execute.
-
-* Runner Groups
-  * Repository access - `All`/`Selected repositories`
-    * Allow public repositories
-      * > Runners can be used by public repositories. Allowing self-hosted or image-generation runners on public repositories and allowing workflows on public forks introduces a significant security risk.
-  * Workflow access - `All`/`Selected workflows`
-
-You can if a runner is GitHub-hosted if it has a Github icon to the left of the runner name.  The runner name is also now a label that can be used in a `run-ons: <label>`. And then you can also call a group:
-
-```yaml
-    runs-on: 
-      group: ubuntu-runners
-```
-
-> The runs-on key sends the job to any available runner in the ubuntu-runners group
+Seems like zizmor is a little over zealous on the high confidence high severity. It's probably best to do a second level of filtering PR user-controlled values[^5] + `github.event`.
 
 # Commands
 * Basic Template Injection
@@ -322,10 +297,7 @@ You can if a runner is GitHub-hosted if it has a Github icon to the left of the 
 * Filter High Sev / High confidence
   * `zizmor . --offline --persona pedantic --config ../zizmor-rules/zizmor.yml --min-severity=High --min-confidence=High` 
 
-
-
 # Threat Model
-
 Fork / non-fork
 
 * Non-forks
@@ -338,6 +310,9 @@ Fork / non-fork
   * Pwn request + pull_request = GITHUB_TOKEN
 
 cache busting
+
+Are GitHub-hosted runner always ephemeral?
+  * From what I can tell, yes
 
 protections
 `Approval for running fork pull request workflows from contributors`: 
@@ -359,8 +334,4 @@ does local zizmor look through feature branches
 
 [^5]: [https://jacksonkuo.github.io/blog/2024/12/18/gh-action-exploitation-part-1.html#attack-scenario](https://jacksonkuo.github.io/blog/2024/12/18/gh-action-exploitation-part-1.html#attack-scenario)
 
-[^6]: [https://docs.zizmor.sh/usage/#using-personas](https://docs.zizmor.sh/usage/#using-personas)
-
-[^7]: [https://docs.zizmor.sh/audits/#self-hosted-runner](https://docs.zizmor.sh/audits/#self-hosted-runner)
-
-[^8]: [https://docs.github.com/en/actions/how-tos/manage-runners/larger-runners/use-larger-runners#running-jobs-on-your-runner](https://docs.github.com/en/actions/how-tos/manage-runners/larger-runners/use-larger-runners#running-jobs-on-your-runner)
+[^6]: []()

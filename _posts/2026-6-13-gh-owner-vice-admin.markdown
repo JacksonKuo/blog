@@ -95,7 +95,7 @@ Uh there's a lot. I don't really want to go through them all, but it's a lot jus
 |:---:|:---:|
 | ![]({{ site.baseurl }}/assets/images/github-orgadmin-1.png){: width="250"} | ![]({{ site.baseurl }}/assets/images/github-orgadmin-2.png){: width="250"} |
 
-Just adding pre-defined role which includes Owners: [https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-predefined-organization-roles#permissions-of-predefined-roles](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-predefined-organization-roles#permissions-of-predefined-roles)
+Just adding pre-defined role table which includes Owners: [https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-predefined-organization-roles#permissions-of-predefined-roles](https://docs.github.com/en/organizations/managing-peoples-access-to-your-organization-with-roles/permissions-of-predefined-organization-roles#permissions-of-predefined-roles)
 
 # Top Gun
 * Default Role - Apps Manager
