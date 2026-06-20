@@ -47,5 +47,5 @@ Apparently the endpoint logic i wrote previously doesn't cause the app to crash 
 * [https://bakacore.com:8443/ratelimit](https://bakacore.com:8443/ratelimit)
     * Response: `Status=500`
 
-But my homepage is still working [https://bakacore.com:8443/](https://bakacore.com:8443/): `Greetings random user: 96! Reload!`. Excellent. 
+But my homepage is still working [https://bakacore.com:8443/](https://bakacore.com:8443/): `Greetings random user: 96! Reload!`. Excellent, this will help with performance and help me slot in services that I want running without removing files entirely. 
 
