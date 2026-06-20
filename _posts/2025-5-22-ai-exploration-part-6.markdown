@@ -78,7 +78,7 @@ Additionally, ```capability-based systems ideally require full participation fro
 CaMel doesn't solve the prompt injection problem at the root level. CaMeL only solves the control flow security from the root level. 
 
 # State of the World
-The verdict is that prompt injection is still a difficult to solve. Spotlighting and LLM-as-as-judge relies on LLMs which can be tricked. TaskTracker based on the LLMail results is still bypassable. CaMeL requires bespoke security policies and layers security checks on top of prompt injection, but doesn't yet *defeat prompt injection by design*.
+The verdict is that prompt injection is still difficult to solve. Spotlighting and LLM-as-as-judge relies on LLMs which can be tricked. TaskTracker based on the LLMail results is still bypassable. CaMeL requires bespoke security policies and layers security checks on top of prompt injection, but doesn't yet *defeat prompt injection by design*.
 
 > Update: 6/3/25
 

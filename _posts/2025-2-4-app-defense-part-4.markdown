@@ -32,7 +32,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 
 The next app defense upgrade will require running multiple services. The current pipeline with running services using shell scripts and systemd is fine for a simple app, but I'd like to gravitate toward docker and k8s. The problem with docker and especially k8s is the additional memory requirement. 
 
-Currently I have 512 MB of RAM for $4 a month. Me being a penny pincher, I might upgrade to $6 for 1 GB of RAM, but I'm reluctant to spent much more. With only 1 GB of RAM, k8s will likely fail while trying to run other services. 
+Currently I have 512 MB of RAM for $4 a month. Me being a penny pincher, I might upgrade to $6 for 1 GB of RAM, but I'm reluctant to spend much more. With only 1 GB of RAM, k8s will likely fail while trying to run other services. 
 
 As for running on other platforms, services like AWS have more provenance, but have a much more complex cost structure and I don't want to run lots of infra in AWS for a long time due to fear of ballooning costs. Other platforms like fly.io just don't have enough learning upside and is seldom seen in the industry. Using docker-compose.yml has a smaller footprint than k8s, but is also infrequently used in the industry versus just running kubernetes.
 

@@ -57,16 +57,16 @@ So a join at the end of main kinda acts like a non-daemon thread.
 
 Also `args` accepts either a tuple or a list. 
 
-Also `import concurrent.futures` has `ThreadPoolExecutor` and is recommended so you don't accident forget to call `join`. However the `ThreadPoolExecutor` uses the `executor.map()` which is kinda confusing to look at. 
+Also `import concurrent.futures` has `ThreadPoolExecutor` and is recommended so you don't accidentally forget to call `join`. However the `ThreadPoolExecutor` uses the `executor.map()` which is kinda confusing to look at.
 
-#### Content Manager
+#### Context Manager
 Python has something called context managers: [https://www.geeksforgeeks.org/python/context-manager-in-python/](https://www.geeksforgeeks.org/python/context-manager-in-python/)
 
 > Python’s context managers provide a neat way to automatically set up and clean up resources, ensuring they’re properly managed even if errors occur.
 
 Implemented using `with:` and replaces the `try` and `finally` and will auto clean up when exiting the scope.
 
-`ThreadPoolExecutor` is a content manager for `.join()`.
+`ThreadPoolExecutor` is a context manager for `.join()`.
 
 #### Locks
 So I think technically python `dict` is safe for atomic writes. But it's generally good practice to include a lock on the shared dict. 

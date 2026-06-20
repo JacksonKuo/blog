@@ -19,7 +19,7 @@ Two places where we really need this:
 * `k3s`
 
 # Certbot
-What's happen is `certbot` will auto-update the PEM file, but my springboot app is configured to accept the cert via `.p12` file.
+What's happening is `certbot` will auto-update the PEM file, but my springboot app is configured to accept the cert via `.p12` file.
 
 The original cert deployment:
 ```shell
@@ -63,7 +63,7 @@ SpringBoot does support PEM, and the [application.properties](https://github.com
 * `spring.ssl.bundle.pem.letsencrypt.keystore.private-key`
     - `/etc/letsencrypt/live/bakacore.com/privkey.pem`
 
-Also the [volumeMount](https://github.com/JacksonKuo/app-springboot/blob/main/springboot-chart/templates/deployment-app.yaml) has been updated to include the `/archive` folder. Which apparently the `/live` directory symlinks too. Certbot, by default, has an webhook that should auto-renew the PEMs. The PEMs are accessible via volumeMount and the file and dir permissions should still carry over to the next refresh. 
+Also the [volumeMount](https://github.com/JacksonKuo/app-springboot/blob/main/springboot-chart/templates/deployment-app.yaml) has been updated to include the `/archive` folder. Which apparently the `/live` directory symlinks to. Certbot, by default, has a webhook that should auto-renew the PEMs. The PEMs are accessible via volumeMount and the file and dir permissions should still carry over to the next refresh. 
 
 # K3s
 I didn't know this but K3s certs expire every 3 months and there is no auto-renew. 
@@ -75,4 +75,4 @@ echo 'Install weekly K3s cert-rotation cron (renews between deploys)...'
 echo '0 4 * * 0 root openssl x509 -checkend 2592000 -noout -in /var/lib/rancher/k3s/server/tls/client-admin.crt || systemctl restart k3s' > /etc/cron.d/k3s-cert-rotate
 ```
 
-Every Sunday at 4am, as `root` run `openssl x509` with option `-checkend` what will see if cert is expired in 30 days (2592000 secs) and if true, restart k3s service. 
+Every Sunday at 4am, as `root` run `openssl x509` with option `-checkend` which will see if cert is expired in 30 days (2592000 secs) and if true, restart k3s service. 

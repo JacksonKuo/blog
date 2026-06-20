@@ -61,9 +61,9 @@ As a result, an attacker can mint a JWT with arbitrary token claims, smuggling t
 
 I would disagree with this validity assumption. While revalidating tokens at both the gateway and service layers seems unnecessary and is a duplication of work, revalidating is the safer practice and follows a zero-trust policy. Backend services should never assume tokens have been validated. Revalidation prevents attack vectors such as: gateway token smuggling, SSRF attacks, http request smuggling, http desync attacks, and compromised internal networks. 
 
-**The architecture of gateways performing authentication and backend services only performing authorization is a insecure design pattern.**
+**The architecture of gateways performing authentication and backend services only performing authorization is an insecure design pattern.**
 
-An argument could be made of why even use a API gateway if the endpoint still has to revalidate the token, which is fair a point. But a better way to think of the initial validation is that you need a valid token to be able to initiate communication to a backend service. If we imagine an office building, the first authentication check gets you through the door, but each floor requires a second authentication check as well as an authorization check.
+An argument could be made of why even use an API gateway if the endpoint still has to revalidate the token, which is a fair point. But a better way to think of the initial validation is that you need a valid token to be able to initiate communication to a backend service. If we imagine an office building, the first authentication check gets you through the door, but each floor requires a second authentication check as well as an authorization check.
 
 # References
 [^1]: Note there exists a similarly named "token smuggling" term in the LLM space, which is why i prefix my technique with the title "gateway" to differentiate. Though anything that forwards traffic like proxies, middleware, authorizers, or service meshes has potential to run afoul of token smuggling.

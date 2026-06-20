@@ -11,7 +11,7 @@ published: true
 {:toc}
 
 # Problem Statement
-A few years ago a colleague created a fantastic OIDC Claims security writeup. I have since forgotten the specifics, but I thought it might be fun to try create my own writeup based on public research.
+A few years ago a colleague created a fantastic OIDC Claims security writeup. I have since forgotten the specifics, but I thought it might be fun to try to create my own writeup based on public research.
 
 # ID Token Claims
 

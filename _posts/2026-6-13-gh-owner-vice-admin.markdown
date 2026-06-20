@@ -69,7 +69,7 @@ It's wild that even with everything checked in Roles, there's still a ton of fun
 * I don't see Moderator or Billing Managers, where are they?
     * Settings > Billing and licensing[^2]
     * Settings > Access > Moderation > Moderators
-* What's the different between triage, maintain and admin?[^3]
+* What's the difference between triage, maintain and admin?[^3]
     * > Triage: Recommended for contributors who need to proactively manage issues, discussions, and pull requests without write access
     * > Write: Recommended for contributors who actively push to your project
     * > Maintain: Recommended for project managers who need to manage the repository without access to sensitive or destructive actions
@@ -103,7 +103,7 @@ Just adding pre-defined role table which includes Owners: [https://docs.github.c
 * PAT/GHApp - `"Administration" organization permissions (write)`
 
 # Lessons Learned
-Maxing out a team with a custom role with all permissions and all default roles expect App Manager should be safe. 
+Maxing out a team with a custom role with all permissions and all default roles except App Manager should be safe. 
 
 But does this setup provide me everything I need?
 * Available

@@ -18,18 +18,18 @@ Document my golden rules of work. Includes my understanding how i do work person
 #### 1. Consistent Sleep
 Nine hours and on-time is so important. Sometimes I need to pull an all nighter, which is fine, but must be the rare exception. I'm a night owl, so my best work hours are between 11pm - 3am. Sorry Jackson, you'll need to find a way to work outside your best hours. 10:00 pm - 6:30 am should be protected for sleep.
 
-Additionally, sleep just makes you more cheery, which definitely helps when interacting with your coworkers. You're less likely to be crabby and less prone to making technical as well as interpersonal snafus. And it's not fair to your coworkers or friends that have do deal your crabbiness when you're tired. They deserve better from you tbh. 
+Additionally, sleep just makes you more cheery, which definitely helps when interacting with your coworkers. You're less likely to be crabby and less prone to making technical as well as interpersonal snafus. And it's not fair to your coworkers or friends that have to deal with your crabbiness when you're tired. They deserve better from you tbh. 
 
 During vacation this can be flexible. Also I'm starting to suspect, that I'm not just a night owl, but that my mind is calmer at the end of the long day, regardless if it's at night. 
 
-Weekend work i know there's a habit of working late on Sat, but with the breathing techinques, doing a full workcycle Sunday is not an impossible hurdle. 
+Weekend work i know there's a habit of working late on Sat, but with the breathing techniques, doing a full workcycle Sunday is not an impossible hurdle.
 
 #### 2. Triple Deadlines For Everything 
 Project estimation or work estimations of any kinda must be 3x what you initially think, no exceptions. Things will always take longer than expected, since often you don't know what is required until you do that actual work. 
 
-Additionally, security reviews need to be scoped initially. Sometimes, there'll be an review that you might not fully understand how large it is. You need to treat some of these cases like consulting pentests, with a scope, accounts, walkthroughs, dedicated testing time, app needs to be completed...
+Additionally, security reviews need to be scoped initially. Sometimes, there'll be a review that you might not fully understand how large it is. You need to treat some of these cases like consulting pentests, with a scope, accounts, walkthroughs, dedicated testing time, app needs to be completed...
 
-Consulting security reviews have a clearly defined scope and dedicated timebox for work. You're protect in a fashion from over work. But product engineering security reviews, unless you're part of the pentest team, has no scoped. And if it's a giant platform, doing comprehensive security review while juggling other projects makes doing a thorough review difficult. These types of review needs to be fully scoped out.  
+Consulting security reviews have a clearly defined scope and dedicated timebox for work. You're protected in a fashion from over work. But product engineering security reviews, unless you're part of the pentest team, has no scope. And if it's a giant platform, doing comprehensive security review while juggling other projects makes doing a thorough review difficult. These types of review needs to be fully scoped out.  
 
 #### 3. Work Backlog Depression
 If i don't make consistent contribution to this backlog, I notice my mood starts to get a little depressed. PTO is your safety net. When work starts stacking up and stress is increasing, book PTO immediately. The PTO should be 2 weeks to clear stuck items on the backlog, once a year. Anything less than 2 weeks is much less effective. 
@@ -63,7 +63,7 @@ For example, some of this work can be a struggle at work or home, but by changin
 
 Certain types of content really help my brain do work and other types are the opposite. Things that help my brain work usually include the following: [^1] 
 
-* low simulating content
+* low stimulating content
 * no loud noises
 * dialogue focused
 * doesn't require constant attention
@@ -94,9 +94,9 @@ Doing brain loading on the weekend tends to work out pretty well. Creating and s
 #### 9. Brain Break
 Note this is slightly different than brain loading. Brain loading happens at the start of a project. Brain break happens at the end of a big chunk of work.
 
-I've noticed that when I put in a ton of work and make a huge leap in my understanding of a new subject that my brain feels fatigued. The brain stupor is not surprising, but after that gigantic leap it hard to continue to push a little farther. 
+I've noticed that when I put in a ton of work and make a huge leap in my understanding of a new subject that my brain feels fatigued. The brain stupor is not surprising, but after that gigantic leap it's hard to continue to push a little farther.
 
-For example, a good analogy is I just ran five miles, but doing an extra twenty feet feels impossible. If I put down the work for like two weeks, and focus on something else, it's lot easier for me to dial-in. I think my brain needs a timeout in order to rewires the synapses. After that it's easy to push forward. 
+For example, a good analogy is I just ran five miles, but doing an extra twenty feet feels impossible. If I put down the work for like two weeks, and focus on something else, it's a lot easier for me to dial-in. I think my brain needs a timeout in order to rewire the synapses. After that it's easy to push forward. 
 
 #### 10. It's Not on Your Shoulders
 You are not responsible for the security of the company. The company is responsible for the security. If the company is hacked, it's not your fault. Fortunately, I've been lucky in that I've never had a big breach during any of my tenures, but even if it happens, it's not on you. You might have a better understanding of the threat since you have an offensive background, but you don't dictate what the company and management decides to prioritize
@@ -121,7 +121,7 @@ Early is Better, But Harder. Which means these internal application reviews espe
 * Depending on the size, dedicated time, at minimum a week to do reviews, but ideally the same amount of time as a pentest, which is three weeks
 
 #### 11. Resist the Urge to Just Say, Yes.
-Resist the urge to just say, Yes. It sometimes may seem easier to just say yes to someone, so they'll go away momentarily but that's debt you're taking on. That's financal debt that will build interest and you'll have to pay it down while it gouges you. 
+Resist the urge to just say, Yes. It sometimes may seem easier to just say yes to someone, so they'll go away momentarily but that's debt you're taking on. That's financial debt that will build interest and you'll have to pay it down while it gouges you.
 
 Stop being so darn helpful. You have a tendency to help people too much. On the surface this might seem good, however this will eventually lead to long-term trouble and burn out. 
 
@@ -147,7 +147,7 @@ Day to day context switching will involve:
 
 For example, each meeting will typically burn an extra 2 additional hours of productivity. 1 hour before the meeting and 1 hour after the meeting is spent not locked in. And if I accidentally lock in before a meeting, I run the risk of getting so tunnel visioned that I forget about the meeting entirely.
 
-Essentially this is large-term project work that moves the company forward versus short-term fire fighting that maintains the status quo. Both are valuable, but it becomes a problem when the needle says stuck in the putting out fires mode. 
+Essentially this is large-term project work that moves the company forward versus short-term fire fighting that maintains the status quo. Both are valuable, but it becomes a problem when the needle stays stuck in the putting out fires mode. 
 
 #### 13. Calendar Feng Shui
 Folks will often throw weird meeting hours on your calendar or a meeting right at 9:00am when you haven't even settled in yet. 
@@ -175,9 +175,9 @@ And the sore muscles is kinda cathartic.
 Sometimes I notice it can be hard to focus, at home or in the middle of the day. I notice my brain is a bit flighty. Notice that tumultuous internal feeling, and try some breath control. Each breath burns away extraneous thoughts. Feel all the emotions, worries, and todos floating through your mind and let them through. In through your nose and mouth and them let them air out slowly. The gold standard is 1 hr of breath control and where you're able to have your mind think of nothing but the breath. 
 
 #### 19. Focus on the Right Thing
-Another thing I've noticed. When I don't really have a clear picture of what the next steps are, it tends to be hard for me to get started. In this case, it might be a good idea to right down my general todos. Importantly don't stress about actually doing the work just highlevel points of what needs to be done. 
+Another thing I've noticed. When I don't really have a clear picture of what the next steps are, it tends to be hard for me to get started. In this case, it might be a good idea to write down my general todos. Importantly don't stress about actually doing the work just highlevel points of what needs to be done. 
 
-And then when it's time to actually do the work, don't focus on the todo list, only focus on the current moment. Focus on the small increment work and not on the better picture. Don't focus on the end goal, or what needs to get done. Just focus on the small tasks. 
+And then when it's time to actually do the work, don't focus on the todo list, only focus on the current moment. Focus on the small increment work and not on the bigger picture. Don't focus on the end goal, or what needs to get done. Just focus on the small tasks. 
 
 And if you ever get kinda in a rut and stuck on a certain concept. It honestly can be helpful to just ask AI and workshop it together. 
 
@@ -185,7 +185,7 @@ And if you ever get kinda in a rut and stuck on a certain concept. It honestly c
 It's a contradiction but start by doing things, by first doing nothing. Just sit there or lay there and don't do anything, but breathe. That's always step one. 
 
 #### 21. Need to Run Code To Be Confident
-You tend to get stuck on technical issues when you haven't run the code yourself. When you haven't testing the code, line by line, you can't be confident. So start by building a runnable test environment to confirm. 
+You tend to get stuck on technical issues when you haven't run the code yourself. When you haven't tested the code, line by line, you can't be confident. So start by building a runnable test environment to confirm. 
 
 The [10. It's Not on Your Shoulders](https://jacksonkuo.github.io/blog/2026/03/19/golden-rules-of-work.html#10-its-not-on-your-shoulders)` is also important here for code review. Need to run through everything to fully understand, and help with the anxiety. Once you fully understand theoretically the fear should abide. 
 
@@ -198,7 +198,7 @@ I find that often for new or complex problems, just sitting there is not very he
 #### 24. Pick One Thing to Do Over the Weekend
 Often I have lofty goals for the weekend, that I'll do all these things. And then inevitably I don't get these things done. It's helpful if I just have expectations to do just 1 item. 1 item and then maybe a todo list for next week, to do the brain loading and that's all for expectations
 
-Doing one thing on Sunday tends to put you in a good mood for the rest of the week. You're already ahead, which releases some of stress and makes you more confidence. And then you can maybe take it easy on Friday. 
+Doing one thing on Sunday tends to put you in a good mood for the rest of the week. You're already ahead, which releases some of the stress and makes you more confident. And then you can maybe take it easy on Friday. 
 
 #### 25. Good Stress
 Last of all, the ultimate factor that causes me to get shit done, stress. Maybe it's worth experimenting on inducing more healthy stress earlier for smoother timelines. Also take things less seriously. Life is just the journey until you die. Revel in the absurity until you croak. Also walks through nature can reduce stress. 
@@ -209,7 +209,7 @@ Sometimes i feel bad that I don't add to the blog as much, or find time on the w
 That said, try to keep detailed notes when you can. 
 
 #### 27. Try To Reduce the Noise
-Obviously oncall can makes things tricky. And then there's always the newest security incidents. But try ignore the internal nagging to see if there's any new pings and not routinely check slack on your days off. 
+Obviously oncall can makes things tricky. And then there's always the newest security incidents. But try to ignore the internal nagging to see if there's any new pings and not routinely check slack on your days off. 
 
 Keeping the work laptop on the lockscreen can be helpful to not see slack. If there's an urgent ping, that should show up on our phone. 
 
@@ -224,7 +224,7 @@ Even when it's a higher up, a manager, your boss, an intern, a coworker.
 The pressure you feel to reply, it's really powerful. Fight the pressure. It's okay to wait a minute or five to write up a response. That said, having a general response prepped could be helpful. Something like:
 
 ```
-Could you posted this in the appsec channel, internal or external, and we can see when someone has the bandwidth? 
+Could you post this in the appsec channel, internal or external, and we can see when someone has the bandwidth?
 ```
 
 If the ask is coming from a manager, then say by taking on this work, other work has to be put on hold. List what that pending work is and if that's okay?
@@ -239,7 +239,7 @@ You have to go into work playing defense, else you're going to get tackled over.
 
 That feeling when someone says, who wants to handle this? That pressure to say, I can. That's intentional. It's bait. You've gotten ahead in life by being the person that says yes, that tries to be helpful, but at the detriment to yourself. Be selfish with your time and attention. Whatever you have plans to do, is likely way more important than what someone else is trying to pressure you to do.  
 
-Play defense, because the feeling when you get suckered into a bunch of work you didn't realize you signed up for... feels pretty bad. And even the tiniest, hey can you take a quick look at this, will always turn into a gigantic platform review that will take weeks of work. And the pay special attention to the teams that keep asking for work done. 
+Play defense, because the feeling when you get suckered into a bunch of work you didn't realize you signed up for... feels pretty bad. And even the tiniest, hey can you take a quick look at this, will always turn into a gigantic platform review that will take weeks of work. And pay special attention to the teams that keep asking for work done. 
 
 The words you should be saying are:
 * Not me!

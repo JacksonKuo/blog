@@ -14,7 +14,7 @@ published: true
 I've been testing Octo-STS by Chainguard which generates ephemeral GitHub tokens that can replace long-lived PAT tokens: [https://www.chainguard.dev/unchained/the-end-of-github-pats-you-cant-leak-what-you-dont-have](https://www.chainguard.dev/unchained/the-end-of-github-pats-you-cant-leak-what-you-dont-have). While implementing and testing Octo-STS, I ran into a couple of pitfalls, and will document how I resolved those issues and any lessons learned.
 
 # Two-Modes
-Something that wasn't immediately clear to me from the documentation[^1] [^2] [^3] [^4] was that Octo-STS has two different modes. The first mode will mint a ephemeral token for accessing a single repository, while the second mode will mint a ephemeral token for accessing multiple repositories and/or grant organization permissions. 
+Something that wasn't immediately clear to me from the documentation[^1] [^2] [^3] [^4] was that Octo-STS has two different modes. The first mode will mint an ephemeral token for accessing a single repository, while the second mode will mint an ephemeral token for accessing multiple repositories and/or grant organization permissions.
 
 #### Mode 1 - Granting single repo access
 It's important to note that for single repo access the policy file is housed in the repo that is granting access `<repo>/.github/chainguard/bar.sts.yaml` file. 
@@ -71,7 +71,7 @@ permissions:
 repositories: []
 ```
 
-Importantly the `scope` when requesting an multi-repo/org must be only the `<org>`. The scope should not have the additional repo, i.e. `<org>/.github`. 
+Importantly the `scope` when requesting a multi-repo/org must be only the `<org>`. The scope should not have the additional repo, i.e. `<org>/.github`. 
 
 {% raw %}
 ```yaml
@@ -95,7 +95,7 @@ steps:
   env:
     GITHUB_TOKEN: "${{ steps.octo-sts.outputs.token }}"
   run: |
-    gh repos list
+    gh repo list
 ```
 {% endraw %}
 

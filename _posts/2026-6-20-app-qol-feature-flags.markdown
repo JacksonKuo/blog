@@ -23,7 +23,7 @@ springboot-app-66684d7cdd-kpvnl   1/1     Running   0              19m
 ```
 
 Let's turn off smokescreen and redis. The change is pretty simple:
-In the [value.yaml](https://github.com/JacksonKuo/app-springboot/blob/main/springboot-chart/values.yaml) add deploy flags:
+In the [values.yaml](https://github.com/JacksonKuo/app-springboot/blob/main/springboot-chart/values.yaml) add deploy flags:
 
 ```yaml
 enableRedis: true

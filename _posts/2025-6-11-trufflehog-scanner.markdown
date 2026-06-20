@@ -11,7 +11,7 @@ published: true
 {:toc}
 
 # Problem Statement
-Let's build an Trufflehog scanner that scans a GitHub organization and pipes the data to Grafana.
+Let's build a Trufflehog scanner that scans a GitHub organization and pipes the data to Grafana.
 
 # Building Blocks
 The fundamental building blocks will be:

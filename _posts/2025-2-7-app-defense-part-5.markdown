@@ -22,7 +22,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 # Custom Rate Limit using Redis
 Build a custom rate limit for a Spring Boot endpoint with a focus on simplicity, efficiency, and speed. 
 
-These types of fine-grained application rate limits are often needed because WAFs can only block request above a certain rate. For example AWS WAF, used to only rate limit at a minimal of 100 requests per window (1/2/5/10 minutes).[^1] Now AWS WAF can rate limit on 10 requests per window, but even that for certain situations is still not granular enough.[^2] 
+These types of fine-grained application rate limits are often needed because WAFs can only block requests above a certain rate. For example AWS WAF, used to only rate limit at a minimum of 100 requests per window (1/2/5/10 minutes).[^1] Now AWS WAF can rate limit on 10 requests per window, but even that for certain situations is still not granular enough.[^2] 
 
 There's a number of different options for implementation rate limits. Options like Bucket4J and Resilience4J are primarily run in-memory and require additional code to integrate with redis. And while in-memory is faster, I want the rate limit to be distributed in the future potentially. I settled on using Redis + Redisson.
 

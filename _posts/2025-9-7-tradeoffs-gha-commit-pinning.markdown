@@ -14,7 +14,7 @@ published: true
 What are the trade offs with following tools for GitHub Action auto-commit pinning?
 
 * stacklok/frizbee
-* suzuki-shunuske/pinact
+* suzuki-shunsuke/pinact
 * sethvargo/ratchet
 * Dependabot
 * Renovate
@@ -48,7 +48,7 @@ Supports many more platforms beyond GHA. Has a list of [known issues](https://gi
 * Harness Drone
 * Tekton
 
-#### [suzuki-shunuske/pinact](https://github.com/suzuki-shunsuke/pinact)
+#### [suzuki-shunsuke/pinact](https://github.com/suzuki-shunsuke/pinact)
 Only supports SemVer. 
 * GitHub Actions
 
@@ -60,7 +60,7 @@ And the README also provides a nice list of cases where you might not want to us
 
 #### Dependabot
 
-Generally we want to lean on the more established tools like Dependabot/Renovate. Dependabot will doing action commit pinning via `package-ecosystem: "github-actions"`.[^2] 
+Generally we want to lean on the more established tools like Dependabot/Renovate. Dependabot will do action commit pinning via `package-ecosystem: "github-actions"`.[^2] 
 
 ```yaml
   - package-ecosystem: "github-actions" 

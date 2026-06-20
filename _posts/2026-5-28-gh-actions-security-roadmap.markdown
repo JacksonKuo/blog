@@ -11,7 +11,7 @@ published: true
 {:toc}
 
 # Problem Statement
-Therew are some big changes to GitHub Actions this year. Breakdown the changes from the GitHub Actions 2026 Security Roadmap: [https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/](https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/) (Release date: March 26, 2026)
+There are some big changes to GitHub Actions this year. Breakdown the changes from the GitHub Actions 2026 Security Roadmap: [https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/](https://github.blog/news-insights/product-news/whats-coming-to-our-github-actions-2026-security-roadmap/) (Release date: March 26, 2026)
 
 Also there some great discussions that were brought up here: [https://github.com/orgs/community/discussions/190621](https://github.com/orgs/community/discussions/190621)
 
@@ -82,10 +82,10 @@ dependencies:
 |---|---|---|
 | Action lockfile | Nice | n/a |
 | Rulesets for workflows execution | This is the big one. Very cool. <br><br> But seems kinda tricky because you might break existing functionality. And seems kinda hard to rightsize this for individuals | Could be helpful locking down GHApps with `pull_request` WRITE perms <br><br> For highly sensitive repos restricting workflow triggers for `internal` visiblity? <br><br> Prohibiting `pull_request_target` is a big one |
-| Scoped secrets | There's a lot of changes here. <br><br> New scope: workflows identities, trusted reusable workflows <br><br> Secret inheritance: scoped secrets aren't auto-inherited <br><br> Repo write perm: Didn't even realize this gave secrets management | Not sure how big an impact this will be. Could an tie org secret to a reusable workflow. Maybe it's harder to dump the secret since it's not inheritable? |
+| Scoped secrets | There's a lot of changes here. <br><br> New scope: workflows identities, trusted reusable workflows <br><br> Secret inheritance: scoped secrets aren't auto-inherited <br><br> Repo write perm: Didn't even realize this gave secrets management | Not sure how big an impact this will be. Could tie an org secret to a reusable workflow. Maybe it's harder to dump the secret since it's not inheritable? |
 | Better logging | Nice | n/a |
 | Firewall | Nice | Maybe getting a list of approval domains. I doubt this would really stop exfiltration unless the list was actually locked down. And I don't know if applies to self-hosted runners |
 
-I'll fleshout the attack surface of these new security improvement overtime and get a better understanding what can easily be incorporated and where we can further locked down the GitHub ecosystem.
+I'll fleshout the attack surface of these new security improvements over time and get a better understanding what can easily be incorporated and where we can further lock down the GitHub ecosystem.
 
 And as far as i can tell none of this directly really helps with the org secret problem. Though it can decrease the attack surface from `pull_request_target` and maybe help with decreasing overscoped secret inheritance.

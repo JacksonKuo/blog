@@ -11,7 +11,7 @@ published: true
 {:toc}
 
 # Problem Statement
-Let's do a overview of the current state of MCP security. Note that this is very fast changing field, but this post will serve as a good baseline and will be updated as the MCP ecosystem continues to evolve
+Let's do an overview of the current state of MCP security. Note that this is a very fast changing field, but this post will serve as a good baseline and will be updated as the MCP ecosystem continues to evolve
 
 # State of the World
 * Security Literature 

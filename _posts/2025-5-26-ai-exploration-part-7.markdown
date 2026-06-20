@@ -11,14 +11,14 @@ published: true
 {:toc}
 
 # Problem Statement
-Let's build a simple app that uses MCP (Model Context Protocol) in order learn what MCP is and how it works
+Let's build a simple app that uses MCP (Model Context Protocol) in order to learn what MCP is and how it works
 
 # International Space Station Tracker
-I thought it might be fun to write an app to track the International Space Station (ISS) and say which city the station is closest too. Turns out the ISS is moving around 17500 mph, or 4.861 miles per second.[^1] It circles the earth approximately every 90 mins, so the geo-location will change pretty fast. 
+I thought it might be fun to write an app to track the International Space Station (ISS) and say which city the station is closest to. Turns out the ISS is moving around 17500 mph, or 4.861 miles per second.[^1] It circles the earth approximately every 90 mins, so the geo-location will change pretty fast. 
 
 [https://github.com/JacksonKuo/app-mcp-iss](https://github.com/JacksonKuo/app-mcp-iss)
 
-Turns out there an convenient page that publishes ISS updates: [iss-now.json](http://api.open-notify.org/iss-now.json). And we can use this second site to verify our app is working properly: [www.astroviewer.net](https://www.astroviewer.net/iss/en/). 
+Turns out there's a convenient page that publishes ISS updates: [iss-now.json](http://api.open-notify.org/iss-now.json). And we can use this second site to verify our app is working properly: [www.astroviewer.net](https://www.astroviewer.net/iss/en/). 
 
 # Model Context Protocol
 The best place to learn about MCP is from [https://modelcontextprotocol.io/](https://modelcontextprotocol.io/). In a nutshell, MCP is a shim server that provides an interface to LLMs. There are server and client examples available for an MCP weather app that is a great starting point to understanding MCP:

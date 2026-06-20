@@ -36,11 +36,11 @@ I've configured two accounts:
 | BQ Table | scan_visibility table | bigquery.dataEditor |
 
 # Explanation 
-A few things to notes:
+A few things to note:
 * When the BigQuery Data Transfer Service API is enabled, GCP creates the default service account `service-{project_number}@gcp-sa-bigquerydatatransfer.iam.gserviceaccount.com`. This account also known as the service agent[^1]
 * The DTS default SA uses the `serviceAccountTokenCreator` permissions to impersonate the `dts-gcs-loader` custom SA.
 * Impersonation generates a temp token that allows reading from GCS using the `dts-gcs-loader` permissions. 
-* After reading from GCS, the DT default SA uses it's own identity to write to BigQuery
+* After reading from GCS, the DT default SA uses its own identity to write to BigQuery
 * Service accounts are used so that execution is not tied to an individual user
 * The custom service account needs the following permissions:[^2]
     - `bigquery.datasets.get`
@@ -86,7 +86,7 @@ Chatting with Claude:
 # Misc
 Also apparently, the DTS Schedule backfill will only run once on a GCS file, unless the file has been updated. 
 
-And Also make sure you GCP user is an Editor make sure it also has BigQuery User and BigQuery Data Viewer role, otherwise trying to view the table will return errors.  
+Also make sure your GCP user is an Editor and that it also has BigQuery User and BigQuery Data Viewer role, otherwise trying to view the table will return errors.
 
 # References
 [^1]: [https://docs.cloud.google.com/bigquery/docs/enable-transfer-service#service_agent](https://docs.cloud.google.com/bigquery/docs/enable-transfer-service#service_agent)

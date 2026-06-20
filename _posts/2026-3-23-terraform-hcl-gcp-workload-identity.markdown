@@ -40,7 +40,7 @@ Under `Workspace > Variables`:
 Under `GCP > IAM & Admin > Workload Identity Federation`
 
 * Provider name: HCP Terraform Provider
-* Issue: `https://app.terraform.io`
+* Issuer: `https://app.terraform.io`
 * Audience: default audience
 * Enabled provider: checked
 * Attribute mapping: `Google1: google.subject`

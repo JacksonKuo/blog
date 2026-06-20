@@ -35,7 +35,7 @@ I used a stock Amazon logo and a screenshot of the amazon.com homepage.
 A couple of important things to note:
 * Vision can't parse PDFs, only images with the following extensions: `.png`, `.jpeg`, `.webp` , and non-animated `.gif`
 * Vision can't directly compare two images
-* The Amazon homepage screenshot does not have an logo. The usual top section was not included within the image snip
+* The Amazon homepage screenshot does not have a logo. The usual top section was not included within the image snip
 
 My approach was to first ask OpenAI to describe any logos in the images and then secondly ask if one image could be found in the other. 
 
