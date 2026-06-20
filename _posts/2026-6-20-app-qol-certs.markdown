@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Application QoL: Auto-Renew Certs"
+title: "Application QoL: Auto-Renew Certificates"
 date: 2026-6-20
 tags: ["app"]
 published: true

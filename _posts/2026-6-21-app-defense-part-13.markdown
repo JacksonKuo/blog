@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Application Defense: Part XII - Okta"
-date: 2026-6-20
+title: "Application Defense: Part XI - Okta"
+date: 2026-6-21
 tags: ["app"]
 published: false
 ---
