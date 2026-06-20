@@ -13,7 +13,7 @@ published: true
 # Problem Statement
 Improve the quality of life of my app environment by adding helm deploy flags to enable or disable services.
 
-# Helm Services
+# Adding Deploy Flags
 ```shell
 kubectl get pods
 NAME                              READY   STATUS    RESTARTS       AGE
