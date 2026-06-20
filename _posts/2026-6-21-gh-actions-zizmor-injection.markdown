@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GitHub Defense: Part VII - GHA Template Injection"
-date: 2026-6-18
+date: 2026-6-21
 tags: ["github"]
 published: false
 ---
@@ -322,6 +322,8 @@ Require approval for all external contributors
 Problem only includes the default branch. need to use the null pat
 assuming that the rest api calls are get active workflows.
 does local zizmor look through feature branches
+
+https://www.synacktiv.com/publications/github-actions-exploitation-untrusted-input
 
 # References
 [^1]: [https://docs.zizmor.sh/usage/#using-personas](https://docs.zizmor.sh/usage/#using-personas)

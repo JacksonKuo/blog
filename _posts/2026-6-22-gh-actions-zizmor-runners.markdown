@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GitHub Defense: Part VIII - GHA Runners"
-date: 2026-6-18
+date: 2026-6-22
 tags: ["github"]
 published: false
 ---

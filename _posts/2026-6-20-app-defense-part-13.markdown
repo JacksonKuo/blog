@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Application Defense: Part XI - Okta"
-date: 2026-8-7
+title: "Application Defense: Part XII - Okta"
+date: 2026-6-20
 tags: ["app"]
 published: false
 ---
@@ -32,10 +32,22 @@ How to add Okta integration to an application. This includes the following steps
 2. Integrate Okta with App
 
 # Okta Admin
-The Okta Platform has the Okta Integrator Plan that can be used to test Okta integration before deploying to production.[^1] This is the preferred method for testing as the Okta Developer Edition is now deprecated.[^2] And it does require a work email account.
+The Okta Platform has the Okta Integrator Plan that can be used to test Okta integration before deploying to production.[^1] This is the preferred method for testing as the Okta Developer Edition is now deprecated.[^2] [^3] And it does require a work email account.
+
+I need to dig up my old Okta accounts. My dev accounts are activated.
+
+* Integrator Account
+    * [https://integrator-4382332.okta.com/](https://integrator-4382332.okta.com/)
+    * Baka org
 
 # Okta Integration
-tktk
+
+https://developer.okta.com/blog/2021/01/04/offline-jwt-validation-with-go
+
+https://developer.okta.com/docs/guides/redirect-authentication/
+
+https://github.com/okta/okta-jwt-verifier-golang
+
 
 # Reference
 
