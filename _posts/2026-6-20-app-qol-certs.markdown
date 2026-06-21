@@ -25,17 +25,17 @@ The original cert deployment:
 ```shell
 echo 'Check certbot...'
 if test -d /etc/letsencrypt/live/bakacore.com; then
-echo 'Certbot already run...'
+    echo 'Certbot already run...'
 else
-echo 'Running certbot...'
-apt-get -y install certbot
-certbot certonly --standalone -d bakacore.com --agree-tos --register-unsafely-without-email
-sudo openssl pkcs12 -export \
-    -in /etc/letsencrypt/live/bakacore.com/fullchain.pem \
-    -inkey /etc/letsencrypt/live/bakacore.com/privkey.pem \
-    -out /etc/letsencrypt/live/bakacore.com/keystore.p12 \
-    -name springboot \
-    -password pass:foobar
+    echo 'Running certbot...'
+    apt-get -y install certbot
+    certbot certonly --standalone -d bakacore.com --agree-tos --register-unsafely-without-email
+    sudo openssl pkcs12 -export \
+        -in /etc/letsencrypt/live/bakacore.com/fullchain.pem \
+        -inkey /etc/letsencrypt/live/bakacore.com/privkey.pem \
+        -out /etc/letsencrypt/live/bakacore.com/keystore.p12 \
+        -name springboot \
+        -password pass:foobar
 fi
 ```
 
@@ -44,8 +44,8 @@ The new cert deployment doesn't use `.p12` anymore:
 echo 'Ensure certbot is installed and cert exists...'
 apt-get -y install certbot
 if ! test -d /etc/letsencrypt/live/bakacore.com; then
-echo 'Running certbot...'
-certbot certonly --standalone -d bakacore.com --agree-tos --register-unsafely-without-email
+    echo 'Running certbot...'
+    certbot certonly --standalone -d bakacore.com --agree-tos --register-unsafely-without-email
 fi
 # renew if due (no-op until ~30 days before expiry), then make the
 # private key readable by the non-root chainguard user in the pod
