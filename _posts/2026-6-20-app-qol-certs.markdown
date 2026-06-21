@@ -68,7 +68,7 @@ Also the [volumeMount](https://github.com/JacksonKuo/app-springboot/blob/main/sp
 # K3s
 I didn't know this but K3s certs expire every 3 months and there is no auto-renew. 
 
-Let's add a cronjob
+Let's add a cronjob:
 
 ```shell
 echo 'Install weekly K3s cert-rotation cron (renews between deploys)...'
