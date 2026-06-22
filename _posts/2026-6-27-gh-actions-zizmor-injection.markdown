@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "GitHub Defense: Part VII - GHA Template Injection"
-date: 2026-6-22
+date: 2026-6-27
 tags: ["github"]
 published: false
 ---

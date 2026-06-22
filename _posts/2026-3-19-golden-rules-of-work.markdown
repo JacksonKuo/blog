@@ -246,7 +246,14 @@ The words you should be saying are:
 
 Remember that chiming in kinda means you're accepting conversational work, especially for approvals. Do not chime in unless you're prepared to accept that work. 
 
-#### 30. Gratitude
+#### 30. Productivity Measuring Stick
+In security consulting my measure of productivity was 1 critical or equivalent a week. If I hit that mark, I felt pretty good, like I did my job.
+
+Security engineering is much more dynamic and less structured. So what should I use as a measuring stick? Theoretically there should be no stick, just do the best you can each week. But that's not really how my brain works.
+
+How about this... Do 10 things per week. 2 per day, one thing before lunch and one thing after lunch. If you can hit your 10 things per week, consider that a week well worked. 
+
+#### 31. Gratitude
 And then remember how fortunate you are and be thankful for everything you have right now. I think you're at a stage of your career, where slow and steady progress makes the biggest difference. And then what sometimes helps is after a long day at work watch some Midwest Safety[^4] youtube videos, which can help remind you how lucky you are sometimes. 
 
 # References

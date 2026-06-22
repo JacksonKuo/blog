@@ -23,16 +23,7 @@ Build a bunch of application defensive mechanisms. This problem can be further b
 * Step 8: Add test suite
 * Step 9: Add test automation
 * Step 10: Add Dependabot
-* Step 11: **Add Okta**
-
-# Index
-How to add Okta integration to an application. This includes the following sections:
-
-1. Okta Admin Account
-2. Okta Documentation
-3. Deploy Gin Server
-4. Okta Configuration
-5. Okta App Integration
+* Step 11: **Add Okta integration**
 
 # Okta Admin Account
 The Okta Platform has the Okta Integrator Plan that can be used to test Okta integration before deploying to production.[^1] This is the preferred method for testing as the Okta Developer Edition is now deprecated.[^2] [^3] And it does require a work email account.
@@ -93,7 +84,7 @@ keyFile := "/etc/letsencrypt/live/bakacore.com/privkey.pem"
     err = r.Run(":2096")
 ```
 
-My request [https://bakacore.com:2096/ping](https://bakacore.com:2096/ping) returns `{"message":"pong"}`.
+My request to [https://bakacore.com:2096/ping](https://bakacore.com:2096/ping) returns `{"message":"pong"}`.
 
 # Okta Configuration
 And now I just follow these instructions to setup Okta Test Redirect Authentication:
@@ -127,6 +118,11 @@ And save them as the following GitHub Action Secrets, which are used by the work
 Non-sensitive values can be added directly in the `gin-deployment.yaml`
 * `OKTA_REDIRECT_URI`
 
+My request to [https://bakacore.com:2096/env](https://bakacore.com:2096/env) returns:
+
+```json
+{"OKTA_OAUTH2_ISSUER":"https://integrator-4382332.okta.com/oauth2/default","OKTA_REDIRECT_URI":"https://bakacore.com:2096/authorization-code/callback"}
+```
 
 # Okta App Integration
 Some languages + frameworks have have plug-in-play middleware Okta integration code, such as:
