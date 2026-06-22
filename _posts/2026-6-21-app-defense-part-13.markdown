@@ -32,6 +32,7 @@ How to add Okta integration to an application. This includes the following secti
 2. Okta Documentation
 3. Deploy Gin Server
 4. Okta Configuration
+5. Okta App Integration
 
 # Okta Admin Account
 The Okta Platform has the Okta Integrator Plan that can be used to test Okta integration before deploying to production.[^1] This is the preferred method for testing as the Okta Developer Edition is now deprecated.[^2] [^3] And it does require a work email account.
@@ -40,7 +41,7 @@ Digging up my old Okta accounts:
 * Okta Developer accounts
     * (deactivated)
 * Okta Integrator account
-    * [https://integrator-4382332.okta.com/](https://integrator-4382332.okta.com/)
+    * [https://integrator-4382332.okta.com](https://integrator-4382332.okta.com)
 
 # Okta Documentation
 There's a lot of documentation, which can get a little confusing. Okta has two deployment models:[^4]
@@ -101,6 +102,52 @@ And now I just follow these instructions to setup Okta Test Redirect Authenticat
 
 We want to use `okta-go-gin-sample` as a ref over `samples-golang` because gin is a proper framework that can handle auth. 
 
+Instructions
+* Admin Console = [https://integrator-4382332.okta.com](https://integrator-4382332.okta.com)
+    * Applications > Applications
+    * Create App Integration
+        * Sign-in method = `OIDC - OpenID Connect`
+        * Application type = `Web Application`
+        * App integration name = `GoApp`
+        * Sign-in redirect URIs = [https://bakacore:2096/authorization-code/callback](https://bakacore:2096/authorization-code/callback)
+        * Sign-out redirect URIs = [https://bakacore:2096](https://bakacore:2096)
+        * Controlled access = `Allow everyone in your organization to access`
+    * Keep track of these values
+        * Client ID
+        * Client Secret
+        * Security > API > Issuer URI
+        * Session Key
+
+And save them as the following GitHub Action Secrets, which are used by the workflow and injected into the k8s secrets and then injected into env variables:
+* `OKTA_OAUTH2_ISSUER`
+* `OKTA_OAUTH2_CLIENT_ID`
+* `OKTA_OAUTH2_CLIENT_SECRET`
+* `OKTA_OAUTH2_SESSION_KEY`
+
+Non-sensitive values can be added directly in the `gin-deployment.yaml`
+* `OKTA_REDIRECT_URI`
+
+
+# Okta App Integration
+Some languages + frameworks have have plug-in-play middleware Okta integration code, such as:
+* Java/Springboot
+* .NET
+* Node/Express
+
+But apparently for Golang that's not the case. There is some example code:
+1. [okta-go-gin-sample](https://github.com/okta-samples/okta-go-gin-sample)
+    * `golang.org/x/oauth2`
+    * `gorilla/sessions`
+    * `okta-jwt-verifier-golang`
+2. [sign-into-web-app-redirect](https://developer.okta.com/docs/guides/sign-into-web-app-redirect/go/main/)
+    * `net/http`
+    * `gorilla/sessions`
+    * `okta-jwt-verifier-golang`
+
+So the architecture options seem to be the following:
+1. `golang.org/x/oauth2` + `okta-jwt-verifier-golang` for verification
+2. `golang.org/x/oauth2` + [coreos/go-oidc](https://github.com/coreos/go-oidc) for verification
+4. [oauth2-proxy](https://developer.okta.com/blog/2022/07/14/add-auth-to-any-app-with-oauth2-proxy)
 
 
 # Reference
