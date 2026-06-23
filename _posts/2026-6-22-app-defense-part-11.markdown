@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "Application Defense: Part XI - Okta"
-date: 2026-6-20
+date: 2026-6-22
 tags: ["app"]
-published: false
+published: true
 ---
 
 **Contents**
@@ -42,7 +42,7 @@ There's a lot of documentation, which can get a little confusing. Okta has two d
 In their "Choose your Auth" section, Okta recommends using redirect authentication for most cases including server-side, SPA, and mobile.[^5] There's a quickstart guide for various languages.[^6] The golang guide is here [https://developer.okta.com/docs/guides/sign-into-web-app-redirect/go/main/](https://developer.okta.com/docs/guides/sign-into-web-app-redirect/go/main/).
 
 And here is a list of officially supported resources and their GitHub orgs:
-* [Recommended Okta SDKs]([https://developer.okta.com/code)
+* [Recommended Okta SDKs](https://developer.okta.com/code)
 * [Recommended Okta SDKs - server-side web apps](https://developer.okta.com/code/#for-server-side-web-apps)
 * [GitHub Org - okta](https://github.com/orgs/okta/repositories)
 * [GitHub Org - okta-samples](https://github.com/orgs/okta-samples/repositories)
@@ -51,8 +51,8 @@ And here is a list of officially supported resources and their GitHub orgs:
 |---|---|---|---|
 | Golang | okta | [samples-golang](https://github.com/okta/samples-golang/tree/master/okta-hosted-login) | archived | 
 | Golang | okta | okta-jwt-verifier-golang | active | 
-| Golang | okta-sample | [okta-go-gin-sample](https://github.com/okta-samples/okta-go-gin-sample) | active | 
-| Golang | okta-sample | [okta-go-api-sample](https://github.com/okta-samples/okta-go-api-sample) | active | 
+| Golang | okta-samples | [okta-go-gin-sample](https://github.com/okta-samples/okta-go-gin-sample) | active |
+| Golang | okta-samples | [okta-go-api-sample](https://github.com/okta-samples/okta-go-api-sample) | active |
 | Python | okta | samples-python-flask | archived | 
 | Python | okta | okta-jwt-verifier-python | active | 
 | React | okta | okta-auth-js | active | 
@@ -100,8 +100,8 @@ Instructions
         * Sign-in method = `OIDC - OpenID Connect`
         * Application type = `Web Application`
         * App integration name = `GoApp`
-        * Sign-in redirect URIs = [https://bakacore:2096/authorization-code/callback](https://bakacore:2096/authorization-code/callback)
-        * Sign-out redirect URIs = [https://bakacore:2096](https://bakacore:2096)
+        * Sign-in redirect URIs = [https://bakacore.com:2096/authorization-code/callback](https://bakacore.com:2096/authorization-code/callback)
+        * Sign-out redirect URIs = [https://bakacore.com:2096](https://bakacore.com:2096)
         * Controlled access = `Allow everyone in your organization to access`
     * Keep track of these values
         * Client ID
@@ -125,12 +125,14 @@ My request to [https://bakacore.com:2096/env](https://bakacore.com:2096/env) ret
 ```
 
 # Okta App Integration
-Some languages + frameworks have have plug-in-play middleware Okta integration code, such as:
-* Java/Springboot
+
+#### Architecture Stack
+Some languages + frameworks have plug-and-play middleware Okta integration code, such as:
+* Java/Spring Boot
 * .NET
 * Node/Express
 
-But apparently for Golang that's not the case. There is some example code:
+But for Golang that's not the case. There is some example code:
 1. [okta-go-gin-sample](https://github.com/okta-samples/okta-go-gin-sample)
     * `golang.org/x/oauth2`
     * `gorilla/sessions`
@@ -140,11 +142,51 @@ But apparently for Golang that's not the case. There is some example code:
     * `gorilla/sessions`
     * `okta-jwt-verifier-golang`
 
-So the architecture options seem to be the following:
-1. `golang.org/x/oauth2` + `okta-jwt-verifier-golang` for verification
-2. `golang.org/x/oauth2` + [coreos/go-oidc](https://github.com/coreos/go-oidc) for verification
-4. [oauth2-proxy](https://developer.okta.com/blog/2022/07/14/add-auth-to-any-app-with-oauth2-proxy)
+So the architecture stack options seem to be the following:
 
+| Stack | Component |
+|---|---|
+| Web | `net/http`<br>`gin-gonic/gin` | 
+| OAuth | `golang.org/x/oauth2` | 
+| Sessions | `gorilla/sessions`<br>`gin-contrib/sessions` | 
+| Verifier | `okta-jwt-verifier-golang`<br>`coreos/go-oidc`  | 
+| Middleware | `oauth2-proxy`[^11] |
+
+#### Okta Integration Components
+And then for the test redirect, the essential test redirect components are:
+
+* environment variable setup
+* handlers
+    * `/login`
+    * `/logout`
+	* `/authorization-code/callback`
+        * `exchangeCode()`
+        * `verifyToken()`
+	* `/profile`
+* authn/authz
+	* `isAuthenticated()`
+	* `middleware()`
+
+I updated the `main.go` based on the test redirect code in [https://github.com/JacksonKuo/app-gin](https://github.com/JacksonKuo/app-gin). Reran `kubectl rollout restart deployment app-gin`. 
+
+#### Okta Access Setup
+* Disable 
+    * General > Proof of Possession
+    * General > Federation Broker Mode
+* Create
+    * Directory > People > Add Person
+    * Directory > Group > App Group > `GoApp`
+        * Assign People
+    * Application > Assignments > Assign > Assign to Groups > GoApp
+    * Security > API > Access Policies
+        * New Access Policies > `GoAppPolicy`
+        * Add Rule > Grant > `Authorization Code` > Create rule
+
+Lastly login via [https://bakacore.com:2096/login](https://bakacore.com:2096/login). Response is 
+
+```json
+{"email":"redact@gmail.com","email_verified":true,"family_name":"K","given_name":"J","locale":"en_US","name":"J K","preferred_username":"redact@gmail.com","sub":"00u14fsx0z10TCgzJ698","updated_at":1782189241,"zoneinfo":"America/Los_Angeles"}
+```
 
 # Reference
 [^1]: [https://developer.okta.com/signup/](https://developer.okta.com/signup/)
@@ -157,3 +199,4 @@ So the architecture options seem to be the following:
 [^8]: [https://github.com/orgs/okta/repositories?q=sample](https://github.com/orgs/okta/repositories?q=sample)
 [^9]: [https://developer.okta.com/blog/2021/01/04/offline-jwt-validation-with-go](https://developer.okta.com/blog/2021/01/04/offline-jwt-validation-with-go)
 [^10]: [https://developers.cloudflare.com/fundamentals/reference/network-ports/#network-ports-compatible-with-cloudflares-proxy](https://developers.cloudflare.com/fundamentals/reference/network-ports/#network-ports-compatible-with-cloudflares-proxy)
+[^11]: [https://developer.okta.com/blog/2022/07/14/add-auth-to-any-app-with-oauth2-proxy](https://developer.okta.com/blog/2022/07/14/add-auth-to-any-app-with-oauth2-proxy)
