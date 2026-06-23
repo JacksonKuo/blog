@@ -167,12 +167,12 @@ And then for the test redirect, the essential test redirect components are:
 	* `isAuthenticated()`
 	* `middleware()`
 
-I updated the `main.go` based on the test redirect code in [https://github.com/JacksonKuo/app-gin](https://github.com/JacksonKuo/app-gin). Reran `kubectl rollout restart deployment app-gin`. 
+I updated the `main.go` in [https://github.com/JacksonKuo/app-gin](https://github.com/JacksonKuo/app-gin) based on the test redirect sample code. Reran `kubectl rollout restart deployment app-gin`. 
 
 #### Okta Access Setup
 * Disable 
-    * General > Proof of Possession
-    * General > Federation Broker Mode
+    * General > `Proof of Possession`
+    * General > `Federation Broker Mode`
 * Create
     * Directory > People > Add Person
     * Directory > Group > App Group > `GoApp`
@@ -180,7 +180,7 @@ I updated the `main.go` based on the test redirect code in [https://github.com/J
     * Application > Assignments > Assign > Assign to Groups > `GoApp`
     * Security > API > Access Policies
         * New Access Policies > `GoAppPolicy`
-        * Add Rule > Grant > click `Authorization Code` > Create rule
+        * Add Rule > Grant > enable `Authorization Code` > Create rule
 
 Lastly login via [https://bakacore.com:2096/login](https://bakacore.com:2096/login). Response is 
 
