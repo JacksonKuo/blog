@@ -188,6 +188,8 @@ Lastly login via [https://bakacore.com:2096/login](https://bakacore.com:2096/log
 {"email":"redact@gmail.com","email_verified":true,"family_name":"K","given_name":"J","locale":"en_US","name":"J K","preferred_username":"redact@gmail.com","sub":"00u14fsx0z10TCgzJ698","updated_at":1782189241,"zoneinfo":"America/Los_Angeles"}
 ```
 
+This is just a quick and dirty PoC to get things working.
+
 # Reference
 [^1]: [https://developer.okta.com/signup/](https://developer.okta.com/signup/)
 [^2]: [https://developer.okta.com/blog/2025/05/13/okta-developer-edition-changes](https://developer.okta.com/blog/2025/05/13/okta-developer-edition-changes)
