@@ -177,10 +177,10 @@ I updated the `main.go` based on the test redirect code in [https://github.com/J
     * Directory > People > Add Person
     * Directory > Group > App Group > `GoApp`
         * Assign People
-    * Application > Assignments > Assign > Assign to Groups > GoApp
+    * Application > Assignments > Assign > Assign to Groups > `GoApp`
     * Security > API > Access Policies
         * New Access Policies > `GoAppPolicy`
-        * Add Rule > Grant > `Authorization Code` > Create rule
+        * Add Rule > Grant > click `Authorization Code` > Create rule
 
 Lastly login via [https://bakacore.com:2096/login](https://bakacore.com:2096/login). Response is 
 
