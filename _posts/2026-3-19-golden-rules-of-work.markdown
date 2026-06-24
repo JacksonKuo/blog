@@ -18,7 +18,7 @@ Document my golden rules of work. Includes my understanding how i do work person
 #### 1. Consistent Sleep
 Nine hours and on-time is so important. Sometimes I need to pull an all nighter, which is fine, but must be the rare exception. I'm a night owl, so my best work hours are between 11pm - 3am. Sorry Jackson, you'll need to find a way to work outside your best hours. 10:00 pm - 6:30 am should be protected for sleep.
 
-Additionally, sleep just makes you more cheery, which definitely helps when interacting with your coworkers. You're less likely to be crabby and less prone to making technical as well as interpersonal snafus. And it's not fair to your coworkers or friends that have to deal with your crabbiness when you're tired. They deserve better from you tbh. 
+Additionally, sleep just makes you more cheery, which definitely helps when interacting with your coworkers. You're less likely to be crabby and less prone to making technical as well as interpersonal snafus. And it's not fair to your coworkers or friends that have to deal with your crabbiness when you're tired. They deserve better from you tbh. But also, when you choose to do a late night, in a way you're putting yourself at risk of doing something dumb the next day, due to being short tempered from the lack of sleep. It's dangerous. 
 
 During vacation this can be flexible. Also I'm starting to suspect, that I'm not just a night owl, but that my mind is calmer at the end of the long day, regardless if it's at night. 
 
