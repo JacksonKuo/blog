@@ -209,6 +209,22 @@ I guess the step-by-step to change the visibility from `all` or `private/interna
         * call `add-selected-repository-to-an-organization-secret` multiple times
         * call `set-selected-repositories-for-an-organization-secret` once, as this call deletes the existing repo list
 
+# Add Repos
+So changing the visiblity is a no-go, but what about just adding or removing a single repo for a org secret that is already set to `selected`. Let's get the repo ID for `repo-test`
+
+`gh api repos/jkuo-org/repo-test` > 1082088805
+
+```
+curl -L \
+  -X PUT \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer $GITHUB_TOKEN" \
+  -H "X-GitHub-Api-Version: 2026-03-10" \
+  https://api.github.com/orgs/jkuo-org/actions/secrets/ORG_SECRET_TEST/repositories/1082088805
+```
+
+That was successful. 
+
 # References
 [^1]: [https://docs.github.com/en/graphql/reference/mutations](https://docs.github.com/en/graphql/reference/mutations)
 
